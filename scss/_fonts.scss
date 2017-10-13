@@ -1,0 +1,87 @@
+//fonts
+@font-face {
+	font-family: 'Italic';
+	src: url('../fonts/AvenirLT-BookOblique.woff2') format('woff2'),
+		url('../fonts/AvenirLT-BookOblique.woff') format('woff');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Black';
+	src: url('../fonts/AvenirLT-Black.woff2') format('woff2'),
+		url('../fonts/AvenirLT-Black.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Book';
+	src: url('../fonts/AvenirLT-Book.woff2') format('woff2'),
+		url('../fonts/AvenirLT-Book.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Medium';
+	src: url('../fonts/AvenirLT-Medium.woff2') format('woff2'),
+		url('../fonts/AvenirLT-Medium.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Heavy';
+	src: url('../fonts/AvenirLTStd-Heavy.woff2') format('woff2'),
+		url('../fonts/AvenirLTStd-Heavy.woff') format('woff');
+	font-weight: 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Light';
+	src: url('../fonts/AvenirLTStd-Light.woff2') format('woff2'),
+		url('../fonts/AvenirLTStd-Light.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+}
+
+//text styling
+
+//welcome font
+h1 {
+  font-family: 'Light';
+  font-size: 35px;
+}
+
+//section font
+h2 {
+  font-family: 'Light';
+  font-size: 25px;
+  font-weight: 300;
+}
+
+//Employees' name font
+h3 {
+  font-family: 'Book';
+  font-size: 20px;
+  font-weight: 500;
+}
+
+//username and password font
+h5 {
+  font-family: 'Black';
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 14px;
+  color: $text;
+}
+
+//general text
+p {
+  font-family: 'Medium';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+}

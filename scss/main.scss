@@ -1,0 +1,65 @@
+@import 'reset';
+@import 'colours';
+@import 'fonts';
+
+.hidden {
+  display: none;
+}
+#container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+#navcon {
+  color: #fff;
+  height: 100vh;
+  background-color: $blue;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+#nav {
+  padding: 0 25px;
+  p {
+    padding: 15px 0;
+  }
+}
+#contentcon {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+#content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+#username, #password {
+  border-bottom: solid 1px $text;
+}
+.button {
+  height: 31.3px;
+  width: 195px;
+  color: $text;
+  border-radius: 100px;
+  background-color: #fff;
+  border: solid 2px $grad;
+}
+.button-colour {
+  @extend .button;
+  background: linear-gradient(90deg, #00CBBE 0%, #006F3B 100%);
+}
+
+//min 1200px
+@media only screen and (min-width:75em){
+
+}
+//max width 1400px
+@media only screen and (min-width:87.5em){
+  #container {
+    width: 1400px;
+    margin: 0 auto;
+  }
+}
