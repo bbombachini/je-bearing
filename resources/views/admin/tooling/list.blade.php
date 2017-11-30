@@ -78,6 +78,7 @@
                         <div class="selection-container">
                           <li>{{$tool->tool_name}}</li>
                           <a href="{{action('ToolingController@edit', ['$id' => $tool->tool_id])}}">EDIT</a>
+                          <a href="{{action('ToolingController@destroy', ['$id' => $tool->tool_id])}}">DELETE</a>
                         </div>
                       @endforeach
                     </ul>
