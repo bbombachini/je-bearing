@@ -1,13 +1,23 @@
 // JavaScript Document
 (function() {
 	"use strict";
-	//variables
 
-	//functions
+	console.log("fired");
 
-	//eventListeners
 
-	//alert("yes javascript is linked");
+	var img =  document.querySelectorAll("#adminNav a");
+	//console.log(img);
+
+	for(var i=0; i<img.length; i++){
+		img[i].addEventListener("click", changeColor, false);
+	}
+
+	function changeColor(e){
+		console.log("clcik");
+
+	}
+
+ 
 
 	
 

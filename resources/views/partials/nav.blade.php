@@ -1,22 +1,44 @@
 <section id="navcon">
 
 	<div id="userinfo">
-		<img src="images/user.svg" alt="user image" width="55px">
+		<img src="{{ $img }}"" alt="user image" width="55px">
 		<div>
-			<h2>John Doe</h2>
-			<p>Admin</p>
+
+			<h2>{{ $name }}</h2>
+			<p>{{ $position }}</p>
 		</div>
 	</div>
 
-	<nav>
+	<nav id="adminNav">
 		<ul>
-			<li>Parts</li>
-			<li>Tooling</li>
-			<li>Fixtures</li>
-			<li>Materials</li>
-			<li>Commments</li>
-			<li>Opperators</li>
-			<li>Supervisors</li>
+			<a href="#" id="part">
+				<img src="images/part-line.svg" class="navicons">
+				<li>Parts</li>
+			</a>
+			<a href="#"  id="tooling">
+				<img src="images/tooling-line.svg" class="navicons">
+				<li>Tooling</li>
+			</a>
+			<a href="#" id="fixture">
+				<img src="images/fixture-line.svg" class="navicons">
+				<li>Fixtures</li>
+			</a>
+			<a href="#" id="material">
+				<img src="images/material-line.svg" class="navicons">
+				<li>Materials</li>
+			</a>
+			<a href="#" id="comment">
+				<img src="images/comment-line.svg" class="navicons">
+				<li>Commments</li>
+			</a>
+			<a href="#" id="opperator">
+				<img src="images/opperator-line.svg" class="navicons">
+				<li>Opperators</li>
+			</a>
+			<a href="#" id="supervisor">
+				<img src="images/supervisor-line.svg" class="navicons">
+				<li>Supervisors</li>
+			</a>
 		</ul>
 	</nav>
 
@@ -26,8 +48,8 @@
 	</div>
 
 	<div id="logout">
-		<i class="fa fa-angle-left" aria-hidden="true"></i>
-		<p>logout</p>
+		<i class="fa fa-angle-left fa-2x" aria-hidden="true" id="logoutArrow"></i>
+		<a href="#"></a><p>LOGOUT</p></a>
 	</div>
 	
 
