@@ -64,7 +64,7 @@ class ToolingController extends Controller
       $tool['tool_desc'] = $request['desc'];
       $tool['tool_location'] = $request['location'];
       $tool['tool_active'] = 1;
-      echo "Info stored";
+      // echo "Info stored";
       // echo $request['name'];
       // echo $tool;
       if (!$tool->save()) {
@@ -81,12 +81,12 @@ class ToolingController extends Controller
      * @param  \App\Tooling  $tooling
      * @return \Illuminate\Http\Response
      */
-    public function show(Tooling $tooling)
+    public function list(Tooling $tooling)
     {
       // $tool = new Tooling;
       // $tools = Tooling::all();
       $tools = Tooling::where('tool_active', 1)->orderBy('tool_name', 'asc')->get();
-      return view('admin.tooling.show', ['tools' => $tools]);
+      return view('admin.tooling.list', ['tools' => $tools]);
     }
 
     /**
@@ -98,8 +98,8 @@ class ToolingController extends Controller
     public function edit($id)
     {
       $tool = Tooling::where('tool_id', $id)->where('tool_active', 1)->get();
-      echo "EDIT ".$tool;
-      // return view('admin.tooling.edit', ['old' => $tool]);
+      // echo "EDIT ".$tool;
+      return view('admin.tooling.edit', ['old' => $tool, 'id' => $id]);
     }
 
     /**
@@ -109,9 +109,25 @@ class ToolingController extends Controller
      * @param  \App\Tooling  $tooling
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tooling $tooling)
+    public function update(Request $request)
     {
-        //
+      // echo $id;
+      // echo $request;
+      $id = $request['id'];
+      // echo $id;
+      $tool = Tooling::find($id);
+      $tool['tool_name'] = $request['name'];
+      $tool['tool_desc'] = $request['desc'];
+      $tool['tool_location'] = $request['location'];
+      // echo "Info stored";
+      // echo $request['name'];
+      // echo $tool;
+      if (!$tool->save()) {
+        $errors = $tool->getErrors();
+        return redirect()->action('ToolingController@edit/$id')->with('errors', $errors)->withInput();
+      }
+      //success
+      return redirect()->action('ToolingController@index')->with('message', 'Your '. $tool->tool_name . ' has been created!');
     }
 
     /**
@@ -120,8 +136,24 @@ class ToolingController extends Controller
      * @param  \App\Tooling  $tooling
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tooling $tooling)
+    public function destroy($id)
     {
-        //
+      // echo $id;
+      $tool = Tooling::find($id);
+      // echo $tool;
+      if (empty($tool)) {
+        echo "not found id".$id;
+      }
+      else {
+        // echo "found id".$id;
+        $tool['tool_active'] = 0;
+        if (!$tool->save()) {
+          $errors = $tool->getErrors();
+          return redirect()->action('ToolingController@list')->with('errors', $errors)->withInput();
+        }
+        //success
+        return redirect()->action('ToolingController@list')->with('message', 'Your '. $tool->tool_name . ' has been created!');
+      }
+
     }
 }
