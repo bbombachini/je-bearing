@@ -1,10 +1,8 @@
 <section id="content">
-
-	<div class="">
 			<div class="section-head">
 					<div class="section-title">
 						<h2>Tooling</h2>
-						<h5>There are currently 529 tools.</h5>
+						<h5>There are currently <span class="green">{{ $count }}</span> tools.</h5>
 					</div>
 
 					<div class="add">
@@ -14,26 +12,19 @@
 			</div>
 
 			<div class="grid-view">
-				<div class="grid-title">
-					<p>Name</p>
+				<div class="list">
+						<ul>
+							<li><p>Name</p><p>Tool #</p><p>Edit</p><p>Delete</p></li>
+							@foreach ($tools as $tool)
+									<li class="tool-item">
+										<p class="item-name">{{$tool->tool_name}}</p>
+										<p>{{$tool->tool_name}}</p>
+										<a class="edit" href="{{action('ToolingController@edit', ['$id' => $tool->tool_id])}}">EDIT</a>
+										<a class="delete" href="{{action('ToolingController@destroy', ['$id' => $tool->tool_id])}}">DELETE</a>
+									</li>
 
-					<p>Tool #</p>
-
-					<p>Edit</p>
-
-					<p>Delete</p>
-				</div>
-				<div class="">
-					<ul>
-						<li>Tool</li>
-						<li>Tool</li>
-						<li>Tool</li>
-						<li>Tool</li>
-						<li>Tool</li>
-						<li>Tool</li>
-					</ul>
+							@endforeach
+						</ul>
 				</div>
 			</div>
-	</div>
-
 </section>

@@ -61,13 +61,16 @@
                 <div class="title m-b-md">
                     <!-- <h1></h1> -->
                     <h1>Edit Tool</h1>
-                    {!! Form::model($old, ['action' => 'ToolingController@store']) !!}
-                      {!! Form::label('name', 'Name') !!}
-                      {!! Form::text('name', $old->tool_name, ['class' => 'form-control']) !!}
-                      {!! Form::label('desc', 'Description') !!}
-                      {!! Form::text('desc', '', ['class' => 'form-control']) !!}
-                      {!! Form::label('location', 'Location') !!}
-                      {!! Form::text('location', '', ['class' => 'form-control']) !!}
+                    {!! Form::model($old, ['action' => 'ToolingController@update']) !!}
+                      @foreach ($old as $object)
+                        {{ Form::hidden('id', $object->tool_id) }}
+                        {!! Form::label('name', 'Name') !!}
+                        {!! Form::text('name', $object->tool_name, ['class' => 'form-control']) !!}
+                        {!! Form::label('desc', 'Description') !!}
+                        {!! Form::text('desc', $object->tool_desc, ['class' => 'form-control']) !!}
+                        {!! Form::label('location', 'Location') !!}
+                        {!! Form::text('location', $object->tool_location, ['class' => 'form-control']) !!}
+                      @endforeach
                       <button type="submit" name="button">CLICK</button>
                     {!! Form::close() !!}
                 </div>

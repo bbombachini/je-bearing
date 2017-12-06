@@ -11,24 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-// Route::get('/test', function () {
-//   return view('test', ['name'=>'Here']);
+// Route::get('/', function () {
+//     return view('welcome');
 // });
 
-Route::get('/test', 'ToolingController@index');
+Route::get('/admin/tooling', 'ToolingController@index');
 
 Route::get('/admin/tooling/add', 'ToolingController@add');
 
 Route::post('/admin/tooling/store', 'ToolingController@store');
 
-Route::get('/admin/tooling/show', 'ToolingController@show');
+Route::get('/admin/tooling/list', 'ToolingController@list');
 
 Route::get('/admin/tooling/edit/{id}', ['uses' => 'ToolingController@edit']);
 
-Route::get('/child', function () {
-  return view('child');
-});
+Route::post('/admin/tooling/update', 'ToolingController@update');
+
+Route::get('/admin/tooling/destroy/{id}', ['uses' => 'ToolingController@destroy']);
