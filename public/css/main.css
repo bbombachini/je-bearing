@@ -107,9 +107,13 @@ p {
 .hidden {
   display: none; }
 
-#navcon {
-  width: 20%;
+#container {
+  width: 100vw;
   height: 100vh;
+  display: grid;
+  grid-template-columns: 20% 80%; }
+
+#navcon {
   display: grid;
   box-shadow: 0px 0px 15px #333333; }
   #navcon nav {
@@ -156,5 +160,58 @@ p {
   justify-self: center; }
   #logout p {
     display: inline; }
+
+#content {
+  padding: 5% 10%; }
+  #content .section-head {
+    width: 100%;
+    padding: 10% 0;
+    display: grid;
+    grid-template-columns: 4fr 1fr; }
+    #content .section-head h5 {
+      font-size: 16px;
+      line-height: 20px; }
+    #content .section-head .green {
+      color: #009B60;
+      font-size: 18px; }
+
+.add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: right;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  background: linear-gradient(134.06deg, #00CBBE 0%, #007A4A 88.18%, #006F3B 100%); }
+  .add i.fa.fa-plus.fa-2x {
+    color: #fff; }
+
+.list ul li {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr; }
+  .list ul li p {
+    text-align: right;
+    color: #A2A2A2;
+    font-size: 18px;
+    line-height: 40px; }
+.list ul li p:first-child {
+  text-align: left !important; }
+.list .tool-item {
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(60, 59, 59, 0.15); }
+  .list .tool-item .item-name, .list .tool-item .edit, .list .tool-item .delete {
+    color: #009B60;
+    font-size: 20px;
+    line-height: 40px;
+    font-weight: 500; }
+  .list .tool-item a {
+    text-decoration: none; }
+  .list .tool-item .edit {
+    color: #ECB900;
+    text-align: right; }
+  .list .tool-item .delete {
+    color: #F34C18;
+    text-align: right; }
 
 /*# sourceMappingURL=main.css.map */

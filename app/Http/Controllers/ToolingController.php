@@ -41,7 +41,9 @@ class ToolingController extends Controller {
 
     public function list(Tooling $tooling) {
       $tools = Tooling::where('tool_active', 1)->orderBy('tool_name', 'asc')->get();
-      return view('admin.tooling.list', ['tools' => $tools]);
+      // $count = Tooling::where('tool_active', 1)->get();
+      $count = $tools->count();
+      return view('welcome', ['tools' => $tools, 'count' => $count]);
     }
 
 
