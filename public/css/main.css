@@ -17,149 +17,265 @@ time, mark, audio, video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+}
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-  display: block; }
+  display: block;
+}
 
 body {
-  line-height: 1; }
+  line-height: 1;
+}
 
 ol, ul {
-  list-style: none; }
+  list-style: none;
+}
 
 blockquote, q {
-  quotes: none; }
+  quotes: none;
+}
 
 blockquote:before, blockquote:after,
 q:before, q:after {
   content: '';
-  content: none; }
+  content: none;
+}
 
 table {
   border-collapse: collapse;
-  border-spacing: 0; }
+  border-spacing: 0;
+}
 
 /* End Reset */
 @font-face {
   font-family: 'Italic';
   src: url("../fonts/AvenirLT-BookOblique.woff2") format("woff2"), url("../fonts/AvenirLT-BookOblique.woff") format("woff");
   font-weight: normal;
-  font-style: italic; }
+  font-style: italic;
+}
 @font-face {
   font-family: 'Black';
   src: url("../fonts/AvenirLT-Black.woff2") format("woff2"), url("../fonts/AvenirLT-Black.woff") format("woff");
   font-weight: bold;
-  font-style: normal; }
+  font-style: normal;
+}
 @font-face {
   font-family: 'Book';
   src: url("../fonts/AvenirLT-Book.woff2") format("woff2"), url("../fonts/AvenirLT-Book.woff") format("woff");
   font-weight: normal;
-  font-style: normal; }
+  font-style: normal;
+}
 @font-face {
   font-family: 'Medium';
   src: url("../fonts/AvenirLT-Medium.woff2") format("woff2"), url("../fonts/AvenirLT-Medium.woff") format("woff");
   font-weight: 500;
-  font-style: normal; }
+  font-style: normal;
+}
 @font-face {
   font-family: 'Heavy';
   src: url("../fonts/AvenirLTStd-Heavy.woff2") format("woff2"), url("../fonts/AvenirLTStd-Heavy.woff") format("woff");
   font-weight: 900;
-  font-style: normal; }
+  font-style: normal;
+}
 @font-face {
   font-family: 'Light';
   src: url("../fonts/AvenirLTStd-Light.woff2") format("woff2"), url("../fonts/AvenirLTStd-Light.woff") format("woff");
   font-weight: 300;
-  font-style: normal; }
+  font-style: normal;
+}
 h1 {
   font-family: 'Light';
-  font-size: 35px; }
+  font-size: 35px;
+}
 
 h2 {
   font-family: 'Light';
   font-size: 25px;
-  font-weight: 300; }
+  font-weight: 300;
+}
 
 h3 {
   font-family: 'Book';
   font-size: 20px;
-  font-weight: 500; }
+  font-weight: 500;
+}
 
 li {
   font-family: 'Book';
-  font-size: 16px; }
+  font-size: 16px;
+}
 
 h5 {
   font-family: 'Black';
   font-size: 10px;
   font-weight: 900;
   line-height: 14px;
-  color: #A2A2A2; }
+  color: #A2A2A2;
+}
 
 p {
   font-family: 'Medium';
   font-size: 14px;
   font-weight: 500;
-  line-height: 22px; }
+  line-height: 22px;
+}
+
+a {
+  text-decoration: none;
+}
 
 .hidden {
-  display: none; }
-
-#container {
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 20% 80%; }
+  display: none;
+}
 
 #navcon {
+  width: 28%;
+  height: 100vh;
   display: grid;
-  box-shadow: 0px 0px 15px #333333; }
-  #navcon nav {
-    justify-self: center;
-    margin: 25px 0px; }
-  #navcon nav ul li {
-    line-height: 50px; }
+  box-shadow: 0px 0px 15px #333333;
+}
+#navcon nav {
+  margin: 25px 0px 0px 0px;
+}
+#navcon nav ul a li {
+  line-height: 60px;
+  display: inline;
+  padding-left: 30px;
+}
+#navcon nav ul a {
+  display: block;
+  color: #3C3B3B;
+  padding-left: 50px;
+  background: none;
+  box-shadow: none;
+  display: flex;
+  display: flex;
+  align-items: center;
+}
+
+#adminNav a:hover {
+  background: linear-gradient(324.5deg, #006F3B 0%, #00937B 81.61%, #009782 91.08%, #009B89 100%);
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.15), 0 0 16px 0 rgba(0, 0, 0, 0.23);
+  color: #fff;
+}
+#adminNav a:hover .st0 {
+  fill: #ffffff;
+}
+#adminNav a:hover .st1 {
+  stroke: #fff;
+}
+
+.navicons {
+  width: 30px;
+}
+
+.st0 {
+  fill: #A2A2A2;
+}
+
+.st1 {
+  fill: none;
+  stroke: #A2A2A2;
+  stroke-width: 15;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+
+#fixture {
+  fill: #fff;
+}
 
 #userinfo {
   display: grid;
   background: linear-gradient(134.06deg, #00CBBE 0%, #007A4A 88.18%, #006F3B 100%);
   padding: 20px;
-  color: #fff; }
-  #userinfo img, #userinfo div {
-    justify-self: center;
-    text-align: center;
-    align-self: center; }
-  #userinfo div p {
-    font-family: 'Book';
-    font-size: 16px; }
-  #userinfo img {
-    border: 2px solid #ffffff;
-    border-radius: 200px;
-    padding: 5px; }
+  color: #fff;
+}
+#userinfo img, #userinfo div {
+  justify-self: center;
+  text-align: center;
+  align-self: center;
+}
+#userinfo div p {
+  font-family: 'Book';
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.image-cropper {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  padding: 1px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+.image-cropper img {
+  height: 100%;
+  width: auto;
+}
 
 #search {
-  justify-self: center; }
-  #search input {
-    outline: none;
-    border: none;
-    color: rgba(0, 0, 0, 0.27);
-    height: 35px;
-    width: 230px;
-    padding-left: 40px;
-    border-radius: 100px;
-    background-color: rgba(243, 76, 24, 0);
-    box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.15); }
+  justify-self: center;
+  display: flex;
+  align-items: center;
+}
+#search input {
+  outline: none;
+  height: 35px;
+  font-size: 14px;
+  width: 230px;
+  padding-left: 40px;
+  padding-right: 20px;
+  border-radius: 100px;
+  border: solid 2px #009B60;
+  background-color: rgba(243, 76, 24, 0);
+  box-shadow: inset 0 0 5px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+#searchfeild::placeholder {
+  font-size: 14px;
+  opacity: 0.5;
+}
 
 #searchicon {
-  display: inline;
-  float: left; }
+  width: 16px;
+  position: absolute;
+  margin-left: 12px;
+}
+
+#leftarrow {
+  height: 16px;
+  margin-right: 10px;
+}
 
 #logout {
-  justify-self: center; }
-  #logout p {
-    display: inline; }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+#logout p {
+  color: #A2A2A2;
+  font-family: 'Medium';
+  font-size: 16px;
+  line-height: 0px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  display: inline;
+}
+
+#logoutArrow {
+  color: #009B60;
+  padding-right: 10px;
+}
 
 #content {
   padding: 5% 10%; }

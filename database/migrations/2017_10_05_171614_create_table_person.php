@@ -18,7 +18,6 @@ class CreateTablePerson extends Migration
             $table->string('person_name', 100);
             $table->string('person_password', 100);
             $table->string('person_position', 150)->nullable();
-            $table->smallInteger('person_team')->unsigned(); $table->foreign('person_team')->references('team_id')->on('tbl_team');
             $table->string('person_phone', 25);
             $table->string('person_email', 100);
             $table->string('person_photo', 150)->default('images/default.jpg');
