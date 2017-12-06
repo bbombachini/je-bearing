@@ -12,12 +12,7 @@
 */
 
 Route::get('/', function () {
-
-	$name = 'John Doe';
-	$position = 'Admin';
-	$img = 'images/user.svg';
-
-    return view('welcome', compact('name', 'position', 'img'));
+    return view('welcome');
 });
 
 // Route::get('/test', function () {

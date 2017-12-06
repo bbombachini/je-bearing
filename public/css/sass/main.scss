@@ -36,20 +36,44 @@ a{
     padding-left: 50px;
     background: none;
     box-shadow: none;
+    display: flex;
+    display: flex;
+    align-items: center;
   }
 }
 
-#navcon a:hover{
+#adminNav a:hover{
   background: linear-gradient(324.5deg, #006F3B 0%, #00937B 81.61%, #009782 91.08%, #009B89 100%);
   box-shadow: 0 4px 7px 0 rgba(0,0,0,0.15), 0 0 16px 0 rgba(0,0,0,0.23);
   color: #fff;
+
+  .st0{
+  fill:#ffffff;
+  }
+
+  .st1{
+    stroke: #fff;
+  }
+
 }
 
 .navicons{
-  width: 22px;
-  opacity: 0.5;
-  padding: 10px 0 0 0;
+  width: 30px;
 }
+
+.st0{
+  fill:#A2A2A2;
+}
+
+.st1{
+  fill:none;
+  stroke:#A2A2A2;
+  stroke-width:15;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+  }
+
 
 #fixture{
   fill: #fff;
@@ -70,20 +94,33 @@ a{
   div p{
     font-family: 'Book';
     font-size: 16px;
+    letter-spacing: 1px;
   }
 
-  img{
+}
+
+.image-cropper {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
     border: 2px solid #ffffff;
-    border-radius: 500px;
-    padding: 5px;
+    padding: 1px;
     margin-bottom: 10px;
-  }
+    display: flex;
+    justify-content: center;
 
+    img{
+      height: 100%;
+      width: auto;
+    }
 }
 
 #search{
 
   justify-self: center; 
+  display: flex;
+  align-items: center;
 
 
   input{
@@ -92,6 +129,7 @@ a{
     font-size: 14px;
     width: 230px;
     padding-left: 40px;
+    padding-right: 20px;
     border-radius: 100px;
     border: solid 2px $lightgreen;
     background-color: rgba(243,76,24,0);
@@ -105,26 +143,33 @@ a{
 }
 
 #searchicon{
-  display: inline;
-  float: left;
+  width: 16px;
+  position: absolute;
+  margin-left: 12px;
+
 }
 
+#leftarrow{
+  height: 16px;
+  margin-right: 10px;
+}
 
 #logout{
-  justify-self:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
 
   p{
     color: #A2A2A2; 
     font-family: 'Medium';
-    font-size: 14px;  
+    font-size: 16px; 
+    line-height: 0px; 
     font-weight: 900; 
-    line-height: 14px;
     letter-spacing: 1px;
     display: inline;
   }
-
 }
-
 #logoutArrow{
   color: $lightgreen;
   padding-right: 10px;
