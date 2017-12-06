@@ -14,13 +14,4 @@ class Tooling extends Model
     'tool_active' => ['required']
   ];
 
-    // public function __construct() {
-    //   $this->table = 'tbl_tool';
-    // }
-    //
-  // public function getAll() {
-  //   $results = DB::select('SELECT * FROM '.$this->table.' ORDER BY tool_name ASC');
-  //   return $results;
-  // }
-
 }
