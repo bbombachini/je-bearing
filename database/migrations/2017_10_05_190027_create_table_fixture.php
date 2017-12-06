@@ -16,6 +16,7 @@ class CreateTableFixture extends Migration
         Schema::create('tbl_fixture', function (Blueprint $table) {
             $table->smallIncrements('fixture_id');
             $table->string('fixture_name', 100);
+            $table->string('fixture_number', 50)->nullable();
             $table->text('fixture_desc')->nullable();
             $table->boolean('fixture_active');
             $table->timestamps();

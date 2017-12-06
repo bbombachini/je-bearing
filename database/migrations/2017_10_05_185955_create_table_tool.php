@@ -16,8 +16,8 @@ class CreateTableTool extends Migration
         Schema::create('tbl_tool', function (Blueprint $table) {
             $table->smallIncrements('tool_id');
             $table->string('tool_name', 100);
+            $table->string('tool_number', 50)->nullable();
             $table->text('tool_desc')->nullable();
-            $table->string('tool_location', 255)->nullable();
             $table->boolean('tool_active');
             $table->timestamps();
         });
