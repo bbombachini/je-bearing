@@ -1,12 +1,12 @@
 <section id="content">
 			<div class="section-head">
 					<div class="section-title">
-						<h2>Tooling</h2>
+						<h1>Tooling</h1>
 						<h5>There are currently <span class="green">{{ $count }}</span> tools.</h5>
 					</div>
 
-					<div class="add">
-						<i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+					<div class="add-button">
+						<a href="/admin/tooling/add"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
 					</div>
 
 			</div>
@@ -18,7 +18,7 @@
 							@foreach ($tools as $tool)
 									<li class="tool-item">
 										<p class="item-name">{{$tool->tool_name}}</p>
-										<p>{{$tool->tool_name}}</p>
+										<p>{{$tool->tool_number}}</p>
 										<a class="edit" href="{{action('ToolingController@edit', ['$id' => $tool->tool_id])}}">EDIT</a>
 										<a class="delete" href="{{action('ToolingController@destroy', ['$id' => $tool->tool_id])}}">DELETE</a>
 									</li>

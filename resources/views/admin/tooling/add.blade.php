@@ -1,77 +1,50 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@include('partials.head')
 
-        <title>J/E Bearings | Add Tool</title>
+@include('partials.nav')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+<section id="content">
+			<div class="section-head">
+					<div class="section-title">
+						<h1>Add Tool</h1>
+					</div>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+					<div>
+            <a id="back-button" href="/admin/tooling/list">
+  						<img src="../../images/arrow.png" alt="left arrow" id="leftarrow">
+              <p>BACK TO TOOLS</p>
+            </a>
+					</div>
 
-            .full-height {
-                height: 100vh;
-            }
+			</div>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+				<div>
+          <form id="add" method="post">
+            {!! Form::model($tool, ['action' => 'ToolingController@store']) !!}
+            <fieldset class="add-name">
+              <p>{!! Form::label('name', 'Name') !!}</p>
+              {!! Form::text('name', '', ['class' => 'form-control']) !!}
+            </fieldset>
 
-            .position-ref {
-                position: relative;
-            }
+            <fieldset class="add-number">
+              <p>{!! Form::label('number', 'Tool #') !!}</p>
+              {!! Form::text('number', '', ['class' => 'form-control']) !!}
+            </fieldset>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+            <fieldset class="add-media">
+              <p>{!! Form::label('media', 'Media') !!}</p>
+              {!! Form::text('media', 'Add Photo', ['class' => 'form-control']) !!}
+            </fieldset>
 
-            .content {
-                text-align: center;
-            }
+						<fieldset class="add-desc">
+              <p>{!! Form::label('desc', 'Description') !!}</p>
+              {!! Form::textarea('desc', '', ['class' => 'form-control']) !!}
+						</fieldset>
+                <button type="cancel" class="white-button" name="button">CANCEL</button>
+								<button type="submit" class="green-button" name="button">ADD</button>
+							{!! Form::close() !!}
+          </form>
+				</div>
+</section>
 
-            .title {
-                font-size: 24px;
-            }
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-
-            <div class="content">
-                <div class="title m-b-md">
-                    <!-- <h1></h1> -->
-                    <h1>Add Tool</h1>
-                    {!! Form::model($tool, ['action' => 'ToolingController@store']) !!}
-                      {!! Form::label('name', 'Name') !!}
-                      {!! Form::text('name', '', ['class' => 'form-control']) !!}
-                      {!! Form::label('desc', 'Description') !!}
-                      {!! Form::text('desc', '', ['class' => 'form-control']) !!}
-                      {!! Form::label('location', 'Location') !!}
-                      {!! Form::text('location', '', ['class' => 'form-control']) !!}
-                      <button type="submit" name="button">CLICK</button>
-                    {!! Form::close() !!}
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+@include('partials.footer')
