@@ -1,7 +1,6 @@
-@include('partials.head')
+@extends('layouts.app')
 
-@include('partials.nav')
-
+@section('content')
 <section id="content">
 			<div class="section-head">
 					<div class="section-title">
@@ -9,7 +8,7 @@
 					</div>
 
 					<div>
-            <a id="back-button" href="/admin/tooling/list">
+            <a id="back-button" href="{{ url('/admin/tooling/list')}}">
   						<img src="../../images/arrow.png" alt="left arrow" id="leftarrow">
               <p>BACK TO TOOLS</p>
             </a>
@@ -45,6 +44,4 @@
           </form>
 				</div>
 </section>
-
-
-@include('partials.footer')
+@endsection

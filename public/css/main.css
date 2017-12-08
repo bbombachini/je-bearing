@@ -241,7 +241,7 @@ a {
   padding: 5% 10%; }
   #content .section-head {
     width: 100%;
-    padding: 10% 0;
+    padding: 5% 0;
     display: grid;
     grid-template-columns: 4fr 1fr; }
     #content .section-head h5 {
@@ -335,7 +335,7 @@ a {
     grid-area: media; }
   #add .add-desc {
     grid-area: desc;
-    margin-bottom: 18%; }
+    margin-bottom: 15%; }
   #add button.green-button {
     justify-self: center;
     align-self: flex-end; }

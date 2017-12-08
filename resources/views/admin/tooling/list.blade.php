@@ -1,89 +1,34 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>J/E Bearings | Select Tool</title>
+@section('content')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+<section id="content">
+			<div class="section-head">
+					<div class="section-title">
+						<h1>Tooling</h1>
+						<h5>There are currently <span class="green">{{ $count }}</span> tools.</h5>
+					</div>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+					<div class="add-button">
+						<a href="{{ url('/admin/tooling/add')}}"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
+					</div>
+			</div>
 
-            .full-height {
-                height: 100vh;
-            }
+			<div class="grid-view">
+				<div class="list">
+						<ul>
+							<li><p>Name</p><p>Tool #</p><p>Edit</p><p>Delete</p></li>
+							@foreach ($tools as $tool)
+									<li class="tool-item">
+										<p class="item-name">{{$tool->tool_name}}</p>
+										<p>{{$tool->tool_number}}</p>
+										<a class="edit" href="{{action('ToolingController@edit', ['$id' => $tool->tool_id])}}">EDIT</a>
+										<a class="delete" href="{{action('ToolingController@destroy', ['$id' => $tool->tool_id])}}">DELETE</a>
+									</li>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-                /*display: block;*/
-            }
-            .content ul {
-              display: block;
-            }
-            .content ul .selection-container {
-              display: flex;
-              margin-bottom: 0.5rem;
-            }
-            .content ul .selection-container li {
-              text-align: left;
-              margin-right: 1rem;
-            }
-
-            .title {
-                font-size: 24px;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-
-            <div class="content">
-                <div class="title m-b-md">
-                    <!-- <h1></h1> -->
-                    <h1>Select Tool</h1>
-                    <ul>
-                      @foreach ($tools as $tool)
-                        <div class="selection-container">
-                          <li>{{$tool->tool_name}}</li>
-                          <a href="{{action('ToolingController@edit', ['$id' => $tool->tool_id])}}">EDIT</a>
-                          <a href="{{action('ToolingController@destroy', ['$id' => $tool->tool_id])}}">DELETE</a>
-                        </div>
-                      @endforeach
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+							@endforeach
+						</ul>
+				</div>
+			</div>
+</section>
+@endsection
