@@ -257,7 +257,8 @@ a {
     width: 15vw;
     height: 40px;
     border-radius: 100px;
-    font-size: 18px; }
+    font-size: 18px;
+    line-height: 40px; }
   #content .green-button {
     background: linear-gradient(134.06deg, #00CBBE 0%, #007A4A 88.18%, #006F3B 100%);
     color: #fff;
@@ -320,7 +321,10 @@ a {
     width: 100%;
     font-size: 20px; }
   #add textarea#desc.form-control {
-    border: 1px solid #A2A2A2; }
+    border: 1px solid #A2A2A2;
+    font-family: 'Medium';
+    font-size: 18px;
+    font-weight: 500; }
   #add input#media.form-control {
     color: #ECB900;
     font-weight: 600; }
@@ -339,7 +343,12 @@ a {
   #add button.green-button {
     justify-self: center;
     align-self: flex-end; }
-  #add button.white-button {
+  #add a.white-button {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-family: 'Medium';
     justify-self: center;
     align-self: flex-end;
     color: #F34C18;

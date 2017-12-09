@@ -1,80 +1,50 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>J/E Bearings | Add Tool</title>
+@section('content')
+<section id="content">
+			<div class="section-head">
+					<div class="section-title">
+						<h1>Edit Tool</h1>
+					</div>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+					<div>
+            <a id="back-button" href="{{ url('/admin/tooling/list')}}">
+  						<img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
+              <p>BACK TO TOOLS</p>
+            </a>
+					</div>
+			</div>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+      <div>
+        <form action="{{ url('/admin/tooling/update') }}" id="add" method="post">
+          {!! Form::model($old, ['action' => 'ToolingController@update']) !!}
+          @foreach ($old as $object)
+          {{ Form::hidden('id', $object->tool_id) }}
+              <fieldset class="add-name">
+                <p>{!! Form::label('name', 'Name') !!}</p>
+                {!! Form::text('name', $object->tool_name, ['class' => 'form-control']) !!}
+              </fieldset>
 
-            .full-height {
-                height: 100vh;
-            }
+              <fieldset class="add-number">
+                <p>{!! Form::label('number', 'Tool #') !!}</p>
+                {!! Form::text('number', $object->tool_number, ['class' => 'form-control']) !!}
+              </fieldset>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+              <fieldset class="add-media">
+                <p>{!! Form::label('media', 'Media') !!}</p>
+                {!! Form::text('media', $object->tool_media, ['class' => 'form-control']) !!}
+              </fieldset>
 
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 24px;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-
-            <div class="content">
-                <div class="title m-b-md">
-                    <!-- <h1></h1> -->
-                    <h1>Edit Tool</h1>
-                    {!! Form::model($old, ['action' => 'ToolingController@update']) !!}
-                      @foreach ($old as $object)
-                        {{ Form::hidden('id', $object->tool_id) }}
-                        {!! Form::label('name', 'Name') !!}
-                        {!! Form::text('name', $object->tool_name, ['class' => 'form-control']) !!}
-                        {!! Form::label('desc', 'Description') !!}
-                        {!! Form::text('desc', $object->tool_desc, ['class' => 'form-control']) !!}
-                        {!! Form::label('location', 'Location') !!}
-                        {!! Form::text('location', $object->tool_location, ['class' => 'form-control']) !!}
-                      @endforeach
-                      <button type="submit" name="button">CLICK</button>
-                    {!! Form::close() !!}
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+              <fieldset class="add-desc">
+                <p>{!! Form::label('desc', 'Description') !!}</p>
+                {!! Form::textarea('desc', $object->tool_desc, ['class' => 'form-control']) !!}
+              </fieldset>
+            @endforeach
+              <!-- <a href="{{ url('/admin/tooling/list')}}"> -->
+              <a class="white-button" href="{{ url('/admin/tooling/list')}}"> CANCEL</a>
+              <button class="green-button" type="submit" name="button">SAVE</button>
+            {!! Form::close() !!}
+          </form>
+      </div>
+</section>
+@endsection

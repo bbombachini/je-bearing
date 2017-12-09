@@ -9,7 +9,7 @@
 
 					<div>
             <a id="back-button" href="{{ url('/admin/tooling/list')}}">
-  						<img src="../../images/arrow.png" alt="left arrow" id="leftarrow">
+  						<img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
               <p>BACK TO TOOLS</p>
             </a>
 					</div>
@@ -17,7 +17,7 @@
 			</div>
 
 				<div>
-          <form id="add" method="post">
+          <form action="{{ url('admin/tooling/store') }}" id="add" method="post">
             {!! Form::model($tool, ['action' => 'ToolingController@store']) !!}
             <fieldset class="add-name">
               <p>{!! Form::label('name', 'Name') !!}</p>
@@ -38,7 +38,7 @@
               <p>{!! Form::label('desc', 'Description') !!}</p>
               {!! Form::textarea('desc', '', ['class' => 'form-control']) !!}
 						</fieldset>
-                <button type="cancel" class="white-button" name="button">CANCEL</button>
+                <a class="white-button" href="{{ url('/admin/tooling/list')}}">CANCEL</a>
 								<button type="submit" class="green-button" name="button">ADD</button>
 							{!! Form::close() !!}
           </form>

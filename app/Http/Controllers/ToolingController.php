@@ -11,10 +11,11 @@ class ToolingController extends Controller {
     protected $model;
 
 
-    public function index() {
-      $tooling = Tooling::all();
-      return view('test', ['tools' => $tooling, 'name' => 'Something']);
-    }
+    // public function index() {
+    //   $tooling = Tooling::all();
+    //   $count = $tooling->count();
+    //   return view('admin.tooling.list', ['tools' => $tooling, 'count' => $count]);
+    // }
 
 
     public function add() {
@@ -35,7 +36,7 @@ class ToolingController extends Controller {
         return redirect()->action('ToolingController@add')->with('errors', $errors)->withInput();
       }
       //success
-      return redirect()->action('ToolingController@index')->with('message', 'Your '. $tool->tool_name . ' has been created!');
+      return redirect()->action('ToolingController@list');
     }
 
 
@@ -53,7 +54,6 @@ class ToolingController extends Controller {
       return view('admin.tooling.edit', ['old' => $tool, 'id' => $id]);
     }
 
-
     public function update(Request $request) {
       $id = $request['id'];
       $tool = Tooling::find($id);
@@ -66,7 +66,7 @@ class ToolingController extends Controller {
         return redirect()->action('ToolingController@edit/$id')->with('errors', $errors)->withInput();
       }
       //success
-      return redirect()->action('ToolingController@index')->with('message', 'Your '. $tool->tool_name . ' has been created!');
+      return redirect()->action('ToolingController@index');
     }
 
 
