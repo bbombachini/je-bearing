@@ -7,8 +7,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="../../css/reset.css">
-        <link rel="stylesheet" type="text/css" href="../../css/main.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/reset.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/main.css">
         <script src="https://use.fontawesome.com/174a284bd7.js"></script>
 
         <title>JE Bearing</title>
@@ -23,7 +23,7 @@
 
       	<div id="userinfo">
 
-      		<div class="image-cropper"><img src="../../images/person.jpg" alt="user image"></div>
+      		<div class="image-cropper"><img src="../../../images/person.jpg" alt="user image"></div>
       		<div>
       			<h2>User Name</h2>
       			<p>Admin</p>
@@ -68,7 +68,7 @@
       				<li>Parts</li>
       			</a>
 
-      			<a href="#"  id="tooling">
+      			<a href="{{ url('admin/tooling/list') }}"  id="tooling">
       				<svg version="1.1" id="toolingicon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       				viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
       				<g>
@@ -174,13 +174,13 @@
       	</nav>
 
       	<div id="search">
-      		<img src="../../images/search.png" alt="search icon" id="searchicon">
+      		<img src="../../../images/search.png" alt="search icon" id="searchicon">
       		<input id="searchfeild" type="search" placeholder="search">
       	</div>
 
       	<div id="logout">
 
-      		<img src="../../images/arrow.png" alt="left arrow" id="leftarrow">
+      		<img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
       		<p>LOGOUT</p>
       	</div>
 
@@ -192,7 +192,7 @@
 
       <!-- FOOTER STARTS HERE -->
 
-      	<script type="text/javascript" src="../../js/main.js"></script>
+      	<script type="text/javascript" src="../../../js/main.js"></script>
 
 
               </div>
