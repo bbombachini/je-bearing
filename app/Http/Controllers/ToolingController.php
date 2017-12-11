@@ -11,11 +11,11 @@ class ToolingController extends Controller {
     protected $model;
 
 
-    // public function index() {
-    //   $tooling = Tooling::all();
-    //   $count = $tooling->count();
-    //   return view('admin.tooling.list', ['tools' => $tooling, 'count' => $count]);
-    // }
+    public function index() {
+      $tooling = Tooling::all();
+      $count = $tooling->count();
+      return view('admin.tooling.list', ['tools' => $tooling, 'count' => $count]);
+    }
 
 
     public function add() {

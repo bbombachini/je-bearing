@@ -4,21 +4,48 @@
 
 	console.log("fired");
 
+	var delBtn = document.querySelectorAll('.delete');
 
-	// var img =  document.querySelectorAll("#adminNav a");
-	// //console.log(img);
+	function changeDeleteUrl(e) {
+		e.preventDefault();
+		var id = this.dataset.id;
+		var popup = document.querySelector('#confirm');
+		var confirm = popup.querySelector('.confirmDelete');
+		var ignore = popup.querySelector('.ignoreDelete');
 
-	// for(var i=0; i<img.length; i++){
-	// 	img[i].addEventListener("click", changeColor, false);
-	// }
+		function ignoreDelete(){
+		popup.style.display = 'none';
+		}
 
-	// function changeColor(e){
-	// 	console.log("clcik");
+		ignore.removeEventListener("click", ignoreDelete, false);
+		ignore.addEventListener("click", ignoreDelete, false);
 
-	// }
+		popup.style.display = 'block';
+		confirm.href = confirm.href.replace(/destroy([\/]*)([0-9]*)/, 'destroy/'+id);
+	}
 
- 
 
-	
+		delBtn.forEach(function(btn, index) {
+		btn.addEventListener('click', changeDeleteUrl, false);
+	});
+
+
+	var nameLink = document.querySelectorAll('.itemName');
+
+	function show(e){
+		//e.preventDefault();
+		var id = this.dataset.id;
+		var infoDiv = document.querySelector('#quickView');
+		console.log(id);
+		quickView.style.display = 'block';
+
+		//console.log("hi")
+
+	}
+	//USE EVENT LISTENER TO MAKE XHR OBJECT -- look at Marcos class file 
+	nameLink.forEach(function(btn, index) {
+	btn.addEventListener('click', show, false);
+	});
+
 
 })();
