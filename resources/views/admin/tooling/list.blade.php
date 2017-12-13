@@ -23,15 +23,16 @@
             <p>Are you sure you want to delete this item?</p>
             <a class="confirmDelete" href="destroy"><p>Yes, Delete</p></a>
             <a class="ignoreDelete" href="#">No, Thank You</a>
-            
+
         </div>
 
 
-        <div id="quickView" style="display:none;">
-        	<img src="../../images/person.jpg" width="100px">
-        	<h2>Name</h2>
-        	<p>Number</p>
-        	<p>Desc</p>
+        <div id="quickView">
+
+        	<!-- <img src="../../images/person.jpg" width="100px"> -->
+        	<h2 id="toolname"></h2>
+        	<p id="number"></p>
+        	<p id="desc"></p>
         </div>
 
         <div class="list">
@@ -40,7 +41,7 @@
             @foreach ($tools as $tool)
                 <li class="tool-item">
                 <a class="item-name itemName" href="#" data-id="{{$tool->tool_id}}">{{$tool->tool_name}}</a>
-                <p>{{$tool->tool_name}}</p>
+                <p>{{$tool->tool_number}}</p>
                 <a class="edit" href="{{action('ToolingController@edit', ['$id' => $tool->tool_id])}}">EDIT</a>
                 <a class="delete" data-id="{{$tool->tool_id}}" href="#">DELETE</a>
                 </li>
