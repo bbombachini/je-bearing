@@ -11,9 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/admin/tooling', 'ToolingController@index');
 Route::get('/admin/tooling/add', 'ToolingController@add');
@@ -30,3 +30,6 @@ Route::get('/admin/fixture/list', 'FixtureController@list');
 Route::get('/admin/fixture/edit/{id}', ['uses' => 'FixtureController@edit']);
 Route::post('/admin/fixture/update', 'FixtureController@update');
 Route::get('/admin/fixture/destroy/{id}', ['uses' => 'FixtureController@destroy']);
+
+Route::get('/admin/media/add', 'MediaController@add');
+Route::post('/admin/media/store', 'MediaController@store');

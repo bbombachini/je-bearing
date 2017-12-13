@@ -18,7 +18,6 @@ class CreateTableMedia extends Migration
             $table->string('media_path', 150);
             $table->text('media_desc')->nullable();
             $table->string('media_caption', 255)->nullable();
-            $table->boolean('media_active');
             $table->timestamps();
         });
     }

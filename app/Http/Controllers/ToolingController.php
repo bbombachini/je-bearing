@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Tooling;
+use App\ToolingMedia;
 use Illuminate\Http\Request;
+use App\Services\MediaService;
 
 class ToolingController extends Controller {
 
-    protected $model;
+    private $service;
+
+    public function __construct(MediaService $service) {
+        $this->mediaService = $service;
+    }
 
 
     public function index() {
@@ -29,28 +35,75 @@ class ToolingController extends Controller {
       $tool['tool_number'] = $request['number'];
       $tool['tool_desc'] = $request['desc'];
       $tool['tool_active'] = 1;
+      //validates photo media
+      $this->validate($request, ['media' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',]);
 
+      // save info in database
       if (!$tool->save()) {
         $errors = $tool->getErrors();
         return redirect()->action('ToolingController@add')->with('errors', $errors)->withInput();
       }
+      //save media file in images folder
+      $media_id = $this->mediaService->storeMedia($request);
+
+      $order = Tooling::find($tool['tool_id'])->getMediaRelationship()->latest()->first();
+      if (empty($order)) {
+        $order = 1;
+      }
+      else {
+        $order++;
+      }
+      $toolMedia = new ToolingMedia;
+      $toolMedia['tool_id'] = $tool['tool_id'];
+      $toolMedia['media_id'] = $media_id;
+      $toolMedia['tool_media_order'] = $order;
+
+      // save relational info in database
+      if (!$toolMedia->save()) {
+        $errors = $toolMedia->getErrors();
+        return redirect()->action('ToolingController@add')->with('errors', $errors)->withInput();
+      }
+
       //success
-      return redirect()->action('ToolingController@index')->with('message', 'Your '. $tool->tool_name . ' has been created!');
+      return redirect()->action('ToolingController@list')->with('message', 'Your '. $tool->tool_name . ' has been created!');
     }
 
 
     public function list(Tooling $tooling) {
       $tools = Tooling::where('tool_active', 1)->orderBy('tool_name', 'asc')->get();
-      // $count = Tooling::where('tool_active', 1)->get();
+      foreach ($tools as $tool) {
+        $toolMedia = Tooling::find($tool['tool_id'])->getMediaRelationship()->latest()->first();
+        $media = $this->mediaService->getMedia($toolMedia['media_id']);
+        if(empty($media)){
+          $tool['media_path'] = 'images/noimage.jpg';
+        }
+        else {
+          $tool['media_path'] = $media['media_path'];
+        }
+      }
       $count = $tools->count();
-      return view('welcome', ['tools' => $tools, 'count' => $count]);
+      return view('admin.tooling.list', ['tools' => $tools, 'count' => $count]);
     }
 
 
     public function edit($id) {
       $tool = Tooling::where('tool_id', $id)->where('tool_active', 1)->get();
-      // echo "EDIT ".$tool;
-      return view('admin.tooling.edit', ['old' => $tool, 'id' => $id]);
+      $toolMedia = Tooling::find($id)->getMediaRelationship()->latest()->first();
+      // return $toolMedia['media_id'];
+      $media = $this->mediaService->getMedia($toolMedia['media_id']);
+      $photo = $media['media_path'];
+      // return $photo;
+      // $tool->media_path = $media['media_path'];
+      // $str = "media_path: ".$media['media_path'];
+      // array_push($tool, $str);
+      //
+      // $tool = json_decode($tool, true);
+      // array_push($tool, $str);
+      // return $tool;
+      // $tool['media_path'] => $media['media_path'];
+      // $json = json_encode($tool);
+      // return $tool['media_path'];
+      return view('admin.tooling.edit', ['old' => $tool, 'photo' => $photo, 'id' => $id]);
     }
 
 
