@@ -12,15 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('app');
 });
 
-Route::get('/admin/tooling', 'ToolingController@index');
+// Route::get('/admin/tooling', 'ToolingController@index');
 Route::get('/admin/tooling/add', 'ToolingController@add');
 Route::post('/admin/tooling/store', 'ToolingController@store');
 Route::get('/admin/tooling/list', 'ToolingController@list');
 Route::get('/admin/tooling/edit/{id}', ['uses' => 'ToolingController@edit']);
 Route::post('/admin/tooling/update', 'ToolingController@update');
+Route::get('/admin/tooling/list/{id}',['uses' => 'ToolingController@quickview']);
 Route::get('/admin/tooling/destroy/{id}', ['uses' => 'ToolingController@destroy']);
 
 Route::get('/admin/fixture', 'FixtureController@index');

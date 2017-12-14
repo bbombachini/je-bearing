@@ -19,7 +19,8 @@ class ToolingController extends Controller {
 
     public function index() {
       $tooling = Tooling::all();
-      return view('test', ['tools' => $tooling, 'name' => 'Something']);
+      $count = $tooling->count();
+      return view('admin.tooling.list', ['tools' => $tooling, 'count' => $count]);
     }
 
 
@@ -65,7 +66,7 @@ class ToolingController extends Controller {
       }
 
       //success
-      return redirect()->action('ToolingController@list')->with('message', 'Your '. $tool->tool_name . ' has been created!');
+      return redirect()->action('ToolingController@list');
     }
 
 
@@ -84,6 +85,11 @@ class ToolingController extends Controller {
       $count = $tools->count();
       return view('admin.tooling.list', ['tools' => $tools, 'count' => $count]);
     }
+    
+    public function quickview($id) {
+      $tool = Tooling::where('tool_id', $id)->get();
+      return (['tool' => $tool]);
+    }
 
 
     public function edit($id) {
@@ -95,7 +101,6 @@ class ToolingController extends Controller {
 
       return view('admin.tooling.edit', ['old' => $tool, 'photo' => $photo, 'id' => $id]);
     }
-
 
     public function update(Request $request) {
       $id = $request['id'];
@@ -109,7 +114,7 @@ class ToolingController extends Controller {
         return redirect()->action('ToolingController@edit/$id')->with('errors', $errors)->withInput();
       }
       //success
-      return redirect()->action('ToolingController@index')->with('message', 'Your '. $tool->tool_name . ' has been created!');
+      return redirect()->action('ToolingController@index');
     }
 
 
