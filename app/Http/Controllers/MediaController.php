@@ -64,21 +64,13 @@ class MediaController extends Controller {
 
 
     public function destroy($id) {
-      $tool = Tooling::find($id);
+      $media = Media::find($id);
 
-      if (empty($tool)) {
+      if (empty($media)) {
         echo "not found id".$id;
       }
       else {
-        // do not delete entry from database
-        // just change active value from 1 to 0
-        $tool['tool_active'] = 0;
-        if (!$tool->save()) {
-          $errors = $tool->getErrors();
-          return redirect()->action('ToolingController@list')->with('errors', $errors)->withInput();
-        }
-        //success
-        return redirect()->action('ToolingController@list')->with('message', 'Your '. $tool->tool_name . ' has been created!');
+        $media->delete();
       }
     }
 }

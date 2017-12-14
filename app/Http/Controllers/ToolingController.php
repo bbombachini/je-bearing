@@ -91,18 +91,8 @@ class ToolingController extends Controller {
       $toolMedia = Tooling::find($id)->getMediaRelationship()->latest()->first();
       // return $toolMedia['media_id'];
       $media = $this->mediaService->getMedia($toolMedia['media_id']);
-      $photo = $media['media_path'];
-      // return $photo;
-      // $tool->media_path = $media['media_path'];
-      // $str = "media_path: ".$media['media_path'];
-      // array_push($tool, $str);
-      //
-      // $tool = json_decode($tool, true);
-      // array_push($tool, $str);
-      // return $tool;
-      // $tool['media_path'] => $media['media_path'];
-      // $json = json_encode($tool);
-      // return $tool['media_path'];
+      $photo = 'images/'.$media['media_path'];
+
       return view('admin.tooling.edit', ['old' => $tool, 'photo' => $photo, 'id' => $id]);
     }
 

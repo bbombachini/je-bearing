@@ -40,7 +40,7 @@ class MediaService {
       $image->move($destinationPath, $name);
     }
     $media = new Media;
-    $media['media_path'] = $destinationPath.'/'.$name;
+    $media['media_path'] = $name;
 
     if (!$media->save()) {
       $errors = $media->getErrors();
