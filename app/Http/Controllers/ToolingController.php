@@ -46,6 +46,10 @@ class ToolingController extends Controller {
       $count = $tools->count();
       return view('admin.tooling.list', ['tools' => $tools, 'count' => $count]);
     }
+    public function quickview($id) {
+      $tool = Tooling::where('tool_id', $id)->get();
+      return (['tool' => $tool]);
+    }
 
 
     public function edit($id) {

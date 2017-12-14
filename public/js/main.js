@@ -3,7 +3,7 @@
 	"use strict";
 
 	console.log("fired");
-
+	var displayRequest;
 	var delBtn = document.querySelectorAll('.delete');
 
 	function changeDeleteUrl(e) {
@@ -35,14 +35,26 @@
 	function show(e){
 		//e.preventDefault();
 		var id = this.dataset.id;
-		var infoDiv = document.querySelector('#quickView');
-		console.log(id);
-		quickView.style.display = 'block';
+		// console.log(id);
+		displayRequest = createRequest();
+		var url = '/admin/tooling/list/'+id;
+		displayRequest.onreadystatechange = respStatus;
+		displayRequest.open("GET", url, true);
+		displayRequest.send(id);
 
-		//console.log("hi")
+		function respStatus() {
+			if(displayRequest.readyState === 4 || displayRequest.readyState === "complete"){
+				var infoDiv = document.querySelector('#quickView');
+				quickView.style.display = 'block';
+				var jsondoc = JSON.parse(displayRequest.responseText);
+				document.querySelector("#toolname").innerHTML = jsondoc.tool[0].tool_name;
+				document.querySelector("#number").innerHTML = jsondoc.tool[0].tool_number;
+				document.querySelector("#desc").innerHTML = jsondoc.tool[0].tool_desc;
+			}
+		}
 
 	}
-	//USE EVENT LISTENER TO MAKE XHR OBJECT -- look at Marcos class file 
+	//USE EVENT LISTENER TO MAKE XHR OBJECT -- look at Marcos class file
 	nameLink.forEach(function(btn, index) {
 	btn.addEventListener('click', show, false);
 	});

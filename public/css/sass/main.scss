@@ -18,7 +18,6 @@ a{
   grid-template-columns: 28% 72%;
 }
 
-
 //Navigation Styling
 
 #navcon{
@@ -333,4 +332,12 @@ a{
     color: $jered;
     border-color: $jered;
   }
+}
+#quickView {
+  display: none;
+  width: 100%;
+  position: absolute;
+  top:0;
+  left: 0;
+  background-color: #fff;
 }
