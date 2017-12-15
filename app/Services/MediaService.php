@@ -3,25 +3,7 @@
 namespace App\Services;
 
 use App\Media;
-use App\ToolingMedia;
-
-class ToolMediaService {
-  // public function getMediaRelationship($id) {
-  //
-  // }
-  public function storeToolMedia() {
-    $row = new ToolingMedia;
-    $row['tool_id'] = $tool_id;
-    $row['media_id'] = $media_id;
-    $row['tool_media_order'] = $order;
-
-    if (!$row->save()) {
-      $errors = $row->getErrors();
-      return redirect()->action('ToolingController@add')->with('errors', $errors)->withInput();
-    }
-    return;
-  }
-}
+use Illuminate\Support\Facades\File;
 
 class MediaService {
 
@@ -35,7 +17,6 @@ class MediaService {
     if ($input->hasFile('media')) {
       $image = $input->file('media');
       $name = time().'.'.$image->getClientOriginalExtension();
-      // $destinationPath = public_path($dir);
       $destinationPath = $dir;
       $image->move($destinationPath, $name);
     }
@@ -47,6 +28,14 @@ class MediaService {
       return redirect()->back()->with('errors', $errors)->withInput();
     }
     return $media->media_id;
+  }
+
+  public function destroyMedia($id){
+    $media = Media::find($id);
+    $file = $media['media_path'];
+    $media->delete();
+    File::delete('images/'.$file);
+    return;
   }
 
 }
