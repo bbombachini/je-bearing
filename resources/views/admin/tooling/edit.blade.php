@@ -10,7 +10,7 @@
 					<div>
             <a id="back-button" href="{{ url('/admin/tooling/list')}}">
   						<img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
-              <p>BACK TO TOOLS</p>
+              <p class="backText">BACK TO TOOLS</p>
             </a>
 					</div>
 			</div>

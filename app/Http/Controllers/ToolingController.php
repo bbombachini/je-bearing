@@ -11,11 +11,11 @@ class ToolingController extends Controller {
     protected $model;
 
 
-    public function index() {
-      $tooling = Tooling::all();
-      $count = $tooling->count();
-      return view('admin.tooling.list', ['tools' => $tooling, 'count' => $count]);
-    }
+    // public function index() {
+    //   $tooling = Tooling::all();
+    //   $count = $tooling->count();
+    //   return view('admin.tooling.list', ['tools' => $tooling, 'count' => $count]);
+    // }
 
 
     public function add() {
@@ -47,6 +47,11 @@ class ToolingController extends Controller {
       return view('admin.tooling.list', ['tools' => $tools, 'count' => $count]);
     }
 
+    public function quickview($id) {
+      $tool = Tooling::where('tool_id', $id)->get();
+      return (['tool' => $tool]);
+    }
+
 
     public function edit($id) {
       $tool = Tooling::where('tool_id', $id)->where('tool_active', 1)->get();
@@ -66,7 +71,7 @@ class ToolingController extends Controller {
         return redirect()->action('ToolingController@edit/$id')->with('errors', $errors)->withInput();
       }
       //success
-      return redirect()->action('ToolingController@index');
+      return redirect()->action('ToolingController@list');
     }
 
 
