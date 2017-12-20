@@ -10,7 +10,7 @@
 					<div>
             <a id="back-button" href="{{ url('/admin/tooling/list')}}">
   						<img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
-              <p>BACK TO TOOLS</p>
+              <p class="backText">BACK TO TOOLS</p>
             </a>
 					</div>
 			</div>
@@ -34,16 +34,16 @@
                 {!! Form::textarea('desc', $tool->tool_desc, ['class' => 'form-control']) !!}
               </fieldset>
 
-							<fieldset class="add-media">
+              <fieldset class="add-media">
                 <img src="{{url($photo)}}" alt="{{ $old }}">
                 <!-- <button type="button" name="edit-photo">Edit Photo</button> -->
-                  {!! Form::file('media', ['class' => 'form-control']) !!}
-                      @if($defaultPhoto === 1)
-		                  	<a href="{{action('ToolingController@editMedia', ['$id' => $tool->tool_id])}}">Add Photo</a>
-				              @else
-				              <a href="#">Change Photo</a>
-				              <a href="{{action('ToolingController@destroyMedia', ['$id' => $tool->tool_id])}}">Delete Photo</a>
-				              @endif
+	              {!! Form::file('media', ['class' => 'form-control']) !!}
+								@if($defaultPhoto === 1)
+									<a href="{{action('ToolingController@editMedia', ['$id' => $tool->tool_id])}}">Add Photo</a>
+								@else
+								<a href="#">Change Photo</a>
+								<a href="{{action('ToolingController@destroyMedia', ['$id' => $tool->tool_id])}}">Delete Photo</a>
+								@endif
 											<div id="edit-link">
 												<a href="#">Edit</a>
 											</div>

@@ -18,14 +18,14 @@
     <div id="container">
 
   <!-- NAV STARTS HERE -->
-
+  <div id="navFixed">
       <section id="navcon">
 
       	<div id="userinfo">
 
       		<div class="image-cropper"><img src="../../../images/person.jpg" alt="user image"></div>
       		<div>
-      			<h2>User Name</h2>
+      			<h2 id="userName">John Doe</h2>
       			<p>Admin</p>
       		</div>
       	</div>
@@ -183,8 +183,6 @@
       		</ul>
       	</nav>
 
-
-
       	<div id="logout">
 
       		<img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
@@ -194,6 +192,7 @@
 
 
       </section>
+</div>
 
       @yield('content')
 
