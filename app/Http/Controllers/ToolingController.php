@@ -17,11 +17,11 @@ class ToolingController extends Controller {
     }
 
 
-    public function index() {
-      $tooling = Tooling::all();
-      $count = $tooling->count();
-      return view('admin.tooling.list', ['tools' => $tooling, 'count' => $count]);
-    }
+    // public function index() {
+    //   $tooling = Tooling::all();
+    //   $count = $tooling->count();
+    //   return view('admin.tooling.list', ['tools' => $tooling, 'count' => $count]);
+    // }
 
 
     public function add() {
