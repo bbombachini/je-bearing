@@ -39,10 +39,10 @@
 		var quickView = document.querySelector('#dim2');
 		var close = quickView.querySelector('.xButt');
 
-		quickView.style.display = 'block';
 
 		function closeView(){
 		quickView.style.display = 'none';
+		document.querySelector('#itemImg > img').src = "";
 		}
 
 		close.removeEventListener("click", show, false);
@@ -60,17 +60,20 @@
 		function respStatus() {
 			if(displayRequest.readyState === 4 || displayRequest.readyState === "complete"){
 				var infoDiv = document.querySelector('#quickView');
-				quickView.style.display = 'block';
+				infoDiv.style.display = 'block';
 
 				var jsondoc = JSON.parse(displayRequest.responseText);
 				document.querySelector("#toolname").innerHTML = jsondoc.tool[0].tool_name;
 				document.querySelector("#number").innerHTML = jsondoc.tool[0].tool_number;
 				document.querySelector("#desc").innerHTML = jsondoc.tool[0].tool_desc;
+				document.querySelector("#itemImg > img").src = '../../images/' + jsondoc.tool.media_path;
+				console.log(jsondoc.tool[0]);
 				console.log(infoDiv);
 				infoDiv.querySelector(".confirmEdit").href = '/admin/tooling/edit/'+ jsondoc.tool[0].tool_id;
-
+				quickView.style.display = 'block';
 			}
 		}
+		
 
 	}
 	//USE EVENT LISTENER TO MAKE XHR OBJECT -- look at Marcos class file
