@@ -30,6 +30,16 @@
       		</div>
       	</div>
 
+        <div id="search">
+          <img src="../../../images/search.png" alt="search icon" id="searchicon">
+          <input id="searchfeild" type="search" placeholder="search">
+
+          <div id="result">
+
+          </div>
+        </div>
+
+
       	<nav id="adminNav">
       		<ul>
       			<a href="#" id="part">
@@ -173,10 +183,7 @@
       		</ul>
       	</nav>
 
-      	<div id="search">
-      		<img src="../../../images/search.png" alt="search icon" id="searchicon">
-      		<input id="searchfeild" type="search" placeholder="search">
-      	</div>
+
 
       	<div id="logout">
 
@@ -191,7 +198,7 @@
       @yield('content')
 
       <!-- FOOTER STARTS HERE -->
-      
+
         <script type="text/javascript" src="../../../js/request.js"></script>
       	<script type="text/javascript" src="../../../js/main.js"></script>
 

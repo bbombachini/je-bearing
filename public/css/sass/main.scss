@@ -26,7 +26,7 @@ a{
   box-shadow: 0px 0px 15px #333333;
 
   nav{
-    margin: 25px 0px 0px 0px;
+    margin: 0;
   }
 
   nav ul a li{
@@ -122,9 +122,11 @@ a{
 }
 
 #search{
+  margin-top: 20px;
   justify-self: center;
   display: flex;
   align-items: center;
+  position: relative;
 
   input{
     outline: none;
@@ -156,6 +158,25 @@ a{
   height: 16px;
   margin-right: 10px;
   float: left;
+}
+#result {
+  @extend #search;
+  margin: 0 auto;
+  left: 15px;
+  display: none;
+  position: absolute;
+  top: 70px;;
+  width: 180px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  div {
+    padding: 5px;
+    p {
+      line-height: 30px;
+      color: $lightgreen;
+    }
+  }
 }
 
 #logout{
@@ -332,6 +353,34 @@ a{
     color: $jered;
     border-color: $jered;
   }
+}
+#edit {
+  @extend #add;
+  grid-row-gap: 30px;
+  grid-template-areas:
+     "name number"
+     "desc media"
+     "desc media";
+    // .add-media textarea:hover {
+    //   opacity: 0.8;
+    //   transition: all 0.4s ease;
+    // }
+     .mediaimage{
+      position: relative;
+    } #edit-link{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display:none;
+      cursor: pointer;
+      a {
+        color:#666;
+      }
+    } #edit-link:hover {
+      display:block;
+      color: red;
+    }
 }
 #quickView {
   display: none;

@@ -51,6 +51,22 @@ class ToolingController extends Controller {
       return (['tool' => $tool]);
     }
 
+    public function search($str) {
+      if(isset($str)) {
+        $tool = Tooling::where('tool_name','LIKE',"{$str}%")->get();
+        if(!$tool->isEmpty()){
+            return (['tool' => $tool]);
+        } else {
+          print "not-found";
+        }
+      }
+      else {
+        print "empty";
+      }
+
+
+    }
+
 
     public function edit($id) {
       $tool = Tooling::where('tool_id', $id)->where('tool_active', 1)->get();
