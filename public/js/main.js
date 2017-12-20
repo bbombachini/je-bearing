@@ -50,6 +50,7 @@
 		document.querySelector('#dimClick').addEventListener("click", closeView, false);
 
 		var id = this.dataset.id;
+
 		displayRequest = createRequest();
 		var url = '/admin/tooling/list/'+id;
 		displayRequest.onreadystatechange = respStatus;
@@ -59,18 +60,21 @@
 		function respStatus() {
 			if(displayRequest.readyState === 4 || displayRequest.readyState === "complete"){
 				var infoDiv = document.querySelector('#quickView');
+				quickView.style.display = 'block';
+
 				var jsondoc = JSON.parse(displayRequest.responseText);
 				document.querySelector("#toolname").innerHTML = jsondoc.tool[0].tool_name;
 				document.querySelector("#number").innerHTML = jsondoc.tool[0].tool_number;
 				document.querySelector("#desc").innerHTML = jsondoc.tool[0].tool_desc;
 				console.log(infoDiv);
 				infoDiv.querySelector(".confirmEdit").href = '/admin/tooling/edit/'+ jsondoc.tool[0].tool_id;
+
 			}
 		}
 
 	}
+	//USE EVENT LISTENER TO MAKE XHR OBJECT -- look at Marcos class file
 
-	//USE EVENT LISTENER TO MAKE XHR OBJECT -- look at Marcos class file 
 	nameLink.forEach(function(btn, index) {
 	btn.addEventListener('click', show, false);
 	});

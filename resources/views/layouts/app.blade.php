@@ -192,8 +192,10 @@
       @yield('content')
 
       <!-- FOOTER STARTS HERE -->
-            <script type="text/javascript" src="../../../js/request.js"></script>
+
+        <script type="text/javascript" src="../../../js/request.js"></script>
       	<script type="text/javascript" src="../../../js/main.js"></script>
+
 
 
               </div>

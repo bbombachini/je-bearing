@@ -205,7 +205,6 @@ a{
   grid-template-columns: 25% 75%;
 }
 
-
 //Navigation Styling
 
 #navFixed{
@@ -541,4 +540,12 @@ a{
     color: $jered;
     border-color: $jered;
   }
+}
+#quickView {
+  display: none;
+  width: 100%;
+  position: absolute;
+  top:0;
+  left: 0;
+  background-color: #fff;
 }

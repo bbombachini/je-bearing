@@ -619,4 +619,12 @@ a {
   border-color: #F34C18;
 }
 
+#quickView {
+  display: none;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff; }
+
 /*# sourceMappingURL=main.css.map */
