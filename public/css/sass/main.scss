@@ -47,6 +47,32 @@ button{
   height: 100%;
 }
 
+#quickView{
+  background: #fff;
+  max-height: 500px;
+  border-radius: 7px;
+  box-shadow: 0 0 6px 0 rgba(0,0,0,0.4);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 99;
+  letter-spacing: 1px;
+  display: grid;
+  align-content: space-between;
+
+  p{
+    font-size: 18px;
+    font-family: 'Book';
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 0 20px 0 20px;
+    }
+
+}
+
 #confirm{
 
   background: #fff;
@@ -82,7 +108,7 @@ button{
     margin-bottom: 40px;
     padding: 0 20px 0 20px;
     }
- 
+
 }
 
 #quickView{
@@ -161,7 +187,7 @@ button{
 
 .confirmEdit{
   background-color: $yellow;
-  height: 50px;  
+  height: 50px;
   display: grid;
   width: 100%;
   border-radius: 0  0 7px 7px;
@@ -176,7 +202,7 @@ button{
 
 .confirmDelete{
   background-color: $jered;
-  height: 50px;  
+  height: 50px;
   display: grid;
   width: 100%;
   border-radius: 0  0 7px 7px;
@@ -207,7 +233,7 @@ a{
 //Navigation Styling
 
 #navFixed{
-  
+
 }
 
 #navcon{
@@ -216,6 +242,10 @@ a{
   display: grid;
   height: 100vh;
   box-shadow: 0px 0px 15px #333333;
+
+  nav{
+    margin: 0;
+  }
 
   nav ul a li{
     line-height: 60px;
@@ -315,12 +345,11 @@ a{
 }
 
 #search{
+  margin-top: 20px;
   justify-self: center;
   display: flex;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-
+  position: relative;
   input{
     outline: none;
     height: 35px;
@@ -351,6 +380,25 @@ a{
   height: 16px;
   margin-right: 10px;
   float: left;
+}
+#result {
+  @extend #search;
+  margin: 0 auto;
+  left: 15px;
+  display: none;
+  position: absolute;
+  top: 70px;;
+  width: 180px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  div {
+    padding: 5px;
+    p {
+      line-height: 30px;
+      color: $lightgreen;
+    }
+  }
 }
 
 #logout{
@@ -426,7 +474,7 @@ a{
   border-radius: 55px;
   box-shadow: 2px 3px 10px rgba(0,0,0,0.2);
   background: linear-gradient(90deg, #00CBBE 0%, #009B60 100%);
-  
+
   a img{
     padding-top: 4px;
   }
@@ -482,7 +530,7 @@ a{
   display: grid;
   position: relative;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
+  grid-template-rows: repeat(3,auto);
   grid-column-gap: 5%;
   grid-template-areas:
      "name number"
@@ -495,13 +543,15 @@ a{
     border-bottom: 1px solid $text;
     width: 100%;
     font-size: 16px;
+    // height: 100%;
   }
   textarea#desc.form-control {
     border: 1px solid $text;
     font-family: 'Medium';
     font-size: 16px;
     font-weight: 500;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
+    height: 100%;
   }
   input#media.form-control {
     color: $yellow;
@@ -520,10 +570,13 @@ a{
   }
   .add-media {
     grid-area: media;
+    margin-bottom: 30px;
   }
   .add-desc {
     grid-area: desc;
-    margin-bottom: 50px;
+    // padding-bottom: -30px;
+    margin-bottom: 60px;
+
   }
   button.green-button {
     justify-self: center;
@@ -541,3 +594,80 @@ a{
     border-color: $jered;
   }
 }
+#edit {
+  @extend #add;
+  grid-row-gap: 30px;
+  grid-template-areas:
+     "name number"
+     "desc media";
+   .add-media{
+      .image-hover{
+        position: relative;
+        img{
+          max-width: 370px;
+          height: 100%;
+          width: 100%;
+          margin: 0 auto;
+          display: block;
+        }
+      .edit-link{
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        display: none;
+        cursor: pointer;
+        .links {
+          top: 45%;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          margin: auto;
+          position: absolute;
+          display: block;
+          input[type=file] {
+            display:none;
+            margin:10px;
+          }
+          label[for=media] {
+            color: $lightgreen;
+          }
+          label, a {
+            display: inline-block;
+            font-family: 'Medium';
+            font-size: 30px;
+            padding: 0 30px;
+            cursor: pointer;
+            margin: 20px;
+          }
+          label {
+            color: $yellow;
+          }
+          a {
+            color: $jered;
+          }
+        }
+      }
+    }
+    .image-hover:hover .edit-link {
+      display:block;
+      border: 1px solid $text;
+      background-color: #fff;
+      opacity: 0.9;
+    }
+  }
+}
+// #quickView {
+//   display: none;
+//   width: 100%;
+//   position: absolute;
+//   top:0;
+//   left: 0;
+//   background-color: #fff;
+// }

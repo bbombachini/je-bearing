@@ -29,10 +29,15 @@
       		</div>
       	</div>
 
-            <div id="search">
-                  <img src="../../../images/search.png" alt="search icon" id="searchicon">
-                  <input id="searchfeild" type="search" placeholder="search">
-            </div>
+        <div id="search">
+          <img src="../../../images/search.png" alt="search icon" id="searchicon">
+          <input id="searchfeild" type="search" placeholder="search">
+
+          <div id="result">
+
+          </div>
+        </div>
+
 
       	<nav id="adminNav">
       		<ul>

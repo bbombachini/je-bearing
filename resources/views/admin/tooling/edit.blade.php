@@ -16,7 +16,7 @@
 			</div>
 
       <div>
-          {!! Form::model($old, ['action' => 'ToolingController@update', 'id' => 'add', 'files' => true]) !!}
+          {!! Form::model($old, ['action' => 'ToolingController@update', 'id' => 'edit', 'files' => true]) !!}
           @foreach ($old as $tool)
           {{ Form::hidden('id', $tool->tool_id) }}
               <fieldset class="add-name">
@@ -31,24 +31,38 @@
 
               <fieldset class="add-desc">
                 <p>{!! Form::label('desc', 'Description') !!}</p>
-                {!! Form::textarea('desc', $tool->tool_desc, ['class' => 'form-control']) !!}
+                {!! Form::textarea('desc', $tool->tool_desc, ['class' => 'form-control', 'size' => '50x1']) !!}
               </fieldset>
 
               <fieldset class="add-media">
-                <img src="{{url($photo)}}" alt="{{ $old }}">
-                <!-- <button type="button" name="edit-photo">Edit Photo</button> -->
-	              {!! Form::file('media', ['class' => 'form-control']) !!}
-								@if($defaultPhoto === 1)
-									<a href="{{action('ToolingController@editMedia', ['$id' => $tool->tool_id])}}">Add Photo</a>
-								@else
-								<a href="#">Change Photo</a>
-								<a href="{{action('ToolingController@destroyMedia', ['$id' => $tool->tool_id])}}">Delete Photo</a>
-								@endif
+								<p>Click on the Image to Edit</p>
+								<div class="image-hover">
+	                <img src="{{url($photo)}}" alt="{{ $old }}">
+	                <!-- <button type="button" name="edit-photo">Edit Photo</button> -->
+
+									@if($defaultPhoto === 1)
+									<div class="edit-link">
+										<div class="links">
+											{!! Form::label('media', 'Add Photo') !!}
+											{!! Form::file('media', ['class' => 'form-control']) !!}
+										</div>
+									</div>
+									@else
+										<div class="edit-link">
+											<div class="links">
+												{!! Form::label('media', 'Edit') !!}
+												{!! Form::file('media', ['class' => 'form-control']) !!}
+												<a href="{{action('ToolingController@destroyMedia', ['$id' => $tool->tool_id])}}">Delete</a>
+											</div>
+										</div>
+									@endif
+								</div>
               </fieldset>
+
             @endforeach
               <!-- <a href="{{ url('/admin/tooling/list')}}"> -->
-              <a class="white-button" href="{{ url('/admin/tooling/list')}}"> CANCEL</a>
-              <button class="green-button" type="submit" name="button">SAVE</button>
+	              <a class="white-button" href="{{ url('/admin/tooling/list')}}"> CANCEL</a>
+	              <button class="green-button" type="submit" name="button">SAVE</button>
             {!! Form::close() !!}
       </div>
 </section>
