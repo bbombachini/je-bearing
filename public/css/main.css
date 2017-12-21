@@ -126,21 +126,14 @@ button {
   letter-spacing: 1px;
   color: #000; }
 
-#quickView {
-  /*display: none;*/
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #fff; }
-
 #dim, #dim2 {
   position: absolute;
   width: 100%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.8);
   z-index: 99;
-  display: none; }
+  display: none;
+  opacity: 0; }
 
 #dimClick, #dimClick2 {
   width: 100%;
@@ -192,23 +185,37 @@ button {
     margin-top: 20px; }
   #confirm p {
     font-size: 18px;
-    font-family: 'Book';
     text-align: center;
+    font-family: 'Book';
     margin-bottom: 40px;
     padding: 0 20px 0 20px; }
 
 #quickView {
-  /*height: 400px;*/
-  width: 520px; }
-  #quickView h2, #quickView p {
-    text-align: left;
-    padding: 20px 0 0 0; }
+  display: none;
+  position: fixed;
+  width: 520px;
+  max-height: 460px;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  border-radius: 7px;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4);
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  z-index: 99;
+  letter-spacing: 1px; }
   #quickView #desc {
     text-align: center;
-    margin: 0 20px 0 20px;
+    clear: both;
+    display: block;
     line-height: 24px;
     font-size: 16px;
-    padding: 20px 0; }
+    padding: 20px 20px; }
+
+#quickView h2, #quickView p {
+  margin-bottom: 20px;
+  padding-right: 20px; }
 
 #itemImg, #itemInfo {
   width: 50%; }
@@ -223,12 +230,20 @@ button {
   float: right;
   text-align: left; }
 
-.ignoreDelete, .xButt {
+.ignoreDelete {
   font-size: 18px;
   font-family: 'Book';
   color: #006F3B;
   text-align: right;
   padding: 20px 20px 0 0; }
+
+.xButt {
+  font-size: 18px;
+  font-family: 'Book';
+  color: #006F3B;
+  text-align: right;
+  padding: 20px;
+  display: block; }
 
 .confirmEdit {
   background-color: #ECB900;
@@ -240,7 +255,9 @@ button {
   text-align: center;
   color: #fff;
   font-size: 18px;
-  font-family: 'Book'; }
+  font-family: 'Book';
+  position: absolute;
+  bottom: 0; }
 
 .confirmDelete {
   background-color: #F34C18;
@@ -510,7 +527,8 @@ a {
     height: 100%; }
   #add input#media.form-control, #edit input#media.form-control {
     color: #ECB900;
-    font-weight: 600; }
+    font-weight: 100;
+    padding-bottom: 10px; }
   #add p, #edit p {
     color: #A2A2A2;
     padding: 3% 0; }
@@ -591,13 +609,5 @@ a {
     border: 1px solid #A2A2A2;
     background-color: #fff;
     opacity: 0.9; }
-
-#quickView {
-  display: none;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #fff; }
 
 /*# sourceMappingURL=main.css.map */
