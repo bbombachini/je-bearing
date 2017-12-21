@@ -91,6 +91,7 @@
 					while(result.firstChild) {
 			     result.removeChild(result.firstChild);
 			    }
+
 					if(resultRequest.response !== 'not-found'){
 						let jsondoc = JSON.parse(resultRequest.responseText);
 						for(let i =0; i< jsondoc.tool.length; i++){
@@ -117,7 +118,6 @@
 			result.style.display = 'none';
 		}
 	}
-	//USE EVENT LISTENER TO MAKE XHR OBJECT -- look at Marcos class file
 
 	nameLink.forEach(function(btn, index) {
 	btn.addEventListener('click', show, false);

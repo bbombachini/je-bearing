@@ -505,7 +505,7 @@ a{
   display: grid;
   position: relative;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
+  grid-template-rows: repeat(3,auto);
   grid-column-gap: 5%;
   grid-template-areas:
      "name number"
@@ -518,13 +518,15 @@ a{
     border-bottom: 1px solid $text;
     width: 100%;
     font-size: 16px;
+    // height: 100%;
   }
   textarea#desc.form-control {
     border: 1px solid $text;
     font-family: 'Medium';
     font-size: 16px;
     font-weight: 500;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
+    height: 100%;
   }
   input#media.form-control {
     color: $yellow;
@@ -542,10 +544,13 @@ a{
   }
   .add-media {
     grid-area: media;
+    margin-bottom: 30px;
   }
   .add-desc {
     grid-area: desc;
-    margin-bottom: 50px;
+    // padding-bottom: -30px;
+    margin-bottom: 60px;
+
   }
   button.green-button {
     justify-self: center;
@@ -568,28 +573,69 @@ a{
   grid-row-gap: 30px;
   grid-template-areas:
      "name number"
-     "desc media"
      "desc media";
-    // .add-media textarea:hover {
-    //   opacity: 0.8;
-    //   transition: all 0.4s ease;
-    // }
-     .mediaimage{
-      position: relative;
-    } #edit-link{
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display:none;
-      cursor: pointer;
-      a {
-        color:#666;
+   .add-media{
+      .image-hover{
+        position: relative;
+        img{
+          max-width: 370px;
+          height: 100%;
+          width: 100%;
+          margin: 0 auto;
+          display: block;
+        }
+      .edit-link{
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        display: none;
+        cursor: pointer;
+        .links {
+          top: 45%;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          margin: auto;
+          position: absolute;
+          display: block;
+          input[type=file] {
+            display:none;
+            margin:10px;
+          }
+          label[for=media] {
+            color: $lightgreen;
+          }
+          label, a {
+            display: inline-block;
+            font-family: 'Medium';
+            font-size: 30px;
+            padding: 0 30px;
+            cursor: pointer;
+            margin: 20px;
+          }
+          label {
+            color: $yellow;
+          }
+          a {
+            color: $jered;
+          }
+        }
       }
-    } #edit-link:hover {
-      display:block;
-      color: red;
     }
+    .image-hover:hover .edit-link {
+      display:block;
+      border: 1px solid $text;
+      background-color: #fff;
+      opacity: 0.9;
+    }
+  }
 }
 #quickView {
   display: none;
