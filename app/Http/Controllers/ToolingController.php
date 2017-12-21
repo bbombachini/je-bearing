@@ -87,11 +87,20 @@ class ToolingController extends Controller {
         }
       }
       $count = $tools->count();
+      // return $tools;
       return view('admin.tooling.list', ['tools' => $tools, 'count' => $count]);
     }
 
     public function quickview($id) {
       $tool = Tooling::where('tool_id', $id)->get();
+      $toolMedia = Tooling::find($id)->getMediaRelationship()->latest()->first();
+      $media = $this->mediaService->getMedia($toolMedia['media_id']);
+      if(empty($media)){
+        $tool['media_path'] = 'images/noimage.jpg';
+      }
+      else {
+        $tool['media_path'] = $media['media_path'];
+      }
       return (['tool' => $tool]);
     }
 

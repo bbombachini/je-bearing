@@ -21,7 +21,7 @@
           {{ Form::hidden('id', $tool->tool_id) }}
               <fieldset class="add-name">
                 <p>{!! Form::label('name', 'Name') !!}</p>
-                {!! Form::text('name', $tool->tool_name, ['class' => 'form-control']) !!}
+                {!! Form::text('name', $tool->tool_name, ['class' => 'form-control', 'required' => 'required']) !!}
               </fieldset>
 
               <fieldset class="add-number">
@@ -37,7 +37,7 @@
               <fieldset class="add-media">
                 <img src="{{url($photo)}}" alt="{{ $old }}">
                 <!-- <button type="button" name="edit-photo">Edit Photo</button> -->
-	              {!! Form::file('media', ['class' => 'form-control']) !!}
+	              {!! Form::file('media', ['id' => 'file-input', 'class' => 'form-control', 'accept' =>'.jpg, .jpeg, .png']) !!}
 								@if($defaultPhoto === 1)
 									<a href="{{action('ToolingController@editMedia', ['$id' => $tool->tool_id])}}">Add Photo</a>
 								@else

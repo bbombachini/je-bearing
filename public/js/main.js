@@ -5,6 +5,7 @@
 	console.log("fired");
 	var displayRequest;
 	var delBtn = document.querySelectorAll('.delete');
+	var chooseImageBtn = document.querySelector('#file-input');
 
 	function changeDeleteUrl(e) {
 		e.preventDefault();
@@ -39,10 +40,9 @@
 		var quickView = document.querySelector('#dim2');
 		var close = quickView.querySelector('.xButt');
 
-		quickView.style.display = 'block';
-
 		function closeView(){
 		quickView.style.display = 'none';
+		document.querySelector("#itemImg > img").src = "";
 		}
 
 		close.removeEventListener("click", show, false);
@@ -57,27 +57,39 @@
 		displayRequest.open("GET", url, true);
 		displayRequest.send(id);
 
+		quickView.style.display = 'block';
+
 		function respStatus() {
 			if(displayRequest.readyState === 4 || displayRequest.readyState === "complete"){
 				var infoDiv = document.querySelector('#quickView');
-				quickView.style.display = 'block';
+				infoDiv.style.display = 'block';
 
 				var jsondoc = JSON.parse(displayRequest.responseText);
 				document.querySelector("#toolname").innerHTML = jsondoc.tool[0].tool_name;
 				document.querySelector("#number").innerHTML = jsondoc.tool[0].tool_number;
 				document.querySelector("#desc").innerHTML = jsondoc.tool[0].tool_desc;
-				console.log(infoDiv);
+				document.querySelector("#itemImg > img").src = '../../images/'+jsondoc.tool.media_path;
+				// console.log(infoDiv);
+				// console.log(jsondoc);
 				infoDiv.querySelector(".confirmEdit").href = '/admin/tooling/edit/'+ jsondoc.tool[0].tool_id;
 
 			}
 		}
 
 	}
+
+	//show new photo preview before saving it
+	function updatePhotoDisplay() {
+		var photo = document.querySelector('.add-media > img');
+		var curFile = chooseImageBtn.files;
+		photo.src = window.URL.createObjectURL(curFile[0]);
+	}
 	//USE EVENT LISTENER TO MAKE XHR OBJECT -- look at Marcos class file
 
 	nameLink.forEach(function(btn, index) {
-	btn.addEventListener('click', show, false);
+		btn.addEventListener('click', show, false);
 	});
+	chooseImageBtn.addEventListener('change', updatePhotoDisplay, false);
 
 
 })();

@@ -3,7 +3,7 @@
 @section('content')
 
 
-    
+
     <div id="dim">
             <div id="confirm">
                 <a class="ignoreDelete" href="#">X</a>
@@ -11,8 +11,8 @@
                     <img src="../../images/lock.png" alt="lock icon">
                     <h2>Wait!</h2>
                     <p>Are you sure you want to delete this?</p>
-                    <a class="confirmDelete" href="destroy">Yes, Delete</a>    
-                
+                    <a class="confirmDelete" href="destroy">Yes, Delete</a>
+
             </div>
             <div id="dimClick2"></div>
     </div>
@@ -25,7 +25,8 @@
             <div id="itemImgInfo">
 
                 <div id="itemImg">
-                    <img src="../../images/placeholderImg.jpg" alt="placeholder Image">
+                    <!-- <img src="../../images/placeholderImg.jpg" alt="placeholder Image"> -->
+                    <img src="" alt="Image">
                 </div>
 
                 <div id="itemInfo">
@@ -36,8 +37,8 @@
             </div>
 
             <p id="desc"></p>
-            <a class="confirmEdit" href="#">Edit</a> 
-           
+            <a class="confirmEdit" href="#">Edit</a>
+
         </div>
     </div>
 

@@ -21,7 +21,7 @@
             {!! Form::model($tool, ['action' => 'ToolingController@store', 'id' => 'add', 'files' => true]) !!}
             <fieldset class="add-name">
               <p>{!! Form::label('name', 'Name') !!}</p>
-              {!! Form::text('name', '', ['class' => 'form-control']) !!}
+              {!! Form::text('name', '', ['class' => 'form-control', 'required' => 'required']) !!}
             </fieldset>
 
             <fieldset class="add-number">
