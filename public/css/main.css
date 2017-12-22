@@ -229,6 +229,9 @@ button {
 #itemInfo {
   float: right;
   text-align: left; }
+  #itemInfo #number {
+    text-align: left;
+    padding: 0; }
 
 .ignoreDelete {
   font-size: 18px;
@@ -363,19 +366,19 @@ a {
     height: 100%;
     width: auto; }
 
-#search, #result {
+#search {
   margin-top: 20px;
   justify-self: center;
+  width: 80%;
+  height: 40px;
   display: flex;
   align-items: center;
   position: relative; }
-  #search input, #result input {
+  #search input {
     outline: none;
-    height: 35px;
     font-size: 14px;
-    width: 230px;
-    padding-left: 40px;
-    padding-right: 20px;
+    width: 100%;
+    padding: 10px 20px 10px 40px;
     border-radius: 100px;
     border: solid 2px #009B60;
     background-color: rgba(243, 76, 24, 0);
@@ -400,8 +403,8 @@ a {
   left: 15px;
   display: none;
   position: absolute;
-  top: 70px;
-  width: 180px;
+  top: 100%;
+  width: 80%;
   padding: 10px;
   background-color: #fff;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }

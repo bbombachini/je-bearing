@@ -21,7 +21,7 @@
           {{ Form::hidden('id', $tool->tool_id) }}
               <fieldset class="add-name">
                 <p>{!! Form::label('name', 'Name') !!}</p>
-                {!! Form::text('name', $tool->tool_name, ['class' => 'form-control']) !!}
+                {!! Form::text('name', $tool->tool_name, ['class' => 'form-control', 'required' => 'required']) !!}
               </fieldset>
 
               <fieldset class="add-number">

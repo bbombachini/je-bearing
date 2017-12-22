@@ -165,6 +165,10 @@ button{
 #itemInfo{
   float: right;
   text-align: left;
+  #number {
+    text-align: left;
+    padding: 0
+  }
 }
 
 .ignoreDelete{
@@ -347,16 +351,20 @@ a{
 #search{
   margin-top: 20px;
   justify-self: center;
+  width: 80%;
+  height: 40px;
   display: flex;
   align-items: center;
   position: relative;
   input{
     outline: none;
-    height: 35px;
+    // height: 35px;
     font-size: 14px;
-    width: 230px;
-    padding-left: 40px;
-    padding-right: 20px;
+    // width: 230px;
+    width: 100%;
+    padding: 10px 20px 10px 40px;
+    // padding-left: 40px;
+    // padding-right: 20px;
     border-radius: 100px;
     border: solid 2px $lightgreen;
     background-color: rgba(243,76,24,0);
@@ -382,13 +390,13 @@ a{
   float: left;
 }
 #result {
-  @extend #search;
+  // @extend #search;
   margin: 0 auto;
   left: 15px;
   display: none;
   position: absolute;
-  top: 70px;;
-  width: 180px;
+  top: 100%;
+  width: 80%;
   padding: 10px;
   background-color: #fff;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);

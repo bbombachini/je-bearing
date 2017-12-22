@@ -87,6 +87,7 @@ class ToolingController extends Controller {
         }
       }
       $count = $tools->count();
+      // return $tools;
       return view('admin.tooling.list', ['tools' => $tools, 'count' => $count]);
     }
 
@@ -95,7 +96,7 @@ class ToolingController extends Controller {
       $toolMedia = Tooling::find($id)->getMediaRelationship()->latest()->first();
         $media = $this->mediaService->getMedia($toolMedia['media_id']);
         if(empty($media)){
-          $tool['media_path'] = 'images/noimage.jpg';
+          $tool['media_path'] = 'noimage.jpg';
         }
         else {
           $tool['media_path'] = $media['media_path'];

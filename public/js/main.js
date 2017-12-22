@@ -2,12 +2,14 @@
 (function() {
 	"use strict";
 
-	console.log("fired");
+	// console.log("fired");
 
 	var resultRequest;
 	var delBtn = document.querySelectorAll('.delete');
 	var search = document.querySelector('#searchfeild');
 	var nameLink = document.querySelectorAll('.itemName');
+	// var chooseImageBtn = document.querySelector('#file-input');
+	var chooseImageBtn = document.querySelector('input#media');
 
 	function changeDeleteUrl(e) {
 		e.preventDefault();
@@ -58,23 +60,25 @@
 		close.addEventListener("click", closeView, false);
 		document.querySelector('#dimClick').addEventListener("click", closeView, false);
 
-		console.log(url);
+		// console.log(url);
 		displayRequest.onreadystatechange = respStatus;
 		displayRequest.open("GET", url, true);
 		displayRequest.send(id, null);
+
+		quickView.style.display = 'block';
 
 		function respStatus() {
 			if(displayRequest.readyState === 4 || displayRequest.readyState === "complete"){
 				var infoDiv = document.querySelector('#quickView');
 				infoDiv.style.display = 'block';
-				console.log(displayRequest.responseText);
+
 				var jsondoc = JSON.parse(displayRequest.responseText);
 				document.querySelector("#toolname").innerHTML = jsondoc.tool[0].tool_name;
 				document.querySelector("#number").innerHTML = jsondoc.tool[0].tool_number;
 				document.querySelector("#desc").innerHTML = jsondoc.tool[0].tool_desc;
-				document.querySelector("#itemImg > img").src = '../../images/' + jsondoc.tool.media_path;
-				console.log(jsondoc.tool[0]);
-				console.log(infoDiv);
+				document.querySelector("#itemImg > img").src = '../../images/'+jsondoc.tool.media_path;
+				// console.log(infoDiv);
+				// console.log(jsondoc);
 				infoDiv.querySelector(".confirmEdit").href = '/admin/tooling/edit/'+ jsondoc.tool[0].tool_id;
 				quickView.style.display = 'block';
 				// quickView.style.opacity = 1;
@@ -127,14 +131,23 @@
 		}
 	}
 
+	//show new photo preview before saving it
+	function updatePhotoDisplay() {
+		var photo = document.querySelector('.image-hover > img');
+		var curFile = chooseImageBtn.files;
+		// console.log(photo);
+		// console.log(curFile);
+		photo.src = window.URL.createObjectURL(curFile[0]);
+	}
 	//USE EVENT LISTENER TO MAKE XHR OBJECT -- look at Marcos class file
 
 	nameLink.forEach(function(btn, index) {
-	btn.addEventListener('click', show, false);
+		btn.addEventListener('click', show, false);
 	});
 	delBtn.forEach(function(btn, index) {
 	btn.addEventListener('click', changeDeleteUrl, false);
 	});
 	search.addEventListener('keyup', showResults, false);
+	chooseImageBtn.addEventListener('change', updatePhotoDisplay, false);
 
 })();
