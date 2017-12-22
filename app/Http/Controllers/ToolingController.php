@@ -94,14 +94,30 @@ class ToolingController extends Controller {
     public function quickview($id) {
       $tool = Tooling::where('tool_id', $id)->get();
       $toolMedia = Tooling::find($id)->getMediaRelationship()->latest()->first();
-      $media = $this->mediaService->getMedia($toolMedia['media_id']);
-      if(empty($media)){
-        $tool['media_path'] = 'images/noimage.jpg';
+        $media = $this->mediaService->getMedia($toolMedia['media_id']);
+        if(empty($media)){
+          $tool['media_path'] = 'noimage.jpg';
+        }
+        else {
+          $tool['media_path'] = $media['media_path'];
+        }
+      return (['tool' => $tool]);
+    }
+
+    public function search($str) {
+      if(isset($str)) {
+        $tool = Tooling::where('tool_name','LIKE',"{$str}%")->get();
+        if(!$tool->isEmpty()){
+            return (['tool' => $tool]);
+        } else {
+          print "not-found";
+        }
       }
       else {
-        $tool['media_path'] = $media['media_path'];
+        print "empty";
       }
-      return (['tool' => $tool]);
+
+
     }
 
 
