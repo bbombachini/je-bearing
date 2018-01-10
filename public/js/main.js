@@ -9,7 +9,7 @@
 	var search = document.querySelector('#searchfeild');
 	var nameLink = document.querySelectorAll('.itemName');
 	// var chooseImageBtn = document.querySelector('#file-input');
-	var chooseImageBtn = document.querySelector('input#media');
+	// var chooseImageBtn = document.querySelector('input#media');
 
 	function changeDeleteUrl(e) {
 		e.preventDefault();
@@ -89,7 +89,7 @@
 
 	function showResults(e){
 		var str = e.currentTarget.value;
-		if(str) {
+		if(str !== "") {
 			// console.log(str);
 			resultRequest = createRequest();
 			var url = '/admin/tooling/search/'+str;
@@ -131,14 +131,32 @@
 		}
 	}
 
-	//show new photo preview before saving it
-	function updatePhotoDisplay() {
-		var photo = document.querySelector('.image-hover > img');
-		var curFile = chooseImageBtn.files;
-		// console.log(photo);
-		// console.log(curFile);
-		photo.src = window.URL.createObjectURL(curFile[0]);
+
+	if(document.querySelector('input#media') !== null){
+		var image = {
+			chooseImageBtn: document.querySelector('input#media'),
+			updatePhotoDisplay() {
+				var photo = document.querySelector('.image-hover > img');
+				var curFile = image.chooseImageBtn.files;
+				// console.log(photo);
+				// console.log(curFile);
+				photo.src = window.URL.createObjectURL(curFile[0]);
+			},
+			init(){
+				image.chooseImageBtn.addEventListener('change', image.updatePhotoDisplay, false);
+			}
+		}
+		image.init();
 	}
+
+	//show new photo preview before saving it
+	// function updatePhotoDisplay() {
+	// 	var photo = document.querySelector('.image-hover > img');
+	// 	var curFile = chooseImageBtn.files;
+	// 	// console.log(photo);
+	// 	// console.log(curFile);
+	// 	photo.src = window.URL.createObjectURL(curFile[0]);
+	// }
 	//USE EVENT LISTENER TO MAKE XHR OBJECT -- look at Marcos class file
 
 	nameLink.forEach(function(btn, index) {
@@ -147,7 +165,6 @@
 	delBtn.forEach(function(btn, index) {
 	btn.addEventListener('click', changeDeleteUrl, false);
 	});
-	search.addEventListener('keyup', showResults, false);
-	chooseImageBtn.addEventListener('change', updatePhotoDisplay, false);
-
+	search.addEventListener('input', showResults, false);
+	// chooseImageBtn.addEventListener('change', updatePhotoDisplay, false);
 })();
