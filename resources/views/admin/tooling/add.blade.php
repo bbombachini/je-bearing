@@ -36,7 +36,7 @@
 
 						<fieldset class="add-desc">
               <p>{!! Form::label('desc', 'Description') !!}</p>
-              {!! Form::textarea('desc', '', ['class' => 'form-control']) !!}
+              {!! Form::textarea('desc', '', ['class' => 'form-control form-add', 'size' => '50x10']) !!}
 						</fieldset>
                 <a class="white-button" href="{{ url('/admin/tooling/list')}}">CANCEL</a>
 								<button type="submit" class="green-button" name="button">ADD</button>

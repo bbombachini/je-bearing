@@ -526,7 +526,8 @@ a {
     font-family: 'Medium';
     font-size: 16px;
     font-weight: 500;
-    padding: 20px 20px 0 20px;
+    padding: 20px 20px 0 20px; }
+  #add textarea#desc.form-control.form-edit, #edit textarea#desc.form-control.form-edit {
     height: 100%; }
   #add input#media.form-control, #edit input#media.form-control {
     color: #ECB900;
@@ -540,11 +541,10 @@ a {
   #add .add-number, #edit .add-number {
     grid-area: number; }
   #add .add-media, #edit .add-media {
-    grid-area: media;
-    margin-bottom: 30px; }
+    grid-area: media; }
   #add .add-desc, #edit .add-desc {
     grid-area: desc;
-    margin-bottom: 60px; }
+    margin-bottom: 30px; }
   #add button.green-button, #edit button.green-button {
     justify-self: center;
     align-self: flex-end; }
@@ -562,55 +562,60 @@ a {
 #edit {
   grid-row-gap: 30px;
   grid-template-areas: "name number" "desc media"; }
-  #edit .add-media .image-hover {
-    position: relative; }
-    #edit .add-media .image-hover img {
-      max-width: 370px;
-      height: 100%;
-      width: 100%;
-      margin: 0 auto;
-      display: block; }
-    #edit .add-media .image-hover .edit-link {
-      display: flex;
-      text-align: center;
-      justify-content: center;
-      flex-direction: column;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1000;
-      display: none;
-      cursor: pointer; }
-      #edit .add-media .image-hover .edit-link .links {
-        top: 45%;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        margin: auto;
-        position: absolute;
+  #edit .add-media {
+    min-width: 0;
+    min-height: 0;
+    width: auto;
+    height: auto; }
+    #edit .add-media .image-hover {
+      position: relative; }
+      #edit .add-media .image-hover img {
+        max-width: 370px;
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
         display: block; }
-        #edit .add-media .image-hover .edit-link .links input[type=file] {
-          display: none;
-          margin: 10px; }
-        #edit .add-media .image-hover .edit-link .links label[for=media] {
-          color: #009B60; }
-        #edit .add-media .image-hover .edit-link .links label, #edit .add-media .image-hover .edit-link .links a {
-          display: inline-block;
-          font-family: 'Medium';
-          font-size: 30px;
-          padding: 0 30px;
-          cursor: pointer;
-          margin: 20px; }
-        #edit .add-media .image-hover .edit-link .links label {
-          color: #ECB900; }
-        #edit .add-media .image-hover .edit-link .links a {
-          color: #F34C18; }
-  #edit .add-media .image-hover:hover .edit-link {
-    display: block;
-    border: 1px solid #A2A2A2;
-    background-color: #fff;
-    opacity: 0.9; }
+      #edit .add-media .image-hover .edit-link {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        display: none;
+        cursor: pointer; }
+        #edit .add-media .image-hover .edit-link .links {
+          top: 45%;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          margin: auto;
+          position: absolute;
+          display: block; }
+          #edit .add-media .image-hover .edit-link .links input[type=file] {
+            display: none;
+            margin: 10px; }
+          #edit .add-media .image-hover .edit-link .links label[for=media] {
+            color: #009B60; }
+          #edit .add-media .image-hover .edit-link .links label, #edit .add-media .image-hover .edit-link .links a {
+            display: inline-block;
+            font-family: 'Medium';
+            font-size: 30px;
+            padding: 0 30px;
+            cursor: pointer;
+            margin: 20px; }
+          #edit .add-media .image-hover .edit-link .links label {
+            color: #ECB900; }
+          #edit .add-media .image-hover .edit-link .links a {
+            color: #F34C18; }
+    #edit .add-media .image-hover:hover .edit-link {
+      display: block;
+      border: 1px solid #A2A2A2;
+      background-color: #fff;
+      opacity: 0.9; }
 
 /*# sourceMappingURL=main.css.map */

@@ -559,6 +559,9 @@ a{
     font-size: 16px;
     font-weight: 500;
     padding: 20px 20px 0 20px;
+    // height: 100%;
+  }
+  textarea#desc.form-control.form-edit {
     height: 100%;
   }
   input#media.form-control {
@@ -578,12 +581,12 @@ a{
   }
   .add-media {
     grid-area: media;
-    margin-bottom: 30px;
+    // margin-bottom: 30px;
   }
   .add-desc {
     grid-area: desc;
-    // padding-bottom: -30px;
-    margin-bottom: 60px;
+    // margin-bottom: 60px;
+    margin-bottom: 30px;
 
   }
   button.green-button {
@@ -609,6 +612,11 @@ a{
      "name number"
      "desc media";
    .add-media{
+     min-width: 0;
+     min-height: 0;
+     width: auto;
+     height: auto;
+    //  margin-bottom: 30px;
       .image-hover{
         position: relative;
         img{

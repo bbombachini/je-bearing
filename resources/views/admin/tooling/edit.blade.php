@@ -31,13 +31,13 @@
 
               <fieldset class="add-desc">
                 <p>{!! Form::label('desc', 'Description') !!}</p>
-                {!! Form::textarea('desc', $tool->tool_desc, ['class' => 'form-control', 'size' => '50x1']) !!}
+                {!! Form::textarea('desc', $tool->tool_desc, ['class' => 'form-control form-edit', 'size' => '50x10']) !!}
               </fieldset>
 
               <fieldset class="add-media">
 								<p>Click on the Image to Edit</p>
 								<div class="image-hover">
-	                <img src="{{url($photo)}}" alt="{{ $old }}">
+	                <img src="{{url($photo)}}" alt="{{ $tool->tool_name }} image">
 	                <!-- <button type="button" name="edit-photo">Edit Photo</button> -->
 
 									@if($defaultPhoto === 1)
