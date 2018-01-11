@@ -30,7 +30,17 @@
 
 		popup.style.display = 'block';
 		TweenMax.to(popup, 0.3, {opacity: 1});
-		confirm.href = confirm.href.replace(/destroy([\/]*)([0-9]*)/, 'destroy/'+id);
+		switch(confirm.id) {
+			case 'deleteTool':
+				confirm.href = confirm.href.replace(/destroy([\/]*)([0-9]*)/, 'destroy/'+id);
+				break;
+			case 'deletePhoto':
+				confirm.href = confirm.href.replace(/destroyMedia([\/]*)([0-9]*)/, 'destroyMedia/'+id);
+				console.log('Delete Photo - tool id= '+id);
+				break;
+			default:
+				break;
+		}
 	}
 
 

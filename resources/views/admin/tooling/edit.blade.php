@@ -1,6 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+<div id="dim">
+				<div id="confirm">
+						<a class="ignoreDelete" href="#">X</a>
+
+								<img src="../../../images/warning.png" alt="warning icon">
+								<h2>Wait!</h2>
+								<p>Are you sure you want to delete this photo?</p>
+								<a id="deletePhoto" class="confirmDelete" href="../destroyMedia">Yes, Delete</a>
+				</div>
+				<div id="dimClick2"></div>
+</div>
+
 <section id="content">
 			<div class="section-head">
 					<div class="section-title">
@@ -38,7 +50,6 @@
 								<p>Click on the Image to Edit</p>
 								<div class="image-hover">
 	                <img src="{{url($photo)}}" alt="{{ $tool->tool_name }} image">
-	                <!-- <button type="button" name="edit-photo">Edit Photo</button> -->
 
 									@if($defaultPhoto === 1)
 									<div class="edit-link">
@@ -52,7 +63,7 @@
 											<div class="links">
 												{!! Form::label('media', 'Edit') !!}
 												{!! Form::file('media', ['class' => 'form-control']) !!}
-												<a href="{{action('ToolingController@destroyMedia', ['$id' => $tool->tool_id])}}">Delete</a>
+												<a class="delete" data-id="{{$tool->tool_id}}" href="#">Delete</a>
 											</div>
 										</div>
 									@endif
@@ -60,7 +71,6 @@
               </fieldset>
 
             @endforeach
-              <!-- <a href="{{ url('/admin/tooling/list')}}"> -->
 	              <a class="white-button" href="{{ url('/admin/tooling/list')}}"> CANCEL</a>
 	              <button class="green-button" type="submit" name="button">SAVE</button>
             {!! Form::close() !!}
