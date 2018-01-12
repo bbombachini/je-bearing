@@ -1,12 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
+// For image resizer
+// require 'vendor/autoload.php';
 
 use App\Http\Controllers\Controller;
 use App\Tooling;
 use App\ToolingMedia;
 use Illuminate\Http\Request;
 use App\Services\MediaService;
+
+use Image;
+
+// For image resizer
+use Intervention\Image\ImageManager;
 
 class ToolingController extends Controller {
 
@@ -16,13 +23,11 @@ class ToolingController extends Controller {
         $this->mediaService = $service;
     }
 
-
     // public function index() {
     //   $tooling = Tooling::all();
     //   $count = $tooling->count();
     //   return view('admin.tooling.list', ['tools' => $tooling, 'count' => $count]);
     // }
-
 
     public function add() {
       $tool = new Tooling;
@@ -145,7 +150,7 @@ class ToolingController extends Controller {
       $tool['tool_desc'] = $request['desc'];
 
       if(isset($request['media'])) {
-        $this->validate($request, ['media' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',]);
+        $this->validate($request, ['media' => 'mimes:jpeg,png,jpg,gif,svg',]);
         //save media file in images folder
         $media_id = $this->mediaService->storeMedia($request);
       }
