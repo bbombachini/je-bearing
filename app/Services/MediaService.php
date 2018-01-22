@@ -5,6 +5,8 @@ namespace App\Services;
 use App\Media;
 use Illuminate\Support\Facades\File;
 
+use Image;
+
 class MediaService {
 
   public function getMedia($id) {
@@ -17,8 +19,17 @@ class MediaService {
     if ($input->hasFile('media')) {
       $image = $input->file('media');
       $name = time().'.'.$image->getClientOriginalExtension();
-      $destinationPath = $dir;
-      $image->move($destinationPath, $name);
+      $img = Image::make($image);
+      // $img = Image::make(Request::file('media'));
+      $img->orientate();
+      $img->resize(400, null, function($constraint){ 
+      $constraint->upsize();
+      $constraint->aspectRatio();
+      });
+      $img->save(public_path('/images/' . $name));
+
+      // $destinationPath = $dir;
+      // $image->move($destinationPath, $name);
     }
     $media = new Media;
     $media['media_path'] = $name;

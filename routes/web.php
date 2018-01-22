@@ -35,3 +35,7 @@ Route::get('/admin/fixture/destroy/{id}', ['uses' => 'FixtureController@destroy'
 
 Route::get('/admin/media/add', 'MediaController@add');
 Route::post('/admin/media/store', 'MediaController@store');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
