@@ -431,6 +431,7 @@ a{
 }
 
 #content{
+  position: relative;
   padding: 5% 10%;
   .section-head{
     width: 100%;
@@ -530,6 +531,23 @@ a{
       color: $jered;
       text-align: right;
     }
+  }
+}
+.pagination{
+  position: absolute;
+  display: flex;
+  bottom: 10%;
+  ul.pagination{
+      li, a, span{
+        text-align: center;
+        padding: 10px;
+        color: $text;
+        width: 100%;
+      }
+      li.active span{
+        color: $lightgreen;
+        font-weight: bold;
+      }
   }
 }
 
