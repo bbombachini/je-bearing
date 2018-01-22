@@ -6,7 +6,7 @@ This project is a learning module created with Laravel.
 
 Start the artisan server in order to run the project. Type on terminal, inside the root folder:
 $ php artisan serve
-And navigate into http://localhost:8000/ for production.
+And navigate into http://localhost:8000/
 
 # Compile SASS
 
