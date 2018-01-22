@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('app');
-});
+Route::get('/', 'ToolingController@list' );
 
 // Route::get('/admin/tooling', 'ToolingController@index');
 Route::get('/admin/tooling/add', 'ToolingController@add');

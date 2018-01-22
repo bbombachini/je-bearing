@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin-app')
 
 @section('content')
 
@@ -58,8 +58,6 @@
     </div>
 
     <div class="grid-view">
-
-
         <div id="quickView" style="display:none;">
         	<img src="../../images/person.jpg" width="100px">
         	<h2>Name</h2>
@@ -97,6 +95,12 @@
             @endforeach
         </ul>
         </div>
+        <div class="pagination">
+            {{ $tools->links() }}
+        </div>
     </div>
+
+
+
 </section>
 @endsection
