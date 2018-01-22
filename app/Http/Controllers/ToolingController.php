@@ -75,7 +75,7 @@ class ToolingController extends Controller {
     }
 
     public function list(Tooling $tooling) {
-      $tools = Tooling::where('tool_active', 1)->orderBy('tool_name', 'asc')->get();
+      $tools = Tooling::where('tool_active', 1)->orderBy('tool_name', 'asc')->paginate(5);
       foreach ($tools as $tool) {
         $toolMedia = Tooling::find($tool['tool_id'])->getMediaRelationship()->latest()->first();
         $media = $this->mediaService->getMedia($toolMedia['media_id']);
@@ -86,7 +86,7 @@ class ToolingController extends Controller {
           $tool['media_path'] = $media['media_path'];
         }
       }
-      $count = $tools->count();
+      $count = Tooling::where('tool_active', 1)->get()->count();
       // return $tools;
       return view('admin.tooling.list', ['tools' => $tools, 'count' => $count]);
     }
