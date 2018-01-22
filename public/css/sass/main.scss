@@ -3,6 +3,12 @@
 @import 'fonts';
 /*@import 'delete';*/
 
+@mixin translate($percX, $percY) {
+  -webkit-transform: translate($percX, $percY);
+  -ms-transform: translate($percX, $percY);
+  transform: translate($percX, $percY);
+}
+
 
 textarea:focus, input:focus{
     outline: none;
@@ -48,28 +54,68 @@ button{
 }
 
 #quickView{
-  background: #fff;
-  max-height: 500px;
-  border-radius: 7px;
-  box-shadow: 0 0 6px 0 rgba(0,0,0,0.4);
   position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
+  top: 50%;
+  // bottom: 0;
+  left: 50%;
+  // right: 0;
+  width: 520px;
+  // height: auto;
+  // min-height: 0px;
+  max-height: 460px;
+  @include translate(-50%, -50%);
+  // margin: auto auto;
   z-index: 99;
   letter-spacing: 1px;
-  display: grid;
   align-content: space-between;
+  display: none;
+  background-color: #fff;
+  border-radius: 7px;
+  box-shadow: 0 0 6px 0 rgba(0,0,0,0.4);
+  overflow: hidden;
+  overflow-wrap: break-word;
+  overflow-y: auto;
 
-  p{
+  #toolname {
+    margin-bottom: 20px;
+    padding-right: 20px;
+  }
+
+  p {
     font-size: 18px;
     font-family: 'Book';
     text-align: center;
-    margin-bottom: 40px;
+    // margin-bottom: 40px;
     padding: 0 20px 0 20px;
     }
+
+  .confirmEdit {
+    background-color: $yellow;
+    height: 50px;
+    display: grid;
+    width: 100%;
+    border-radius: 0  0 7px 7px;
+    align-content: center;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    font-family: 'Book';
+    // margin: 10% auto 0% auto;
+    // position: relative;
+    // bottom: 0;
+    // top: 100%;
+    // bottom: -25%;
+  }
+
+  #desc{
+    text-align: center;
+    clear: both;
+    display: block;
+    line-height: 24px;
+    font-size: 16px;
+    padding: 20px 20px 40px 20px;
+    // margin-bottom: 40px;
+  }
 
 }
 
@@ -111,41 +157,43 @@ button{
 
 }
 
-#quickView{
+// #quickView{
+//
+//   display: none;
+//   position: fixed;
+//   width: 520px;
+//   // min-height: 0;
+//   max-height: 460px;
+//   top:0;
+//   left: 0;
+//   background-color: #fff;
+//   border-radius: 7px;
+//   box-shadow: 0 0 6px 0 rgba(0,0,0,0.4);
+//   bottom: 0;
+//   right: 0;
+//   margin: auto;
+//   z-index: 99;
+//   letter-spacing: 1px;
+//
+//
+//   #desc{
+//     text-align: center;
+//     clear: both;
+//     display: block;
+//     line-height: 24px;
+//     font-size: 16px;
+//     padding: 20px 20px 40px 20px;
+//     // margin-bottom: 40px;
+//   }
+// }
 
-  display: none;
-  position: fixed;
-  width: 520px;
-  max-height: 460px;
-  top:0;
-  left: 0;
-  background-color: #fff;
-  border-radius: 7px;
-  box-shadow: 0 0 6px 0 rgba(0,0,0,0.4);
-  bottom: 0;
-  right: 0;
-  margin: auto;
-  z-index: 99;
-  letter-spacing: 1px;
-
-
-  #desc{
-    text-align: center;
-    clear: both;
-    display: block;
-    line-height: 24px;
-    font-size: 16px;
-    padding: 20px 20px ;
-  }
-}
-
-#quickView{
-  h2,p{
-    margin-bottom: 20px;
-    padding-right: 20px;
-  }
-
-}
+// #quickView{
+//   h2,p{
+//     margin-bottom: 20px;
+//     padding-right: 20px;
+//   }
+//
+// }
 
 
 #itemImg, #itemInfo{
@@ -189,20 +237,7 @@ button{
     display: block;
 }
 
-.confirmEdit{
-  background-color: $yellow;
-  height: 50px;
-  display: grid;
-  width: 100%;
-  border-radius: 0  0 7px 7px;
-  align-content: center;
-  text-align: center;
-  color: #fff;
-  font-size: 18px;
-  font-family: 'Book';
-  position: absolute;
-  bottom: 0;
-}
+
 
 .confirmDelete{
   background-color: $jered;
@@ -436,7 +471,7 @@ a{
     width: 100%;
     padding: 15px 0 80px 0;
     display: grid;
-    grid-template-columns: 4fr 1fr;
+    grid-template-columns: 3fr 1.1fr;
     h5 {
       font-size: 16px;
       line-height: 20px;
@@ -520,15 +555,18 @@ a{
       font-weight: 500;
     }
 
-    .edit {
-      @extend .item-name;
-      color: $yellow;
+    .item-column {
       text-align: right;
-    }
-    .delete {
-      @extend .item-name;
-      color: $jered;
-      text-align: right;
+      .edit {
+        @extend .item-name;
+        color: $yellow;
+        text-align: right;
+      }
+      .delete {
+        @extend .item-name;
+        color: $jered;
+        text-align: right;
+      }
     }
   }
 }
@@ -678,11 +716,3 @@ a{
     }
   }
 }
-// #quickView {
-//   display: none;
-//   width: 100%;
-//   position: absolute;
-//   top:0;
-//   left: 0;
-//   background-color: #fff;
-// }

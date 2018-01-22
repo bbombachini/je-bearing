@@ -44,7 +44,7 @@ class ToolingController extends Controller {
 
       //validates photo media
       if(isset($request['media'])) {
-        $this->validate($request, ['media' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',]);
+        $this->validate($request, ['media' => 'mimes:jpeg,png,jpg,gif,svg']);
         //save media file in images folder
         $media_id = $this->mediaService->storeMedia($request);
       }
