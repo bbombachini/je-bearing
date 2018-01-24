@@ -234,6 +234,38 @@ a{
   grid-template-columns: 25% 75%;
 }
 
+#container-login{
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  #welcome-con {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    background-image: url('../images/bearings_background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    #welcome-text{
+      text-align: center;
+      align-self: end;
+      justify-self: center;
+    }
+    #logout{
+      padding: 4%;
+      align-self: end;
+      justify-self: start;
+      p {
+        color: #fff;
+      }
+      #leftarrow{
+        transform: rotate(90deg);
+        height: 16px;
+      }
+    }
+  }
+}
+
 //Navigation Styling
 
 #navFixed{

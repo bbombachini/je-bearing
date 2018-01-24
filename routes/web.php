@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'ToolingController@list' );
+Route::get('/', function(){
+  return view('layouts.login-app');
+} );
 
 // Route::get('/admin/tooling', 'ToolingController@index');
 Route::get('/admin/tooling/add', 'ToolingController@add');
@@ -35,3 +37,7 @@ Route::get('/admin/fixture/destroy/{id}', ['uses' => 'FixtureController@destroy'
 
 Route::get('/admin/media/add', 'MediaController@add');
 Route::post('/admin/media/store', 'MediaController@store');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
