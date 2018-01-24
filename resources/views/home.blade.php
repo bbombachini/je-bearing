@@ -33,7 +33,7 @@
 <section id="dashboard">
   <div class="dash-section">
     <div class="dash-icon">
-      <img src="../../../images/workicon.svg" alt="Work Instructions">
+      <img src="../../../images/workIcon.svg" alt="Work Instructions">
     </div>
     <div class="dash-text">
       <a href="{{ url('searchpart') }}"><h3>Work Instructions</h3></a>

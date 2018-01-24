@@ -81,7 +81,9 @@
                 <div>
                   <a class="item-name itemName" href="#" data-id="{{$tool->tool_id}}">{{$tool->tool_name}}</a>
                 </div>
-                <p>{{$tool->tool_number}}</p>
+                <div>
+                  <p>{{$tool->tool_number}}</p>
+                </div>
                 <div class="item-column">
                   <a class="edit" href="{{action('ToolingController@edit', ['$id' => $tool->tool_id])}}">Edit</a>
                 </div>
@@ -95,11 +97,11 @@
             @endforeach
         </ul>
         </div>
-        <div class="pagination">
-            {{ $tools->links() }}
-        </div>
-    </div>
 
+    </div>
+    <div id="pagination-container">
+        {{ $tools->links() }}
+    </div>
 
 
 </section>
