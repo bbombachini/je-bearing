@@ -36,7 +36,7 @@
       <img src="../../../images/workicon.svg" alt="Work Instructions">
     </div>
     <div class="dash-text">
-      <a href="#"><h3>Work Instructions</h3></a>
+      <a href="{{ url('searchpart') }}"><h3>Work Instructions</h3></a>
     </div>
   </div>
 

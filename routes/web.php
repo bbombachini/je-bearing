@@ -15,7 +15,9 @@ Route::get('/', function(){
   return view('auth.login');
 } );
 
-// Route::get('/admin/tooling', 'ToolingController@index');
+Route::get('/searchpart', function(){
+  return view('searchpart');
+} );
 Route::get('/admin/tooling/add', 'ToolingController@add');
 Route::post('/admin/tooling/store', 'ToolingController@store');
 Route::get('/admin/tooling/list', 'ToolingController@list');
@@ -41,4 +43,3 @@ Route::post('/admin/media/store', 'MediaController@store');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
