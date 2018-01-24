@@ -14,9 +14,9 @@
 
 @section('content')
 
-<section id="loginCon">
+<section id="content-con">
 
-    <div id="loginInfo">
+    <div id="content-form">
 
     <div>
         <img src="images/je-bearing-logo-icon.png" alt="JE Bearing logo" id="loginLogo">
@@ -26,19 +26,19 @@
         {{ csrf_field() }}
 
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-          
-            <input class="loginInput" placeholder="Email" id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
+
+            <input class="form-input" placeholder="Email" id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
             @if ($errors->has('email'))
                 <span class="help-block">
                     <strong>{{ $errors->first('email') }}</strong>
                 </span>
             @endif
-        
+
         </div>
 
         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 
-            <input class="loginInput" placeholder="Password" id="password" type="password" name="password" required>
+            <input class="form-input" placeholder="Password" id="password" type="password" name="password" required>
             @if ($errors->has('password'))
                 <span class="help-block">
                     <strong>{{ $errors->first('password') }}</strong>
@@ -48,11 +48,11 @@
            <!--  <label>
                 <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
             </label> -->
-        
+
         </div>
-    
+
         <div>
-   
+
             <div>
                 <button type="submit" id=loginButt>Login</button>
             </div>
@@ -62,10 +62,10 @@
                 Forgot Your Password?</p></a>
             </div>
         </div>
-        
+
     </form>
 
     </div>
 </section>
-             
+
 @endsection
