@@ -1,7 +1,7 @@
 @extends('layouts.login-app')
 
 @section('message')
-    <h1>Welcome to your JE Bearing learning module</h1>
+    <h1>Welcome to your learning module</h1>
     <h3>Login to your account to get started.</h3>
 @endsection
 
