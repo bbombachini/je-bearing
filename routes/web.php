@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'ToolingController@list' );
+Route::get('/', function(){
+  return view('layouts.login-app');
+} );
 
 // Route::get('/admin/tooling', 'ToolingController@index');
 Route::get('/admin/tooling/add', 'ToolingController@add');

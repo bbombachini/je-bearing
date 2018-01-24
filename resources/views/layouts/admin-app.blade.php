@@ -1,4 +1,6 @@
   @include('partials.head')
+  <!-- CONTENT STARTS HERE -->
+  <div id="container">
   <!-- NAV STARTS HERE -->
   <div id="navFixed">
       <section id="navcon">
