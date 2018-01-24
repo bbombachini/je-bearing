@@ -9,7 +9,7 @@
 
       		<div class="image-cropper"><img src="../../../images/person.jpg" alt="user image"></div>
       		<div>
-      			<h2 id="userName">John Doe</h2>
+      			<h2 id="userName">{{ Auth::user()->name }}</h2>
       			<p>Admin</p>
       		</div>
       	</div>

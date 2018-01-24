@@ -40,14 +40,15 @@
     </div>
   </div>
 
-  <div class="dash-section">
-    <div class="dash-icon">
-      <img src="../../../images/repairIcon.svg" alt="Repair and Overhaul">
-    </div>
-    <div class="dash-text">
-      <a href="#"><h3>Repair and Overhaul</h3></a>
-    </div>
-  </div>
+  <a href="admin/tooling/list" class="dash-section">
+      <div class="dash-icon">
+        <img src="../../../images/repairIcon.svg" alt="Repair and Overhaul">
+      </div>
+
+      <div class="dash-text">
+        <h3>Repair and Overhaul</h3>
+      </div>
+  </a>
 
   <div class="dash-section">
     <div class="dash-icon">
