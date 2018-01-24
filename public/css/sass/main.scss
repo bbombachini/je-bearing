@@ -9,7 +9,6 @@
   transform: translate($percX, $percY);
 }
 
-
 textarea:focus, input:focus{
     outline: none;
 }
@@ -913,4 +912,3 @@ a{
 .errorMsg{
   color: $yellow;
 }
-
