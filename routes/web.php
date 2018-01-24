@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function(){
-  return view('layouts.login-app');
+  return view('auth.login');
 } );
 
 // Route::get('/admin/tooling', 'ToolingController@index');

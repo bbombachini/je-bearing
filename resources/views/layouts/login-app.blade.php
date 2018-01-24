@@ -3,22 +3,15 @@
 
   <div id="container-login">
       <section id="welcome-con">
+
         <div id="welcome-text">
-          <h1>Hello</h1>
+          @yield('message')
         </div>
 
-        <div id="logout">
-      		<img src="../../../images/white-arrow.png" alt="left arrow" id="leftarrow">
-      		<p>LOGOUT</p>
-      	</div>
+        @yield('login')
 
       </section>
 
-
-      <!-- @yield('content') -->
-      <section id="context">
-        <h2>Another hello</h2>
-      </section>
-
+      @yield('content')
 
   @include('partials.footer')
