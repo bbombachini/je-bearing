@@ -324,97 +324,75 @@ a {
   grid-template-rows: auto;
 }
 
-#container-login #welcome-con {
+#welcome-con {
   display: grid;
   background-image: url("../images/bearings_background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
-#container-login #welcome-con #welcome-text {
+#welcome-con #welcome-text {
   width: 80%;
   text-align: center;
   align-self: end;
   justify-self: center;
 }
-#container-login #welcome-con #welcome-text h1 {
+#welcome-con #welcome-text h1 {
   font-size: 50px;
 }
-#container-login #welcome-con #welcome-text h1, #container-login #welcome-con #welcome-text h3 {
+#welcome-con #welcome-text h1, #welcome-con #welcome-text h3 {
   color: #fff;
   line-height: 60px;
   text-align: left;
 }
-#container-login #welcome-con #logout {
+#welcome-con #logout {
   padding: 4%;
   align-self: end;
   justify-self: start;
 }
-#container-login #welcome-con #logout p {
+#welcome-con #logout p {
   color: #fff;
 }
-#container-login #welcome-con #logout #leftarrow {
+#welcome-con #logout #leftarrow {
   transform: rotate(90deg);
-  height: 16px;
+  height: 10px;
 }
-
-
-#welcome-con {
-  display: grid;
-  grid-template-rows: repeat(2, 1fr);
-  background-image: url("../images/bearings_background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover; }
-  #welcome-con #welcome-text {
-    width: 80%;
-    text-align: center;
-    align-self: end;
-    justify-self: center; }
-    #welcome-con #welcome-text h1 {
-      font-size: 45px; }
-    #welcome-con #welcome-text h1, #welcome-con #welcome-text h3 {
-      color: #fff;
-      line-height: 55px;
-      text-align: left; }
-  #welcome-con #logout {
-    padding: 4%;
-    align-self: end;
-    justify-self: start; }
-    #welcome-con #logout p {
-      color: #fff; }
-    #welcome-con #logout #leftarrow {
-      transform: rotate(90deg);
-      height: 10px; }
 
 #dashboard {
   display: grid;
   grid-template-rows: repeat(5, 1fr);
   grid-gap: 5%;
-  padding: 5%; }
-  #dashboard .dash-section {
-    display: grid;
-    grid-template-columns: 20% 80%;
-    overflow: hidden;
-    border-radius: 10px; }
-    #dashboard .dash-section .dash-icon {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: #009B89; }
-      #dashboard .dash-section .dash-icon img {
-        width: 40%; }
-  #dashboard .dash-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-top: 1px solid #A2A2A2;
-    border-bottom: 1px solid #A2A2A2;
-    border-right: 1px solid #A2A2A2;
-    border-radius: 0 10px 10px 0; }
-    #dashboard .dash-text h3 {
-      padding-left: 3%;
-      font-weight: 900;
-      color: #009B89; }
+  padding: 5%;
+}
+#dashboard .dash-section {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+#dashboard .dash-section .dash-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #009B89;
+}
+#dashboard .dash-section .dash-icon img {
+  width: 40%;
+}
+#dashboard .dash-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 1px solid #A2A2A2;
+  border-bottom: 1px solid #A2A2A2;
+  border-right: 1px solid #A2A2A2;
+  border-radius: 0 10px 10px 0;
+}
+#dashboard .dash-text h3 {
+  padding-left: 3%;
+  font-weight: 900;
+  color: #009B89;
+}
 
 #navcon {
   position: fixed;
@@ -839,7 +817,7 @@ a {
 }
 
 /*************** LOGIN PAGE *******************/
-#loginCon {
+#content-con {
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -852,10 +830,6 @@ a {
   margin-bottom: 100px;
 }
 
-#password {
-  margin-bottom: 100px;
-}
-
 #forgotPassCon {
   margin-top: 20px;
 }
@@ -864,14 +838,14 @@ a {
   font-size: 16px;
 }
 
-#loginInfo {
+#content-form {
   display: flex;
   width: 400px;
   display: block;
   margin: 0 auto;
 }
 
-.loginInput {
+.formInput {
   -webkit-appearance: textfield;
   background-color: rgba(0, 0, 0, 0);
   padding: 10px;
@@ -887,7 +861,7 @@ a {
   outline: none;
 }
 
-.loginInput::placeholder {
+.formInput::placeholder {
   font-family: 'Medium';
   font-size: 16px;
   font-weight: 900;
@@ -897,7 +871,7 @@ a {
   color: #A2A2A2;
 }
 
-#loginButt {
+.loginButt {
   cursor: pointer;
   background-color: #fff;
   transition: 0.3s;
@@ -912,13 +886,18 @@ a {
   letter-spacing: 2px;
   text-transform: uppercase;
   line-height: 14px;
+  margin-top: 100px;
   color: #009B89;
 }
 
-#loginButt:hover {
+.loginButt:hover {
   background-color: #009B89;
   border: 2px solid #009B89;
   color: #fff;
+}
+
+.errorMsg {
+  color: #ECB900;
 }
 
 /*# sourceMappingURL=main.css.map */
