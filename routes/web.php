@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function(){
-  return view('layouts.login-app');
+  return view('auth.login');
 } );
 
 // Route::get('/admin/tooling', 'ToolingController@index');
@@ -41,3 +41,4 @@ Route::post('/admin/media/store', 'MediaController@store');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+

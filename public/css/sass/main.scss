@@ -269,6 +269,7 @@ a{
   grid-template-columns: 25% 75%;
 }
 
+
 #container-login{
   width: 100vw;
   height: 100vh;
@@ -277,14 +278,23 @@ a{
   grid-template-rows: auto;
   #welcome-con {
     display: grid;
-    grid-template-rows: repeat(2, 1fr);
     background-image: url('../images/bearings_background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     #welcome-text{
+      width: 80%;
       text-align: center;
       align-self: end;
       justify-self: center;
+
+      h1{
+        font-size: 50px;
+      }
+      h1,h3{
+        color: #fff;
+        line-height: 60px;
+        text-align: left;
+      }
     }
     #logout{
       padding: 4%;
@@ -766,3 +776,92 @@ a{
     }
   }
 }
+
+
+
+/*************** LOGIN PAGE *******************/
+
+#loginCon{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}
+#loginLogo{
+  width: 150px;
+  margin-bottom: 100px;
+}
+
+#password{
+  margin-bottom: 100px;
+}
+
+#forgotPassCon{
+  margin-top: 20px;
+
+  p{
+    color: #ccc;
+    font-size: 16px;
+  }
+}
+
+#loginInfo{
+
+  display: flex;
+  width: 400px;
+  display: block;
+  margin: 0 auto;
+}
+
+.loginInput{
+    -webkit-appearance: textfield;
+    background-color: rgba(0,0,0,0);
+    padding: 10px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    border-width: 1px;
+    border-style: none;
+    border-color: #ccc;
+    width: 300px;
+    font-size: 16px;
+    color: $blue;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+}
+
+.loginInput::placeholder{
+  font-family: 'Medium';
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 14px;
+  color: $text;
+}
+
+
+#loginButt{
+  cursor: pointer;
+  background-color: #fff;
+  transition: 0.3s;
+  border-radius: 50px;
+  border: 2px solid;
+  padding-top: 5px;
+  width: 300px;
+  height: 50px;
+  font-family: 'Medium';
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 14px;
+  color: $blue;
+}
+
+#loginButt:hover{
+  background-color: $blue;
+  border: 2px solid $blue;
+  color: #fff;
+}
+
