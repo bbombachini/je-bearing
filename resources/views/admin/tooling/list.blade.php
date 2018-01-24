@@ -78,10 +78,17 @@
             <li id="itemListTitles"><p>Name</p><p>Tool #</p><p>Edit</p><p>Delete</p></li>
             @foreach ($tools as $tool)
                 <li class="tool-item">
-                <a class="item-name itemName" href="#" data-id="{{$tool->tool_id}}">{{$tool->tool_name}}</a>
+                <div>
+                  <a class="item-name itemName" href="#" data-id="{{$tool->tool_id}}">{{$tool->tool_name}}</a>
+                </div>
                 <p>{{$tool->tool_number}}</p>
-                <a class="edit" href="{{action('ToolingController@edit', ['$id' => $tool->tool_id])}}">Edit</a>
-                <a class="delete" data-id="{{$tool->tool_id}}" href="#">Delete</a>
+                <div class="item-column">
+                  <a class="edit" href="{{action('ToolingController@edit', ['$id' => $tool->tool_id])}}">Edit</a>
+                </div>
+                <div class="item-column">
+                  <a class="delete" data-id="{{$tool->tool_id}}" href="#">Delete</a>
+                </div>
+
 
                 </li>
 
