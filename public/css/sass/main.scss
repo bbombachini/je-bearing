@@ -818,7 +818,7 @@ a{
 
 /*************** LOGIN PAGE *******************/
 
-#loginCon{
+#content-con{
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -827,10 +827,6 @@ a{
 }
 #loginLogo{
   width: 150px;
-  margin-bottom: 100px;
-}
-
-#password{
   margin-bottom: 100px;
 }
 
@@ -843,7 +839,7 @@ a{
   }
 }
 
-#loginInfo{
+#content-form{
 
   display: flex;
   width: 400px;
@@ -851,23 +847,23 @@ a{
   margin: 0 auto;
 }
 
-.loginInput{
-    -webkit-appearance: textfield;
-    background-color: rgba(0,0,0,0);
-    padding: 10px;
-    margin-top: 25px;
-    margin-bottom: 10px;
-    border-width: 1px;
-    border-style: none;
-    border-color: #ccc;
-    width: 300px;
-    font-size: 16px;
-    color: $blue;
-    border-bottom: 2px solid #ccc;
-    outline: none;
+.formInput{
+  -webkit-appearance: textfield;
+  background-color: rgba(0,0,0,0);
+  padding: 10px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  border-width: 1px;
+  border-style: none;
+  border-color: #ccc;
+  width: 300px;
+  font-size: 16px;
+  color: $blue;
+  border-bottom: 2px solid #ccc;
+  outline: none;
 }
 
-.loginInput::placeholder{
+.formInput::placeholder{
   font-family: 'Medium';
   font-size: 16px;
   font-weight: 900;
@@ -878,7 +874,7 @@ a{
 }
 
 
-#loginButt{
+.loginButt{
   cursor: pointer;
   background-color: #fff;
   transition: 0.3s;
@@ -893,12 +889,17 @@ a{
   letter-spacing: 2px;
   text-transform: uppercase;
   line-height: 14px;
+  margin-top: 100px;
   color: $blue;
 }
 
-#loginButt:hover{
+.loginButt:hover{
   background-color: $blue;
   border: 2px solid $blue;
   color: #fff;
+}
+
+.errorMsg{
+  color: $yellow;
 }
 
