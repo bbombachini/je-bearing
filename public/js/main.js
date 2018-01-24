@@ -51,8 +51,9 @@
 
 	var nameLink = document.querySelectorAll('.itemName');
 
-	function show(){
+	function showView(){
 		//e.preventDefault();
+			var bodyarea = document.querySelector('body');
 			var quickView = document.querySelector('#dim2');
 			var close = quickView.querySelector('.xButt');
 			var id = this.dataset.id;
@@ -62,11 +63,12 @@
 
 		function closeView(){
 			quickView.style.display = 'none';
+			bodyarea.classList.remove('quickview-enabled');
 			quickView.style.opacity = 0;
 			document.querySelector('#itemImg > img').src = "";
 		}
 
-		close.removeEventListener("click", show, false);
+		close.removeEventListener("click", closeView, false);
 		close.addEventListener("click", closeView, false);
 		document.querySelector('#dimClick').addEventListener("click", closeView, false);
 
@@ -76,6 +78,7 @@
 		displayRequest.send(id, null);
 
 		quickView.style.display = 'block';
+		bodyarea.classList.add('quickview-enabled');
 
 		function respStatus() {
 			if(displayRequest.readyState === 4 || displayRequest.readyState === "complete"){
@@ -170,7 +173,7 @@
 	//USE EVENT LISTENER TO MAKE XHR OBJECT -- look at Marcos class file
 
 	nameLink.forEach(function(btn, index) {
-		btn.addEventListener('click', show, false);
+		btn.addEventListener('click', showView, false);
 	});
 	delBtn.forEach(function(btn, index) {
 	btn.addEventListener('click', changeDeleteUrl, false);
