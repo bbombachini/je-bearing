@@ -104,6 +104,10 @@ p {
   font-weight: 500; }
 
 /*@import 'delete';*/
+body.quickview-enabled {
+  height: 100%;
+  overflow: hidden; }
+
 textarea:focus, input:focus {
   outline: none; }
 
@@ -129,7 +133,7 @@ button {
 #dim, #dim2 {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: rgba(255, 255, 255, 0.8);
   z-index: 99;
   display: none;
@@ -264,8 +268,8 @@ a {
   display: none; }
 
 #container {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   display: grid;
   grid-template-columns: 25% 75%; }
 
@@ -333,36 +337,38 @@ a {
       font-weight: 900;
       color: #009B89; }
 
-#navcon {
+#navFixed #navcon {
   position: fixed;
+  overflow-y: auto;
   width: 25%;
   display: grid;
   height: 100vh;
   box-shadow: 0px 0px 15px #333333; }
-  #navcon nav {
+  #navFixed #navcon::-webkit-scrollbar {
+    display: none; }
+  #navFixed #navcon #adminNav {
     margin: 0; }
-  #navcon nav ul a li {
+  #navFixed #navcon #adminNav ul a li {
     line-height: 60px;
     display: inline;
-    padding-left: 30px; }
-  #navcon nav ul a {
+    padding-left: 10%; }
+  #navFixed #navcon #adminNav ul a {
     display: block;
     color: #3C3B3B;
-    padding-left: 50px;
+    padding-left: 15%;
     background: none;
     box-shadow: none;
     display: flex;
     display: flex;
     align-items: center; }
-
-#adminNav a:hover {
-  background: linear-gradient(324.5deg, #006F3B 0%, #00937B 81.61%, #009782 91.08%, #009B89 100%);
-  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.15), 0 0 16px 0 rgba(0, 0, 0, 0.23);
-  color: #fff; }
-  #adminNav a:hover .st0 {
-    fill: #ffffff; }
-  #adminNav a:hover .st1 {
-    stroke: #fff; }
+  #navFixed #navcon #adminNav ul a:hover {
+    background: linear-gradient(324.5deg, #006F3B 0%, #00937B 81.61%, #009782 91.08%, #009B89 100%);
+    box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.15), 0 0 16px 0 rgba(0, 0, 0, 0.23);
+    color: #fff; }
+    #navFixed #navcon #adminNav ul a:hover .st0 {
+      fill: #ffffff; }
+    #navFixed #navcon #adminNav ul a:hover .st1 {
+      stroke: #fff; }
 
 .navicons {
   width: 30px; }
@@ -480,7 +486,8 @@ a {
 
 #content {
   position: relative;
-  padding: 5% 10%; }
+  width: 80%;
+  margin: 3rem auto; }
   #content .section-head {
     width: 100%;
     padding: 15px 0 80px 0;
@@ -530,48 +537,58 @@ a {
 #itemListTitles {
   border-bottom: 2px solid rgba(60, 59, 59, 0.05); }
 
-.list ul li {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr; }
-  .list ul li p {
-    text-align: right;
-    color: #A2A2A2;
-    font-size: 18px;
-    line-height: 40px; }
-.list ul li p:first-child {
-  text-align: left !important; }
-.list a {
-  text-decoration: none; }
-.list .tool-item {
-  box-sizing: border-box;
-  padding: 15px 0px 15px 0px;
-  border-bottom: 2px solid rgba(60, 59, 59, 0.05); }
-  .list .tool-item .item-name, .list .tool-item .item-column .edit, .list .tool-item .item-column .delete {
-    color: #009B60;
-    font-size: 20px;
-    line-height: 40px;
-    font-weight: 500; }
-  .list .tool-item .item-column {
-    text-align: right; }
-    .list .tool-item .item-column .edit {
-      color: #ECB900;
+.list {
+  padding-bottom: 1rem; }
+  .list ul li {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    position: relative; }
+    .list ul li div {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+      overflow-wrap: break-word; }
+    .list ul li p {
+      text-align: right;
+      color: #A2A2A2;
+      font-size: 18px;
+      line-height: 40px; }
+  .list ul li:first-child p:first-child {
+    text-align: left !important; }
+  .list a {
+    text-decoration: none;
+    display: block; }
+  .list .tool-item {
+    box-sizing: border-box;
+    padding: 15px 0px 15px 0px;
+    border-bottom: 2px solid rgba(60, 59, 59, 0.05); }
+    .list .tool-item .item-name, .list .tool-item .item-column .edit, .list .tool-item .item-column .delete {
+      color: #009B60;
+      font-size: 20px;
+      line-height: 40px;
+      font-weight: 500; }
+    .list .tool-item .item-column {
       text-align: right; }
-    .list .tool-item .item-column .delete {
-      color: #F34C18;
-      text-align: right; }
+      .list .tool-item .item-column .edit {
+        color: #ECB900;
+        text-align: right; }
+      .list .tool-item .item-column .delete {
+        color: #F34C18;
+        text-align: right; }
 
-.pagination {
-  position: absolute;
-  display: flex;
-  bottom: 10%; }
-  .pagination ul.pagination li, .pagination ul.pagination a, .pagination ul.pagination span {
-    text-align: center;
-    padding: 10px;
-    color: #A2A2A2;
-    width: 100%; }
-  .pagination ul.pagination li.active span {
-    color: #009B60;
-    font-weight: bold; }
+#pagination-container {
+  position: relative;
+  bottom: 0; }
+  #pagination-container ul.pagination {
+    display: flex; }
+    #pagination-container ul.pagination li, #pagination-container ul.pagination a, #pagination-container ul.pagination span {
+      text-align: center;
+      padding: 10px;
+      color: #A2A2A2; }
+    #pagination-container ul.pagination li.active span {
+      color: #009B60;
+      font-weight: bold; }
 
 #add, #edit {
   display: grid;
@@ -655,13 +672,16 @@ a {
         display: none;
         cursor: pointer; }
         #edit .add-media .image-hover .edit-link .links {
-          top: 45%;
+          top: 50%;
           left: 0;
-          bottom: 0;
-          right: 0;
+          -webkit-transform: translate(0, -50%);
+          -ms-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+          width: 100%;
           margin: auto;
           position: absolute;
-          display: block; }
+          display: block;
+          text-align: center; }
           #edit .add-media .image-hover .edit-link .links input[type=file] {
             display: none;
             margin: 10px; }

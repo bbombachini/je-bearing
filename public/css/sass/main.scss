@@ -9,6 +9,11 @@
   transform: translate($percX, $percY);
 }
 
+body.quickview-enabled {
+  height: 100%;
+  overflow: hidden;
+}
+
 textarea:focus, input:focus{
     outline: none;
 }
@@ -39,7 +44,7 @@ button{
 #dim, #dim2{
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: rgba(255,255,255,0.8);
   z-index: 99;
   display: none;
@@ -262,8 +267,8 @@ a{
 //Container Styling
 
 #container {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   display: grid;
   grid-template-columns: 25% 75%;
 }
@@ -350,52 +355,60 @@ a{
 //Navigation Styling
 
 #navFixed{
+  #navcon{
+    position: fixed;
+    overflow-y: auto;
+    width: 25%;
+    display: grid;
+    height: 100vh;
+    box-shadow: 0px 0px 15px #333333;
 
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    #adminNav {
+      margin: 0;
+    }
+
+    #adminNav ul a li{
+      line-height: 60px;
+      display: inline;
+      // padding-left: 30px;
+      padding-left: 10%;
+    }
+
+    #adminNav ul a{
+      display: block;
+      color: $darkgrey;
+      // padding-left: 50px;
+      padding-left: 15%;
+      background: none;
+      box-shadow: none;
+      display: flex;
+      display: flex;
+      align-items: center;
+    }
+    #adminNav ul a:hover{
+      background: linear-gradient(324.5deg, #006F3B 0%, #00937B 81.61%, #009782 91.08%, #009B89 100%);
+      box-shadow: 0 4px 7px 0 rgba(0,0,0,0.15), 0 0 16px 0 rgba(0,0,0,0.23);
+      color: #fff;
+
+      .st0{
+      fill:#ffffff;
+      }
+
+      .st1{
+        stroke: #fff;
+      }
+
+    }
+  }
 }
 
-#navcon{
-  position: fixed;
-  width: 25%;
-  display: grid;
-  height: 100vh;
-  box-shadow: 0px 0px 15px #333333;
 
-  nav{
-    margin: 0;
-  }
 
-  nav ul a li{
-    line-height: 60px;
-    display: inline;
-    padding-left: 30px;
-  }
 
-  nav ul a{
-    display: block;
-    color: $darkgrey;
-    padding-left: 50px;
-    background: none;
-    box-shadow: none;
-    display: flex;
-    display: flex;
-    align-items: center;
-  }
-}
-
-#adminNav a:hover{
-  background: linear-gradient(324.5deg, #006F3B 0%, #00937B 81.61%, #009782 91.08%, #009B89 100%);
-  box-shadow: 0 4px 7px 0 rgba(0,0,0,0.15), 0 0 16px 0 rgba(0,0,0,0.23);
-  color: #fff;
-
-  .st0{
-  fill:#ffffff;
-  }
-
-  .st1{
-    stroke: #fff;
-  }
-
-}
 
 .navicons{
   width: 30px;
@@ -545,7 +558,10 @@ a{
 
 #content{
   position: relative;
-  padding: 5% 10%;
+  // margin: 5% 10%;
+  width: 80%;
+  // min-height: 100vh;
+  margin: 3rem auto;
   .section-head{
     width: 100%;
     padding: 15px 0 80px 0;
@@ -608,20 +624,32 @@ a{
 }
 
 .list {
+  padding-bottom: 1rem;
   ul li {
+    width: 100%;
     display:grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
+    position: relative;
+
+    div {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+      overflow-wrap: break-word;
+    }
+
     p {
       text-align: right;
       color: $text;
       font-size: 18px;
       line-height: 40px;
      }
-  } ul li p:first-child {
+  } ul li:first-child p:first-child {
     text-align: left !important;
   }
   a {
     text-decoration: none;
+    display: block;
   }
   .tool-item {
     box-sizing: border-box;
@@ -649,16 +677,18 @@ a{
     }
   }
 }
-.pagination{
-  position: absolute;
-  display: flex;
-  bottom: 10%;
+#pagination-container{
+  // position: absolute;
+  position: relative;
+  // display: flex;
+  bottom: 0;
   ul.pagination{
+    display: flex;
       li, a, span{
         text-align: center;
         padding: 10px;
         color: $text;
-        width: 100%;
+        // width: 100%;
       }
       li.active span{
         color: $lightgreen;
@@ -773,13 +803,14 @@ a{
         display: none;
         cursor: pointer;
         .links {
-          top: 45%;
+          top: 50%;
           left: 0;
-          bottom: 0;
-          right: 0;
+          @include translate(0, -50%);
+          width: 100%;
           margin: auto;
           position: absolute;
           display: block;
+          text-align: center;
           input[type=file] {
             display:none;
             margin:10px;

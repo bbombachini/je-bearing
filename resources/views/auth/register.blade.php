@@ -25,7 +25,7 @@
             {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                    <input class="formInput" id="name" type="text" placeholder="Name" name="name" value="{{ old('name') }}" required autofocus>
+                    <input class="form-input" id="name" type="text" placeholder="Name" name="name" value="{{ old('name') }}" required autofocus>
 
                     @if ($errors->has('name'))
                         <span class="help-block">
@@ -36,7 +36,7 @@
 
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 
-                    <input class="formInput" id="email" type="email" placeholder="Email" name="email" value="{{ old('email') }}" required>
+                    <input class="form-input" id="email" type="email" placeholder="Email" name="email" value="{{ old('email') }}" required>
 
                     @if ($errors->has('email'))
                         <span class="help-block">
@@ -47,7 +47,7 @@
 
             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 
-                    <input class="formInput" type="password" placeholder="Password" name="password" required>
+                    <input class="form-input" type="password" placeholder="Password" name="password" required>
 
                     @if ($errors->has('password'))
                         <span class="help-block">
@@ -57,7 +57,7 @@
             </div>
 
             <div >
-                <input class="formInput" id="password-confirm" type="password" placeholder="Confirm Password" class="form-control" name="password_confirmation" required>
+                <input class="form-input" id="password-confirm" type="password" placeholder="Confirm Password" class="form-control" name="password_confirmation" required>
             </div>
 
             <div class="form-group">
@@ -68,5 +68,5 @@
         </form>
     </div>
 </section>
-         
+
 @endsection
