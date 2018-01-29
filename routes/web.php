@@ -15,6 +15,10 @@ Route::get('/', function(){
   return view('auth.login');
 } );
 
+Route::get('/opp/tools', function(){
+  return view('opp.tools');
+} );
+
 Route::get('/searchpart', function(){
   return view('searchpart');
 } );
@@ -43,3 +47,5 @@ Route::post('/admin/media/store', 'MediaController@store');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
