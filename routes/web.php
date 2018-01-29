@@ -15,8 +15,24 @@ Route::get('/', function(){
   return view('auth.login');
 } );
 
-Route::get('/opp/tools', function(){
-  return view('opp.tools');
+Route::get('/oper/tools', function(){
+  return view('oper.tools');
+} );
+
+Route::get('/oper/comments', function(){
+  return view('oper.comments');
+} );
+
+Route::get('/oper/contactsuper', function(){
+  return view('oper.contactsuper');
+} );
+
+Route::get('/oper/steps', function(){
+  return view('oper.steps');
+} );
+
+Route::get('/oper/qualityalerts', function(){
+  return view('oper.qualityalerts');
 } );
 
 Route::get('/searchpart', function(){
