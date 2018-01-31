@@ -13,11 +13,11 @@ class CreateLinkTableStepNote extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_step_note', function (Blueprint $table) {
-            $table->increments('step_note_id');
+        Schema::create('step_note', function (Blueprint $table) {
+            $table->increments('id');
             $table->mediumInteger('step_id');
             $table->mediumInteger('note_id');
-            $table->smallInteger('step_note_order');
+            $table->smallInteger('order');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateLinkTableStepNote extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_step_note');
+        Schema::dropIfExists('step_note');
     }
 }

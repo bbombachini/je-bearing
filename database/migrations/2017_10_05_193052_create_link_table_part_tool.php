@@ -13,8 +13,8 @@ class CreateLinkTablePartTool extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_part_tool', function (Blueprint $table) {
-            $table->mediumIncrements('part_tool_id');
+        Schema::create('part_tool', function (Blueprint $table) {
+            $table->mediumIncrements('id');
             $table->smallInteger('part_id');
             $table->smallInteger('tool_id');
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateLinkTablePartTool extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_part_tool');
+        Schema::dropIfExists('part_tool');
     }
 }

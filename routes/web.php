@@ -29,13 +29,16 @@ Route::get('/admin/tooling/destroy/{id}', ['uses' => 'ToolingController@destroy'
 Route::get('/admin/tooling/editMedia/{id}', ['uses' => 'ToolingController@editMedia']);
 Route::get('/admin/tooling/destroyMedia/{id}', ['uses' => 'ToolingController@destroyMedia']);
 
-Route::get('/admin/fixture', 'FixtureController@index');
 Route::get('/admin/fixture/add', 'FixtureController@add');
 Route::post('/admin/fixture/store', 'FixtureController@store');
 Route::get('/admin/fixture/list', 'FixtureController@list');
 Route::get('/admin/fixture/edit/{id}', ['uses' => 'FixtureController@edit']);
+Route::get('/admin/fixture/search/{str}', ['uses' => 'FixtureController@search']);
 Route::post('/admin/fixture/update', 'FixtureController@update');
+Route::get('/admin/fixture/list/{id}',['uses' => 'FixtureController@quickview']);
 Route::get('/admin/fixture/destroy/{id}', ['uses' => 'FixtureController@destroy']);
+Route::get('/admin/fixture/editMedia/{id}', ['uses' => 'FixtureController@editMedia']);
+Route::get('/admin/fixture/destroyMedia/{id}', ['uses' => 'FixtureController@destroyMedia']);
 
 Route::get('/admin/media/add', 'MediaController@add');
 Route::post('/admin/media/store', 'MediaController@store');

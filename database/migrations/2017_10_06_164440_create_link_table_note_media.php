@@ -13,11 +13,11 @@ class CreateLinkTableNoteMedia extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_note_media', function (Blueprint $table) {
-            $table->increments('note_media_id');
+        Schema::create('note_media', function (Blueprint $table) {
+            $table->increments('id');
             $table->mediumInteger('note_id');
             $table->mediumInteger('media_id');
-            $table->smallInteger('note_media_order');
+            $table->smallInteger('order');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateLinkTableNoteMedia extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_note_media');
+        Schema::dropIfExists('note_media');
     }
 }

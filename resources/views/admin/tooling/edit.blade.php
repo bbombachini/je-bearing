@@ -30,26 +30,26 @@
       <div>
           {!! Form::model($old, ['action' => 'ToolingController@update', 'id' => 'edit', 'files' => true]) !!}
           @foreach ($old as $tool)
-          {{ Form::hidden('id', $tool->tool_id) }}
+          {{ Form::hidden('id', $tool->id) }}
               <fieldset class="add-name">
                 <p>{!! Form::label('name', 'Name') !!}</p>
-                {!! Form::text('name', $tool->tool_name, ['class' => 'form-control', 'required' => 'required']) !!}
+                {!! Form::text('name', $tool->name, ['class' => 'form-control', 'required' => 'required']) !!}
               </fieldset>
 
               <fieldset class="add-number">
                 <p>{!! Form::label('number', 'Tool #') !!}</p>
-                {!! Form::text('number', $tool->tool_number, ['class' => 'form-control']) !!}
+                {!! Form::text('number', $tool->number, ['class' => 'form-control']) !!}
               </fieldset>
 
               <fieldset class="add-desc">
                 <p>{!! Form::label('desc', 'Description') !!}</p>
-                {!! Form::textarea('desc', $tool->tool_desc, ['class' => 'form-control form-edit', 'size' => '50x10']) !!}
+                {!! Form::textarea('desc', $tool->desc, ['class' => 'form-control form-edit', 'size' => '50x10']) !!}
               </fieldset>
 
               <fieldset class="add-media">
 								<p>Click on the Image to Edit</p>
 								<div class="image-hover">
-	                <img src="{{url($photo)}}" alt="{{ $tool->tool_name }} image">
+	                <img src="{{url($photo)}}" alt="{{ $tool->name }} image">
 
 									@if($defaultPhoto === 1)
 									<div class="edit-link">
@@ -63,7 +63,7 @@
 											<div class="links">
 												{!! Form::label('media', 'Edit') !!}
 												{!! Form::file('media', ['class' => 'form-control']) !!}
-												<a class="delete" data-id="{{$tool->tool_id}}" href="#">Delete</a>
+												<a class="delete" data-id="{{$tool->id}}" href="#">Delete</a>
 											</div>
 										</div>
 									@endif

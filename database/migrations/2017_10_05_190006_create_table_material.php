@@ -13,12 +13,13 @@ class CreateTableMaterial extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_material', function (Blueprint $table) {
-            $table->smallIncrements('material_id');
-            $table->string('material_name', 150);
-            $table->text('material_desc')->nullable();
-            $table->string('material_location', 255)->nullable();
-            $table->boolean('material_active');
+        Schema::create('material', function (Blueprint $table) {
+            $table->smallIncrements('id');
+            $table->string('name', 150);
+            $table->string('number', 50)->nullable();
+            $table->text('desc')->nullable();
+            // $table->string('location', 255)->nullable();
+            $table->boolean('active');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateTableMaterial extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_material');
+        Schema::dropIfExists('material');
     }
 }

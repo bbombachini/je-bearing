@@ -1,77 +1,47 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.admin-app')
 
-        <title>J/E Bearings | Add Fixture</title>
+@section('content')
+<section id="content">
+			<div class="section-head">
+					<div class="section-title">
+						<h1>Add Fixture</h1>
+					</div>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+					<div>
+            <a id="back-button" href="{{ url('/admin/fixture/list')}}">
+  						<img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
+              <p class="backText">BACK TO FIXTURE</p>
+            </a>
+					</div>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+			</div>
 
-            .full-height {
-                height: 100vh;
-            }
+				<div>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+            {!! Form::model($fixture, ['action' => 'FixtureController@store', 'id' => 'add', 'files' => true]) !!}
+            <fieldset class="add-name">
+              <p>{!! Form::label('name', 'Name') !!}</p>
+              {!! Form::text('name', '', ['class' => 'form-control', 'required' => 'required']) !!}
+            </fieldset>
 
-            .position-ref {
-                position: relative;
-            }
+            <fieldset class="add-number">
+              <p>{!! Form::label('number', 'Fixture #') !!}</p>
+              {!! Form::text('number', '', ['class' => 'form-control']) !!}
+            </fieldset>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+            <fieldset class="add-media">
+              <p>{!! Form::label('media', 'Media') !!}</p>
+              {!! Form::file('media', ['class' => 'form-control']) !!}
+            </fieldset>
 
-            .content {
-                text-align: center;
-            }
+						<fieldset class="add-desc">
+              <p>{!! Form::label('desc', 'Description') !!}</p>
+              {!! Form::textarea('desc', '', ['class' => 'form-control form-add', 'size' => '50x10']) !!}
+						</fieldset>
+                <a class="white-button" href="{{ url('/admin/fixture/list')}}">CANCEL</a>
+								<button type="submit" class="green-button" name="button">ADD</button>
+							{!! Form::close() !!}
 
-            .title {
-                font-size: 24px;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-
-            <div class="content">
-                <div class="title m-b-md">
-                    <!-- <h1></h1> -->
-                    <h1>Add Fixture</h1>
-                    {!! Form::model($fixture, ['action' => 'FixtureController@store']) !!}
-                      {!! Form::label('name', 'Name') !!}
-                      {!! Form::text('name', '', ['class' => 'form-control']) !!}
-                      {!! Form::label('number', 'Number') !!}
-                      {!! Form::text('number', '', ['class' => 'form-control']) !!}
-                      {!! Form::label('desc', 'Description') !!}
-                      {!! Form::textarea('desc', '', ['class' => 'form-control', 'size' =>'30x5']) !!}
-                      <button type="submit" name="button">CLICK</button>
-                    {!! Form::close() !!}
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+				</div>
+</section>
+@endsection

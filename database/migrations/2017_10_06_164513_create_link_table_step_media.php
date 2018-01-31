@@ -13,11 +13,11 @@ class CreateLinkTableStepMedia extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_step_media', function (Blueprint $table) {
-            $table->increments('step_media_id');
+        Schema::create('step_media', function (Blueprint $table) {
+            $table->increments('id');
             $table->mediumInteger('step_id');
             $table->mediumInteger('media_id');
-            $table->smallInteger('step_media_order');
+            $table->smallInteger('order');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateLinkTableStepMedia extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_step_media');
+        Schema::dropIfExists('step_media');
     }
 }

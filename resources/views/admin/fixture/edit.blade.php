@@ -1,80 +1,79 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.admin-app')
 
-        <title>J/E Bearings | Edit Fixture</title>
+@section('content')
+<div id="dim">
+				<div id="confirm">
+						<a class="ignoreDelete" href="#">X</a>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+								<img src="../../../images/warning.png" alt="warning icon">
+								<h2>Wait!</h2>
+								<p>Are you sure you want to delete this photo?</p>
+								<a id="deletePhoto" class="confirmDelete" href="../destroyMedia">Yes, Delete</a>
+				</div>
+				<div id="dimClick2"></div>
+</div>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+<section id="content">
+			<div class="section-head">
+					<div class="section-title">
+						<h1>Edit Fixture</h1>
+					</div>
 
-            .full-height {
-                height: 100vh;
-            }
+					<div>
+            <a id="back-button" href="{{ url('/admin/fixture/list')}}">
+  						<img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
+              <p class="backText">BACK TO FIXTURES</p>
+            </a>
+					</div>
+			</div>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+      <div>
+          {!! Form::model($old, ['action' => 'FixtureController@update', 'id' => 'edit', 'files' => true]) !!}
+          @foreach ($old as $fixture)
+          {{ Form::hidden('id', $fixture->id) }}
+              <fieldset class="add-name">
+                <p>{!! Form::label('name', 'Name') !!}</p>
+                {!! Form::text('name', $fixture->name, ['class' => 'form-control', 'required' => 'required']) !!}
+              </fieldset>
 
-            .position-ref {
-                position: relative;
-            }
+              <fieldset class="add-number">
+                <p>{!! Form::label('number', 'Fixture #') !!}</p>
+                {!! Form::text('number', $fixture->number, ['class' => 'form-control']) !!}
+              </fieldset>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+              <fieldset class="add-desc">
+                <p>{!! Form::label('desc', 'Description') !!}</p>
+                {!! Form::textarea('desc', $fixture->desc, ['class' => 'form-control form-edit', 'size' => '50x10']) !!}
+              </fieldset>
 
-            .content {
-                text-align: center;
-            }
+              <fieldset class="add-media">
+								<p>Click on the Image to Edit</p>
+								<div class="image-hover">
+	                <img src="{{url($photo)}}" alt="{{ $fixture->name }} image">
 
-            .title {
-                font-size: 24px;
-            }
+									@if($defaultPhoto === 1)
+									<div class="edit-link">
+										<div class="links">
+											{!! Form::label('media', 'Add Photo') !!}
+											{!! Form::file('media', ['class' => 'form-control']) !!}
+										</div>
+									</div>
+									@else
+										<div class="edit-link">
+											<div class="links">
+												{!! Form::label('media', 'Edit') !!}
+												{!! Form::file('media', ['class' => 'form-control']) !!}
+												<a class="delete" data-id="{{$fixture->id}}" href="#">Delete</a>
+											</div>
+										</div>
+									@endif
+								</div>
+              </fieldset>
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-
-            <div class="content">
-                <div class="title m-b-md">
-                    <!-- <h1></h1> -->
-                    <h1>Edit Fixture</h1>
-                    {!! Form::model($old, ['action' => 'FixtureController@update']) !!}
-                      @foreach ($old as $object)
-                        {{ Form::hidden('id', $object->fixture_id) }}
-                        {!! Form::label('name', 'Name') !!}
-                        {!! Form::text('name', $object->fixture_name, ['class' => 'form-control']) !!}
-                        {!! Form::label('number', 'Number') !!}
-                        {!! Form::text('number', $object->fixture_number, ['class' => 'form-control']) !!}
-                        {!! Form::label('desc', 'Description') !!}
-                        {!! Form::text('desc', $object->fixture_desc, ['class' => 'form-control', 'size' =>'30x5']) !!}
-                      @endforeach
-                      <button type="submit" name="button">CLICK</button>
-                    {!! Form::close() !!}
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+            @endforeach
+	              <a class="white-button" href="{{ url('/admin/fixture/list')}}"> CANCEL</a>
+	              <button class="green-button" type="submit" name="button">SAVE</button>
+            {!! Form::close() !!}
+      </div>
+</section>
+@endsection

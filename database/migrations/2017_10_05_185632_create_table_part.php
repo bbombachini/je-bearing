@@ -13,12 +13,12 @@ class CreateTablePart extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_part', function (Blueprint $table) {
-            $table->smallIncrements('part_id');
-            $table->string('part_number', 50);
-            $table->string('part_name', 200);
-            $table->text('part_desc')->nullable();
-            $table->boolean('part_active');
+        Schema::create('part', function (Blueprint $table) {
+            $table->smallIncrements('id');
+            $table->string('number', 50);
+            $table->string('name', 200);
+            $table->text('desc')->nullable();
+            $table->boolean('active');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateTablePart extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_part');
+        Schema::dropIfExists('part');
     }
 }

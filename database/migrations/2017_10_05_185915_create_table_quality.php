@@ -13,11 +13,11 @@ class CreateTableQuality extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_quality', function (Blueprint $table) {
-            $table->mediumIncrements('quality_id');
-            $table->string('quality_title', 200)->nullable();
-            $table->text('quality_desc');
-            $table->boolean('quality_active');
+        Schema::create('quality', function (Blueprint $table) {
+            $table->mediumIncrements('id');
+            $table->string('title', 200)->nullable();
+            $table->text('desc');
+            $table->boolean('active');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateTableQuality extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_quality');
+        Schema::dropIfExists('quality');
     }
 }

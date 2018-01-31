@@ -13,11 +13,11 @@ class CreateTableNote extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_note', function (Blueprint $table) {
-            $table->mediumIncrements('note_id');
-            $table->string('note_title', 255)->nullable();
-            $table->text('note_desc');
-            $table->boolean('note_active');
+        Schema::create('note', function (Blueprint $table) {
+            $table->mediumIncrements('id');
+            $table->string('title', 255)->nullable();
+            $table->text('desc');
+            $table->boolean('active');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateTableNote extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_note');
+        Schema::dropIfExists('note');
     }
 }

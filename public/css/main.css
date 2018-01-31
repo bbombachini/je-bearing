@@ -162,7 +162,7 @@ button {
   overflow: hidden;
   overflow-wrap: break-word;
   overflow-y: auto; }
-  #quickView #toolname {
+  #quickView #itemname {
     margin-bottom: 20px;
     padding-right: 20px; }
   #quickView p {
@@ -559,21 +559,21 @@ a {
   .list a {
     text-decoration: none;
     display: block; }
-  .list .tool-item {
+  .list .list-item {
     box-sizing: border-box;
     padding: 15px 0px 15px 0px;
     border-bottom: 2px solid rgba(60, 59, 59, 0.05); }
-    .list .tool-item .item-name, .list .tool-item .item-column .edit, .list .tool-item .item-column .delete {
+    .list .list-item .item-name, .list .list-item .item-column .edit, .list .list-item .item-column .delete {
       color: #009B60;
       font-size: 20px;
       line-height: 40px;
       font-weight: 500; }
-    .list .tool-item .item-column {
+    .list .list-item .item-column {
       text-align: right; }
-      .list .tool-item .item-column .edit {
+      .list .list-item .item-column .edit {
         color: #ECB900;
         text-align: right; }
-      .list .tool-item .item-column .delete {
+      .list .list-item .item-column .delete {
         color: #F34C18;
         text-align: right; }
 

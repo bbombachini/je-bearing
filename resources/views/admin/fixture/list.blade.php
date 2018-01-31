@@ -1,89 +1,108 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.admin-app')
 
-        <title>J/E Bearings | Select Fixture</title>
+@section('content')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
 
-            .full-height {
-                height: 100vh;
-            }
+    <div id="dim">
+            <div id="confirm">
+                <a class="ignoreDelete" href="#">X</a>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+                    <img src="../../images/warning.png" alt="warning icon">
+                    <h2>Wait!</h2>
+                    <p>Are you sure you want to delete this?</p>
+                    <a id="deleteItem" class="confirmDelete" href="destroy">Yes, Delete</a>
 
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-                /*display: block;*/
-            }
-            .content ul {
-              display: block;
-            }
-            .content ul .selection-container {
-              display: flex;
-              margin-bottom: 0.5rem;
-            }
-            .content ul .selection-container li {
-              text-align: left;
-              margin-right: 1rem;
-            }
-
-            .title {
-                font-size: 24px;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-
-            <div class="content">
-                <div class="title m-b-md">
-                    <!-- <h1></h1> -->
-                    <h1>Select Fixture</h1>
-                    <ul>
-                      @foreach ($fixtures as $fixture)
-                        <div class="selection-container">
-                          <li>{{$fixture->fixture_name}}</li>
-                          <a href="{{action('FixtureController@edit', ['$id' => $fixture->fixture_id])}}">EDIT</a>
-                          <a href="{{action('FixtureController@destroy', ['$id' => $fixture->fixture_id])}}">DELETE</a>
-                        </div>
-                      @endforeach
-                    </ul>
-                </div>
             </div>
+            <div id="dimClick2"></div>
+    </div>
+
+    <div id="dim2">
+        <div id="dimClick"></div>
+        <div id="quickView">
+            <a class="xButt" href="#">X</a>
+
+            <div id="itemImgInfo">
+
+                <div id="itemImg">
+                    <!-- <img src="../../images/placeholderImg.jpg" alt="placeholder Image"> -->
+                    <img src="" alt="Image">
+                </div>
+
+                <div id="itemInfo">
+                    <h2 id="itemname"></h2>
+                    <p id="number"></p>
+                </div>
+
+            </div>
+
+            <p id="desc"></p>
+            <a class="confirmEdit" href="#">Edit</a>
+
         </div>
-    </body>
-</html>
+    </div>
+
+<section id="content">
+    <div class="section-head">
+
+            <div class="section-title">
+                <h2 id="bigTitle">Fixture</h2>
+                <h5 id="subTitle">There are currently <span class="green">{{ $count }}</span> fixtures.</h5>
+            </div>
+
+
+            <div class="add-button">
+				<a href="{{ url('/admin/fixture/add')}}"><img src="../../images/plusIcon.png" alt="add an item" width="25px;"></a>
+			</div>
+
+    </div>
+
+    <div class="grid-view">
+        <div id="quickView" style="display:none;">
+        	<img src="../../images/person.jpg" width="100px">
+        	<h2>Name</h2>
+        	<p>Number</p>
+        	<p>Desc</p>
+         </div>
+
+        <div id="confirm" style="display:none;">
+            <h2>Wait!</h2>
+            <p>Are you sure you want to delete this item?</p>
+            <a class="confirmDelete" href="destroy"><p>Yes, Delete</p></a>
+            <a class="ignoreDelete" href="#">No, Thank You</a>
+
+        </div>
+
+        <div class="list">
+        <ul>
+            <li id="itemListTitles"><p>Name</p><p>Fixture #</p><p>Edit</p><p>Delete</p></li>
+            @foreach ($items as $item)
+                <li class="list-item">
+                <div>
+                  <a class="item-name itemName" href="#" data-id="{{$item->id}}">{{$item->name}}</a>
+                </div>
+                <div>
+                  <p>{{$item->number}}</p>
+                </div>
+                <div class="item-column">
+                  <a class="edit" href="{{action('FixtureController@edit', ['$id' => $item->id])}}">Edit</a>
+                </div>
+                <div class="item-column">
+                  <a class="delete" data-id="{{$item->id}}" href="#">Delete</a>
+                </div>
+
+
+                </li>
+
+            @endforeach
+        </ul>
+        </div>
+
+    </div>
+    <div id="pagination-container">
+        {{ $items->links() }}
+    </div>
+
+
+</section>
+@endsection

@@ -13,8 +13,8 @@ class CreateLinkTablePartComment extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_part_comment', function (Blueprint $table) {
-            $table->increments('part_comment_id');
+        Schema::create('part_comment', function (Blueprint $table) {
+            $table->increments('id');
             $table->smallInteger('part_id');
             $table->mediumInteger('comment_id');
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateLinkTablePartComment extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_part_comment');
+        Schema::dropIfExists('part_comment');
     }
 }

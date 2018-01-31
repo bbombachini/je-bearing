@@ -13,11 +13,11 @@ class CreateTableMedia extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_media', function (Blueprint $table) {
-            $table->mediumIncrements('media_id');
-            $table->string('media_path', 150);
-            $table->text('media_desc')->nullable();
-            $table->string('media_caption', 255)->nullable();
+        Schema::create('media', function (Blueprint $table) {
+            $table->mediumIncrements('id');
+            $table->string('path', 150);
+            $table->text('desc')->nullable();
+            $table->string('caption', 255)->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateTableMedia extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_media');
+        Schema::dropIfExists('media');
     }
 }

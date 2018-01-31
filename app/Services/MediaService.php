@@ -22,7 +22,7 @@ class MediaService {
       $img = Image::make($image);
       // $img = Image::make(Request::file('media'));
       $img->orientate();
-      $img->resize(400, null, function($constraint){ 
+      $img->resize(400, null, function($constraint){
       $constraint->upsize();
       $constraint->aspectRatio();
       });
@@ -32,18 +32,18 @@ class MediaService {
       // $image->move($destinationPath, $name);
     }
     $media = new Media;
-    $media['media_path'] = $name;
+    $media['path'] = $name;
 
     if (!$media->save()) {
       $errors = $media->getErrors();
       return redirect()->back()->with('errors', $errors)->withInput();
     }
-    return $media->media_id;
+    return $media->id;
   }
 
   public function destroyMedia($id){
     $media = Media::find($id);
-    $file = $media['media_path'];
+    $file = $media['path'];
     $media->delete();
     File::delete('images/'.$file);
     return;
