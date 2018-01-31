@@ -43,3 +43,6 @@ Route::post('/admin/media/store', 'MediaController@store');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Operator Routes
+Route::get('/oper/tooling', 'ToolingController@opList');

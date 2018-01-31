@@ -943,3 +943,70 @@ a{
 .errorMsg{
   color: $yellow;
 }
+//Operator style
+.top-left{
+  a {
+    float: right;
+    color: $text;
+    img{
+      display: inline-block;
+      float: left;
+    }
+    p{
+      float: left;
+      line-height: 2em;
+      padding-left: 10px;
+    }
+  }
+}
+
+#oplist{
+  .grid-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-column-gap: 10%;
+    grid-row-gap: 30px;
+    .item{
+      border-radius: 10px;
+      box-shadow: 0 0 6px 0 rgba(0,0,0,0.4);
+      overflow: hidden;
+      .item-media{
+        img{
+        height: auto;
+        width: 100%;
+        margin: 0 auto;
+        }
+        .item-desc{
+          height: 5vw;
+          max-width: 100%;
+          display: block;
+          background: $blue;
+          color: #fff;
+          padding: 5% 2% 5% 5%;
+          h3{
+            font-size: 2vw;
+            line-height: 3vw;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+          }
+          h4{
+            font-size: 1.6vw;
+            line-height: 2vw;
+            font-family: 'Light';
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+  }
+  #pagination-container{
+    padding: 20px 0 0 0;
+  }
+}
+//sass --watch css/sass/main.scss:css/main.css
