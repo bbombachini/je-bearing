@@ -7,8 +7,8 @@
 <section id="content">
     <div class="section-head">
             <div class="section-title">
-                <h2 id="bigTitle">Tooling</h2>
-                <h5 id="subTitle">Collect the following tools in order to complete this part.</h5>
+                <h2 id="bigTitle">{{$title}}</h2>
+                <h5 id="subTitle">Collect the following {{$name}} in order to complete this part.</h5>
             </div>
 
             <div class="top-left">
@@ -20,21 +20,21 @@
     </div>
         <div id="oplist">
           <ul class="grid-list">
-              @foreach ($tools as $tool)
+              @foreach ($items as $item)
                   <li class="item">
                     <div class="item-media">
-                      <img src="../../../images/{{ $tool['media_path'] }}" alt="{{ $tool->tool_name }} image">
+                      <img src="../../../images/{{ $item['media_path'] }}" alt="{{ $item->name }} image">
 
                       <div class="item-desc">
-                        <h3>{{$tool->tool_name}}</h3>
-                        <h4># {{$tool->tool_number}}</h4>
+                        <h3>{{$item->name}}</h3>
+                        <h4># {{$item->number}}</h4>
                       </div>
                     </div>
                   </li>
               @endforeach
           </ul>
           <div id="pagination-container">
-                {{ $tools->links() }}
+                {{ $items->links() }}
           </div>
         </div>
 </section>
