@@ -1002,7 +1002,8 @@ a {
 
 #commentField {
   width: 100%;
-  height: 80px;
+  height: 100px;
+  font-size: 16px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -1011,7 +1012,7 @@ a {
   margin-top: 50px;
 }
 #commentForm label {
-  color: #3C3B3B;
+  color: #aaa;
   font-size: 16px;
 }
 
@@ -1027,6 +1028,60 @@ a {
   color: #fff;
   font-size: 18px;
   font-family: 'Book';
+}
+
+
+#comments {
+  margin-bottom: 50px;
+  height: 350px;
+  overflow-y: scroll;
+}
+
+.contactLabel {
+  color: #aaa;
+  padding-bottom: 20px;
+}
+.contactLabel p {
+  margin-bottom: 10px;
+}
+
+.contactInput {
+  border-bottom: solid 2px #ddd;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 100%;
+  font-size: 16px;
+  color: #ECB900;
+  margin-bottom: 40px;
+}
+
+.contactInputMessage {
+  border: solid 2px #ddd;
+  width: 100%;
+  max-width: 100%;
+  font-size: 16px;
+  color: #ECB900;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+#contactName {
+  float: left;
+  width: 40%;
+}
+
+#contactEmail {
+  float: right;
+  width: 50%;
+}
+
+#contactSubject {
+  clear: both;
+}
+
+#sup-name-inpu {
+  width: 40%;
 }
 
 .top-left a {
@@ -1078,5 +1133,6 @@ a {
         -o-text-overflow: ellipsis; }
 #oplist #pagination-container {
   padding: 20px 0 0 0; }
+
 
 /*# sourceMappingURL=main.css.map */
