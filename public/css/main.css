@@ -1029,4 +1029,54 @@ a {
   font-family: 'Book';
 }
 
+.top-left a {
+  float: right;
+  color: #A2A2A2; }
+  .top-left a img {
+    display: inline-block;
+    float: left; }
+  .top-left a p {
+    float: left;
+    line-height: 2em;
+    padding-left: 10px; }
+
+#oplist .grid-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-column-gap: 10%;
+  grid-row-gap: 30px; }
+  #oplist .grid-list .item {
+    border-radius: 10px;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.4);
+    overflow: hidden; }
+    #oplist .grid-list .item .item-media img {
+      height: auto;
+      width: 100%;
+      margin: 0 auto; }
+    #oplist .grid-list .item .item-media .item-desc {
+      height: 5vw;
+      max-width: 100%;
+      display: block;
+      background: #009B89;
+      color: #fff;
+      padding: 5% 2% 5% 5%; }
+      #oplist .grid-list .item .item-media .item-desc h3 {
+        font-size: 2vw;
+        line-height: 3vw;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        -o-text-overflow: ellipsis; }
+      #oplist .grid-list .item .item-media .item-desc h4 {
+        font-size: 1.6vw;
+        line-height: 2vw;
+        font-family: 'Light';
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        -o-text-overflow: ellipsis; }
+#oplist #pagination-container {
+  padding: 20px 0 0 0; }
+
 /*# sourceMappingURL=main.css.map */

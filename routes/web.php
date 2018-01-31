@@ -14,10 +14,8 @@
 Route::get('/', function(){
   return view('auth.login');
 } );
-
-Route::get('/oper/tools', function(){
-  return view('oper.tools');
-} );
+//Operator Routes
+Route::get('/oper/tooling', 'ToolingController@opList');
 
 Route::get('/oper/comments', function(){
   return view('oper.comments');
@@ -63,5 +61,3 @@ Route::post('/admin/media/store', 'MediaController@store');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
