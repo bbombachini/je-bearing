@@ -60,9 +60,7 @@ button{
 #quickView{
   position: fixed;
   top: 50%;
-  // bottom: 0;
   left: 50%;
-  // right: 0;
   width: 520px;
   // height: auto;
   // min-height: 0px;
@@ -80,7 +78,7 @@ button{
   overflow-wrap: break-word;
   overflow-y: auto;
 
-  #toolname {
+  #itemname {
     margin-bottom: 20px;
     padding-right: 20px;
   }
@@ -647,7 +645,7 @@ a{
     text-decoration: none;
     display: block;
   }
-  .tool-item {
+  .list-item {
     box-sizing: border-box;
     padding: 15px 0px 15px 0px;
     border-bottom: 2px solid rgba(60, 59, 59, 0.05);
@@ -1052,7 +1050,7 @@ a{
 
 #comments{
   margin-bottom: 50px;
-  height: 350px; 
+  height: 350px;
   overflow-y:scroll;
 }
 
@@ -1158,4 +1156,3 @@ a{
   }
 }
 //sass --watch css/sass/main.scss:css/main.css
-

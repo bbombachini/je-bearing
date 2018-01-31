@@ -38,7 +38,7 @@ class MediaService {
       $errors = $media->getErrors();
       return redirect()->back()->with('errors', $errors)->withInput();
     }
-    return $media->media_id;
+    return $media->id;
   }
 
   public function destroyMedia($id){

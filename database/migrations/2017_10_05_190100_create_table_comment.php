@@ -13,12 +13,12 @@ class CreateTableComment extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_comment', function (Blueprint $table) {
-            $table->mediumIncrements('comment_id');
-            $table->string('comment_title', 255)->nullable();
-            $table->text('comment_desc');
-            $table->smallInteger('comment_person')->unsigned(); $table->foreign('comment_person')->references('person_id')->on('tbl_person');
-            $table->boolean('comment_active');
+        Schema::create('comment', function (Blueprint $table) {
+            $table->mediumIncrements('id');
+            $table->string('title', 255)->nullable();
+            $table->text('desc');
+            $table->smallInteger('person')->unsigned(); $table->foreign('person')->references('id')->on('person');
+            $table->boolean('active');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateTableComment extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_comment');
+        Schema::dropIfExists('comment');
     }
 }

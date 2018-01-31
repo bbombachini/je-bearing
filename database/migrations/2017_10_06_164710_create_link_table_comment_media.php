@@ -13,11 +13,11 @@ class CreateLinkTableCommentMedia extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_comment_media', function (Blueprint $table) {
-            $table->increments('comment_media_id');
+        Schema::create('comment_media', function (Blueprint $table) {
+            $table->increments('id');
             $table->mediumInteger('comment_id');
             $table->mediumInteger('media_id');
-            $table->smallInteger('comment_media_order');
+            $table->smallInteger('order');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateLinkTableCommentMedia extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_comment_media');
+        Schema::dropIfExists('comment_media');
     }
 }

@@ -13,11 +13,11 @@ class CreateLinkTablePartQuality extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_part_quality', function (Blueprint $table) {
-            $table->increments('part_quality_id');
+        Schema::create('part_quality', function (Blueprint $table) {
+            $table->increments('id');
             $table->smallInteger('part_id');
             $table->mediumInteger('quality_id');
-            $table->smallInteger('part_quality_order');
+            $table->smallInteger('order');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateLinkTablePartQuality extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_part_quality');
+        Schema::dropIfExists('part_quality');
     }
 }

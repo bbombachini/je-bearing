@@ -13,11 +13,11 @@ class CreateLinkTableFixtureMedia extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_fixture_media', function (Blueprint $table) {
-            $table->increments('fixture_media_id');
+        Schema::create('fixture_media', function (Blueprint $table) {
+            $table->increments('id');
             $table->smallInteger('fixture_id');
             $table->mediumInteger('media_id');
-            $table->smallInteger('fixture_media_order');
+            $table->smallInteger('order');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateLinkTableFixtureMedia extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_fixture_media');
+        Schema::dropIfExists('fixture_media');
     }
 }

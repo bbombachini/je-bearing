@@ -13,11 +13,11 @@ class CreateTableStep extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_step', function (Blueprint $table) {
-            $table->mediumIncrements('step_id');
-            $table->string('step_title', 200)->nullable();
-            $table->text('step_desc');
-            $table->boolean('step_active');
+        Schema::create('step', function (Blueprint $table) {
+            $table->mediumIncrements('id');
+            $table->string('title', 200)->nullable();
+            $table->text('desc');
+            $table->boolean('active');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateTableStep extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_step');
+        Schema::dropIfExists('step');
     }
 }

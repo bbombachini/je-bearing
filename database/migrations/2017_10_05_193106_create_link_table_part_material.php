@@ -13,12 +13,12 @@ class CreateLinkTablePartMaterial extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_part_material', function (Blueprint $table) {
-            $table->mediumIncrements('part_material_id');
+        Schema::create('part_material', function (Blueprint $table) {
+            $table->mediumIncrements('id');
             $table->smallInteger('part_id');
             $table->smallInteger('material_id');
-            $table->string('part_material_quantity', 100)->nullable();
-            $table->string('part_material_size', 100)->nullable();
+            $table->string('quantity', 100)->nullable();
+            $table->string('size', 100)->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateLinkTablePartMaterial extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_part_material');
+        Schema::dropIfExists('part_material');
     }
 }

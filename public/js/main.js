@@ -8,8 +8,8 @@
 	var delBtn = document.querySelectorAll('.delete');
 	var search = document.querySelector('#searchfeild');
 	var nameLink = document.querySelectorAll('.itemName');
-	// var chooseImageBtn = document.querySelector('#file-input');
-	// var chooseImageBtn = document.querySelector('input#media');
+	var url = window.location.href.split('/');
+	var section = url[url.length - 2];
 
 	function changeDeleteUrl(e) {
 		e.preventDefault();
@@ -31,12 +31,12 @@
 		popup.style.display = 'block';
 		TweenMax.to(popup, 0.3, {opacity: 1});
 		switch(confirm.id) {
-			case 'deleteTool':
+			case 'deleteItem':
 				confirm.href = confirm.href.replace(/destroy([\/]*)([0-9]*)/, 'destroy/'+id);
 				break;
 			case 'deletePhoto':
 				confirm.href = confirm.href.replace(/destroyMedia([\/]*)([0-9]*)/, 'destroyMedia/'+id);
-				console.log('Delete Photo - tool id= '+id);
+				console.log('Delete Photo - id= '+id);
 				break;
 			default:
 				break;
@@ -53,13 +53,14 @@
 
 	function showView(){
 		//e.preventDefault();
+			// console.log(window.location.href);
 			var bodyarea = document.querySelector('body');
 			var quickView = document.querySelector('#dim2');
 			var close = quickView.querySelector('.xButt');
 			var id = this.dataset.id;
 			// console.log(id);
 			var displayRequest = createRequest();
-			var url = '/admin/tooling/list/'+id;
+			var url = '/admin/'+section+'/list/'+id;
 
 		function closeView(){
 			quickView.style.display = 'none';
@@ -86,13 +87,15 @@
 				infoDiv.style.display = 'block';
 
 				var jsondoc = JSON.parse(displayRequest.responseText);
-				document.querySelector("#toolname").innerHTML = jsondoc.tool[0].tool_name;
-				document.querySelector("#number").innerHTML = jsondoc.tool[0].tool_number;
-				document.querySelector("#desc").innerHTML = jsondoc.tool[0].tool_desc;
-				document.querySelector("#itemImg > img").src = '../../images/'+jsondoc.tool.media_path;
+				console.log(jsondoc);
+				// console.log(jsondoc.section[0].section_name);
+				document.querySelector("#itemname").innerHTML = jsondoc.item[0].name;
+				document.querySelector("#number").innerHTML = jsondoc.item[0].number;
+				document.querySelector("#desc").innerHTML = jsondoc.item[0].desc;
+				document.querySelector("#itemImg > img").src = '../../images/'+jsondoc.item.media_path;
 				// console.log(infoDiv);
 				// console.log(jsondoc);
-				infoDiv.querySelector(".confirmEdit").href = '/admin/tooling/edit/'+ jsondoc.tool[0].tool_id;
+				infoDiv.querySelector(".confirmEdit").href = '/admin/'+section+'/edit/'+ jsondoc.item[0].id;
 				quickView.style.display = 'block';
 				// quickView.style.opacity = 1;
 				TweenMax.to(quickView, 0.3, {opacity: 1});
@@ -105,7 +108,7 @@
 		if(str !== "") {
 			// console.log(str);
 			resultRequest = createRequest();
-			var url = '/admin/tooling/search/'+str;
+			var url = '/admin/'+section+'/search/'+str;
 			resultRequest.onreadystatechange = respRequest;
 			resultRequest.open("GET", url, true);
 			resultRequest.send(str, null);
@@ -119,11 +122,11 @@
 
 					if(resultRequest.response !== 'not-found'){
 						let jsonfile = JSON.parse(resultRequest.responseText);
-						for(let i =0; i< jsonfile.tool.length; i++){
+						for(let i =0; i< jsonfile.item.length; i++){
 						result.style.display = "block";
 						var newDiv = document.createElement("div");
 						var newResult = document.createElement("p");
-						newResult.innerHTML = jsonfile.tool[i].tool_name;
+						newResult.innerHTML = jsonfile.item[i].name;
 						newDiv.appendChild(newResult);
 						result.appendChild(newDiv);
 						}

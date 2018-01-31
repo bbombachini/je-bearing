@@ -13,12 +13,12 @@ class CreateTableTool extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_tool', function (Blueprint $table) {
-            $table->smallIncrements('tool_id');
-            $table->string('tool_name', 100);
-            $table->string('tool_number', 50)->nullable();
-            $table->text('tool_desc')->nullable();
-            $table->boolean('tool_active');
+        Schema::create('tool', function (Blueprint $table) {
+            $table->smallIncrements('id');
+            $table->string('name', 100);
+            $table->string('number', 50)->nullable();
+            $table->text('desc')->nullable();
+            $table->boolean('active');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateTableTool extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_tool');
+        Schema::dropIfExists('tool');
     }
 }

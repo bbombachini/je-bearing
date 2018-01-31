@@ -13,11 +13,11 @@ class CreateTableTeam extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_team', function (Blueprint $table) {
-            $table->smallIncrements('team_id');
-            $table->string('team_name', 100);
-            $table->text('team_desc')->nullable();
-            $table->boolean('team_active');
+        Schema::create('team', function (Blueprint $table) {
+            $table->smallIncrements('id');
+            $table->string('name', 100);
+            $table->text('desc')->nullable();
+            $table->boolean('active');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateTableTeam extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_team');
+        Schema::dropIfExists('team');
     }
 }

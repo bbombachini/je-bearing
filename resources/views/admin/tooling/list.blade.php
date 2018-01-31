@@ -11,7 +11,7 @@
                     <img src="../../images/warning.png" alt="warning icon">
                     <h2>Wait!</h2>
                     <p>Are you sure you want to delete this?</p>
-                    <a id="deleteTool" class="confirmDelete" href="destroy">Yes, Delete</a>
+                    <a id="deleteItem" class="confirmDelete" href="destroy">Yes, Delete</a>
 
             </div>
             <div id="dimClick2"></div>
@@ -30,7 +30,7 @@
                 </div>
 
                 <div id="itemInfo">
-                    <h2 id="toolname"></h2>
+                    <h2 id="itemname"></h2>
                     <p id="number"></p>
                 </div>
 
@@ -76,19 +76,19 @@
         <div class="list">
         <ul>
             <li id="itemListTitles"><p>Name</p><p>Tool #</p><p>Edit</p><p>Delete</p></li>
-            @foreach ($tools as $tool)
-                <li class="tool-item">
+            @foreach ($items as $item)
+                <li class="list-item">
                 <div>
-                  <a class="item-name itemName" href="#" data-id="{{$tool->tool_id}}">{{$tool->tool_name}}</a>
+                  <a class="item-name itemName" href="#" data-id="{{$item->id}}">{{$item->name}}</a>
                 </div>
                 <div>
-                  <p>{{$tool->tool_number}}</p>
+                  <p>{{$item->number}}</p>
                 </div>
                 <div class="item-column">
-                  <a class="edit" href="{{action('ToolingController@edit', ['$id' => $tool->tool_id])}}">Edit</a>
+                  <a class="edit" href="{{action('ToolingController@edit', ['$id' => $item->id])}}">Edit</a>
                 </div>
                 <div class="item-column">
-                  <a class="delete" data-id="{{$tool->tool_id}}" href="#">Delete</a>
+                  <a class="delete" data-id="{{$item->id}}" href="#">Delete</a>
                 </div>
 
 
@@ -100,7 +100,7 @@
 
     </div>
     <div id="pagination-container">
-        {{ $tools->links() }}
+        {{ $items->links() }}
     </div>
 
 

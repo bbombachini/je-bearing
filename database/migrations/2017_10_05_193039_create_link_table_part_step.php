@@ -13,11 +13,11 @@ class CreateLinkTablePartStep extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_part_step', function (Blueprint $table) {
-            $table->increments('part_step_id');
+        Schema::create('part_step', function (Blueprint $table) {
+            $table->increments('id');
             $table->smallInteger('part_id');
             $table->mediumInteger('step_id');
-            $table->smallInteger('part_step_order');
+            $table->smallInteger('order');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateLinkTablePartStep extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_part_step');
+        Schema::dropIfExists('part_step');
     }
 }

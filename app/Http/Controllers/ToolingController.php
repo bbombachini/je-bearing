@@ -9,6 +9,7 @@ use App\Tooling;
 use App\ToolingMedia;
 use Illuminate\Http\Request;
 use App\Services\MediaService;
+use Illuminate\Support\Facades\Log;
 
 use Image;
 
@@ -37,10 +38,10 @@ class ToolingController extends Controller {
 
     public function store(Request $request) {
       $tool = new Tooling;
-      $tool['tool_name'] = $request['name'];
-      $tool['tool_number'] = $request['number'];
-      $tool['tool_desc'] = $request['desc'];
-      $tool['tool_active'] = 1;
+      $tool['name'] = $request['name'];
+      $tool['number'] = $request['number'];
+      $tool['desc'] = $request['desc'];
+      $tool['active'] = 1;
 
       //validates photo media
       if(isset($request['media'])) {
@@ -56,7 +57,7 @@ class ToolingController extends Controller {
       }
 
       if(isset($media_id)) {
-        $order = Tooling::find($tool['tool_id'])->getMediaRelationship()->latest()->first();
+        $order = Tooling::find($tool['id'])->getMediaRelationship()->latest()->first();
         if (empty($order)) {
           $order = 1;
         }
@@ -64,9 +65,9 @@ class ToolingController extends Controller {
           $order++;
         }
         $toolMedia = new ToolingMedia;
-        $toolMedia['tool_id'] = $tool['tool_id'];
+        $toolMedia['tool_id'] = $tool['id'];
         $toolMedia['media_id'] = $media_id;
-        $toolMedia['tool_media_order'] = $order;
+        $toolMedia['order'] = $order;
 
         // save relational info in database
         if (!$toolMedia->save()) {
@@ -80,20 +81,20 @@ class ToolingController extends Controller {
     }
 
     public function list(Tooling $tooling) {
-      $tools = Tooling::where('tool_active', 1)->orderBy('tool_name', 'asc')->paginate(5);
+      $tools = Tooling::where('active', 1)->orderBy('name', 'asc')->paginate(5);
       foreach ($tools as $tool) {
-        $toolMedia = Tooling::find($tool['tool_id'])->getMediaRelationship()->latest()->first();
+        $toolMedia = Tooling::find($tool['id'])->getMediaRelationship()->latest()->first();
         $media = $this->mediaService->getMedia($toolMedia['media_id']);
         if(empty($media)){
           $tool['media_path'] = 'images/noimage.jpg';
         }
         else {
-          $tool['media_path'] = $media['media_path'];
+          $tool['media_path'] = $media['path'];
         }
       }
-      $count = Tooling::where('tool_active', 1)->get()->count();
+      $count = Tooling::where('active', 1)->get()->count();
       // return $tools;
-      return view('admin.tooling.list', ['tools' => $tools, 'count' => $count]);
+      return view('admin.tooling.list', ['items' => $tools, 'count' => $count]);
     }
 
     //TEMPORARY FUNCTION - CHANGE LATER
@@ -114,23 +115,23 @@ class ToolingController extends Controller {
     }
 
     public function quickview($id) {
-      $tool = Tooling::where('tool_id', $id)->get();
+      $tool = Tooling::where('id', $id)->get();
       $toolMedia = Tooling::find($id)->getMediaRelationship()->latest()->first();
         $media = $this->mediaService->getMedia($toolMedia['media_id']);
         if(empty($media)){
           $tool['media_path'] = 'noimage.jpg';
         }
         else {
-          $tool['media_path'] = $media['media_path'];
+          $tool['media_path'] = $media['path'];
         }
-      return (['tool' => $tool]);
+      return (['item' => $tool]);
     }
 
     public function search($str) {
       if(isset($str)) {
-        $tool = Tooling::where('tool_name','LIKE',"{$str}%")->get();
+        $tool = Tooling::where('name','LIKE',"{$str}%")->get();
         if(!$tool->isEmpty()){
-            return (['tool' => $tool]);
+            return (['item' => $tool]);
         } else {
           print "not-found";
         }
@@ -138,13 +139,11 @@ class ToolingController extends Controller {
       else {
         print "empty";
       }
-
-
     }
 
 
     public function edit($id) {
-      $tool = Tooling::where('tool_id', $id)->where('tool_active', 1)->get();
+      $tool = Tooling::where('id', $id)->where('active', 1)->get();
       $toolMedia = Tooling::find($id)->getMediaRelationship()->latest()->first();
       if (empty($toolMedia)) {
         $photo = 'images/noimage.jpg';
@@ -152,7 +151,7 @@ class ToolingController extends Controller {
       }
       else {
         $media = $this->mediaService->getMedia($toolMedia['media_id']);
-        $photo = 'images/'.$media['media_path'];
+        $photo = 'images/'.$media['path'];
         $defaultPhoto = 0;
       }
 
@@ -162,9 +161,9 @@ class ToolingController extends Controller {
     public function update(Request $request) {
       $id = $request['id'];
       $tool = Tooling::find($id);
-      $tool['tool_name'] = $request['name'];
-      $tool['tool_number'] = $request['number'];
-      $tool['tool_desc'] = $request['desc'];
+      $tool['name'] = $request['name'];
+      $tool['number'] = $request['number'];
+      $tool['desc'] = $request['desc'];
 
       if(isset($request['media'])) {
         $this->validate($request, ['media' => 'mimes:jpeg,png,jpg,gif,svg',]);
@@ -178,18 +177,18 @@ class ToolingController extends Controller {
       }
 
       if(isset($media_id)) {
-        $rel = Tooling::find($tool['tool_id'])->getMediaRelationship()->latest()->first();
+        $rel = Tooling::find($tool['id'])->getMediaRelationship()->latest()->first();
         if (empty($rel)) {
           $order = 1;
         }
         else {
-          $order = $rel['tool_media_order']+1;
+          $order = $rel['order']+1;
           $deleteMedia = ToolingController::destroyMedia($id);
         }
         $toolMedia = new ToolingMedia;
         $toolMedia['tool_id'] = $id;
         $toolMedia['media_id'] = $media_id;
-        $toolMedia['tool_media_order'] = $order;
+        $toolMedia['order'] = $order;
 
         // save relational info in database
         if (!$toolMedia->save()) {
@@ -212,13 +211,13 @@ class ToolingController extends Controller {
       else {
         // do not delete entry from database
         // just change active value from 1 to 0
-        $tool['tool_active'] = 0;
+        $tool['active'] = 0;
         if (!$tool->save()) {
           $errors = $tool->getErrors();
           return redirect()->action('ToolingController@list')->with('errors', $errors)->withInput();
         }
         //success
-        return redirect()->action('ToolingController@list')->with('message', 'Your '. $tool->tool_name . ' has been created!');
+        return redirect()->action('ToolingController@list')->with('message', 'Your '. $tool->name . ' has been created!');
       }
     }
 
@@ -229,13 +228,13 @@ class ToolingController extends Controller {
 
     public function destroyMedia($id) {
       $toolMedia_id = Tooling::find($id)->getMediaRelationship()->latest()->first();
-      if (empty($toolMedia_id['tool_media_id'])) {
+      if (empty($toolMedia_id['id'])) {
         return redirect()->back()->withErrors(['No photo to delete']);
       }
-      $toolMedia = ToolingMedia::find($toolMedia_id['tool_media_id']);
+      $toolMedia = ToolingMedia::find($toolMedia_id['id']);
       $media_id = $toolMedia['media_id'];
       if (empty($toolMedia)) {
-        echo "not found id".$toolMedia_id['tool_media_id'];
+        echo "not found id".$toolMedia_id['id'];
       }
       else {
         $toolMedia->delete();

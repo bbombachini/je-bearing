@@ -13,8 +13,8 @@ class CreateLinkTablePartFixture extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_part_fixture', function (Blueprint $table) {
-            $table->mediumIncrements('part_fixture_id');
+        Schema::create('part_fixture', function (Blueprint $table) {
+            $table->mediumIncrements('id');
             $table->smallInteger('part_id');
             $table->smallInteger('fixture_id');
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateLinkTablePartFixture extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_part_fixture');
+        Schema::dropIfExists('part_fixture');
     }
 }

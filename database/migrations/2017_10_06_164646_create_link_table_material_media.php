@@ -13,11 +13,11 @@ class CreateLinkTableMaterialMedia extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_material_media', function (Blueprint $table) {
-            $table->increments('material_media_id');
+        Schema::create('material_media', function (Blueprint $table) {
+            $table->increments('id');
             $table->smallInteger('material_id');
             $table->mediumInteger('media_id');
-            $table->smallInteger('material_media_order');
+            $table->smallInteger('order');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateLinkTableMaterialMedia extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_material_media');
+        Schema::dropIfExists('material_media');
     }
 }

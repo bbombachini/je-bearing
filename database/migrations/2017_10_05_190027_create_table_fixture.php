@@ -13,12 +13,12 @@ class CreateTableFixture extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_fixture', function (Blueprint $table) {
-            $table->smallIncrements('fixture_id');
-            $table->string('fixture_name', 100);
-            $table->string('fixture_number', 50)->nullable();
-            $table->text('fixture_desc')->nullable();
-            $table->boolean('fixture_active');
+        Schema::create('fixture', function (Blueprint $table) {
+            $table->smallIncrements('id');
+            $table->string('name', 100);
+            $table->string('number', 50)->nullable();
+            $table->text('desc')->nullable();
+            $table->boolean('active');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateTableFixture extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_fixture');
+        Schema::dropIfExists('fixture');
     }
 }

@@ -13,8 +13,8 @@ class CreateLinkTableTeamSupervisor extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_team_supervisor', function (Blueprint $table) {
-            $table->mediumIncrements('team_supervisor_id');
+        Schema::create('team_supervisor', function (Blueprint $table) {
+            $table->mediumIncrements('id');
             $table->smallInteger('team_id');
             $table->smallInteger('person_id');
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateLinkTableTeamSupervisor extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_team_supervisor');
+        Schema::dropIfExists('team_supervisor');
     }
 }
