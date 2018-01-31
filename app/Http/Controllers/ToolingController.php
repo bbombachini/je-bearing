@@ -96,6 +96,23 @@ class ToolingController extends Controller {
       return view('admin.tooling.list', ['tools' => $tools, 'count' => $count]);
     }
 
+    //TEMPORARY FUNCTION - CHANGE LATER
+    public function opList(Tooling $tooling) {
+      $tools = Tooling::where('tool_active', 1)->orderBy('tool_name', 'asc')->paginate(6);
+      foreach ($tools as $tool) {
+        $toolMedia = Tooling::find($tool['tool_id'])->getMediaRelationship()->latest()->first();
+        $media = $this->mediaService->getMedia($toolMedia['media_id']);
+        if(empty($media)){
+          $tool['media_path'] = 'noimage.jpg';
+        }
+        else {
+          $tool['media_path'] = $media['media_path'];
+        }
+      }
+        // return $tools;
+        return view('oper.tooling', ['tools' => $tools]);
+    }
+
     public function quickview($id) {
       $tool = Tooling::where('tool_id', $id)->get();
       $toolMedia = Tooling::find($id)->getMediaRelationship()->latest()->first();
