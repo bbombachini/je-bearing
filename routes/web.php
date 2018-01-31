@@ -14,6 +14,24 @@
 Route::get('/', function(){
   return view('auth.login');
 } );
+//Operator Routes
+Route::get('/oper/tooling', 'ToolingController@opList');
+
+Route::get('/oper/comments', function(){
+  return view('oper.comments');
+} );
+
+Route::get('/oper/contactsuper', function(){
+  return view('oper.contactsuper');
+} );
+
+Route::get('/oper/steps', function(){
+  return view('oper.steps');
+} );
+
+Route::get('/oper/qualityalerts', function(){
+  return view('oper.qualityalerts');
+} );
 
 Route::get('/searchpart', function(){
   return view('searchpart');
