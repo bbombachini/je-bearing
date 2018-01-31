@@ -98,19 +98,19 @@ class ToolingController extends Controller {
 
     //TEMPORARY FUNCTION - CHANGE LATER
     public function opList(Tooling $tooling) {
-      $tools = Tooling::where('tool_active', 1)->orderBy('tool_name', 'asc')->paginate(6);
-      foreach ($tools as $tool) {
-        $toolMedia = Tooling::find($tool['tool_id'])->getMediaRelationship()->latest()->first();
-        $media = $this->mediaService->getMedia($toolMedia['media_id']);
+      $items = Tooling::where('active', 1)->orderBy('name', 'asc')->paginate(6);
+      foreach ($items as $item) {
+        $itemMedia = Tooling::find($item['id'])->getMediaRelationship()->latest()->first();
+        $media = $this->mediaService->getMedia($itemMedia['media_id']);
         if(empty($media)){
-          $tool['media_path'] = 'noimage.jpg';
+          $item['media_path'] = 'noimage.jpg';
         }
         else {
-          $tool['media_path'] = $media['media_path'];
+          $item['media_path'] = $media['path'];
         }
       }
         // return $tools;
-        return view('oper.tooling', ['tools' => $tools]);
+        return view('oper.items', ['items' => $items, 'title' => 'Tooling', 'name' => 'tools']);
     }
 
     public function quickview($id) {

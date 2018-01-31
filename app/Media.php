@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Media extends Model
 {
-  protected $table = 'tbl_media';
-  protected $primaryKey = 'media_id';
+  protected $table = 'media';
+  protected $primaryKey = 'id';
 
   protected $rules = [
-    'media_path' => ['required'],
-    'media_active' => ['required']
+    'path' => ['required'],
+    'active' => ['required']
   ];
 
 }
