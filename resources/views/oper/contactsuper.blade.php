@@ -12,6 +12,43 @@
     </div>
 
 
+
+    <div id="contactFormCon">
+
+    	<form id="contactForm">
+
+    		<fieldset class="add-name">
+
+              <fieldset class="contactLabel" id="contactName">
+              	<p>{!! Form::label('Supervisor Name') !!}</p>
+              	{!! Form::text('number', '', ['class' => 'contactInput']) !!}
+              </fieldset>
+
+              <fieldset class="contactLabel" id="contactEmail">
+              	<p>{!! Form::label('Supervisor Email') !!}</p>
+              	{!! Form::text('number', '', ['class' => 'contactInput']) !!}
+              </fieldset>
+
+              <fieldset class="contactLabel" id="contactSubject">
+              	<p>{!! Form::label('Subject') !!}</p>
+              	{!! Form::text('number', '', ['class' => 'contactInput']) !!}
+              </fieldset>
+
+              <fieldset class="contactLabel">
+              	<p>{!! Form::label('message') !!}</p>
+              	{!! Form::textarea('desc', '', ['class' => 'contactInputMessage', 'size' => '50x10']) !!}
+			  </fieldset>
+
+            </fieldset>
+
+
+            <button type="submit" class="green-button" name="button">SUBMIT</button>
+    	</form>
+
+    	
+    </div>
+
+
     
 
 
