@@ -131,7 +131,7 @@ DROP TABLE IF EXISTS `fixture`;
 CREATE TABLE `fixture` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `number` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `number` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `desc` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `active` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -187,7 +187,7 @@ DROP TABLE IF EXISTS `material`;
 CREATE TABLE `material` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `number` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `number` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `desc` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `active` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -766,7 +766,7 @@ DROP TABLE IF EXISTS `tool`;
 CREATE TABLE `tool` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `number` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `number` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `desc` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `active` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,

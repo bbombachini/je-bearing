@@ -11,6 +11,7 @@ class Fixture extends Model
 
   protected $rules = [
     'name' => ['required'],
+    'number' => ['required'],
     'active' => ['required']
   ];
 

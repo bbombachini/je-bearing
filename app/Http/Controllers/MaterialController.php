@@ -87,7 +87,6 @@ class MaterialController extends Controller {
         }
       }
       $count = Material::where('active', 1)->get()->count();
-      // return $fixtures;
       return view('admin.material.list', ['items' => $materials, 'count' => $count]);
     }
 

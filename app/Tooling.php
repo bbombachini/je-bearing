@@ -11,6 +11,7 @@ class Tooling extends Model
 
   protected $rules = [
     'name' => ['required'],
+    'number' => ['required'],
     'active' => ['required']
   ];
 
@@ -18,12 +19,10 @@ class Tooling extends Model
   // This register provides the media_id that has to be selected on tbl_media
   public function getMediaRelationship() {
     return $this->hasOne('App\ToolingMedia', 'tool_id', 'id');
-    // return $this->has('App\ToolingMedia', 'tool_id', 'tool_id');
   }
 
-  // public function storeMediaRelationship($tool_id, $media_id) {
-  //   $last = $this->hasOne('App\ToolingMedia', 'tool_id', 'tool_id')->where('tool_id', $tool_id)->latest()->first()->get();
-  //
-  // }
+  public function getPartRelationship() {
+    return $this->hasMany('App\PartTooling', 'tool_id', 'id');
+  }
 
 }

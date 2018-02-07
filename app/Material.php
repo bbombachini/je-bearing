@@ -17,7 +17,7 @@ class Material extends Model
   // Returns the first register of link table
   // This register provides the media_id that has to be selected on tbl_media
   public function getMediaRelationship() {
-    return $this->hasOne('App\FixtureMedia', 'fixture_id', 'id');
+    return $this->hasOne('App\MaterialMedia', 'material_id', 'id');
   }
 
 }

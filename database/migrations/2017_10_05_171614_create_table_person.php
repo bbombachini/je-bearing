@@ -15,7 +15,8 @@ class CreateTablePerson extends Migration
     {
         Schema::create('person', function (Blueprint $table) {
             $table->smallIncrements('id');
-            $table->string('name', 100);
+            $table->string('fname', 50);
+            $table->string('lname', 50);
             $table->string('password', 100);
             $table->string('position', 150)->nullable();
             $table->string('phone', 25);
