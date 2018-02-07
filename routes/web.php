@@ -41,6 +41,8 @@ Route::get('/oper/qualityalerts', function(){
 Route::get('/searchpart', function(){
   return view('searchpart');
 } );
+
+// Admin routes
 Route::get('/admin/tooling/add', 'ToolingController@add');
 Route::post('/admin/tooling/store', 'ToolingController@store');
 Route::get('/admin/tooling/list', 'ToolingController@list');
@@ -62,6 +64,17 @@ Route::get('/admin/fixture/list/{id}',['uses' => 'FixtureController@quickview'])
 Route::get('/admin/fixture/destroy/{id}', ['uses' => 'FixtureController@destroy']);
 Route::get('/admin/fixture/editMedia/{id}', ['uses' => 'FixtureController@editMedia']);
 Route::get('/admin/fixture/destroyMedia/{id}', ['uses' => 'FixtureController@destroyMedia']);
+
+Route::get('/admin/material/add', 'MaterialController@add');
+Route::post('/admin/material/store', 'MaterialController@store');
+Route::get('/admin/material/list', 'MaterialController@list');
+Route::get('/admin/material/edit/{id}', ['uses' => 'MaterialController@edit']);
+Route::get('/admin/material/search/{str}', ['uses' => 'MaterialController@search']);
+Route::post('/admin/material/update', 'MaterialController@update');
+Route::get('/admin/material/list/{id}',['uses' => 'MaterialController@quickview']);
+Route::get('/admin/material/destroy/{id}', ['uses' => 'MaterialController@destroy']);
+Route::get('/admin/material/editMedia/{id}', ['uses' => 'MaterialController@editMedia']);
+Route::get('/admin/material/destroyMedia/{id}', ['uses' => 'MaterialController@destroyMedia']);
 
 Route::get('/admin/media/add', 'MediaController@add');
 Route::post('/admin/media/store', 'MediaController@store');

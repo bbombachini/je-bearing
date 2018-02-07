@@ -91,7 +91,7 @@
       				<li>Fixtures</li>
       			</a>
 
-      			<a href="#" id="material">
+      			<a href="{{ url('admin/material/list') }}" id="material">
       				<svg version="1.1" id="materialicon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       				viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
       				<g>
