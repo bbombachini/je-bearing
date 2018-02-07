@@ -16,7 +16,7 @@ class CreateTableMaterial extends Migration
         Schema::create('material', function (Blueprint $table) {
             $table->smallIncrements('id');
             $table->string('name', 150);
-            $table->string('number', 50)->nullable();
+            $table->string('number', 50);
             $table->text('desc')->nullable();
             // $table->string('location', 255)->nullable();
             $table->boolean('active');

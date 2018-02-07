@@ -100,6 +100,11 @@ class ToolingController extends Controller {
     //TEMPORARY FUNCTION - CHANGE LATER
     public function opList(Tooling $tooling) {
       $items = Tooling::where('active', 1)->orderBy('name', 'asc')->paginate(6);
+      // $items = DB::table('tool')
+      //       ->join('part', 'users.id', '=', 'contacts.user_id')
+      //       ->join('orders', 'users.id', '=', 'orders.user_id')
+      //       ->select('users.*', 'contacts.phone', 'orders.price')
+      //       ->get();
       foreach ($items as $item) {
         $itemMedia = Tooling::find($item['id'])->getMediaRelationship()->latest()->first();
         $media = $this->mediaService->getMedia($itemMedia['media_id']);
