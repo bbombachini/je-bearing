@@ -91,6 +91,24 @@ class FixtureController extends Controller {
       return view('admin.fixture.list', ['items' => $fixtures, 'count' => $count]);
     }
 
+    ///MAKE AN ITEM CONTROLLER?
+
+    public function opList(Fixture $fixture) {
+      $items = Fixture::where('active', 1)->orderBy('name', 'asc')->paginate(6);
+      foreach ($items as $item) {
+        $itemMedia = Fixture::find($item['id'])->getMediaRelationship()->latest()->first();
+        $media = $this->mediaService->getMedia($itemMedia['media_id']);
+        if(empty($media)){
+          $item['media_path'] = 'noimage.jpg';
+        }
+        else {
+          $item['media_path'] = $media['path'];
+        }
+      }
+        // return $fixtures;
+        return view('oper.items', ['items' => $items, 'title' => 'Fixtures', 'name' => 'fixtures']);
+    }
+
     public function quickview($id) {
       $fixture = Fixture::where('id', $id)->get();
       $fixtureMedia = Fixture::find($id)->getMediaRelationship()->latest()->first();
