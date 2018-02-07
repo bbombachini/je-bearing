@@ -16,6 +16,11 @@ Route::get('/', function(){
 } );
 //Operator Routes
 Route::get('/oper/tooling', 'ToolingController@opList');
+Route::get('/oper/fixture', 'FixtureController@opList');
+Route::get('/oper/material', 'MaterialController@opList');
+
+
+
 
 Route::get('/oper/comments', function(){
   return view('oper.comments');
