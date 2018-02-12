@@ -137,7 +137,7 @@
       				<li>Comments</li>
       			</a>
 
-      			<a href="#" id="opperator">
+      			<a href="{{ url('admin/operator/add') }}" id="opperator">
       				<svg version="1.1" id="operatoricon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       				viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
       				<path class="st0" d="M347.2,200.4c0,55-43.3,99.7-96.6,99.7S154,255.4,154,200.4H347.2z"/>
