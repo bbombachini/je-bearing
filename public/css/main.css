@@ -306,11 +306,14 @@ a {
       transform: rotate(90deg);
       height: 10px; }
 
+#adminLoginCon a {
+  display: inline-block; }
+
 #dashboard {
   display: grid;
-  grid-template-rows: repeat(5, 1fr);
-  grid-gap: 5%;
-  padding: 5%; }
+  grid-template-rows: repeat(6, 1fr);
+  grid-gap: 4%;
+  padding: 4%; }
   #dashboard .dash-section {
     display: grid;
     grid-template-columns: 20% 80%;
@@ -955,5 +958,19 @@ a {
         -o-text-overflow: ellipsis; }
 #oplist #pagination-container {
   padding: 20px 0 0 0; }
+
+#adminLogin {
+  text-align: center;
+  float: right;
+  padding: 20px; }
+  #adminLogin img {
+    width: 20px;
+    margin-bottom: 10px; }
+  #adminLogin p {
+    font-size: 16px;
+    line-height: 0px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #fff; }
 
 /*# sourceMappingURL=main.css.map */
