@@ -76,6 +76,10 @@ Route::get('/admin/material/destroy/{id}', ['uses' => 'MaterialController@destro
 Route::get('/admin/material/editMedia/{id}', ['uses' => 'MaterialController@editMedia']);
 Route::get('/admin/material/destroyMedia/{id}', ['uses' => 'MaterialController@destroyMedia']);
 
+Route::get('/admin/operator/add', function(){
+  return view('admin.operator.add');
+} );
+
 Route::get('/admin/media/add', 'MediaController@add');
 Route::post('/admin/media/store', 'MediaController@store');
 
