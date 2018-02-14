@@ -1,72 +1,66 @@
-@extends('layouts.login-app')
+@extends('layouts.admin-app')
 
-@section('message')
-    <h1>Register</h1>
-    <h3>Create and account to get started.</h3>
-@endsection
-
-@section('login')
-    <div id="logout">
-        <img src="../../../images/white-arrow.png" alt="left arrow" id="leftarrow">
-        <a href="{{ route('login') }}"><p>LOGIN</p></a>
-    </div>
-@endsection
+@include('partials.errors')
 
 @section('content')
+<section id="content">
+			<div class="section-head">
+					<div class="section-title">
+						<h1>Add User</h1>
+					</div>
 
-<section id="content-con">
-    <div id="content-form">
+					<div>
+            <a id="back-button" href="{{ url('/admin/users/list')}}">
+  						<img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
+              <p class="backText">BACK TO USERS</p>
+            </a>
+					</div>
 
-    <div>
-        <img src="images/je-bearing-logo-icon.png" alt="JE Bearing logo" id="loginLogo">
-    </div>
+			</div>
 
-        <form  method="POST" action="{{ route('register') }}">
-            {{ csrf_field() }}
+				<div>
 
-            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                    <input class="form-input" id="name" type="text" placeholder="Name" name="name" value="{{ old('name') }}" required autofocus>
+          <form  method="POST" action="{{ route('register') }}">
+						{{ csrf_field() }}
+            <fieldset class="add-name">
+              <p>{!! Form::label('fname', 'First Name') !!}</p>
+              {!! Form::text('fname', '', ['class' => 'form-control', 'required' => 'required']) !!}
+							<p>{!! Form::label('lname', 'Last Name') !!}</p>
+              {!! Form::text('lname', '', ['class' => 'form-control', 'required' => 'required']) !!}
+            </fieldset>
 
-                    @if ($errors->has('name'))
-                        <span class="help-block">
-                            <p class="errorMsg">>{{ $errors->first('name') }}</p>
-                        </span>
-                    @endif
-            </div>
+            <fieldset class="add-contact">
+              <p>{!! Form::label('email', 'Email') !!}</p>
+              {!! Form::email('email', '', ['class' => 'form-control', 'required' => 'required']) !!}
+							<p>{!! Form::label('password', 'Password') !!}</p>
+              {!! Form::password('password', ['class' => 'form-control', 'required' => 'required']) !!}
+            </fieldset>
 
-            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+            <fieldset class="add-employee-info">
+              <p>{!! Form::label('employee_id', 'Employee ID#') !!}</p>
+              {!! Form::text('employee_id', '', ['class' => 'form-control', 'required' => 'required']) !!}
+							<p>{!! Form::label('role', 'Role') !!}</p>
+              {!! Form::select('role', array('3' => 'Operator', '2' => 'Supervisor', '1' => 'Admin'), ['class' => 'form-select', 'required' => 'required']) !!}
+            </fieldset>
 
-                    <input class="form-input" id="email" type="email" placeholder="Email" name="email" value="{{ old('email') }}" required>
+						<fieldset class="add-access">
+							<p>{!! Form::label('phone', 'Phone') !!}</p>
+              {!! Form::text('phone', '', ['class' => 'form-control']) !!}
+							<p>{!! Form::label('repair_access', 'Repair and Overhaul') !!}</p>
+							{!! Form::hidden('repair_access', 0, ['id' => 'hidden_repair_access']) !!}
+              {!! Form::checkbox('repair_access', 1) !!}
+							<p>{!! Form::label('instructions_access', 'Work Instructions') !!}</p>
+							{!! Form::hidden('instructions_access', 0, ['id' => 'hidden_instructions_access']) !!}
+							{!! Form::checkbox('instructions_access', 1) !!}
+							<p>{!! Form::label('assembly_access', 'Assembly') !!}</p>
+							{!! Form::hidden('assembly_access', 0, ['id' => 'hidden_assembly_access']) !!}
+							{!! Form::checkbox('assembly_access', 1) !!}
 
-                    @if ($errors->has('email'))
-                        <span class="help-block">
-                            <p class="errorMsg">{{ $errors->first('email') }}</p>
-                        </span>
-                    @endif
-            </div>
+						</fieldset>
+                <a class="white-button" href="{{ url('/admin/users/list')}}">CANCEL</a>
+								<button type="submit" class="green-button" name="button">ADD</button>
+					</form>
 
-            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-
-                    <input class="form-input" type="password" placeholder="Password" name="password" required>
-
-                    @if ($errors->has('password'))
-                        <span class="help-block">
-                            <p class="errorMsg">{{ $errors->first('password') }}</p>
-                        </span>
-                    @endif
-            </div>
-
-            <div >
-                <input class="form-input" id="password-confirm" type="password" placeholder="Confirm Password" class="form-control" name="password_confirmation" required>
-            </div>
-
-            <div class="form-group">
-                    <button type="submit" class="loginButt">
-                        Register
-                    </button>
-            </div>
-        </form>
-    </div>
+				</div>
 </section>
-
 @endsection

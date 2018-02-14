@@ -2,7 +2,7 @@
 
 @section('message')
 <div>
-   <h1>Welcome, {{ Auth::user()->name }}</h1>
+   <h1>Welcome, {{ Auth::user()->fname }} {{ Auth::user()->lname }}</h1>
    <h3>Choose where you would like to go.</h3>
 </div>
 @endsection
