@@ -76,6 +76,12 @@ Route::get('/admin/material/destroy/{id}', ['uses' => 'MaterialController@destro
 Route::get('/admin/material/editMedia/{id}', ['uses' => 'MaterialController@editMedia']);
 Route::get('/admin/material/destroyMedia/{id}', ['uses' => 'MaterialController@destroyMedia']);
 
+Route::get('/admin/user/add', 'UsersController@add');
+Route::post('/admin/user/store', 'UsersController@store');
+Route::get('/admin/user/list', 'UsersController@list');
+Route::get('/admin/user/edit/{id}', ['uses' => 'UsersController@edit']);
+Route::post('/admin/user/update', 'UsersController@update');
+
 Route::get('/admin/operator/add', function(){
   return view('admin.operator.add');
 } );
