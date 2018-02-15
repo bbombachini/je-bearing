@@ -7,9 +7,9 @@
 
       	<div id="userinfo">
 
-      		<div class="image-cropper"><img src="../../../images/person.jpg" alt="user image"></div>
+      		<div class="image-cropper"><img src="../../../{{ Auth::user()->photo }}" alt="user image"></div>
       		<div>
-
+            <h2 id="userName">{{ Auth::user()->fname }} {{ Auth::user()->lname }}</h2>
       			<p>Admin</p>
       		</div>
       	</div>
@@ -137,7 +137,7 @@
       				<li>Comments</li>
       			</a>
 
-      			<a href="{{ url('admin/operator/add') }}" id="opperator">
+      			<a href="{{ url('admin/user/list') }}" id="users">
       				<svg version="1.1" id="operatoricon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       				viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
       				<path class="st0" d="M347.2,200.4c0,55-43.3,99.7-96.6,99.7S154,255.4,154,200.4H347.2z"/>
@@ -150,19 +150,7 @@
       				<path class="st0" d="M211.5,53.9c0,0,32.6-25,76.4,0l-21.3,64.5h-34.4L211.5,53.9z"/>
       				<path class="st0" d="M211.6,291.9"/>
       				</svg>
-      				<li>Operators</li>
-      			</a>
-
-      			<a href="#" id="supervisor">
-      				<svg version="1.1" id="supervisoricon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-      				viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
-      				<path class="st0" d="M276.6,274l-15.1,27.8l17.1,78.5c0.1,0.5,0.1,0.9-0.1,1.4l-23.2,64.7c-0.8,2.1-3.8,2.2-4.6,0.1l-26.6-64.7
-      				c-0.2-0.5-0.2-1-0.1-1.5l17.1-78.4L226,274c-83.5,12.2-147.6,84.1-147.6,171c0,3.7,0.2,7.3,0.4,10.9l344.8,1.6
-      				c0.3-4.2,0.5-8.3,0.5-12.6C424.2,358.2,360.1,286.3,276.6,274z"/>
-      				<circle class="st0" cx="251.3" cy="156.5" r="113.5"/>
-      				</svg>
-
-      				<li>Supervisors</li>
+      				<li>Users</li>
       			</a>
       		</ul>
       	</nav>

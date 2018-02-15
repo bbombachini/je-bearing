@@ -57,8 +57,12 @@
 			var close = quickView.querySelector('.xButt');
 			var id = this.dataset.id;
 			// console.log(id);
+			var curUrl = window.location.href.split('/');
+			// console.log(curUrl);
+			var section = curUrl[curUrl.length - 2];
 			var displayRequest = createRequest();
 			var url = '/admin/'+section+'/list/'+id;
+			// console.log(url);
 
 		function closeView(){
 			quickView.style.display = 'none';
@@ -72,7 +76,13 @@
 		document.querySelector('#dimClick').addEventListener("click", closeView, false);
 
 		// console.log(url);
-		displayRequest.onreadystatechange = respStatus;
+		if(section === 'user') {
+			displayRequest.onreadystatechange = respUser;
+		}
+		else {
+			displayRequest.onreadystatechange = respStatus;
+		}
+
 		displayRequest.open("GET", url, true);
 		displayRequest.send(id, null);
 
@@ -98,6 +108,41 @@
 				// quickView.style.opacity = 1;
 				TweenMax.to(quickView, 0.3, {opacity: 1});
 			}
+		}
+
+		function respUser() {
+		  if(displayRequest.readyState === 4 || displayRequest.readyState === "complete"){
+		    var infoDiv = document.querySelector('#quickView');
+		    infoDiv.style.display = 'block';
+
+		    var jsondoc = JSON.parse(displayRequest.responseText);
+
+		    console.log(jsondoc);
+		    document.querySelector("#username").innerHTML = jsondoc.item[0].fname+' '+jsondoc.item[0].lname;
+		    document.querySelector("#employee-id").innerHTML = jsondoc.item[0].employee_id;
+				let role;
+				switch(jsondoc.item[0].role) {
+		      case 1:
+		        role = 'Administrator';
+		        break;
+		      case 2:
+		        role = 'Supervisor';
+		        break;
+		      default:
+						role = 'Operator'
+		        break;
+		    }
+		    document.querySelector("#user-role").innerHTML = role;
+				document.querySelector("#user-email").innerHTML = jsondoc.item[0].email;
+				document.querySelector("#user-phone").innerHTML = jsondoc.item[0].phone;
+
+		    document.querySelector("#itemImg > img").src = '../../'+jsondoc.item[0].photo;
+		    // console.log(infoDiv);
+		    // console.log(jsondoc);
+		    infoDiv.querySelector(".confirmEdit").href = '/admin/'+section+'/edit/'+ jsondoc.item[0].id;
+		    quickView.style.display = 'block';
+		    TweenMax.to(quickView, 0.3, {opacity: 1});
+		  }
 		}
 	}
 
@@ -145,7 +190,13 @@
 						result.style.display = "block";
 						var newDiv = document.createElement("div");
 						var newResult = document.createElement("p");
-						newResult.innerHTML = jsonfile.item[i].name;
+						if(url.indexOf('/admin/user/list/search') !== -1) {
+							newResult.innerHTML = jsonfile.item[i].lname+', '+jsonfile.item[i].fname;
+						}
+						else {
+							newResult.innerHTML = jsonfile.item[i].name;
+						}
+						// newResult.innerHTML = jsonfile.item[i].name;
 						newDiv.appendChild(newResult);
 						result.appendChild(newDiv);
 						}
