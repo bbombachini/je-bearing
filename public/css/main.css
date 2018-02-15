@@ -727,6 +727,8 @@ a {
 
 #qualityAlerts, #opperations {
   margin-top: 50px;
+  display: inline-block;
+  width: 100%;
 }
 
 .partStep .addButt {
@@ -742,14 +744,36 @@ a {
   display: inline-block;
 }
 
-.subForm {
-  display: block;
-  clear: both;
-  width: 80%;
+.opperInfo {
   margin: 0 auto;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 90%;
+  padding-bottom: 100px;
 }
-.subForm .form-control {
+.opperInfo .add-media {
+  float: right;
+}
+
+.addSubForm {
+  color: #009B89;
+  float: right;
+  margin-right: 10%;
+  margin-top: 20px;
+}
+
+.alert-name, .add-media {
+  width: 40%;
+}
+
+.alert-name {
+  float: left;
+  display: inline;
+  padding-right: 0px;
+}
+.alert-name input {
+  width: 100%;
+}
+
+.form-control {
   box-sizing: border-box;
   border: none;
   color: #009B60;
@@ -758,16 +782,15 @@ a {
   font-size: 16px;
   margin-top: 10px;
 }
-.subForm .alert-name, .subForm .add-media {
-  width: 40%;
-}
-.subForm .alert-name {
-  float: left;
-  display: inline;
-  padding-right: 0px;
-}
-.subForm .alert-name input {
-  width: 100%;
+
+.subForm {
+  clear: both;
+  display: block;
+  display: block;
+  clear: both;
+  width: 90%;
+  margin: 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 .subForm .add-desc {
   display: block;
@@ -778,12 +801,13 @@ a {
   padding-left: 0px;
 }
 .subForm fieldset {
-  padding: 30px;
+  padding: 20px;
 }
 .subForm textarea {
   border: 1px solid rgba(0, 0, 0, 0.1);
   max-width: 100%;
   width: 100%;
+  margin-top: 10px;
 }
 .subForm label {
   color: #a2a2a2;
@@ -817,6 +841,7 @@ a {
 
 #addPart {
   width: 90%;
+  margin: 0 auto;
 }
 #addPart .add-item input {
   width: 100%;
