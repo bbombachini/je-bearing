@@ -16,7 +16,7 @@
 
         <div id="search">
           <img src="../../../images/search.png" alt="search icon" id="searchicon">
-          <input id="searchfeild" type="search" placeholder="search">
+          <input class="searchfeild" type="search" placeholder="search">
 
           <div id="result">
 
@@ -26,7 +26,7 @@
 
       	<nav id="adminNav">
       		<ul>
-      			<a href="#" id="part">
+      			<a href="{{ url('admin/part/add') }}" id="part">
       				<svg version="1.1" id="particon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       				viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
       				<g><g>
@@ -168,10 +168,17 @@
       	</nav>
 
       	<div id="logout">
+            <a href="{{ route('login') }}"
+              onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();">
+                  <img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
+                  <p>LOGOUT</p>
+            </a>
 
-      		<img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
-      		<p>LOGOUT</p>
-      	</div>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              {{ csrf_field() }}
+          </form>
+      </div>
 
 
 
