@@ -30,13 +30,16 @@
                 </div>
 
                 <div id="itemInfo">
-                    <h2 id="itemname"></h2>
-                    <p id="number"></p>
+                    <h2 id="username"></h2>
+                    <p id="employee-id"></p>
+                    <p id="user-role"></p>
+                    <p id="user-email"></p>
+                    <p id="user-phone"></p>
                 </div>
 
             </div>
 
-            <p id="desc"></p>
+            <!-- <p id="desc"></p> -->
             <a class="confirmEdit" href="#">Edit</a>
 
         </div>
@@ -79,12 +82,17 @@
             @foreach ($users as $user)
                 <li class="list-item">
                 <div>
-                  <a class="item-name itemName" href="#" data-id="{{$user->id}}">{{$user->lname}}, {{$user->fname}}</a>
+                  <a class="item-name itemName user-item" href="#" data-id="{{$user->id}}">{{$user->lname}}, {{$user->fname}}</a>
                 </div>
                 <div>
                   <p>{{$user->employee_id}}</p>
                 </div>
-
+                <div class="item-column">
+                  <a class="edit" href="{{action('UsersController@edit', ['$id' => $user->id])}}">Edit</a>
+                </div>
+                <div class="item-column">
+                  <a class="delete" data-id="{{$user->id}}" href="#">Delete</a>
+                </div>
 
                 </li>
 

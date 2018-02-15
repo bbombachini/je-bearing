@@ -41,6 +41,8 @@
 							<fieldset class="add-contact">
 	              <p>{!! Form::label('email', 'Email') !!}</p>
 	              {!! Form::email('email', $user->email, ['class' => 'form-control', 'required' => 'required']) !!}
+								<p>{!! Form::label('password', 'Password') !!}</p>
+	              {!! Form::password('password', ['class' => 'form-control']) !!}
 	            </fieldset>
 
 							<fieldset class="add-employee-info">

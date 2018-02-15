@@ -49,6 +49,28 @@ class MediaService {
     return;
   }
 
+  public function storeUserPhoto($input) {
+    $dir = 'images';
+    if ($input->hasFile('media')) {
+      $image = $input->file('media');
+      $name = $dir.'/'.time().'.'.$image->getClientOriginalExtension();
+      $img = Image::make($image);
+      // $img = Image::make(Request::file('media'));
+      $img->orientate();
+      $img->resize(400, null, function($constraint){
+      $constraint->upsize();
+      $constraint->aspectRatio();
+      });
+      $img->save(public_path('/' . $name));
+    }
+    return $name;
+  }
+
+  public function destroyUserPhoto($photo_path){
+    File::delete($photo_path);
+    return;
+  }
+
 }
 
  ?>

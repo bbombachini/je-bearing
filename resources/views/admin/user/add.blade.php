@@ -54,6 +54,11 @@
 							{!! Form::checkbox('assembly_access', 1) !!}
 						</fieldset>
 
+						<fieldset class="add-media">
+              <p>{!! Form::label('media', 'Photo') !!}</p>
+              {!! Form::file('media', ['class' => 'form-control']) !!}
+            </fieldset>
+
 						<a class="white-button" href="{{ url('/admin/users/list')}}">CANCEL</a>
 						<button type="submit" class="green-button" name="button">ADD</button>
 					{!! Form::close() !!}

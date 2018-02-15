@@ -6,10 +6,9 @@
 
 	var resultRequest;
 	var delBtn = document.querySelectorAll('.delete');
-	var search = document.querySelector('#searchfeild');
+	var search = document.querySelectorAll('.searchfeild');
 	var nameLink = document.querySelectorAll('.itemName');
-	var url = window.location.href.split('/');
-	var section = url[url.length - 2];
+
 
 	function changeDeleteUrl(e) {
 		e.preventDefault();
@@ -21,7 +20,6 @@
 		function ignoreDelete(){
 		popup.style.display = 'none';
 		popup.style.opacity = 0;
-
 		}
 
 		ignore.removeEventListener("click", ignoreDelete, false);
@@ -59,8 +57,12 @@
 			var close = quickView.querySelector('.xButt');
 			var id = this.dataset.id;
 			// console.log(id);
+			var curUrl = window.location.href.split('/');
+			// console.log(curUrl);
+			var section = curUrl[curUrl.length - 2];
 			var displayRequest = createRequest();
 			var url = '/admin/'+section+'/list/'+id;
+			// console.log(url);
 
 		function closeView(){
 			quickView.style.display = 'none';
@@ -74,7 +76,13 @@
 		document.querySelector('#dimClick').addEventListener("click", closeView, false);
 
 		// console.log(url);
-		displayRequest.onreadystatechange = respStatus;
+		if(section === 'user') {
+			displayRequest.onreadystatechange = respUser;
+		}
+		else {
+			displayRequest.onreadystatechange = respStatus;
+		}
+
 		displayRequest.open("GET", url, true);
 		displayRequest.send(id, null);
 
@@ -101,14 +109,70 @@
 				TweenMax.to(quickView, 0.3, {opacity: 1});
 			}
 		}
+
+		function respUser() {
+		  if(displayRequest.readyState === 4 || displayRequest.readyState === "complete"){
+		    var infoDiv = document.querySelector('#quickView');
+		    infoDiv.style.display = 'block';
+
+		    var jsondoc = JSON.parse(displayRequest.responseText);
+
+		    console.log(jsondoc);
+		    document.querySelector("#username").innerHTML = jsondoc.item[0].fname+' '+jsondoc.item[0].lname;
+		    document.querySelector("#employee-id").innerHTML = jsondoc.item[0].employee_id;
+				let role;
+				switch(jsondoc.item[0].role) {
+		      case 1:
+		        role = 'Administrator';
+		        break;
+		      case 2:
+		        role = 'Supervisor';
+		        break;
+		      default:
+						role = 'Operator'
+		        break;
+		    }
+		    document.querySelector("#user-role").innerHTML = role;
+				document.querySelector("#user-email").innerHTML = jsondoc.item[0].email;
+				document.querySelector("#user-phone").innerHTML = jsondoc.item[0].phone;
+
+		    document.querySelector("#itemImg > img").src = '../../'+jsondoc.item[0].photo;
+		    // console.log(infoDiv);
+		    // console.log(jsondoc);
+		    infoDiv.querySelector(".confirmEdit").href = '/admin/'+section+'/edit/'+ jsondoc.item[0].id;
+		    quickView.style.display = 'block';
+		    TweenMax.to(quickView, 0.3, {opacity: 1});
+		  }
+		}
 	}
+
+	var url;
+
+	var searchfeilds = document.querySelectorAll(".itemsearchfeild");
+
+	// function switchSearch(e){
+	// 	var id = e.currentTarget.id;
+	// 	var str = e.currentTarget.value;
+	// 	// console.log(id);
+	// 	var url = "http://localhost:8000/admin/"+id+'/list/search/'+str;
+	// 	console.log(url);
+	// }
+
+	// for(var i = 0; i<searchfeilds.length; i++){
+	// 	searchfeilds[i].addEventListener("click", switchSearch,false);
+	// }
+
 
 	function showResults(e){
 		var str = e.currentTarget.value;
-		if(str !== "") {
 			// console.log(str);
+		var url = window.location.href+'/search/'+str;
+
+		if(str !== "") {
+
 			resultRequest = createRequest();
-			var url = '/admin/'+section+'/search/'+str;
+
+			// console.log(url);
 			resultRequest.onreadystatechange = respRequest;
 			resultRequest.open("GET", url, true);
 			resultRequest.send(str, null);
@@ -175,12 +239,79 @@
 	// }
 	//USE EVENT LISTENER TO MAKE XHR OBJECT -- look at Marcos class file
 
+	function showItemResults(e){
+		var id = e.currentTarget.id;
+		var val = e.currentTarget.value;
+		// console.log(id);
+		var link = "http://localhost:8000/admin/"+id+'/list/search/'+val;
+		console.log(link);
+
+		if(val !== "") {
+
+			resultRequest = createRequest();
+
+			// console.log(url);
+			resultRequest.onreadystatechange = respRequest;
+			resultRequest.open("GET", link, true);
+			resultRequest.send(val, null);
+
+			function respRequest() {
+				if(resultRequest.readyState === 4 || resultRequest.readyState === "complete"){
+					var result = document.querySelector('.itemResult [dataset-id="tooling"]');
+					debugger;
+					// while(result.firstChild) {
+					//  result.removeChild(result.firstChild);
+					// }
+
+
+
+					if(resultRequest.response !== 'not-found'){
+						let jsonfile = JSON.parse(resultRequest.responseText);
+						for(let i =0; i< jsonfile.item.length; i++){
+						// result.style.display = "block";
+						var newDiv = document.createElement("div");
+						var newResult = document.createElement("p");
+						newResult.innerHTML = jsonfile.item[i].name;
+						newDiv.appendChild(newResult);
+						result.appendChild(newDiv);
+						}
+					} else {
+						result.style.display = "block";
+						var newDiv = document.createElement("div");
+						var newResult = document.createElement("p");
+						newResult.innerHTML = "Result not found";
+						newResult.style.color = 'red';
+						newDiv.appendChild(newResult);
+						result.appendChild(newDiv);
+					}
+				}
+			}
+		}
+		else {
+			result.style.display = 'none';
+		}
+	}
+
 	nameLink.forEach(function(btn, index) {
 		btn.addEventListener('click', showView, false);
 	});
 	delBtn.forEach(function(btn, index) {
 	btn.addEventListener('click', changeDeleteUrl, false);
 	});
-	search.addEventListener('input', showResults, false);
+
+
+	for(var i = 0; i<search.length; i++){
+		console.log("hi");
+		search[i].addEventListener('input', showResults, false);
+	}
+
+		for(var i = 0; i<searchfeilds.length; i++){
+		searchfeilds[i].addEventListener("input", showItemResults,false);
+	}
+
+	// console.log('hi');
+
+
+
 	// chooseImageBtn.addEventListener('change', updatePhotoDisplay, false);
 })();

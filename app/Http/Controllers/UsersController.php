@@ -20,21 +20,14 @@ class UsersController extends Controller {
 
     private $service;
 
-    // public function __construct(MediaService $service) {
-    //     $this->mediaService = $service;
-    // }
-
-    // public function index() {
-    //   $tooling = Tooling::all();
-    //   $count = $tooling->count();
-    //   return view('admin.tooling.list', ['tools' => $tooling, 'count' => $count]);
-    // }
+    public function __construct(MediaService $service) {
+        $this->mediaService = $service;
+    }
 
     public function add() {
       $user = new User;
       return view('admin.user.add', ['user' => $user]);
     }
-
 
     public function store(Request $request) {
       $user = new User;
@@ -51,11 +44,14 @@ class UsersController extends Controller {
       $user['active'] = 1;
 
       //validates photo media
-      // if(isset($request['media'])) {
-      //   $this->validate($request, ['media' => 'mimes:jpeg,png,jpg,gif,svg']);
-      //   //save media file in images folder
-      //   $media_id = $this->mediaService->storeMedia($request);
-      // }
+      if(isset($request['media'])) {
+        $this->validate($request, ['media' => 'mimes:jpeg,png,jpg,gif,svg',]);
+        //save media file in images folder
+        $photo = $this->mediaService->storeUserPhoto($request);
+        if($photo) {
+          $user['photo'] = $photo;
+        }
+      }
 
       // save info in database
       if (!$user->save()) {
@@ -63,42 +59,12 @@ class UsersController extends Controller {
         return redirect()->action('UsersController@add')->with('errors', $errors)->withInput();
       }
 
-      // if(isset($media_id)) {
-      //   $order = Tooling::find($tool['id'])->getMediaRelationship()->latest()->first();
-      //   if (empty($order)) {
-      //     $order = 1;
-      //   }
-      //   else {
-      //     $order++;
-      //   }
-      //   $toolMedia = new ToolingMedia;
-      //   $toolMedia['tool_id'] = $tool['id'];
-      //   $toolMedia['media_id'] = $media_id;
-      //   $toolMedia['order'] = $order;
-      //
-      //   // save relational info in database
-      //   if (!$toolMedia->save()) {
-      //     $errors = $toolMedia->getErrors();
-      //     return redirect()->action('ToolingController@add')->with('errors', $errors)->withInput();
-      //   }
-      // }
-
       //success
       return redirect()->action('UsersController@list');
     }
 
     public function list(User $user) {
       $users = User::where('active', 1)->orderBy('lname', 'asc')->paginate(10);
-      // foreach ($users as $user) {
-      //   $toolMedia = Tooling::find($tool['id'])->getMediaRelationship()->latest()->first();
-      //   $media = $this->mediaService->getMedia($toolMedia['media_id']);
-      //   if(empty($media)){
-      //     $tool['media_path'] = 'images/noimage.jpg';
-      //   }
-      //   else {
-      //     $tool['media_path'] = $media['path'];
-      //   }
-      // }
       $count = User::where('active', 1)->get()->count();
       // return $tools;
       return view('admin.user.list', ['users' => $users, 'count' => $count]);
@@ -127,39 +93,34 @@ class UsersController extends Controller {
     // }
 
     public function quickview($id) {
-      $tool = User::where('id', $id)->get();
+      $user = User::where('id', $id)->get();
       return (['item' => $user]);
     }
 
-    // public function search($str) {
-    //   if(isset($str)) {
-    //     $tool = Tooling::where('name','LIKE',"{$str}%")->get();
-    //     if(!$tool->isEmpty()){
-    //         return (['item' => $tool]);
-    //     } else {
-    //       print "not-found";
-    //     }
-    //   }
-    //   else {
-    //     print "empty";
-    //   }
-    // }
-
+    public function search($str) {
+      if(isset($str)) {
+        $user = User::where('name','LIKE',"{$str}%")->get();
+        if(!$user->isEmpty()){
+            return (['item' => $user]);
+        } else {
+          print "not-found";
+        }
+      }
+      else {
+        print "empty";
+      }
+    }
 
     public function edit($id) {
       $user = User::where('id', $id)->where('active', 1)->get();
-      // $toolMedia = Tooling::find($id)->getMediaRelationship()->latest()->first();
-      // if (empty($toolMedia)) {
-        // $photo = 'images/noimage.jpg';
-        $defaultPhoto = 1;
-      // }
-      // else {
-      //   $media = $this->mediaService->getMedia($toolMedia['media_id']);
-      //   $photo = 'images/'.$media['path'];
-      //   $defaultPhoto = 0;
-      // }
 
-      // return view('admin.user.edit', ['old' => $user, 'photo' => $photo, 'id' => $id, 'defaultPhoto' => $defaultPhoto]);
+      if ($user[0]['photo'] === 'images/default.jpg') {
+        $defaultPhoto = 1;
+      }
+      else {
+        $defaultPhoto = 0;
+      }
+
       return view('admin.user.edit', ['old' => $user, 'id' => $id, 'defaultPhoto' => $defaultPhoto]);
     }
 
@@ -169,7 +130,6 @@ class UsersController extends Controller {
       $user['fname'] = $request['fname'];
       $user['lname'] = $request['lname'];
       $user['email'] = $request['email'];
-      // $user['password'] = bcrypt($request['password']);
       $user['employee_id'] = $request['employee_id'];
       $user['role'] = $request['role'];
       $user['phone'] = $request['phone'];
@@ -177,43 +137,73 @@ class UsersController extends Controller {
       $user['instructions_access'] = $request['instructions_access'];
       $user['assembly_access'] = $request['assembly_access'];
 
-      // if(isset($request['media'])) {
-      //   $this->validate($request, ['media' => 'mimes:jpeg,png,jpg,gif,svg',]);
-      //   //save media file in images folder
-      //   $media_id = $this->mediaService->storeMedia($request);
-      // }
+      if(!empty($request['password'])) {
+        $user['password'] = bcrypt($request['password']);
+      }
+
+      $oldPhoto = false;
+      if(isset($request['media'])) {
+        if($user['photo'] != 'images/default.jpg') {
+          $oldPhoto = $user['photo'];
+        }
+        $this->validate($request, ['media' => 'mimes:jpeg,png,jpg,gif,svg',]);
+        //save media file in images folder
+        $photo = $this->mediaService->storeUserPhoto($request);
+        if($photo) {
+          $user['photo'] = $photo;
+        }
+      }
 
       if (!$user->save()) {
         $errors = $user->getErrors();
         return redirect()->action('UsersController@edit', ['id' => $id])->with('errors', $errors)->withInput();
       }
-
-      // if(isset($media_id)) {
-      //   $rel = Tooling::find($tool['id'])->getMediaRelationship()->latest()->first();
-      //   if (empty($rel)) {
-      //     $order = 1;
-      //   }
-      //   else {
-      //     $order = $rel['order']+1;
-      //     $deleteMedia = ToolingController::destroyMedia($id);
-      //   }
-      //   $toolMedia = new ToolingMedia;
-      //   $toolMedia['tool_id'] = $id;
-      //   $toolMedia['media_id'] = $media_id;
-      //   $toolMedia['order'] = $order;
-      //
-      //   // save relational info in database
-      //   if (!$toolMedia->save()) {
-      //     $errors = $toolMedia->getErrors();
-      //     return redirect()->action('ToolingController@edit', ['id' => $id])->with('errors', $errors)->withInput();
-      //   }
-      // }
+      // if changing photo, remove previous photo if it existed
+      else if($oldPhoto) {
+        $deleteMedia = $this->mediaService->destroyUserPhoto($oldPhoto);
+      }
 
       //success
       return redirect()->action('UsersController@list');
     }
 
+    public function destroy($id) {
+      $user = User::find($id);
 
+      if (empty($user)) {
+        echo "not found id".$id;
+      }
+      else {
+        // do not delete entry from database
+        // just change active value from 1 to 0
+        $user['active'] = 0;
+        if (!$user->save()) {
+          $errors = $user->getErrors();
+          return redirect()->action('UsersController@list')->with('errors', $errors)->withInput();
+        }
+        //success
+        return redirect()->action('UsersController@list');
+      }
+    }
 
+    public function destroyMedia($id) {
+      $user = User::find($id);
+      if (empty($user['photo']) === 'images/default.jpg') {
+        return redirect()->back()->withErrors(['No photo to delete']);
+      }
+      else {
+        $photo_path = $user['photo'];
+        $user['photo'] = 'images/default.jpg';
 
+        //success
+        if (!$user->save()) {
+          $errors = $user->getErrors();
+          return redirect()->action('UsersController@edit', ['id' => $id])->with('errors', $errors)->withInput();
+        }
+        else {
+          $deleteMedia = $this->mediaService->destroyUserPhoto($photo_path);
+          return redirect()->action('UsersController@edit', ['id' => $id]);
+        }
+      }
+    }
 }
