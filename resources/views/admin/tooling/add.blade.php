@@ -21,17 +21,17 @@
             {!! Form::model($tool, ['action' => 'ToolingController@store', 'id' => 'add', 'files' => true]) !!}
             <fieldset class="add-name">
               <p>{!! Form::label('name', 'Name') !!}</p>
-              {!! Form::text('name', '', ['class' => 'form-control', 'required' => 'required']) !!}
+              {!! Form::text('name', ['required' => 'required']) !!}
             </fieldset>
 
             <fieldset class="add-number">
               <p>{!! Form::label('number', 'Tool #') !!}</p>
-              {!! Form::text('number', '', ['class' => 'form-control']) !!}
+              {!! Form::text('number') !!}
             </fieldset>
 
             <fieldset class="add-media">
               <p>{!! Form::label('media', 'Media') !!}</p>
-              {!! Form::file('media', ['class' => 'form-control']) !!}
+              {!! Form::file('media') !!}
             </fieldset>
 
 						<fieldset class="add-desc">

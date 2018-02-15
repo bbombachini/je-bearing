@@ -16,7 +16,7 @@
 
         <div id="search">
           <img src="../../../images/search.png" alt="search icon" id="searchicon">
-          <input id="searchfeild" type="search" placeholder="search">
+          <input class="searchfeild" type="search" placeholder="search">
 
           <div id="result">
 
@@ -130,11 +130,18 @@
       		</ul>
       	</nav>
 
-      	<div id="logout">
+      <div id="logout">
+            <a href="{{ route('login') }}"
+              onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();">
+                  <img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
+                  <p>LOGOUT</p>
+            </a>
 
-      		<img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
-      		<p>LOGOUT</p>
-      	</div>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              {{ csrf_field() }}
+          </form>
+      </div>
 
 
 
