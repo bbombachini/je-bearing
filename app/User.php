@@ -46,4 +46,14 @@ class User extends Authenticatable
       }
 
   }
+
+      public function isSuper()
+  {
+    if($this->role === 2) {
+      return $this->role;
+
+    } else {
+      return 0;
+    }
+  }
 }
