@@ -190,7 +190,13 @@
 						result.style.display = "block";
 						var newDiv = document.createElement("div");
 						var newResult = document.createElement("p");
-						newResult.innerHTML = jsonfile.item[i].name;
+						if(url.indexOf('/admin/user/list/search') !== -1) {
+							newResult.innerHTML = jsonfile.item[i].lname+', '+jsonfile.item[i].fname;
+						}
+						else {
+							newResult.innerHTML = jsonfile.item[i].name;
+						}
+						// newResult.innerHTML = jsonfile.item[i].name;
 						newDiv.appendChild(newResult);
 						result.appendChild(newDiv);
 						}
@@ -242,6 +248,7 @@
 	function showItemResults(e){
 		var id = e.currentTarget.id;
 		var val = e.currentTarget.value;
+		var itemResultDiv = document.querySelectorAll(".itemResult");
 		// console.log(id);
 		var link = "http://localhost:8000/admin/"+id+'/list/search/'+val;
 		console.log(link);
@@ -257,18 +264,17 @@
 
 			function respRequest() {
 				if(resultRequest.readyState === 4 || resultRequest.readyState === "complete"){
-					var result = document.querySelector('.itemResult [dataset-id="tooling"]');
-					debugger;
-					// while(result.firstChild) {
-					//  result.removeChild(result.firstChild);
-					// }
+					var result = document.querySelector('#searchTables [data-id="'+ id +'"]');
+					// debugger;
 
-
-
+					while(result.firstChild) {
+					 result.removeChild(result.firstChild);
+					}
 					if(resultRequest.response !== 'not-found'){
 						let jsonfile = JSON.parse(resultRequest.responseText);
 						for(let i =0; i< jsonfile.item.length; i++){
-						// result.style.display = "block";
+						result.style.display = "block";
+					// debugger;
 						var newDiv = document.createElement("div");
 						var newResult = document.createElement("p");
 						newResult.innerHTML = jsonfile.item[i].name;
@@ -288,7 +294,9 @@
 			}
 		}
 		else {
-			result.style.display = 'none';
+			for (let i = 0; i<itemResultDiv.length; i++){
+			itemResultDiv[i].style.display = 'none';
+			}
 		}
 	}
 
@@ -305,13 +313,10 @@
 		search[i].addEventListener('input', showResults, false);
 	}
 
-		for(var i = 0; i<searchfeilds.length; i++){
+	for(var i = 0; i<searchfeilds.length; i++){
 		searchfeilds[i].addEventListener("input", showItemResults,false);
 	}
 
 	// console.log('hi');
-
-
-
 	// chooseImageBtn.addEventListener('change', updatePhotoDisplay, false);
 })();

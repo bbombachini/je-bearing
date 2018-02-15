@@ -99,7 +99,11 @@ class UsersController extends Controller {
 
     public function search($str) {
       if(isset($str)) {
-        $user = User::where('name','LIKE',"{$str}%")->get();
+        $user = User::where(function ($query) use ($str) {
+          $query->where('fname','LIKE',"{$str}%")
+                ->orWhere('lname','LIKE',"{$str}%");
+        })->get();
+
         if(!$user->isEmpty()){
             return (['item' => $user]);
         } else {

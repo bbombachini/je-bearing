@@ -1,5 +1,17 @@
 @extends('layouts.login-app')
 
+@section('admin-login')
+  <div id="adminLoginCon">
+    <a href="{{url('admin/tooling/list')}}">
+      <div id="adminLogin">
+        <img src="../../../images/user-icon.png" alt="user ucon" id="userIcon">
+        <p>Admin</p>
+      </div>
+    </a>
+  </div>
+@endsection
+
+
 @section('message')
 <div>
    <h1>Welcome, {{ Auth::user()->fname }} {{ Auth::user()->lname }}</h1>
@@ -31,16 +43,29 @@
 @section('content')
 
 <section id="dashboard">
-  <div class="dash-section">
+
+
+  <a href="oper/tooling" class="dash-section">
     <div class="dash-icon">
       <img src="../../../images/workIcon.svg" alt="Work Instructions">
     </div>
-    <div class="dash-text">
-      <a href="{{ url('searchpart') }}"><h3>Work Instructions</h3></a>
-    </div>
-  </div>
 
-  <a href="admin/tooling/list" class="dash-section">
+    <div class="dash-text">
+        <h3>Work Instructions</h3>
+    </div>
+  </a>
+
+  <a href="oper/tooling" class="dash-section">
+    <div class="dash-icon">
+      <img src="../../../images/workIcon.svg" alt="Work Instructions">
+    </div>
+
+    <div class="dash-text">
+        <h3>Assembly</h3>
+    </div>
+  </a>
+
+  <a href="oper/tooling" class="dash-section">
       <div class="dash-icon">
         <img src="../../../images/repairIcon.svg" alt="Repair and Overhaul">
       </div>
@@ -50,32 +75,33 @@
       </div>
   </a>
 
-  <div class="dash-section">
+<a href="#" class="dash-section">
     <div class="dash-icon">
       <img src="../../../images/newsIcon.svg" alt="J/E News">
     </div>
     <div class="dash-text">
-      <a href="#"><h3>J/E News</h3></a>
-    </div>
+      <h3>J/E News</h3>
   </div>
+</a>
 
-  <div class="dash-section">
+<a href="#" class="dash-section">
     <div class="dash-icon">
       <img src="../../../images/humanIcon.svg" alt="Human Resources">
     </div>
     <div class="dash-text">
-      <a href="#"><h3>Human Resources</h3></a>
+      <h3>Human Resources</h3>
     </div>
-  </div>
+</a>
 
-  <div class="dash-section">
+<a href="#" class="dash-section">
     <div class="dash-icon">
       <img src="../../../images/freepointIcon.svg" alt="Freepoint">
     </div>
     <div class="dash-text">
-      <a href="#"><h3>Freepoint</h3></a>
+      <h3>Freepoint</h3>
     </div>
   </div>
+</a>
 
 </section>
 
