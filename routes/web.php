@@ -47,18 +47,27 @@ Route::get('/admin/tooling/add', 'ToolingController@add');
 Route::post('/admin/tooling/store', 'ToolingController@store');
 Route::get('/admin/tooling/list', 'ToolingController@list');
 Route::get('/admin/tooling/edit/{id}', ['uses' => 'ToolingController@edit']);
-Route::get('/admin/tooling/search/{str}', ['uses' => 'ToolingController@search']);
+Route::get('/admin/tooling/list/search/{str}', ['uses' => 'ToolingController@search']);
 Route::post('/admin/tooling/update', 'ToolingController@update');
 Route::get('/admin/tooling/list/{id}',['uses' => 'ToolingController@quickview']);
 Route::get('/admin/tooling/destroy/{id}', ['uses' => 'ToolingController@destroy']);
 Route::get('/admin/tooling/editMedia/{id}', ['uses' => 'ToolingController@editMedia']);
 Route::get('/admin/tooling/destroyMedia/{id}', ['uses' => 'ToolingController@destroyMedia']);
 
+
+Route::get('/admin/part/add', function(){
+  return view('admin.part.add');
+} );
+
+Route::get('/admin/part/add/search/{str}', ['uses' => 'ToolingController@search']);
+
+
+
 Route::get('/admin/fixture/add', 'FixtureController@add');
 Route::post('/admin/fixture/store', 'FixtureController@store');
 Route::get('/admin/fixture/list', 'FixtureController@list');
 Route::get('/admin/fixture/edit/{id}', ['uses' => 'FixtureController@edit']);
-Route::get('/admin/fixture/search/{str}', ['uses' => 'FixtureController@search']);
+Route::get('/admin/fixture/list/search/{str}', ['uses' => 'FixtureController@search']);
 Route::post('/admin/fixture/update', 'FixtureController@update');
 Route::get('/admin/fixture/list/{id}',['uses' => 'FixtureController@quickview']);
 Route::get('/admin/fixture/destroy/{id}', ['uses' => 'FixtureController@destroy']);
@@ -69,7 +78,7 @@ Route::get('/admin/material/add', 'MaterialController@add');
 Route::post('/admin/material/store', 'MaterialController@store');
 Route::get('/admin/material/list', 'MaterialController@list');
 Route::get('/admin/material/edit/{id}', ['uses' => 'MaterialController@edit']);
-Route::get('/admin/material/search/{str}', ['uses' => 'MaterialController@search']);
+Route::get('/admin/material/list/search/{str}', ['uses' => 'MaterialController@search']);
 Route::post('/admin/material/update', 'MaterialController@update');
 Route::get('/admin/material/list/{id}',['uses' => 'MaterialController@quickview']);
 Route::get('/admin/material/destroy/{id}', ['uses' => 'MaterialController@destroy']);

@@ -4,6 +4,8 @@
   <div id="container-login">
       <section id="welcome-con">
 
+        @yield('admin-login')
+
         <div id="welcome-text">
           @yield('message')
         </div>
