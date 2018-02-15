@@ -86,3 +86,7 @@ Route::post('/admin/media/store', 'MediaController@store');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/admin/addnew', ['middleware' => ['admin'], function() {
+    return view('admin.addnew');
+}]);

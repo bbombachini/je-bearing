@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Log;
 
 class User extends Authenticatable
 {
@@ -21,6 +22,8 @@ class User extends Authenticatable
         'fname', 'lname', 'email', 'password', 'employee_id', 'phone', 'photo', 'role', 'assembly_access', 'repair_access', 'instructions_access', 'active'
     ];
 
+
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -31,4 +34,16 @@ class User extends Authenticatable
         'password', 'remember_token'
 
     ];
+
+      public function isAdmin()
+  {
+      Log::info($this->role);
+      if($this->role === 1) {
+        return $this->role;
+
+      } else {
+        return 0;
+      }
+
+  }
 }
