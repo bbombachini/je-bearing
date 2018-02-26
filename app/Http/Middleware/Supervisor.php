@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use Illuminate\Support\Facades\Log;
 use Closure;
+use Auth;
 
 class Supervisor
 {

@@ -21,9 +21,9 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-  
+
       Log::info('checking if is admin');
-        if ( Auth::check() && Auth::user()->isAdmin() )
+        if ( Auth::check() && Auth::user()->isAdmin())
       {
           Log::info('user is admin');
           return $next($request);

@@ -39,7 +39,7 @@ Route::get('/searchpart', function(){
 } );
 
 //Supervisor and Admin shared routes
-Route::middleware(['admin', 'supervisor'])->group(function () {
+Route::group(['middleware' => ['admin', 'supervisor']] , function () {
   Route::get('/admin/tooling/list', 'ToolingController@list');
   Route::get('/admin/tooling/edit/{id}', ['uses' => 'ToolingController@edit']);
   Route::get('/admin/tooling/search/{str}', ['uses' => 'ToolingController@search']);
@@ -63,7 +63,17 @@ Route::middleware(['admin', 'supervisor'])->group(function () {
 
   Route::get('/admin/media/add', 'MediaController@add');
 
+  Route::get('/admin/addnew', function() {
+      return view('admin.addnew');
+  });
+
 });
+// Route::middleware(['supervisor'])->group(function () {
+//
+//
+//
+// });
+
 // Admin routes
 Route::middleware(['admin'])->group(function () {
 
@@ -85,9 +95,9 @@ Route::middleware(['admin'])->group(function () {
 
     Route::post('/admin/media/store', 'MediaController@store');
 
-    Route::get('/admin/addnew', function() {
-        return view('admin.addnew');
-    });
+    // Route::get('/admin/addnew', function() {
+    //     return view('admin.addnew');
+    // });
 
 
 });

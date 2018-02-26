@@ -22,7 +22,8 @@ class User extends Authenticatable
         'fname', 'lname', 'email', 'password', 'employee_id', 'phone', 'photo', 'role', 'assembly_access', 'repair_access', 'instructions_access', 'active'
     ];
 
-
+protected $admin = false;
+protected $supervisor = false;
 
     /**
      * The attributes that should be hidden for arrays.
@@ -39,21 +40,23 @@ class User extends Authenticatable
   {
       Log::info($this->role);
       if($this->role === 1) {
-        return $this->role;
+        $this->admin = true;
+        return $this->admin;
 
       } else {
-        return 0;
+        return false;
       }
 
   }
 
       public function isSuper()
   {
-    if($this->role === 2) {
-      return $this->role;
+    if($this->role === 2 || $this->admin === true) {
+      $this->supervisor = true;
+      return $this->supervisor;
 
     } else {
-      return 0;
+      return false;
     }
   }
 }
