@@ -82,6 +82,11 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/tooling/destroy/{id}', ['uses' => 'ToolingController@destroy']);
     Route::get('/admin/tooling/destroyMedia/{id}', ['uses' => 'ToolingController@destroyMedia']);
 
+    Route::get('/admin/part/add/search/{str}', ['uses' => 'ToolingController@search']);
+    Route::get('/admin/part/add', function(){
+     return view('admin.part.add');
+    } );
+
     Route::get('/admin/fixture/add', 'FixtureController@add');
     Route::post('/admin/fixture/store', 'FixtureController@store');
     Route::get('/admin/fixture/destroy/{id}', ['uses' => 'FixtureController@destroy']);

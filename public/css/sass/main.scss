@@ -714,6 +714,8 @@ a{
 #qualityAlerts, #opperations{
 
   margin-top: 50px;
+  display: inline-block;
+  width: 100%;
 
 }
 
@@ -735,17 +737,23 @@ a{
   }
 }
 
+.opperInfo{
+  margin: 0 auto;
+  width: 90%;
+  padding-bottom: 100px;
+
+  .add-media{
+    float: right;
+  }
 
 
-.subForm{
-  .form-control{
-    box-sizing: border-box;
-    border: none;
-    color: $lightgreen;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-    width: 100%;
-    font-size: 16px;
-    margin-top: 10px;
+}
+
+ .addSubForm{
+    color: $blue;
+    float: right;
+    margin-right: 10%;
+    margin-top: 20px;
   }
 
   .alert-name, .add-media{
@@ -760,6 +768,21 @@ a{
     }
   }
 
+  .form-control{
+    box-sizing: border-box;
+    border: none;
+    color: $lightgreen;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    width: 100%;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+.subForm{
+
+  clear: both;
+  display: block;
+
   .add-desc{
     display: block;
     clear: both;
@@ -771,7 +794,7 @@ a{
   }
 
   fieldset{
-    padding: 30px;
+    padding: 20px;
 
   }
 
@@ -779,10 +802,11 @@ a{
     border: 1px solid rgba(0,0,0,0.1);
     max-width: 100%;
     width: 100%;
+    margin-top: 10px;
   }
   display: block;
   clear: both;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   border: 1px solid rgba(0,0,0,0.1);
 
@@ -828,6 +852,7 @@ a{
 
 #addPart{
   width: 90%;
+  margin: 0 auto;
   .add-item input{
     width: 100%;
   }
