@@ -60,7 +60,7 @@
                 </div>
 
             </div>
-					
+
                 <!-- <a class="white-button" href="{{ url('/admin/part/list')}}">CANCEL</a> -->
 								<!-- <button type="submit" class="green-button" name="button">ADD</button> -->
 							{!! Form::close() !!}
@@ -88,7 +88,7 @@
                   <p>{!! Form::label('media', 'Media') !!}</p>
                   {!! Form::file('media', ['class' => 'form-control']) !!}
                   </fieldset>
-                
+
               </div>
 
               <div id="stepForm" class="subForm">
@@ -126,7 +126,7 @@
                   {!! Form::close() !!}
               </div>
               <p class="addSubForm">Add Another Step</p>
-            
+
             </div>
 
 
