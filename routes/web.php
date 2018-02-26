@@ -39,7 +39,8 @@ Route::get('/searchpart', function(){
 } );
 
 //Supervisor and Admin shared routes
-Route::group(['middleware' => ['admin', 'supervisor']] , function () {
+Route::group(['middleware' => ['supervisor']] , function () {
+
   Route::get('/admin/tooling/list', 'ToolingController@list');
   Route::get('/admin/tooling/edit/{id}', ['uses' => 'ToolingController@edit']);
   Route::get('/admin/tooling/search/{str}', ['uses' => 'ToolingController@search']);
@@ -62,19 +63,14 @@ Route::group(['middleware' => ['admin', 'supervisor']] , function () {
   Route::get('/admin/material/editMedia/{id}', ['uses' => 'MaterialController@editMedia']);
 
   Route::get('/admin/media/add', 'MediaController@add');
+  Route::post('/admin/media/store', 'MediaController@store');
 
   Route::get('/admin/addnew', function() {
       return view('admin.addnew');
   });
-
 });
-// Route::middleware(['supervisor'])->group(function () {
-//
-//
-//
-// });
 
-// Admin routes
+// Admin only routes
 Route::middleware(['admin'])->group(function () {
 
     Route::get('/admin/tooling/add', 'ToolingController@add');
@@ -95,14 +91,17 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/material/add', 'MaterialController@add');
     Route::post('/admin/material/store', 'MaterialController@store');
 
+    Route::get('/admin/user/add', 'UsersController@add');
+    Route::post('/admin/user/store', 'UsersController@store');
+    Route::get('/admin/user/list', 'UsersController@list');
+    Route::get('/admin/user/list/{id}',['uses' => 'UsersController@quickview']);
+    Route::get('/admin/user/edit/{id}', ['uses' => 'UsersController@edit']);
+    Route::post('/admin/user/update', 'UsersController@update');
+    Route::get('/admin/user/destroy/{id}', ['uses' => 'UsersController@destroy']);
+    Route::get('/admin/user/destroyMedia/{id}', ['uses' => 'UsersController@destroyMedia']);
+    Route::get('/admin/user/list/search/{str}', ['uses' => 'UsersController@search']);
+
     Route::get('/admin/material/destroy/{id}', ['uses' => 'MaterialController@destroy']);
     Route::get('/admin/material/destroyMedia/{id}', ['uses' => 'MaterialController@destroyMedia']);
-
-    Route::post('/admin/media/store', 'MediaController@store');
-
-    // Route::get('/admin/addnew', function() {
-    //     return view('admin.addnew');
-    // });
-
 
 });

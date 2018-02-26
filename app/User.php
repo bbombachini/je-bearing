@@ -51,7 +51,7 @@ protected $supervisor = false;
 
       public function isSuper()
   {
-    if($this->role === 2 || $this->admin === true) {
+    if($this->role === 2 || $this->role === 1) {
       $this->supervisor = true;
       return $this->supervisor;
 
