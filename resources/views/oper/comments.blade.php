@@ -9,6 +9,13 @@
                 <h2 id="bigTitle">Comments</h2>
                 <h5 id="subTitle">Read or Write comments about this part.</h5>
             </div>
+
+            <div class="top-left">
+              <a href="{{ url('/home')}}">
+                <img src="../../../images/home-icon.png" width="20px" alt="go home">
+                <p>HOME</p>
+              </a>
+            </div>
     </div>
 
 
