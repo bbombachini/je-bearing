@@ -54,10 +54,14 @@ Route::get('/admin/tooling/destroy/{id}', ['uses' => 'ToolingController@destroy'
 Route::get('/admin/tooling/editMedia/{id}', ['uses' => 'ToolingController@editMedia']);
 Route::get('/admin/tooling/destroyMedia/{id}', ['uses' => 'ToolingController@destroyMedia']);
 
-
-Route::get('/admin/part/add', function(){
-  return view('admin.part.add');
-} );
+Route::get('/admin/part/list', 'PartController@list');
+Route::get('/admin/part/edit/{id}', ['uses' => 'PartController@edit']);
+// Route::get('/admin/part/add', function(){
+//   return view('admin.part.add');
+// } );
+Route::get('/admin/part/add', 'PartController@add');
+Route::post('/admin/part/store', 'PartController@store');
+Route::get('/admin/part/list/search/{str}', ['uses' => 'PartController@search']);
 
 Route::get('/admin/part/add/search/{str}', ['uses' => 'ToolingController@search']);
 

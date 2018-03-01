@@ -21,4 +21,8 @@ class Fixture extends Model
     return $this->hasOne('App\FixtureMedia', 'fixture_id', 'id');
   }
 
+  public function parts() {
+      return $this->belongsToMany('App\Part', 'part_fixture', 'fixture_id', 'part_id')->withTimestamps();;
+  }
+
 }
