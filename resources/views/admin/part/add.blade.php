@@ -43,12 +43,25 @@
                     <div class="itemResult" data-id="tooling" id="toolingResult"></div>
                 </div>
 
+                <div class="listItem tooling">
+                    <ul data-id="toolingList">
+
+                    </ul>
+                </div>
+
                 <div id="search-fixture">
                   <fieldset class="add-item">
                     <p>{!! Form::label('fixture', 'Fixtures') !!}</p>
                     <input class="itemsearchfeild" type="search" placeholder="Search Fixtures" id="fixture">
                   </fieldset>
                     <div class="itemResult" data-id="fixture" id="fixtureResult"></div>
+                </div>
+
+                <div class="listItem fixture">
+                    <ul data-id="fixtureList" >
+
+
+                    </ul>
                 </div>
 
                 <div id="search-material">
@@ -59,11 +72,19 @@
                     <div class="itemResult" data-id="material" id="materialResult"></div>
                 </div>
 
+                <div class="listItem material">
+                    <ul data-id="materialList">
+
+                    </ul>
+                </div>
+
             </div>
 
-                <!-- <a class="white-button" href="{{ url('/admin/part/list')}}">CANCEL</a> -->
-								<!-- <button type="submit" class="green-button" name="button">ADD</button> -->
+                <a class="white-button" href="{{ url('/admin/part/list')}}">CANCEL</a>
+								<button type="submit" class="green-button" name="button">NEXT</button>
 							{!! Form::close() !!}
+
+
 
             <div id="opperations" class="partStep">
 

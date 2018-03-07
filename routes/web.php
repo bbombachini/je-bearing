@@ -43,21 +43,21 @@ Route::group(['middleware' => ['supervisor']] , function () {
 
   Route::get('/admin/tooling/list', 'ToolingController@list');
   Route::get('/admin/tooling/edit/{id}', ['uses' => 'ToolingController@edit']);
-  Route::get('/admin/tooling/search/{str}', ['uses' => 'ToolingController@search']);
+  Route::get('/admin/tooling/list/search/{str}', ['uses' => 'ToolingController@search']);
   Route::post('/admin/tooling/update', 'ToolingController@update');
   Route::get('/admin/tooling/list/{id}',['uses' => 'ToolingController@quickview']);
   Route::get('/admin/tooling/editMedia/{id}', ['uses' => 'ToolingController@editMedia']);
 
   Route::get('/admin/fixture/list', 'FixtureController@list');
   Route::get('/admin/fixture/edit/{id}', ['uses' => 'FixtureController@edit']);
-  Route::get('/admin/fixture/search/{str}', ['uses' => 'FixtureController@search']);
+Route::get('/admin/fixture/list/search/{str}', ['uses' => 'FixtureController@search']);
   Route::post('/admin/fixture/update', 'FixtureController@update');
   Route::get('/admin/fixture/list/{id}',['uses' => 'FixtureController@quickview']);
   Route::get('/admin/fixture/editMedia/{id}', ['uses' => 'FixtureController@editMedia']);
 
   Route::get('/admin/material/list', 'MaterialController@list');
   Route::get('/admin/material/edit/{id}', ['uses' => 'MaterialController@edit']);
-  Route::get('/admin/material/search/{str}', ['uses' => 'MaterialController@search']);
+Route::get('/admin/material/list/search/{str}', ['uses' => 'MaterialController@search']);
   Route::post('/admin/material/update', 'MaterialController@update');
   Route::get('/admin/material/list/{id}',['uses' => 'MaterialController@quickview']);
   Route::get('/admin/material/editMedia/{id}', ['uses' => 'MaterialController@editMedia']);

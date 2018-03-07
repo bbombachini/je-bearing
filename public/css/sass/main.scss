@@ -1375,6 +1375,30 @@ a{
     padding: 20px 0 0 0;
   }
 }
+.selected{
+  display:inline-flex;
+  margin: 15px;
+  padding: 10px;
+  border: 1px solid $blue;
+  border-radius: 30px;
+  p {
+    color: $blue;
+    line-height: 1.2rem;
+    font-size: 1.3rem;
+  }
+  .popItem{
+    width: 15px;
+    height: 15px;
+    border-radius: 150px;
+    margin-left: 15px;
+    padding: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    display: inline-flex;
+    justify-content: center;
+    align-content: center;
+    color: $blue;
+  }
+}
 
 
 #adminLogin{
@@ -1393,4 +1417,6 @@ a{
     color: #fff;
   }
 }
-//sass --watch css/sass/main.scss:css/main.css
+//Run SASS
+//$ cd public
+//$ sass --watch css/sass/main.scss:css/main.css
