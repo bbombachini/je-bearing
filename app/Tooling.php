@@ -21,8 +21,8 @@ class Tooling extends Model
     return $this->hasOne('App\ToolingMedia', 'tool_id', 'id');
   }
 
-  public function getPartRelationship() {
-    return $this->hasMany('App\PartTooling', 'tool_id', 'id');
+  public function parts() {
+      return $this->belongsToMany('App\Part', 'part_tool', 'tool_id', 'part_id')->withTimestamps();;
   }
 
 }

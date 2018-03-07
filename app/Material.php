@@ -20,4 +20,8 @@ class Material extends Model
     return $this->hasOne('App\MaterialMedia', 'material_id', 'id');
   }
 
+  public function parts() {
+      return $this->belongsToMany('App\Part', 'part_material', 'material_id', 'part_id')->withTimestamps();;
+  }
+
 }

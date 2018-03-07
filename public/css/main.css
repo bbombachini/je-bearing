@@ -725,7 +725,7 @@ a {
   color: #fff;
 }
 
-#qualityAlerts, #opperations {
+#qualityAlerts, #operations {
   margin-top: 50px;
   display: inline-block;
   width: 100%;
@@ -744,12 +744,12 @@ a {
   display: inline-block;
 }
 
-.opperInfo {
+.operInfo {
   margin: 0 auto;
   width: 90%;
   padding-bottom: 100px;
 }
-.opperInfo .add-media {
+.operInfo .add-media {
   float: right;
 }
 
