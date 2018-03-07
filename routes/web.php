@@ -28,9 +28,13 @@ Route::get('/oper/comments', function(){
 Route::get('/oper/contactsuper', function(){
   return view('oper.contactsuper');
 } );
+
 Route::get('/oper/steps', function(){
   return view('oper.steps');
 } );
+
+// Route::get('/oper/steps', 'ToolingController@opList');
+
 Route::get('/oper/qualityalerts', function(){
   return view('oper.qualityalerts');
 } );

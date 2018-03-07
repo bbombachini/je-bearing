@@ -2242,6 +2242,7 @@
         },
         {
             "name": "symfony/translation",
+
             "version": "v4.0.6",
             "source": {
                 "type": "git",
