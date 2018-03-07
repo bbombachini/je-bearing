@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLinkTablePartSetup extends Migration
+class CreateLinkTablePartOperation extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateLinkTablePartSetup extends Migration
      */
     public function up()
     {
-        Schema::create('part_setup', function (Blueprint $table) {
+        Schema::create('part_operation', function (Blueprint $table) {
           $table->increments('id');
           $table->smallInteger('part_id');
-          $table->mediumInteger('setup_id');
+          $table->mediumInteger('operation_id');
           $table->smallInteger('order');
           $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateLinkTablePartSetup extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('part_setup');
+        Schema::dropIfExists('part_operation');
     }
 }

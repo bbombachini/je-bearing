@@ -30,7 +30,7 @@
 
             <fieldset class="part-number">
               <p>{!! Form::label('partnumber', 'Part #') !!}</p>
-              {!! Form::text('number', '') !!}
+              {!! Form::text('number', '', ['required' => 'required']) !!}
             </fieldset>
 
             <div id="searchTables">
@@ -62,7 +62,7 @@
             </div>
 
                 <!-- <a class="white-button" href="{{ url('/admin/part/list')}}">CANCEL</a> -->
-								<!-- <button type="submit" class="green-button" name="button">ADD</button> -->
+								<button type="submit" class="green-button" name="button">SAVE</button>
 							{!! Form::close() !!}
 
             <div id="opperations" class="partStep">

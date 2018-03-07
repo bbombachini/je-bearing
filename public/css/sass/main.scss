@@ -66,7 +66,6 @@ button{
   // min-height: 0px;
   max-height: 460px;
   @include translate(-50%, -50%);
-  // margin: auto auto;
   z-index: 99;
   letter-spacing: 1px;
   align-content: space-between;
@@ -711,7 +710,7 @@ a{
    }
 }
 
-#qualityAlerts, #opperations{
+#qualityAlerts, #operations{
 
   margin-top: 50px;
   display: inline-block;
@@ -737,7 +736,7 @@ a{
   }
 }
 
-.opperInfo{
+.operInfo{
   margin: 0 auto;
   width: 90%;
   padding-bottom: 100px;
@@ -1164,7 +1163,7 @@ a{
   display: flex;
   align-content: center;
   justify-content: space-between;
-  padding: 25px 30px; 
+  padding: 25px 30px;
   border-top: 1px solid rgba(0,0,0, 0.2);
   color: $darkgrey;
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLinkTableSetupStep extends Migration
+class CreateTableOperation extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateLinkTableSetupStep extends Migration
      */
     public function up()
     {
-        Schema::create('setup_step', function (Blueprint $table) {
-          $table->increments('id');
-          $table->smallInteger('setup_id');
-          $table->mediumInteger('step_id');
-          $table->smallInteger('order');
+        Schema::create('operation', function (Blueprint $table) {
+          $table->smallIncrements('id');
+          $table->string('title', 200);
+          $table->string('number', 50)->nullable();
+          $table->text('desc')->nullable();
+          $table->boolean('active');
           $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateLinkTableSetupStep extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('setup_step');
+        Schema::dropIfExists('operation');
     }
 }

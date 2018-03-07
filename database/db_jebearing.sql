@@ -88,7 +88,7 @@ CREATE TABLE `fixture` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +97,7 @@ CREATE TABLE `fixture` (
 
 LOCK TABLES `fixture` WRITE;
 /*!40000 ALTER TABLE `fixture` DISABLE KEYS */;
-INSERT INTO `fixture` VALUES (1,'Fixture 1','001','Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(2,'Fixture 2','002','Fixture with a photo',1,'2018-01-29 05:00:00','2018-02-07 19:26:40'),(3,'Fixture 3','003','Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(4,'Fixture 4','004','Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4',1,'2018-01-29 05:00:00','2018-01-29 05:00:00');
+INSERT INTO `fixture` VALUES (1,'Fixture 1','001','Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(2,'Fixture 2','002','Fixture with a photo',1,'2018-01-29 05:00:00','2018-02-07 19:26:40'),(3,'Fixture 3','003','Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(4,'Fixture 4','004','Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(5,'Clara','sasas',NULL,1,'2018-02-13 03:32:01','2018-02-13 03:32:01');
 /*!40000 ALTER TABLE `fixture` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,7 +145,7 @@ CREATE TABLE `material` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,7 +154,7 @@ CREATE TABLE `material` (
 
 LOCK TABLES `material` WRITE;
 /*!40000 ALTER TABLE `material` DISABLE KEYS */;
-INSERT INTO `material` VALUES (1,'Wood','001','Wood is a porous and fibrous structural tissue found in the stems and roots of trees and other woody plants.',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(2,'Iron','002','Iron is a chemical element with symbol Fe and atomic number 26. It is a metal in the first transition series. It is by mass the most common element on Earth, forming much of Earth\'s outer and inner core.',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(3,'Steel','003','Steel is an alloy of iron and carbon and other elements. Because of its high tensile strength and low cost, it is a major component used in buildings, infrastructure, tools, ships, automobiles, machines, appliances, and weapons.',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(4,'Glass','004','Glass is a non-crystalline amorphous solid that is often transparent and has widespread practical, technological, and decorative usage in, for example, window panes, tableware, and optoelectronics.',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(5,'Plastic','005','Plastic is material consisting of any of a wide range of synthetic or semi-synthetic organic compounds that are malleable and so can be molded into solid objects.',1,'2018-01-29 05:00:00','2018-01-29 05:00:00');
+INSERT INTO `material` VALUES (1,'Wood','001','Wood is a porous and fibrous structural tissue found in the stems and roots of trees and other woody plants.',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(2,'Iron','002','Iron is a chemical element with symbol Fe and atomic number 26. It is a metal in the first transition series. It is by mass the most common element on Earth, forming much of Earth\'s outer and inner core.',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(3,'Steel','003','Steel is an alloy of iron and carbon and other elements. Because of its high tensile strength and low cost, it is a major component used in buildings, infrastructure, tools, ships, automobiles, machines, appliances, and weapons.',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(4,'Glass','004','Glass is a non-crystalline amorphous solid that is often transparent and has widespread practical, technological, and decorative usage in, for example, window panes, tableware, and optoelectronics.',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(5,'Plastic','005','Plastic is material consisting of any of a wide range of synthetic or semi-synthetic organic compounds that are malleable and so can be molded into solid objects.',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(6,'Clara','1111','1111',1,'2018-02-13 03:32:14','2018-02-13 03:32:14');
 /*!40000 ALTER TABLE `material` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -922,7 +922,7 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -931,6 +931,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Barbara','sasas','$2y$10$pyHVJfSB7PV3n.H998wgdO83bHYLWSwF7sey0fO/VrE8WN/qaLQj.','gsMe2g620lzjp4wuU33wSiAxaxvrHuithgyXM2PpcqkzHEC17W7Ih6FS5dq0','111111111111','232323323232','jimi@hendrix.ca','images/default.jpg',3,1,1,1,1,'2018-02-13 02:28:02','2018-02-13 02:28:02'),(2,'Clara','The Best','$2y$10$sItuiz/PAQVZ0JOGomNNVe4H48CmDY7qM7mV52yv8LuN1VB2Tl1ky','LLMGAF6LioAi0wTvt0Yaa56JLFUzLReEdmizWk6zt825cBS34kkE3VUpEfIi','23232323','12121212121212','clara@clara.com','images/default.jpg',3,0,0,0,1,'2018-02-13 02:56:55','2018-02-13 02:56:55'),(3,'Mauricio','Me NEW','$2y$10$PULC00YX5ooUvhZbNnlRR.IQUeaTLoJT1YJA.by9./ja.vUPuOtvK','VUvSveEmhLaRkKALVURF01j7zjoD3WrWkcA9dApcLbDhQy7uv37BRGYgGv1M','989898989','232323323232','me@email.com','images/default.jpg',3,1,1,0,1,'2018-02-13 02:57:43','2018-02-14 21:50:17'),(4,'Teste','Hidden input','$2y$10$7AGBBwD21xT0fsgDDduPCeruHM7WqYXwz7Z1IgYeLlozdAHBmZ.6W','p3vOqYxpUs1SnRre3cknkDzdvzDgBvFTgc649dVtVpNFjpvsEArYX76keI6X','00000000','232323323232','hidden@youcantsee.me','images/default.jpg',2,0,1,1,1,'2018-02-13 03:14:37','2018-02-14 21:31:04'),(5,'Mauricio','Silveira','$2y$10$ClgxpbdLco5CZQWTs4lm0ezLvPna9MgXbCGxAdLKK4hGRQTDVTyaq','UVpCschOuAAxbgkgI3HwvL5ssHgje7VEWeBfaRMC1KfEUYrumGirRiWOZviQ','1111111','232323323232','mauricio@email.com','images/1518716838.jpg',1,0,0,1,1,'2018-02-14 18:13:55','2018-02-15 22:47:18'),(6,'New','User2','$2y$10$QIb2xrRvNrUVMc0vLZRH0eOc2FeMu7GDbwQ3qjdrE1ScDDfXSuUwG','DW5V5LmnAm74F57JwRdwzWbHuvkXapFb9pvxHeXZbkNsxlxi50e72qteee9K','00000022','323232323232','newuser2@email.com','images/default.jpg',1,1,1,1,1,'2018-02-14 19:54:15','2018-02-14 21:38:04'),(7,'clara','marshall','$2y$10$0WuSkUh6/v.h5fF5XQXaZ.nLZ7kX/oBNewgr8CX43Lm54QaJ9/ZWa',NULL,'123','4164710808','clara@claramarshall.com','images/default.jpg',3,0,0,0,1,'2018-02-14 20:29:18','2018-02-14 20:30:16'),(8,'Test photo','Photo','$2y$10$.N//2JSyPFf1Q1KXt3sABujH.ReaE0EsxfuQX.YU2vG231zy82pU6',NULL,'1111111','232323323232','photo@email.com','images/1518714867.jpg',3,1,1,1,1,'2018-02-15 22:03:13','2018-02-15 22:14:27');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -973,4 +974,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-12 13:49:27
+-- Dump completed on 2018-02-26 13:42:59
