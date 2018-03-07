@@ -30,7 +30,7 @@
 
             <fieldset class="part-number">
               <p>{!! Form::label('partnumber', 'Part #') !!}</p>
-              {!! Form::text('number', '') !!}
+              {!! Form::text('number', '', ['required' => 'required']) !!}
             </fieldset>
 
             <div id="searchTables">
@@ -60,9 +60,9 @@
                 </div>
 
             </div>
-					
+
                 <!-- <a class="white-button" href="{{ url('/admin/part/list')}}">CANCEL</a> -->
-								<!-- <button type="submit" class="green-button" name="button">ADD</button> -->
+								<button type="submit" class="green-button" name="button">SAVE</button>
 							{!! Form::close() !!}
 
             <div id="opperations" class="partStep">
@@ -88,7 +88,7 @@
                   <p>{!! Form::label('media', 'Media') !!}</p>
                   {!! Form::file('media', ['class' => 'form-control']) !!}
                   </fieldset>
-                
+
               </div>
 
               <div id="stepForm" class="subForm">
@@ -126,7 +126,7 @@
                   {!! Form::close() !!}
               </div>
               <p class="addSubForm">Add Another Step</p>
-            
+
             </div>
 
 

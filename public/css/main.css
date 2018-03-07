@@ -936,22 +936,49 @@ a {
 .errorMsg {
   color: #ECB900; }
 
+.opInfo {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  padding: 25px 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  color: #3C3B3B; }
+  .opInfo .opItemTitle {
+    font-weight: 600;
+    color: #009B60; }
+  .opInfo .opItemTitle:hover {
+    cursor: pointer; }
+
+#operations {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+
+.opOpen {
+  display: none; }
+
+.opHeader {
+  background-color: #009B60;
+  color: #fff;
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+  padding: 25px 0; }
+
 .stepItem {
   margin-bottom: 100px; }
 
 .stepTitle {
-  font-size: 25px;
-  font-weight: bold;
-  color: #009B89;
-  margin-bottom: 20px; }
+  font-size: 18px;
+  font-weight: 900;
+  color: #000;
+  margin: 30px 0 20px 0; }
 
 .stepDesc {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 26px; }
 
 .stepNote {
   margin-top: 20px;
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 30px; }
 
 .yellow {
@@ -1008,6 +1035,9 @@ a {
   color: #fff;
   font-size: 18px;
   font-family: 'Book'; }
+
+#homeButt p {
+  float: right; }
 
 .top-left a {
   float: right;

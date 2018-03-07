@@ -13,6 +13,10 @@ class Step extends Model
     'active' => ['required']
   ];
 
+  public function getMediaRelationship() {
+    return $this->hasMany('App\StepMedia', 'step_id', 'id');
+  }
+
   public function operations() {
       return $this->belongsToMany('App\Operation', 'operation_step', 'step_id', 'operation_id')->withTimestamps();;
   }

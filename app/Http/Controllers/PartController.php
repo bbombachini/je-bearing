@@ -33,7 +33,7 @@ class PartController extends Controller {
 
     public function add() {
       $part = new Part;
-      return view('admin.part.add-test', ['part' => $part]);
+      return view('admin.part.add', ['part' => $part]);
     }
 
 
@@ -129,7 +129,7 @@ class PartController extends Controller {
       $partFixture = Part::find($id)->getFixtureRelationship()->get();
       $partMaterial = Part::find($id)->getMaterialRelationship()->get();
 
-      return (['item' => $part]);
+      return (['item' => $part, 'tool' => $partTooling, 'fixture' => $partFixture, 'material' => $partMaterial]);
     }
 
     public function search($str) {
@@ -149,9 +149,12 @@ class PartController extends Controller {
 
     public function edit($id) {
       $part = Part::where('id', $id)->where('active', 1)->get();
-      $partTooling = Part::find($id)->getToolingRelationship()->get();
-      $partFixture = Part::find($id)->getFixtureRelationship()->get();
-      $partMaterial = Part::find($id)->getMaterialRelationship()->get();
+      // $partTooling = Part::find($id)->getToolingRelationship()->get();
+      // $partFixture = Part::find($id)->getFixtureRelationship()->get();
+      // $partMaterial = Part::find($id)->getMaterialRelationship()->get();
+      $partTooling = Part::find($id)->tools()->get();
+      $partFixture = Part::find($id)->fixtures()->get();
+      $partMaterial = Part::find($id)->materials()->get();
       // $toolMedia = Tooling::find($id)->getMediaRelationship()->latest()->first();
       // if (empty($toolMedia)) {
       //   $photo = 'images/noimage.jpg';
@@ -164,71 +167,67 @@ class PartController extends Controller {
       // }
 
       // return view('admin.part.edit', ['old' => $part, 'photo' => $photo, 'id' => $id, 'defaultPhoto' => $defaultPhoto]);
-      return view('admin.part.edit', ['old' => $part, 'id' => $id]);
+      return view('admin.part.edit-test', ['old' => $part, 'id' => $id, 'oldTool' => $partTooling, 'oldFixture' => $partFixture, 'oldMaterial' => $partMaterial]);
     }
 
-    // public function update(Request $request) {
-    //   $id = $request['id'];
-    //   $tool = Tooling::find($id);
-    //   $tool['name'] = $request['name'];
-    //   $tool['number'] = $request['number'];
-    //   $tool['desc'] = $request['desc'];
-    //
-    //   if(isset($request['media'])) {
-    //     $this->validate($request, ['media' => 'mimes:jpeg,png,jpg,gif,svg',]);
-    //     //save media file in images folder
-    //     $media_id = $this->mediaService->storeMedia($request);
-    //   }
-    //
-    //   if (!$tool->save()) {
-    //     $errors = $tool->getErrors();
-    //     return redirect()->action('ToolingController@edit', ['id' => $id])->with('errors', $errors)->withInput();
-    //   }
-    //
-    //   if(isset($media_id)) {
-    //     $rel = Tooling::find($tool['id'])->getMediaRelationship()->latest()->first();
-    //     if (empty($rel)) {
-    //       $order = 1;
-    //     }
-    //     else {
-    //       $order = $rel['order']+1;
-    //       $deleteMedia = ToolingController::destroyMedia($id);
-    //     }
-    //     $toolMedia = new ToolingMedia;
-    //     $toolMedia['tool_id'] = $id;
-    //     $toolMedia['media_id'] = $media_id;
-    //     $toolMedia['order'] = $order;
-    //
-    //     // save relational info in database
-    //     if (!$toolMedia->save()) {
-    //       $errors = $toolMedia->getErrors();
-    //       return redirect()->action('ToolingController@edit', ['id' => $id])->with('errors', $errors)->withInput();
-    //     }
-    //   }
-    //
-    //   //success
-    //   return redirect()->action('ToolingController@list');
-    // }
+    public function update(Request $request) {
+      $id = $request['id'];
+      $part = Part::find($id);
+      $part['name'] = $request['name'];
+      $part['number'] = $request['number'];
+      $tools = $request['tooling'];
+      $fixtures = $request['fixture'];
+      $materials = $request['material'];
+
+      // save info in database
+      if (!$part->save()) {
+        $errors = $part->getErrors();
+        if($errors) {
+          return redirect()->action('PartController@edit')->with('errors', $errors)->withInput();
+        }
+      }
+
+      // save PartTooling relationship
+      for($i = 0; $i < count($tools); $i++) {
+        $tool = $this->toolService->getTool($tools[$i]);
+        $part->tools()->save($tool);
+      }
+
+      // save PartFixture relationship
+      for($i = 0; $i < count($fixtures); $i++) {
+        $fixture = $this->fixtureService->getFixture($fixtures[$i]);
+        $part->fixtures()->save($fixture);
+      }
+
+      // save PartMaterial relationship
+      for($i = 0; $i < count($materials); $i++) {
+        $material = $this->materialService->getMaterial($materials[$i]);
+        $part->materials()->save($material);
+      }
+
+      //success
+      return redirect()->action('PartController@list');
+    }
 
 
-    // public function destroy($id) {
-    //   $tool = Tooling::find($id);
-    //
-    //   if (empty($tool)) {
-    //     echo "not found id".$id;
-    //   }
-    //   else {
-    //     // do not delete entry from database
-    //     // just change active value from 1 to 0
-    //     $tool['active'] = 0;
-    //     if (!$tool->save()) {
-    //       $errors = $tool->getErrors();
-    //       return redirect()->action('ToolingController@list')->with('errors', $errors)->withInput();
-    //     }
-    //     //success
-    //     return redirect()->action('ToolingController@list')->with('message', 'Your '. $tool->name . ' has been created!');
-    //   }
-    // }
+    public function destroy($id) {
+      $part = Part::find($id);
+
+      if (empty($part)) {
+        echo "not found id".$id;
+      }
+      else {
+        // do not delete entry from database
+        // just change active value from 1 to 0
+        $part['active'] = 0;
+        if (!$part->save()) {
+          $errors = $part->getErrors();
+          return redirect()->action('PartController@list')->with('errors', $errors)->withInput();
+        }
+        //success
+        return redirect()->action('PartController@list')->with('message', 'Your '. $part->name . ' has been created!');
+      }
+    }
 
     // public function editMedia($id) {
     //   $rel = Tooling::find($id)->getMediaRelationship()->latest()->first();
