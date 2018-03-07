@@ -46,13 +46,13 @@
     <div class="section-head">
 
             <div class="section-title">
-                <h2 id="bigTitle">Part</h2>
-                <h5 id="subTitle">There are currently <span class="green">{{ $count }}</span> parts.</h5>
+                <h2 id="bigTitle">Step</h2>
+                <h5 id="subTitle">There are currently <span class="green">{{ $count }}</span> steps.</h5>
             </div>
 
 
             <div class="add-button">
-				<a href="{{ url('/admin/part/add')}}"><img src="../../images/plusIcon.png" alt="add an item" width="25px;"></a>
+				<a href="{{ url('/admin/step/add')}}"><img src="../../images/plusIcon.png" alt="add an item" width="25px;"></a>
 			</div>
 
     </div>
@@ -75,17 +75,17 @@
 
         <div class="list">
         <ul>
-            <li id="itemListTitles"><p>Name</p><p>Part #</p><p>Edit</p><p>Delete</p></li>
+            <li id="itemListTitles"><p>Name</p><p>Step #</p><p>Edit</p><p>Delete</p></li>
             @foreach ($items as $item)
                 <li class="list-item">
                 <div>
-                  <a class="item-name itemName" href="#" data-id="{{$item->id}}">{{$item->name}}</a>
+                  <a class="item-name itemName" href="#" data-id="{{$item->id}}">{{$item->title}}</a>
                 </div>
                 <div>
                   <p>{{$item->number}}</p>
                 </div>
                 <div class="item-column">
-                  <a class="edit" href="{{action('PartController@edit', ['$id' => $item->id])}}">Edit</a>
+                  <a class="edit" href="{{action('StepController@edit', ['$id' => $item->id])}}">Edit</a>
                 </div>
                 <div class="item-column">
                   <a class="delete" data-id="{{$item->id}}" href="#">Delete</a>

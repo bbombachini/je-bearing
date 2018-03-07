@@ -30,7 +30,7 @@
 
             <fieldset class="part-number">
               <p>{!! Form::label('partnumber', 'Part #') !!}</p>
-              {!! Form::text('number', '') !!}
+              {!! Form::text('number', '', ['required' => 'required']) !!}
             </fieldset>
 
             <div id="searchTables">

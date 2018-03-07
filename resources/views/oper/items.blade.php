@@ -12,7 +12,7 @@
             </div>
 
             <div class="top-left">
-              <a href="{{ url('/searchpart')}}">
+              <a href="{{ url('/home')}}">
                 <img src="../../../images/home-icon.png" width="20px" alt="go home">
                 <p>HOME</p>
               </a>
