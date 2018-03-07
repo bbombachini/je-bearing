@@ -586,7 +586,7 @@ a {
 }
 #content .section-head {
   width: 100%;
-  padding: 15px 0 80px 0;
+  padding: 15px 0 60px 0;
   display: grid;
   grid-template-columns: 3fr 1.1fr;
 }
@@ -1127,6 +1127,78 @@ a {
   color: #ECB900;
 }
 
+#itemLibraryCon {
+  position: absolute;
+  z-index: 5;
+  width: 75%;
+  margin-left: 25%;
+  display: none;
+}
+#itemLibraryCon #libraryHeader {
+  background-color: #009B60;
+  color: #fff;
+  padding: 20px 20px 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+#itemLibraryCon #libraryHeader h3 {
+  float: left;
+  display: inline;
+  width: 168px;
+  margin: 0 auto;
+}
+#itemLibraryCon #libraryHeader a {
+  color: #fff;
+  display: inline-block;
+  float: right;
+}
+#itemLibraryCon #itemLibrary {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+#itemLibraryCon #itemLibrary .item {
+  text-align: center;
+  width: 20%;
+  background-color: #fff;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+  float: left;
+  display: inline;
+  margin: 30px 6.6%;
+}
+#itemLibraryCon #itemLibrary .item .item-desc {
+  background-color: #009B60;
+  padding: 15px 0;
+  color: #fff;
+}
+#itemLibraryCon #itemLibrary .item .item-media img {
+  width: 100%;
+}
+
+#itemBar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+#itemBar .itemIcon {
+  width: 30px;
+  float: left;
+}
+#itemBar .itemBarItem {
+  display: flex;
+  align-items: center;
+}
+#itemBar .itemBarItem p {
+  float: left;
+  font-size: 18px;
+  color: #006F3B;
+  padding-left: 20px;
+}
+
+.whiteText {
+  color: #fff !important;
+}
+
 .opInfo {
   display: flex;
   align-content: center;
@@ -1134,13 +1206,18 @@ a {
   padding: 25px 30px;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   color: #3C3B3B;
+  transition: 0.2s;
 }
 .opInfo .opItemTitle {
   font-weight: 600;
-  color: #009B60;
 }
 .opInfo .opItemTitle:hover {
   cursor: pointer;
+}
+
+.opInfo:hover {
+  background-color: #009B60 !important;
+  color: #fff;
 }
 
 #operations {
@@ -1156,8 +1233,8 @@ a {
   color: #fff;
   display: flex;
   align-content: center;
-  justify-content: space-around;
-  padding: 25px 0;
+  justify-content: space-between;
+  padding: 25px 30px;
 }
 
 .stepItem {
