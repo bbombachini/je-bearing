@@ -24,12 +24,12 @@
 
             {!! Form::open(['id' => 'addPart', 'files' => true]) !!}
             <fieldset class="part-name">
-              <p>{!! Form::label('partname', 'Part Name') !!}</p>
+              <p>{!! Form::label('name', 'Part Name') !!}</p>
               {!! Form::text('name', '', ['required' => 'required']) !!}
             </fieldset>
 
             <fieldset class="part-number">
-              <p>{!! Form::label('partnumber', 'Part #') !!}</p>
+              <p>{!! Form::label('number', 'Part #') !!}</p>
               {!! Form::text('number', '', ['required' => 'required']) !!}
             </fieldset>
 
@@ -40,7 +40,7 @@
                     <p>{!! Form::label('tooling', 'Tooling') !!}</p>
                     <input class="itemsearchfeild" type="search" placeholder="Search Tools" id="tooling">
                   </fieldset>
-                    <div class="itemResult" data-id="tooling" id="toolingResult"></div>
+                    <ul class="itemResult" data-id="tooling" id="toolingResult"></ul>
                 </div>
 
                 <div class="listItem tooling">
@@ -54,7 +54,7 @@
                     <p>{!! Form::label('fixture', 'Fixtures') !!}</p>
                     <input class="itemsearchfeild" type="search" placeholder="Search Fixtures" id="fixture">
                   </fieldset>
-                    <div class="itemResult" data-id="fixture" id="fixtureResult"></div>
+                    <ul class="itemResult" data-id="fixture" id="fixtureResult"></ul>
                 </div>
 
                 <div class="listItem fixture">
@@ -69,7 +69,7 @@
                     <p>{!! Form::label('material', 'Materials') !!}</p>
                     <input class="itemsearchfeild" type="search" placeholder="Search Materials" id="material">
                   </fieldset>
-                    <div class="itemResult" data-id="material" id="materialResult"></div>
+                    <ul class="itemResult" data-id="material" id="materialResult"></ul>
                 </div>
 
                 <div class="listItem material">
@@ -81,7 +81,7 @@
             </div>
 
                 <a class="white-button" href="{{ url('/admin/part/list')}}">CANCEL</a>
-								<button type="submit" class="green-button" name="button">NEXT</button>
+								<button type="submit" class="green-button next" name="button">NEXT</button>
 							{!! Form::close() !!}
 
 
@@ -89,7 +89,7 @@
             <div id="opperations" class="partStep">
 
               <div class="formHeader">
-                <h3>OPPERATIONS</h3>
+                <h3>OPERATIONS</h3>
               </div>
 
               <!-- <div class="openForm" id="addOpperation">

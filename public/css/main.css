@@ -506,7 +506,7 @@ a {
       color: #A2A2A2 !important;
       line-height: 20px; }
 
-.button, .green-button, .white-button {
+.button, .green-button, .white-button, #addPart .white-button {
   width: 15vw;
   height: 40px;
   border-radius: 100px;
@@ -689,12 +689,17 @@ a {
       font-size: 16px;
       letter-spacing: 2px; }
 
+.itemsearchfeild {
+  -webkit-appearance: none; }
+
 .itemsearchfeild::placeholder {
   color: #ECB900; }
 
-#searchTables .itemResult div {
+#searchTables .itemResult ul {
   padding-bottom: 10px; }
-  #searchTables .itemResult div p:hover {
+  #searchTables .itemResult ul li {
+    text-decoration: none; }
+  #searchTables .itemResult ul p:hover {
     color: #006F3B; }
 
 #addPart {
@@ -736,6 +741,19 @@ a {
     margin-top: 40px; }
   #addPart button {
     margin-top: 50px; }
+  #addPart .white-button {
+    font-family: 'Medium';
+    display: inline-block;
+    text-align: center;
+    margin: 5% 15%;
+    width: 15vw;
+    height: 40px;
+    border-radius: 100px;
+    font-size: 18px;
+    line-height: 40px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box; }
 
 #add, #edit {
   display: grid;

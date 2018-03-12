@@ -2,8 +2,6 @@
 (function() {
 	"use strict";
 
-	// console.log("fired");
-
 	var resultRequest;
 	var delBtn = document.querySelectorAll('.delete');
 	var search = document.querySelectorAll('.searchfeild');
@@ -247,7 +245,6 @@
 	// 	// console.log(curFile);
 	// 	photo.src = window.URL.createObjectURL(curFile[0]);
 	// }
-	//USE EVENT LISTENER TO MAKE XHR OBJECT -- look at Marcos class file
 
 	function showItemResults(e){
 		var id = e.currentTarget.id;
@@ -306,12 +303,12 @@
 									}
 								}
 							} else {
-								 console.log("list is empty");
+								 // console.log("list is empty");
 										result.style.display = "block";
 										let newResult = `<li class=${itemListId} data-id=${jsonfile.item[i].id}>${jsonfile.item[i].name}</li>`;
 
 										result.innerHTML += newResult;
-										console.log(curList);
+										// console.log(curList);
 								}
 						}
 						let searchItems = result.querySelectorAll('li');
@@ -341,19 +338,6 @@
 							Selections[itemListId].push([itemId,itemListName]);
 						}
 						printData(itemListId);
-						// while(itemList.firstChild){
-						// 	itemList.removeChild(itemList.firstChild);
-						// }
-						//
-						// Selections[itemListId].forEach((unit) => {
-						// 	let newListItem = `<li class="selected" data-id=${unit[0]}><p>${unit[1]}</p><span class="popItem">X</span></li>`;
-						// 	itemList.innerHTML += newListItem;
-						// });
-						// let curList = itemList.querySelectorAll('li');
-						// for(let k = 0; k < curList.length ; k++) {
-						// 	curList[k].removeEventListener('click', removeUnit, false);
-						// 	curList[k].addEventListener('click', removeUnit, false);
-						// }
 					}
 				}
 			}
@@ -395,6 +379,72 @@
 			printData(parent);
 		}
 
+		function savePart(e) {
+			e.preventDefault();
+			let url = '/admin/part/store';
+			let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+			let name = document.querySelector('input[name="name"]').value;
+			let number = document.querySelector('input[name="number"]').value;
+			let form = document.querySelector('#addPart');
+
+			if (Selections['tooling'].length > 0) {
+				var tooling = new Array();
+				Selections['tooling'].forEach((item) => {
+					let id = item[0];
+					tooling.push(id);
+				});
+			}
+			if (Selections['fixture'].length > 0) {
+				var fixture = new Array();
+				Selections['fixture'].forEach((item) => {
+					let id = item[0];
+					fixture.push(id);
+				});
+			}
+			if (Selections['material'].length > 0) {
+				var material = new Array();
+				Selections['material'].forEach((item) => {
+					let id = item[0];
+					material.push(id);
+				});
+			}
+
+			fetch(url, {
+				headers: {
+					"Content-Type": "application/json",
+	        "Accept": "application/json, text-plain, */*",
+	        "X-Requested-With": "XMLHttpRequest",
+					'X-CSRF-TOKEN': token
+				},
+				method: 'post',
+				credentials: "same-origin",
+				body: JSON.stringify({
+					name: name,
+					number: number,
+					tooling: tooling,
+					fixture: fixture,
+					material: material
+				})
+			 })
+				 .then((data) => {
+					cleanSearch();
+					form.reset();
+				 })
+				 .catch(function(error) {
+          console.log(error);
+        });
+		}
+
+	function cleanSearch(){
+		let searchResult = document.querySelectorAll('.itemResult');
+		let listItem = document.querySelectorAll('.listItem');
+
+		for (let w = 0; w < 3; w++){
+				searchResult[w].innerHTML = null;
+				listItem[w].innerHTML = null;
+		}
+	}
+
 	nameLink.forEach(function(btn, index) {
 		btn.addEventListener('click', showView, false);
 	});
@@ -409,6 +459,10 @@
 
 	for(var i = 0; i<searchfeilds.length; i++){
 		searchfeilds[i].addEventListener("input", showItemResults,false);
+	}
+	if(document.querySelector('.next')){
+		var nextBtn = document.querySelector('.next');
+		nextBtn.addEventListener('click', savePart, false);
 	}
 
 	// chooseImageBtn.addEventListener('change', updatePhotoDisplay, false);
