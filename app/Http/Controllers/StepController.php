@@ -46,11 +46,11 @@ class StepController extends Controller {
       // save info in database
       if (!$step->save()) {
         $errors = $step->getErrors();
-        // return redirect()->action('PartController@add')->with('errors', $errors)->withInput();
+        return redirect()->back()->with('errors', $errors)->withInput();
       }
 
       if(isset($media_id)) {
-        $order = Step::find($step['id'])->getMediaRelationship()->get();
+        $order = Step::find($step['id'])->getMediaRelationship()->latest()->first();
         if (empty($order)) {
           $order = 1;
         }
@@ -65,12 +65,12 @@ class StepController extends Controller {
         // save relational info in database
         if (!$stepMedia->save()) {
           $errors = $stepMedia->getErrors();
-          // return redirect()->action('PartController@add')->with('errors', $errors)->withInput();
+          return redirect()->back()->with('errors', $errors)->withInput();
         }
       }
 
       //success
-      // return redirect()->action('PartController@list');
+      return redirect()->back();
     }
 
     public function list(Step $step) {

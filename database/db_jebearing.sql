@@ -201,7 +201,7 @@ CREATE TABLE `media` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,7 +210,7 @@ CREATE TABLE `media` (
 
 LOCK TABLES `media` WRITE;
 /*!40000 ALTER TABLE `media` DISABLE KEYS */;
-INSERT INTO `media` VALUES (1,'1516819843.jpg',NULL,NULL,'2018-01-24 23:50:44','2018-01-24 23:50:44'),(2,'1516819892.jpg',NULL,NULL,'2018-01-24 23:51:32','2018-01-24 23:51:32'),(4,'1516819950.jpg',NULL,NULL,'2018-01-24 23:52:30','2018-01-24 23:52:30'),(5,'1516819992.jpg',NULL,NULL,'2018-01-24 23:53:12','2018-01-24 23:53:12'),(6,'1516820081.jpg',NULL,NULL,'2018-01-24 23:54:41','2018-01-24 23:54:41'),(7,'1516820125.jpg',NULL,NULL,'2018-01-24 23:55:25','2018-01-24 23:55:25'),(8,'1516820186.jpg',NULL,NULL,'2018-01-24 23:56:27','2018-01-24 23:56:27'),(9,'1516820275.jpg',NULL,NULL,'2018-01-24 23:57:55','2018-01-24 23:57:55'),(10,'1516820328.jpg',NULL,NULL,'2018-01-24 23:58:48','2018-01-24 23:58:48'),(11,'1517417574.JPG',NULL,NULL,'2018-01-31 21:52:55','2018-01-31 21:52:55'),(12,'1517417943.JPG',NULL,NULL,'2018-01-31 21:59:04','2018-01-31 21:59:04'),(13,'1517418079.JPG',NULL,NULL,'2018-01-31 22:01:20','2018-01-31 22:01:20'),(15,'1517418199.JPG',NULL,NULL,'2018-01-31 22:03:20','2018-01-31 22:03:20'),(16,'1517418285.JPG',NULL,NULL,'2018-01-31 22:04:46','2018-01-31 22:04:46'),(17,'1518013363.png',NULL,NULL,'2018-02-07 19:22:43','2018-02-07 19:22:43'),(18,'1518013541.jpg',NULL,NULL,'2018-02-07 19:25:41','2018-02-07 19:25:41'),(19,'1518013600.jpg',NULL,NULL,'2018-02-07 19:26:40','2018-02-07 19:26:40');
+INSERT INTO `media` VALUES (1,'1516819843.jpg',NULL,NULL,'2018-01-24 23:50:44','2018-01-24 23:50:44'),(2,'1516819892.jpg',NULL,NULL,'2018-01-24 23:51:32','2018-01-24 23:51:32'),(4,'1516819950.jpg',NULL,NULL,'2018-01-24 23:52:30','2018-01-24 23:52:30'),(5,'1516819992.jpg',NULL,NULL,'2018-01-24 23:53:12','2018-01-24 23:53:12'),(6,'1516820081.jpg',NULL,NULL,'2018-01-24 23:54:41','2018-01-24 23:54:41'),(7,'1516820125.jpg',NULL,NULL,'2018-01-24 23:55:25','2018-01-24 23:55:25'),(8,'1516820186.jpg',NULL,NULL,'2018-01-24 23:56:27','2018-01-24 23:56:27'),(9,'1516820275.jpg',NULL,NULL,'2018-01-24 23:57:55','2018-01-24 23:57:55'),(10,'1516820328.jpg',NULL,NULL,'2018-01-24 23:58:48','2018-01-24 23:58:48'),(11,'1517417574.JPG',NULL,NULL,'2018-01-31 21:52:55','2018-01-31 21:52:55'),(12,'1517417943.JPG',NULL,NULL,'2018-01-31 21:59:04','2018-01-31 21:59:04'),(13,'1517418079.JPG',NULL,NULL,'2018-01-31 22:01:20','2018-01-31 22:01:20'),(15,'1517418199.JPG',NULL,NULL,'2018-01-31 22:03:20','2018-01-31 22:03:20'),(16,'1517418285.JPG',NULL,NULL,'2018-01-31 22:04:46','2018-01-31 22:04:46'),(17,'1518013363.png',NULL,NULL,'2018-02-07 19:22:43','2018-02-07 19:22:43'),(18,'1518013541.jpg',NULL,NULL,'2018-02-07 19:25:41','2018-02-07 19:25:41'),(19,'1518013600.jpg',NULL,NULL,'2018-02-07 19:26:40','2018-02-07 19:26:40'),(20,'1520289727.jpg',NULL,NULL,'2018-03-06 03:42:07','2018-03-06 03:42:07'),(21,'1520289939.jpg',NULL,NULL,'2018-03-06 03:45:39','2018-03-06 03:45:39'),(23,'1520290318.jpg',NULL,NULL,'2018-03-06 03:51:58','2018-03-06 03:51:58'),(24,'1520433626.jpg',NULL,NULL,'2018-03-07 19:40:26','2018-03-07 19:40:26'),(25,'1520433722.jpg',NULL,NULL,'2018-03-07 19:42:02','2018-03-07 19:42:02');
 /*!40000 ALTER TABLE `media` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -294,6 +294,62 @@ LOCK TABLES `note_media` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `operation`
+--
+
+DROP TABLE IF EXISTS `operation`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `operation` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `active` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `operation`
+--
+
+LOCK TABLES `operation` WRITE;
+/*!40000 ALTER TABLE `operation` DISABLE KEYS */;
+INSERT INTO `operation` VALUES (1,'Operation 1','Operation 1',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(2,'Operation 2','Operation 2',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(3,'Operation 3','Operation 3',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(4,'Operation 4','Operation 4',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(5,'Operation 5','Operation 5 ',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(6,'Operation 6','Operation 6',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(7,'Operation 7','Operation 7',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(8,'Operation 8','Operation 8',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(9,'Operation 9','Operation 9',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(10,'Operation 10','Operation 10',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(11,'Operation 11','Operation 11',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(12,'Operation 12','Operation 12',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(13,'Operation 13','Operation 13',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(14,'Operation 14','Operation 14',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(15,'Operation 15','Operation 15',1,'2018-01-29 19:29:03','2018-01-29 19:29:03');
+/*!40000 ALTER TABLE `operation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `operation_step`
+--
+
+DROP TABLE IF EXISTS `operation_step`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `operation_step` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `operation_id` smallint(6) NOT NULL,
+  `step_id` mediumint(9) NOT NULL,
+  `order` smallint(6) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `operation_step`
+--
+
+LOCK TABLES `operation_step` WRITE;
+/*!40000 ALTER TABLE `operation_step` DISABLE KEYS */;
+INSERT INTO `operation_step` VALUES (1,1,1,1,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(2,1,3,2,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(3,1,14,3,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(4,1,5,4,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(5,1,8,5,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(6,2,2,1,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(7,2,3,2,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(8,2,11,3,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(9,2,6,4,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(10,3,4,1,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(11,3,5,2,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(12,4,7,1,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(13,4,8,2,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(14,4,1,3,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(15,4,13,4,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(16,5,9,1,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(17,5,12,2,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(18,5,2,3,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(19,5,14,4,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(20,5,15,5,'2018-01-29 19:32:05','2018-01-29 19:32:05');
+/*!40000 ALTER TABLE `operation_step` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `part`
 --
 
@@ -309,7 +365,7 @@ CREATE TABLE `part` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -318,7 +374,7 @@ CREATE TABLE `part` (
 
 LOCK TABLES `part` WRITE;
 /*!40000 ALTER TABLE `part` DISABLE KEYS */;
-INSERT INTO `part` VALUES (1,'001','Part 1','Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(2,'002','Part 2','Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(3,'003','Part 3','Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(4,'004','Part 4','Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(5,'005','Part 5','Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5',1,'2018-01-29 05:00:00','2018-01-29 05:00:00');
+INSERT INTO `part` VALUES (1,'001','Part 1','Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(2,'002','Part 2','Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(3,'003','Part 3','Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(4,'004','Part 4','Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(5,'005','Part 5','Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(20,'000','Final Test',NULL,1,'2018-03-01 21:10:02','2018-03-01 21:10:02'),(21,'000','Final Test',NULL,1,'2018-03-01 21:10:23','2018-03-01 21:10:23'),(22,'000','Final Test',NULL,0,'2018-03-01 21:10:59','2018-03-06 00:15:17');
 /*!40000 ALTER TABLE `part` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -362,7 +418,7 @@ CREATE TABLE `part_fixture` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -371,7 +427,7 @@ CREATE TABLE `part_fixture` (
 
 LOCK TABLES `part_fixture` WRITE;
 /*!40000 ALTER TABLE `part_fixture` DISABLE KEYS */;
-INSERT INTO `part_fixture` VALUES (1,1,1,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(2,1,3,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(3,2,2,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(4,3,1,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(5,3,2,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(6,3,3,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(7,3,4,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(8,4,4,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(9,4,3,'2018-01-29 19:22:21','2018-01-29 19:22:21');
+INSERT INTO `part_fixture` VALUES (1,1,1,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(2,1,3,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(3,2,2,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(4,3,1,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(5,3,2,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(6,3,3,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(7,3,4,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(8,4,4,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(9,4,3,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(12,20,1,'2018-03-01 21:10:03','2018-03-01 21:10:03'),(13,20,2,'2018-03-01 21:10:03','2018-03-01 21:10:03'),(14,21,1,'2018-03-01 21:10:23','2018-03-01 21:10:23'),(15,21,2,'2018-03-01 21:10:23','2018-03-01 21:10:23'),(16,22,1,'2018-03-01 21:10:59','2018-03-01 21:10:59'),(17,22,2,'2018-03-01 21:10:59','2018-03-01 21:10:59');
 /*!40000 ALTER TABLE `part_fixture` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -391,7 +447,7 @@ CREATE TABLE `part_material` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -400,8 +456,36 @@ CREATE TABLE `part_material` (
 
 LOCK TABLES `part_material` WRITE;
 /*!40000 ALTER TABLE `part_material` DISABLE KEYS */;
-INSERT INTO `part_material` VALUES (1,1,1,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(2,1,5,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(3,2,1,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(4,2,2,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(5,2,4,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(6,3,4,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(7,4,3,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(8,4,4,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(9,4,5,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(10,5,1,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02');
+INSERT INTO `part_material` VALUES (1,1,1,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(2,1,5,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(3,2,1,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(4,2,2,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(5,2,4,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(6,3,4,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(7,4,3,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(8,4,4,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(9,4,5,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(10,5,1,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(11,22,3,NULL,NULL,'2018-03-01 21:10:59','2018-03-01 21:10:59'),(12,22,4,NULL,NULL,'2018-03-01 21:10:59','2018-03-01 21:10:59');
 /*!40000 ALTER TABLE `part_material` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `part_operation`
+--
+
+DROP TABLE IF EXISTS `part_operation`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `part_operation` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `part_id` smallint(6) NOT NULL,
+  `operation_id` mediumint(9) NOT NULL,
+  `order` smallint(6) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `part_operation`
+--
+
+LOCK TABLES `part_operation` WRITE;
+/*!40000 ALTER TABLE `part_operation` DISABLE KEYS */;
+INSERT INTO `part_operation` VALUES (1,1,1,1,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(2,1,3,2,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(3,1,14,3,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(4,1,5,4,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(5,1,8,5,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(6,2,2,1,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(7,2,3,2,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(8,2,11,3,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(9,2,6,4,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(10,3,4,1,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(11,3,5,2,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(12,4,7,1,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(13,4,8,2,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(14,4,1,3,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(15,4,13,4,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(16,5,9,1,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(17,5,12,2,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(18,5,2,3,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(19,5,14,4,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(20,5,15,5,'2018-01-29 19:32:05','2018-01-29 19:32:05');
+/*!40000 ALTER TABLE `part_operation` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -432,61 +516,6 @@ LOCK TABLES `part_quality` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `part_setup`
---
-
-DROP TABLE IF EXISTS `part_setup`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `part_setup` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `part_id` smallint(6) NOT NULL,
-  `setup_id` mediumint(9) NOT NULL,
-  `order` smallint(6) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `part_setup`
---
-
-LOCK TABLES `part_setup` WRITE;
-/*!40000 ALTER TABLE `part_setup` DISABLE KEYS */;
-/*!40000 ALTER TABLE `part_setup` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `part_step`
---
-
-DROP TABLE IF EXISTS `part_step`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `part_step` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `part_id` smallint(6) NOT NULL,
-  `step_id` mediumint(9) NOT NULL,
-  `order` smallint(6) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `part_step`
---
-
-LOCK TABLES `part_step` WRITE;
-/*!40000 ALTER TABLE `part_step` DISABLE KEYS */;
-INSERT INTO `part_step` VALUES (1,1,1,1,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(2,1,3,2,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(3,1,14,3,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(4,1,5,4,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(5,1,8,5,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(6,2,2,1,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(7,2,3,2,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(8,2,11,3,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(9,2,6,4,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(10,3,4,1,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(11,3,5,2,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(12,4,7,1,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(13,4,8,2,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(14,4,1,3,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(15,4,13,4,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(16,5,9,1,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(17,5,12,2,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(18,5,2,3,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(19,5,14,4,'2018-01-29 19:32:05','2018-01-29 19:32:05'),(20,5,15,5,'2018-01-29 19:32:05','2018-01-29 19:32:05');
-/*!40000 ALTER TABLE `part_step` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `part_tool`
 --
 
@@ -500,7 +529,7 @@ CREATE TABLE `part_tool` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -651,61 +680,6 @@ LOCK TABLES `quality_note` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `setup`
---
-
-DROP TABLE IF EXISTS `setup`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `setup` (
-  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `number` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `desc` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `active` tinyint(1) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `setup`
---
-
-LOCK TABLES `setup` WRITE;
-/*!40000 ALTER TABLE `setup` DISABLE KEYS */;
-/*!40000 ALTER TABLE `setup` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `setup_step`
---
-
-DROP TABLE IF EXISTS `setup_step`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `setup_step` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `setup_id` smallint(6) NOT NULL,
-  `step_id` mediumint(9) NOT NULL,
-  `order` smallint(6) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `setup_step`
---
-
-LOCK TABLES `setup_step` WRITE;
-/*!40000 ALTER TABLE `setup_step` DISABLE KEYS */;
-/*!40000 ALTER TABLE `setup_step` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `step`
 --
 
@@ -720,7 +694,7 @@ CREATE TABLE `step` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -729,7 +703,7 @@ CREATE TABLE `step` (
 
 LOCK TABLES `step` WRITE;
 /*!40000 ALTER TABLE `step` DISABLE KEYS */;
-INSERT INTO `step` VALUES (1,'Step 1','Step 1 Step 1 Step 1 Step 1 Step 1 Step 1 Step 1 Step 1 Step 1',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(2,'Step 2','Step 2 Step 2 Step 2 Step 2 Step 2 Step 2 Step 2 Step 2 Step 2 Step 2',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(3,'Step 3','Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(4,'Step 4','Step 4 Step 4 Step 4 Step 4 Step 4 Step 4 Step 4 Step 4 Step 4 Step 4',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(5,'Step 5','Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 ',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(6,'Step 6','Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(7,'Step 7','Step 7 Step 7 Step 7 Step 7 Step 7 Step 7 Step 7 Step 7 Step 7',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(8,'Step 8','Step 8 Step 8 Step 8 Step 8 Step 8 Step 8 Step 8 Step 8 Step 8 Step 8',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(9,'Step 9','Step 9 Step 9 Step 9 Step 9 Step 9 Step 9 Step 9 Step 9',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(10,'Step 10','Step 10 Step 10 Step 10 Step 10 Step 10 Step 10 Step 10',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(11,'Step 11','Step 11 Step 11 Step 11 Step 11 Step 11 Step 11 Step 11 Step 11',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(12,'Step 12','Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(13,'Step 13','Step 13 Step 13 Step 13 Step 13 Step 13 Step 13 Step 13 Step 13 Step 13',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(14,'Step 14','Step 14 Step 14 Step 14 Step 14 Step 14 Step 14 Step 14 Step 14',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(15,'Step 15','Step 15 Step 15 Step 15 Step 15 Step 15 Step 15 Step 15 Step 15 Step 15',1,'2018-01-29 19:29:03','2018-01-29 19:29:03');
+INSERT INTO `step` VALUES (1,'Step 1','Step 1 Step 1 Step 1 Step 1 Step 1 Step 1 Step 1 Step 1 Step 1',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(2,'Step 2','Step 2 Step 2 Step 2 Step 2 Step 2 Step 2 Step 2 Step 2 Step 2 Step 2',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(3,'Step 3','Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(4,'Step 4','Step 4 Step 4 Step 4 Step 4 Step 4 Step 4 Step 4 Step 4 Step 4 Step 4',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(5,'Step 5','Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 ',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(6,'Step 6','Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(7,'Step 7','Step 7 Step 7 Step 7 Step 7 Step 7 Step 7 Step 7 Step 7 Step 7',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(8,'Step 8','Step 8 Step 8 Step 8 Step 8 Step 8 Step 8 Step 8 Step 8 Step 8 Step 8',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(9,'Step 9','Step 9 Step 9 Step 9 Step 9 Step 9 Step 9 Step 9 Step 9',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(10,'Step 10','Step 10 Step 10 Step 10 Step 10 Step 10 Step 10 Step 10',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(11,'Step 11','Step 11 Step 11 Step 11 Step 11 Step 11 Step 11 Step 11 Step 11',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(12,'Step 12','Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(13,'Step 13','Step 13 Step 13 Step 13 Step 13 Step 13 Step 13 Step 13 Step 13 Step 13',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(14,'Step 14','Step 14 Step 14 Step 14 Step 14 Step 14 Step 14 Step 14 Step 14',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(15,'Step 15','Step 15 Step 15 Step 15 Step 15 Step 15 Step 15 Step 15 Step 15 Step 15',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(16,'New step2','description of the step description of the step description of the step',0,'2018-03-06 03:14:54','2018-03-06 03:52:46'),(17,'Test new step','sdsdsdsdsdsds',0,'2018-03-07 19:40:26','2018-03-07 19:44:07'),(18,'Test new step','New step',0,'2018-03-07 19:42:02','2018-03-07 19:43:53');
 /*!40000 ALTER TABLE `step` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -748,7 +722,7 @@ CREATE TABLE `step_media` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -757,6 +731,7 @@ CREATE TABLE `step_media` (
 
 LOCK TABLES `step_media` WRITE;
 /*!40000 ALTER TABLE `step_media` DISABLE KEYS */;
+INSERT INTO `step_media` VALUES (1,16,21,1,'2018-03-06 03:45:39','2018-03-06 03:45:39'),(3,16,23,2,'2018-03-06 03:51:59','2018-03-06 03:51:59'),(4,18,25,1,'2018-03-07 19:42:02','2018-03-07 19:42:02');
 /*!40000 ALTER TABLE `step_media` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -974,4 +949,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-26 13:42:59
+-- Dump completed on 2018-03-07  9:46:32
