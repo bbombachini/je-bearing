@@ -386,6 +386,7 @@
 			let name = document.querySelector('input[name="name"]').value;
 			let number = document.querySelector('input[name="number"]').value;
 			let form = document.querySelector('#addPart');
+			let redirect = '/admin/part/list';
 
 			if (Selections['tooling'].length > 0) {
 				var tooling = new Array();
@@ -429,6 +430,7 @@
 				 .then((data) => {
 					cleanSearch();
 					form.reset();
+					window.location.href = redirect;
 				 })
 				 .catch(function(error) {
           console.log(error);
