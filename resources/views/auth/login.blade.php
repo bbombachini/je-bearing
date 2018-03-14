@@ -1,8 +1,11 @@
 @extends('layouts.login-app')
 
+
 @section('message')
+<div id="welcome-text">
     <h1>Welcome to your learning module</h1>
     <h3>Login to your account to get started.</h3>
+</div>
 @endsection
 
 @section('login')
