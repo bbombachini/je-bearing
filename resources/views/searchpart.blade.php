@@ -30,12 +30,16 @@
 @section('content')
   <section id="content-con">
     <div class="content-form">
-      <form class="searchpart" action="" method="get">
-        <h1>Part Number:</h1>
-        <input type="text" name="partnumber" class="form-input" placeholder="enter part #">
-      </form>
+        <!-- {!! Form::open(['action' => 'PartController@searchPartNumber']) !!} -->
+        <form class="" action="/oper/part/search" method="post">
+          {{ csrf_field() }}
+          <h1>Part Number:</h1>
+          <input type="text" name="partnumber" class="form-input" placeholder="enter part #" value="">
+          <button type="submit" class="green-button" name="button">Next<img src="../../../images/white-arrow.png" id="right-arrow" alt="right arrow"></button>
+        <!-- {!! Form::close() !!} -->
+        </form>
 
-      <a href="{{url('admin/tooling/list')}}"><button type="button" class="green-button" name="button">Next<img src="../../../images/white-arrow.png" id="right-arrow" alt="right arrow"></button></a> 
+
     </div>
   </section>
 
