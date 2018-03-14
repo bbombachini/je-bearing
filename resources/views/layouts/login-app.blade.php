@@ -6,9 +6,9 @@
 
         @yield('admin-login')
 
-        <div id="welcome-text">
-          @yield('message')
-        </div>
+      
+        @yield('message')
+        
 
         @yield('login')
         

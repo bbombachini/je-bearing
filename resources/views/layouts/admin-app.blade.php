@@ -5,7 +5,12 @@
   <div id="navFixed">
       <section id="navcon">
 
-        <div id="userinfo">
+      	<div id="userinfo">
+
+          <div id="homeIcon">
+            <a href="{{ url('/home')}}"><img src="../../../images/home.svg" alt="Home Icon" ></a>
+          </div>
+
       		<div class="image-cropper"><img src="../../../{{ Auth::user()->photo }}" alt="user image"></div>
       		<div>
             <h2 id="userName">{{ Auth::user()->fname }} {{ Auth::user()->lname }}</h2>

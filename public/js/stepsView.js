@@ -5,18 +5,36 @@
 	
 	// Variables **************************************************
 
-	var operationLinks = document.querySelectorAll('.opItem');
-	var operationHeader = document.querySelectorAll('.opItem > .opInfo');
-	var operationP = document.querySelectorAll('.opInfo > p');
+	var operationLinks = document.querySelectorAll('.opItem'),
+	    operationHeader = document.querySelectorAll('.opItem > .opInfo'),
+	    operationP = document.querySelectorAll('.opInfo > p');
 
-	var itemLinks = document.querySelectorAll('.itemBarItem');
-	var library = document.querySelector("#itemLibraryCon");
-	var closeButt = document.querySelector("#xButt");
-	var libraryHeaderH3 = document.querySelector("#libraryHeader h3");
-	// console.log(libraryHeaderH3);
+	var itemLinks = document.querySelectorAll('.itemBarItem'),
+		library = document.querySelector("#itemLibraryCon"),
+	 	closeButt = document.querySelector("#xButt"),
+	 	libraryHeaderH3 = document.querySelector("#libraryHeader h3");
+
+	var pageCon = document.querySelector('#stepContent'),
+		toolBar = document.querySelector('#itemBar');
 
 
 	// Functions **************************************************
+
+	function checkScroll(){
+		var windowScroll = window.scrollY,
+			height = pageCon.clientHeight;
+
+			// console.log(height);
+			console.log(window.scrollY);
+		
+		if (windowScroll > 170) {
+			toolBar.classList.add('itemBarFixed');
+			console.log("Stick");
+		}else{
+			toolBar.classList.remove('itemBarFixed');
+			console.log("not yet");
+		}
+	}
 
 	function openOperation(e){
 
@@ -44,14 +62,14 @@
 	}
 
 	function openLibrary(e){
-		console.log("open");
+		// console.log("open");
 		library.style.display = "block";
 		libraryHeaderH3.innerHTML = e.currentTarget.id + " For Part Number #123";
 
 	}
 
 	function closeLibrary(){
-		console.log("close");
+		// console.log("close");
 		library.style.display = "none";
 	}
 
@@ -66,6 +84,9 @@
 	}
 
 	closeButt.addEventListener("click", closeLibrary, false);
+
+	window.addEventListener("scroll", checkScroll, false);
+	window.addEventListener("onload", checkScroll, false);
 
 
 })();

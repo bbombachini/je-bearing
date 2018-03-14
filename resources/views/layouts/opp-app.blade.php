@@ -7,6 +7,10 @@
 
       	<div id="userinfo">
 
+          <div id="homeIcon">
+            <a href="{{ url('/home')}}"><img src="../../../images/home.svg" alt="Home Icon" ></a>
+          </div>
+
       		<div class="image-cropper"><img src="../../../images/person.jpg" alt="user image"></div>
       		<div>
       			<h2 id="userName">Clara</h2>
