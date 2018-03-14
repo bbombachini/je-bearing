@@ -46,6 +46,7 @@ class PartController extends Controller {
       $tools = $request['tooling'];
       $fixtures = $request['fixture'];
       $materials = $request['material'];
+      Log::info($request);
 
       // save info in database
       if (!$part->save()) {

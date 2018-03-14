@@ -88,7 +88,8 @@
                   <p>{{$user->employee_id}}</p>
                 </div>
                 <div class="item-column">
-                  <a class="edit" href="{{action('UsersController@edit', ['$id' => $user->id])}}">Edit</a>
+                  <!-- removed link to edit users {{action('UsersController@edit', ['$id' => $user->id])}} -->
+                  <a class="edit" href="#">Edit</a>
                 </div>
                 <div class="item-column">
                   <a class="delete" data-id="{{$user->id}}" href="#">Delete</a>

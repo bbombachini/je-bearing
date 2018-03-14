@@ -59,7 +59,7 @@
               {!! Form::file('media', ['class' => 'form-control']) !!}
             </fieldset>
 
-						<a class="white-button" href="{{ url('/admin/users/list')}}">CANCEL</a>
+						<a class="white-button" href="{{ url('/admin/user/list')}}">CANCEL</a>
 						<button type="submit" class="green-button" name="button">ADD</button>
 					{!! Form::close() !!}
 
