@@ -46,6 +46,7 @@ class PartController extends Controller {
       $tools = $request['tooling'];
       $fixtures = $request['fixture'];
       $materials = $request['material'];
+      Log::info($request);
 
       // save info in database
       if (!$part->save()) {
@@ -190,7 +191,7 @@ class PartController extends Controller {
       // }
 
       // return view('admin.part.edit', ['old' => $part, 'photo' => $photo, 'id' => $id, 'defaultPhoto' => $defaultPhoto]);
-      return view('admin.part.edit-test', ['old' => $part, 'id' => $id, 'oldTool' => $partTooling, 'oldFixture' => $partFixture, 'oldMaterial' => $partMaterial]);
+      return view('admin.part.edit', ['old' => $part, 'id' => $id, 'oldTool' => $partTooling, 'oldFixture' => $partFixture, 'oldMaterial' => $partMaterial]);
     }
 
     public function update(Request $request) {

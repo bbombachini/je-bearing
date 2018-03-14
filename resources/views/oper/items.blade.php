@@ -10,13 +10,6 @@
                 <h2 id="bigTitle">{{$title}}</h2>
                 <h5 id="subTitle">Collect the following {{$name}} in order to complete this part.</h5>
             </div>
-
-            <div class="top-left">
-              <a href="{{ url('/home')}}">
-                <img src="../../../images/home-icon.png" width="20px" alt="go home">
-                <p>HOME</p>
-              </a>
-            </div>
     </div>
         <div id="oplist">
           <ul class="grid-list">

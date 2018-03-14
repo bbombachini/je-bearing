@@ -229,13 +229,13 @@ button{
 }
 
 .xButt{
-
     font-size: 18px;
     font-family: 'Book';
     color: $jegreen;
     text-align: right;
     padding: 20px;
     display: block;
+    cursor: pointer;
 }
 
 
@@ -283,7 +283,7 @@ a{
     background-image: url('../images/bearings_background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    #welcome-text{
+    #welcome-text, #welcome-user-text{
       width: 80%;
       text-align: center;
       align-self: end;
@@ -297,6 +297,10 @@ a{
         line-height: 60px;
         text-align: left;
       }
+    }
+
+    #welcome-user-text{
+      align-self: center;
     }
     #logout{
       padding: 4%;
@@ -444,6 +448,15 @@ a{
     align-self: center;
   }
 
+  #homeIcon{
+  width: 30px;
+  justify-self: left;
+
+  img{
+    width: 100%;
+  }
+  }
+
   div p{
     font-family: 'Light';
     font-size: 16px;
@@ -581,6 +594,33 @@ a{
     }
   }
 }
+
+#stepContent{
+  position: relative;
+
+  .section-head{
+    width: 80%;
+    margin: 0 auto;
+    padding: 50px 0 60px 0;
+    display: grid;
+    grid-template-columns: 3fr 1.1fr;
+    h5 {
+      font-size: 16px;
+      line-height: 20px;
+    }
+    .green {
+      color: $lightgreen;
+      font-size: 18px;
+    }
+    a#back-button{
+      color: $text !important;
+      line-height: 20px;
+    }
+  }
+
+}
+
+
 .button {
   width: 15vw;
   height: 40px;
@@ -712,10 +752,9 @@ a{
 
 #qualityAlerts, #operations{
 
-  margin-top: 50px;
-  display: inline-block;
-  width: 100%;
-
+  display: block;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .partStep{
@@ -833,16 +872,20 @@ a{
   }
 }
 
-
+.itemsearchfeild{
+  -webkit-appearance: none;
+}
 
 .itemsearchfeild::placeholder{
   color: $yellow;
 }
 
 #searchTables{
-  .itemResult div{
+  .itemResult ul{
     padding-bottom: 10px;
-
+    li {
+      text-decoration: none;
+    }
     p:hover{
       color: $jegreen;
     }
@@ -906,6 +949,21 @@ a{
 
   button{
     margin-top: 50px;
+  }
+  .white-button{
+    @extend .button;
+    font-family: 'Medium';
+    display: inline-block;
+    text-align: center;
+    margin: 5% 15%;
+    width: 15vw;
+    height: 40px;
+    border-radius: 100px;
+    font-size: 18px;
+    line-height: 40px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
   }
 }
 
@@ -1220,7 +1278,8 @@ a{
 #itemBar{
   display: flex;
   justify-content: space-between;
-  margin-bottom: 50px;
+  padding: 20px 10% 20px 10%;
+  transition: 0.5s;
 
   a{
 
@@ -1241,6 +1300,15 @@ a{
       padding-left: 20px;
     }
   }
+}
+
+.itemBarFixed{
+  background-color: #fff;
+  box-shadow: 3px 3px 20px rgba(0,0,0,0.1);
+  top: 0;
+  opacity: 1;
+  position: fixed;
+  width: 55%;
 }
 
 .whiteText{
@@ -1273,6 +1341,7 @@ a{
 
 #operations{
   border-bottom: 1px solid rgba(0,0,0, 0.2);
+  padding-top: 30px;
 }
 
 .opOpen{
@@ -1285,7 +1354,7 @@ a{
   display: flex;
   align-content: center;
   justify-content: space-between;
-  padding: 25px 30px; 
+  padding: 25px 30px;
 }
 
 .stepItem{
@@ -1313,8 +1382,18 @@ a{
   color: $yellow;
 }
 
+.green{
+  color: $lightgreen;
+  font-weight: 400;
+}
+
+.stepCap{
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
 .stepImage{
-  width: 100%;
+  width: 50%;
   box-shadow: 3px 3px 15px rgba(0,0,0,0.2);
 }
 
@@ -1404,7 +1483,6 @@ a{
     }
   }
 }
-
 
 #comments{
   margin-bottom: 50px;
@@ -1513,6 +1591,30 @@ a{
     padding: 20px 0 0 0;
   }
 }
+.selected{
+  display:inline-flex;
+  margin: 15px;
+  padding: 10px;
+  border: 1px solid $blue;
+  border-radius: 30px;
+  p {
+    color: $blue;
+    line-height: 1.2rem;
+    font-size: 1.3rem;
+  }
+  .popItem{
+    width: 15px;
+    height: 15px;
+    border-radius: 150px;
+    margin-left: 15px;
+    padding: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    display: inline-flex;
+    justify-content: center;
+    align-content: center;
+    color: $blue;
+  }
+}
 
 
 #adminLogin{
@@ -1531,4 +1633,6 @@ a{
     color: #fff;
   }
 }
-//sass --watch css/sass/main.scss:css/main.css
+//Run SASS
+//$ cd public
+//$ sass --watch css/sass/main.scss:css/main.css

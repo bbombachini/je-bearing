@@ -9,13 +9,6 @@
                 <h2 id="bigTitle">Contact Supervisor</h2>
                 <h5 id="subTitle">Contact a supervisor to get approval to move forward.</h5>
             </div>
-
-            <div class="top-left">
-              <a href="{{ url('/home')}}">
-                <img src="../../../images/home-icon.png" width="20px" alt="go home">
-                <p>HOME</p>
-              </a>
-            </div>
     </div>
 
 

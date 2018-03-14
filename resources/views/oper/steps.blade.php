@@ -5,7 +5,7 @@
     <div id="itemLibraryCon">
          <div id="libraryHeader">
             <h3>Tools for Part #123</h3>
-            <a href="" id="xButt"><h2>X</h2></a>
+           <h2 id="xButt">X</h2>
         </div>
 
         <div id="itemLibrary">
@@ -73,20 +73,13 @@
     </div>
 
 
-    <section id="content">
+    <section id="stepContent">
 
     <div class="section-head">
 
             <div class="section-title">
                 <h2 id="bigTitle">Steps</h2>
                 <h5 id="subTitle">Follow these steps to complete this part.</h5>
-            </div>
-
-            <div class="top-left">
-              <a href="{{ url('/home')}}">
-                <img src="../../../images/home-icon.png" width="20px" alt="go home">
-                <p>HOME</p>
-              </a>
             </div>
     </div>
 
@@ -128,6 +121,7 @@
                         <p class=stepTitle>1.1: Step Title</p>
                         <p class="stepDesc">This is the step description. Follow these instructions along with the image below to properly comlete this step. Then scroll down to the next step.</p>
                         <p class="stepNote"><span class="yellow">Note:</span> This is a note written about this step.</p>
+                        <p class="stepCap"><span class="green">Image 1 of 5 :</span> Put the piece on the other piece.</p>
                         <img src="../../images/placeholderImg.jpg" alt="step Image" class="stepImage">
                     </div>
 
@@ -136,7 +130,9 @@
                         <h3 class=stepTitle>1.2: Step Title</h3>
                         <p class="stepDesc">This is the step description. Follow these instructions along with the image below to properly comlete this step. Then scroll down to the next step.</p>
                         <p class="stepNote"><span class="yellow">Note:</span> This is a note written about this step.</p>
+                        <p class="stepCap"><span class="green">Image 1 of 5 :</span> Put the piece on the other piece.</p>
                         <img src="../../images/placeholderImg.jpg" alt="step Image" class="stepImage">
+
                     </div>
 
                 </div>
@@ -159,7 +155,9 @@
                         <p class=stepTitle>1.1: Step Title</p>
                         <p class="stepDesc">This is the step description. Follow these instructions along with the image below to properly comlete this step. Then scroll down to the next step.</p>
                         <p class="stepNote"><span class="yellow">Note:</span> This is a note written about this step.</p>
+                        <p class="stepCap"><span class="green">Image 1 of 5 :</span> Put the piece on the other piece.</p>
                         <img src="../../images/placeholderImg.jpg" alt="step Image" class="stepImage">
+
                     </div>
 
 
@@ -167,14 +165,15 @@
                         <h3 class=stepTitle>1.2: Step Title</h3>
                         <p class="stepDesc">This is the step description. Follow these instructions along with the image below to properly comlete this step. Then scroll down to the next step.</p>
                         <p class="stepNote"><span class="yellow">Note:</span> This is a note written about this step.</p>
+                        <p class="stepCap"><span class="green">Image 1 of 5 :</span> Put the piece on the other piece.</p>
                         <img src="../../images/placeholderImg.jpg" alt="step Image" class="stepImage">
+
                     </div>
 
                 </div>
 
             </div>
         </div>
-        
 
         <div class="opItem" data-id="op3">
 
@@ -192,7 +191,10 @@
                         <p class=stepTitle>1.1: Step Title</p>
                         <p class="stepDesc">This is the step description. Follow these instructions along with the image below to properly comlete this step. Then scroll down to the next step.</p>
                         <p class="stepNote"><span class="yellow">Note:</span> This is a note written about this step.</p>
+                        <p class="stepCap"><span class="green">Image 1 of 5 :</span> Put the piece on the other piece.</p>
+
                         <img src="../../images/placeholderImg.jpg" alt="step Image" class="stepImage">
+
                     </div>
 
 
@@ -200,7 +202,9 @@
                         <h3 class=stepTitle>1.2: Step Title</h3>
                         <p class="stepDesc">This is the step description. Follow these instructions along with the image below to properly comlete this step. Then scroll down to the next step.</p>
                         <p class="stepNote"><span class="yellow">Note:</span> This is a note written about this step.</p>
+                        <p class="stepCap"><span class="green">1/5</span> Put the piece on the other piece.</p>
                         <img src="../../images/placeholderImg.jpg" alt="step Image" class="stepImage">
+
                     </div>
 
                 </div>
@@ -213,7 +217,7 @@
             <div class="opInfo" id="opInfo4">
                 <p class="opItemTitle">Operation 4</p>
                 <p class="viewOpImg">View Image</p>
-                <p class="viewOpComments">5 Comments</p>
+                <p class="viewOpComments">3 Comments</p>
             </div>
 
             <div class="opOpen" data-id="op4">
@@ -225,6 +229,8 @@
                         <p class="stepDesc">This is the step description. Follow these instructions along with the image below to properly comlete this step. Then scroll down to the next step.</p>
                         <p class="stepNote"><span class="yellow">Note:</span> This is a note written about this step.</p>
                         <img src="../../images/placeholderImg.jpg" alt="step Image" class="stepImage">
+                        <p class="stepCap"><span class="green">1/5</span> Put the piece on the other piece.</p>
+
                     </div>
 
 
@@ -233,6 +239,8 @@
                         <p class="stepDesc">This is the step description. Follow these instructions along with the image below to properly comlete this step. Then scroll down to the next step.</p>
                         <p class="stepNote"><span class="yellow">Note:</span> This is a note written about this step.</p>
                         <img src="../../images/placeholderImg.jpg" alt="step Image" class="stepImage">
+                        <p class="stepCap"><span class="green">1/5</span> Put the piece on the other piece.</p>
+
                     </div>
 
                 </div>

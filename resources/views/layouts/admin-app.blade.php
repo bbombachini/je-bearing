@@ -7,6 +7,10 @@
 
       	<div id="userinfo">
 
+          <div id="homeIcon">
+            <a href="{{ url('/home')}}"><img src="../../../images/home.svg" alt="Home Icon" ></a>
+          </div>
+
       		<div class="image-cropper"><img src="../../../{{ Auth::user()->photo }}" alt="{{ Auth::user()->fname }} {{ Auth::user()->lname }} photo"></div>
       		<div>
             <h2 id="userName">{{ Auth::user()->fname }} {{ Auth::user()->lname }}</h2>
@@ -26,7 +30,7 @@
 
       	<nav id="adminNav">
       		<ul>
-      			<a href="{{ url('admin/part/add') }}" id="part">
+      			<a href="{{ url('admin/part/list') }}" id="part">
       				<svg version="1.1" id="particon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       				viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
       				<g><g>
