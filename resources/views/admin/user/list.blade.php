@@ -54,8 +54,9 @@
             </div>
 
 
-            <div class="add-button">
-				<a href="{{ url('/admin/user/add')}}"><img src="../../images/plusIcon.png" alt="add an user" width="25px;"></a>
+      <div class="add-button">
+        <!-- removed link to add user {{ url('/admin/user/add')}} -->
+				<a href="#"><img src="../../images/plusIcon.png" alt="add an user" width="25px;"></a>
 			</div>
 
     </div>

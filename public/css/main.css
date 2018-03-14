@@ -427,7 +427,7 @@ a {
   display: flex;
   justify-content: center; }
   .image-cropper img {
-    height: 100%;
+    height: 108%;
     width: auto; }
 
 #search {
