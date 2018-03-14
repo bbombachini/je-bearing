@@ -291,6 +291,7 @@ button {
   text-align: right;
   padding: 20px;
   display: block;
+  cursor: pointer;
 }
 
 .confirmDelete {
@@ -335,19 +336,22 @@ a {
   background-repeat: no-repeat;
   background-size: cover;
 }
-#welcome-con #welcome-text {
+#welcome-con #welcome-text, #welcome-con #welcome-user-text {
   width: 80%;
   text-align: center;
   align-self: end;
   justify-self: center;
 }
-#welcome-con #welcome-text h1 {
+#welcome-con #welcome-text h1, #welcome-con #welcome-user-text h1 {
   font-size: 50px;
 }
-#welcome-con #welcome-text h1, #welcome-con #welcome-text h3 {
+#welcome-con #welcome-text h1, #welcome-con #welcome-text h3, #welcome-con #welcome-user-text h1, #welcome-con #welcome-user-text h3 {
   color: #fff;
   line-height: 60px;
   text-align: left;
+}
+#welcome-con #welcome-user-text {
+  align-self: center;
 }
 #welcome-con #logout {
   padding: 4%;
@@ -476,6 +480,13 @@ a {
   text-align: center;
   align-self: center;
 }
+#userinfo #homeIcon {
+  width: 30px;
+  justify-self: left;
+}
+#userinfo #homeIcon img {
+  width: 100%;
+}
 #userinfo div p {
   font-family: 'Light';
   font-size: 16px;
@@ -603,6 +614,29 @@ a {
   line-height: 20px;
 }
 
+#stepContent {
+  position: relative;
+}
+#stepContent .section-head {
+  width: 80%;
+  margin: 0 auto;
+  padding: 50px 0 60px 0;
+  display: grid;
+  grid-template-columns: 3fr 1.1fr;
+}
+#stepContent .section-head h5 {
+  font-size: 16px;
+  line-height: 20px;
+}
+#stepContent .section-head .green {
+  color: #009B60;
+  font-size: 18px;
+}
+#stepContent .section-head a#back-button {
+  color: #A2A2A2 !important;
+  line-height: 20px;
+}
+
 .button, .green-button, .white-button {
   width: 15vw;
   height: 40px;
@@ -726,9 +760,9 @@ a {
 }
 
 #qualityAlerts, #operations {
-  margin-top: 50px;
-  display: inline-block;
-  width: 100%;
+  display: block;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .partStep .addButt {
@@ -1178,7 +1212,8 @@ a {
 #itemBar {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 50px;
+  padding: 20px 10% 20px 10%;
+  transition: 0.5s;
 }
 #itemBar .itemIcon {
   width: 30px;
@@ -1193,6 +1228,15 @@ a {
   font-size: 18px;
   color: #006F3B;
   padding-left: 20px;
+}
+
+.itemBarFixed {
+  background-color: #fff;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.1);
+  top: 0;
+  opacity: 1;
+  position: fixed;
+  width: 55%;
 }
 
 .whiteText {
@@ -1222,6 +1266,7 @@ a {
 
 #operations {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-top: 30px;
 }
 
 .opOpen {
@@ -1263,8 +1308,18 @@ a {
   color: #ECB900;
 }
 
+.green {
+  color: #009B60;
+  font-weight: 400;
+}
+
+.stepCap {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
 .stepImage {
-  width: 100%;
+  width: 50%;
   box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
 }
 

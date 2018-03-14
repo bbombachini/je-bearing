@@ -9,13 +9,6 @@
                 <h2 id="bigTitle">Quality Alerts</h2>
                 <h5 id="subTitle">Keey an eye on the following items.</h5>
             </div>
-
-            <div class="top-left">
-              <a href="{{ url('/home')}}">
-                <img src="../../../images/home-icon.png" width="20px" alt="go home">
-                <p>HOME</p>
-              </a>
-            </div>
     </div>
 
     <div id="steps">

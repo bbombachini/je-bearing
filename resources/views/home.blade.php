@@ -13,9 +13,11 @@
 
 
 @section('message')
+<div id="welcome-user-text">
 <div>
    <h1>Welcome, {{ Auth::user()->fname }} {{ Auth::user()->lname }}</h1>
    <h3>Choose where you would like to go.</h3>
+</div>
 </div>
 @endsection
 
@@ -47,7 +49,7 @@
 
   <a href="oper/tooling" class="dash-section">
     <div class="dash-icon">
-      <img src="../../../images/workIcon.svg" alt="Work Instructions">
+      <img src="../../../images/repairIcon.svg" alt="Work Instructions">
     </div>
 
     <div class="dash-text">
@@ -57,7 +59,7 @@
 
   <a href="oper/tooling" class="dash-section">
     <div class="dash-icon">
-      <img src="../../../images/workIcon.svg" alt="Work Instructions">
+      <img src="../../../images/assembly.svg" alt="Assembly">
     </div>
 
     <div class="dash-text">
@@ -67,7 +69,7 @@
 
   <a href="oper/tooling" class="dash-section">
       <div class="dash-icon">
-        <img src="../../../images/repairIcon.svg" alt="Repair and Overhaul">
+        <img src="../../../images/workIcon.svg" alt="Repair and Overhaul">
       </div>
 
       <div class="dash-text">
