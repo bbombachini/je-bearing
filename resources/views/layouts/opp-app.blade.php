@@ -7,9 +7,9 @@
 
       	<div id="userinfo">
 
-      		<div class="image-cropper"><img src="../../../images/person.jpg" alt="user image"></div>
+      		<div class="image-cropper"><img src="../../../{{ Auth::user()->photo }}" alt="{{ Auth::user()->fname }} {{ Auth::user()->lname }} photo"></div>
       		<div>
-      			<h2 id="userName">Clara</h2>
+      			<h2 id="userName">{{ Auth::user()->fname }} {{ Auth::user()->lname }}</h2>
       			<p>Part: #1234</p>
       		</div>
       	</div>
