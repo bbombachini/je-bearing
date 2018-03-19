@@ -303,7 +303,7 @@ a{
       align-self: center;
     }
     #logout{
-      padding: 4%;
+      padding: 20px;
       align-self: end;
       justify-self: start;
       p {
@@ -1348,6 +1348,10 @@ a{
   display: none;
 }
 
+.opOpen.open{
+  display: block;
+}
+
 .opHeader{
   background-color: $lightgreen;
   color: #fff;
@@ -1359,6 +1363,14 @@ a{
 
 .stepItem{
   margin-bottom: 100px;
+  ul{
+    margin-top: 20px;
+  }
+  ul li{
+    margin-bottom: 20px;
+    list-style-type: circle;
+    list-style-position: inside;
+  }
 }
 
 .stepTitle{

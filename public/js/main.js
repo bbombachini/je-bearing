@@ -242,7 +242,9 @@
 		var val = e.currentTarget.value;
 		var itemResultDiv = document.querySelectorAll(".itemResult");
 		// console.log(val);
-		var link = "http://localhost:8000/admin/"+id+'/list/search/'+val;
+		// var link = "http://localhost:8000/admin/"+id+'/list/search/'+val;
+		// console.log(window.location.href);
+		var link = "/admin/"+id+'/list/search/'+val;
 		// console.log(link);
 
 		if(val !== "") {

@@ -134,7 +134,7 @@ class ToolingController extends Controller {
 
     public function search($str) {
       if(isset($str)) {
-        $tool = Tooling::where('name','LIKE',"{$str}%")->get();
+        $tool = Tooling::where('name','LIKE',"{$str}%")->where('active', 1)->get();
         if(!$tool->isEmpty()){
             return (['item' => $tool]);
         } else {

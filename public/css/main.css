@@ -300,7 +300,7 @@ a {
   #welcome-con #welcome-user-text {
     align-self: center; }
   #welcome-con #logout {
-    padding: 4%;
+    padding: 20px;
     align-self: end;
     justify-self: start; }
     #welcome-con #logout p {
@@ -1072,6 +1072,9 @@ a {
 .opOpen {
   display: none; }
 
+.opOpen.open {
+  display: block; }
+
 .opHeader {
   background-color: #009B60;
   color: #fff;
@@ -1082,6 +1085,12 @@ a {
 
 .stepItem {
   margin-bottom: 100px; }
+  .stepItem ul {
+    margin-top: 20px; }
+  .stepItem ul li {
+    margin-bottom: 20px;
+    list-style-type: circle;
+    list-style-position: inside; }
 
 .stepTitle {
   font-size: 18px;

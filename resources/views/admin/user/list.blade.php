@@ -17,7 +17,8 @@
             <div id="dimClick2"></div>
     </div>
 
-    <div id="dim2">
+    <!-- commented due to presentation -->
+    <!-- <div id="dim2">
         <div id="dimClick"></div>
         <div id="quickView">
             <a class="xButt" href="#">X</a>
@@ -25,7 +26,6 @@
             <div id="itemImgInfo">
 
                 <div id="itemImg">
-                    <!-- <img src="../../images/placeholderImg.jpg" alt="placeholder Image"> -->
                     <img src="" alt="Image">
                 </div>
 
@@ -39,11 +39,10 @@
 
             </div>
 
-            <!-- <p id="desc"></p> -->
             <a class="confirmEdit" href="#">Edit</a>
 
         </div>
-    </div>
+    </div> -->
 
 <section id="content">
     <div class="section-head">
