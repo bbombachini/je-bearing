@@ -123,7 +123,7 @@ class MaterialController extends Controller {
 
     public function search($str) {
       if(isset($str)) {
-        $material = Material::where('name','LIKE',"{$str}%")->get();
+        $material = Material::where('name','LIKE',"{$str}%")->where('active', 1)->get();
         if(!$material->isEmpty()){
             return (['item' => $material]);
         } else {

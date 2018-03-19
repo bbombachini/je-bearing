@@ -2,7 +2,7 @@
 (function() {
 	"use strict";
 
-	
+
 	// Variables **************************************************
 
 	var operationLinks = document.querySelectorAll('.opItem'),
@@ -26,7 +26,7 @@
 
 			// console.log(height);
 			console.log(window.scrollY);
-		
+
 		if (windowScroll > 170) {
 			toolBar.classList.add('itemBarFixed');
 			console.log("Stick");
@@ -36,27 +36,26 @@
 		}
 	}
 
-	function openOperation(e){
+	function openOperation(){
+		let opSingle = this.parentNode.parentNode.dataset.id;
+		let opDesc = this.parentNode;
+		let opInfo = document.querySelector(".opItem [data-id='"+ opSingle +"']");
+		let p = opDesc.querySelectorAll('p');
 
-		var opSingle = e.currentTarget.dataset.id;
-		// console.log(opSingle);
+		if(!opInfo.classList.contains('open')) {
+			opInfo.classList.add('open');
+			opDesc.style.backgroundColor = "#009B60";
+			p.forEach((column) => {
+				column.classList.add("whiteText");
+			});
 
-		var opInfo = document.querySelector(".opItem [data-id='"+ opSingle +"']");
-		var clicked = e.currentTarget.dataset.id;
-		var clicked = clicked.slice(2,3);
-		var clicked = "#opInfo"+clicked;
-		var p = document.querySelectorAll(clicked);
-
-		if(opInfo.style.display == "none"){
-
-			opInfo.style.display = "block";
-			this.firstChild.nextSibling.style.backgroundColor = "#009B60";
-			p[0].classList.add("whiteText");
-
-		}else{
-			opInfo.style.display = "none";
-			this.firstChild.nextSibling.style.backgroundColor = "#FFF";
-			p[0].classList.remove("whiteText");
+		}
+		else {
+			opInfo.classList.remove('open');
+			opDesc.style.backgroundColor = "#FFF";
+			p.forEach((column) => {
+				column.classList.remove("whiteText");
+			});
 		}
 
 	}
@@ -75,9 +74,12 @@
 
 	// Event Listeners ******************************************
 
-	for(var i=0; i<operationLinks.length; i++){
-		operationLinks[i].addEventListener("click", openOperation, false);
-	}
+	// for(var i=0; i<operationLinks.length; i++){
+	// 	operationLinks[i].addEventListener("click", openOperation, false);
+	// }
+	operationLinks.forEach((operation) => {
+		operation.querySelector('.opItemTitle').addEventListener('click', openOperation, false);
+	});
 
 	for(var i=0; i<itemLinks.length; i++){
 		itemLinks[i].addEventListener("click", openLibrary, false);
