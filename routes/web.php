@@ -20,8 +20,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Operator Routes
 Route::get('/oper/tooling', 'ToolingController@opList');
+Route::get('/oper/tooling/search/{str}', ['uses' => 'ToolingController@search']);
 Route::get('/oper/fixture', 'FixtureController@opList');
+Route::get('/oper/fixture/search/{str}', ['uses' => 'FixtureController@search']);
 Route::get('/oper/material', 'MaterialController@opList');
+Route::get('/oper/material/search/{str}', ['uses' => 'MaterialController@search']);
 Route::get('/oper/comments', function(){
   return view('oper.comments');
 } );
@@ -79,7 +82,7 @@ Route::get('/admin/fixture/list/search/{str}', ['uses' => 'FixtureController@sea
   // Material //
   Route::get('/admin/material/list', 'MaterialController@list');
   Route::get('/admin/material/edit/{id}', ['uses' => 'MaterialController@edit']);
-Route::get('/admin/material/list/search/{str}', ['uses' => 'MaterialController@search']);
+  Route::get('/admin/material/list/search/{str}', ['uses' => 'MaterialController@search']);
   Route::post('/admin/material/update', 'MaterialController@update');
   Route::get('/admin/material/list/{id}',['uses' => 'MaterialController@quickview']);
   Route::get('/admin/material/editMedia/{id}', ['uses' => 'MaterialController@editMedia']);

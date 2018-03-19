@@ -53,18 +53,14 @@
 
 	function showView(){
 		//e.preventDefault();
-			// console.log(window.location.href);
 			var bodyarea = document.querySelector('body');
 			var quickView = document.querySelector('#dim2');
 			var close = quickView.querySelector('.xButt');
 			var id = this.dataset.id;
-			// console.log(id);
 			var curUrl = window.location.href.split('/');
-			// console.log(curUrl);
 			var section = curUrl[curUrl.length - 2];
 			var displayRequest = createRequest();
 			var url = '/admin/'+section+'/list/'+id;
-			// console.log(url);
 
 		function closeView(){
 			quickView.style.display = 'none';
@@ -77,7 +73,6 @@
 		close.addEventListener("click", closeView, false);
 		document.querySelector('#dimClick').addEventListener("click", closeView, false);
 
-		// console.log(url);
 		if(section === 'user') {
 			displayRequest.onreadystatechange = respUser;
 		}
@@ -95,16 +90,13 @@
 			if(displayRequest.readyState === 4 || displayRequest.readyState === "complete"){
 				var infoDiv = document.querySelector('#quickView');
 				infoDiv.style.display = 'block';
-
 				var jsondoc = JSON.parse(displayRequest.responseText);
-				console.log(jsondoc);
+				// console.log(jsondoc);
 				// console.log(jsondoc.section[0].section_name);
 				document.querySelector("#itemname").innerHTML = jsondoc.item[0].name;
 				document.querySelector("#number").innerHTML = jsondoc.item[0].number;
 				document.querySelector("#desc").innerHTML = jsondoc.item[0].desc;
 				document.querySelector("#itemImg > img").src = '../../images/'+jsondoc.item.media_path;
-				// console.log(infoDiv);
-				// console.log(jsondoc);
 				infoDiv.querySelector(".confirmEdit").href = '/admin/'+section+'/edit/'+ jsondoc.item[0].id;
 				quickView.style.display = 'block';
 				// quickView.style.opacity = 1;
@@ -167,14 +159,11 @@
 
 	function showResults(e){
 		var str = e.currentTarget.value;
-			// console.log(str);
 		var url = window.location.href+'/search/'+str;
 
 		if(str !== "") {
 
 			resultRequest = createRequest();
-
-			// console.log(url);
 			resultRequest.onreadystatechange = respRequest;
 			resultRequest.open("GET", url, true);
 			resultRequest.send(str, null);
@@ -190,18 +179,20 @@
 						let jsonfile = JSON.parse(resultRequest.responseText);
 						for(let i =0; i< jsonfile.item.length; i++){
 						result.style.display = "block";
-						var newDiv = document.createElement("div");
-						var newResult = document.createElement("p");
+						var newDiv;
 						if(url.indexOf('/admin/user/list/search') !== -1) {
-							newResult.innerHTML = jsonfile.item[i].lname+', '+jsonfile.item[i].fname;
+							newDiv = `<div><p id="`+jsonfile.item[i].id+`">`+jsonfile.item[i].lname+', '+jsonfile.item[i].fname+`</p></div>`;
 						}
 						else {
-							newResult.innerHTML = jsonfile.item[i].name;
+							newDiv = `<div><p class="selectItem" id="`+jsonfile.item[i].id+`">`+jsonfile.item[i].name+`</p></div>`;
 						}
-						// newResult.innerHTML = jsonfile.item[i].name;
-						newDiv.appendChild(newResult);
-						result.appendChild(newDiv);
+						result.innerHTML += newDiv;
 						}
+						//Create event listener to quickView -> Not working
+							// let  selectItem = result.querySelectorAll('.selectItem');
+							// selectItem.forEach((item) => {
+							// 	item.addEventListener('click', showView, false);
+							// });
 					} else {
 						result.style.display = "block";
 						var newDiv = document.createElement("div");
@@ -388,6 +379,7 @@
 			let name = document.querySelector('input[name="name"]').value;
 			let number = document.querySelector('input[name="number"]').value;
 			let form = document.querySelector('#addPart');
+			let redirect = '/admin/part/list';
 
 			if (Selections['tooling'].length > 0) {
 				var tooling = new Array();
@@ -431,6 +423,7 @@
 				 .then((data) => {
 					cleanSearch();
 					form.reset();
+					window.location.href = redirect;
 				 })
 				 .catch(function(error) {
           console.log(error);
