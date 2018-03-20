@@ -67,8 +67,8 @@ sass --watch css/sass:css
 
 # Authors
 
-* Barbara Bombachini - me - <https://github.com/bbombachini>
-* Mauricio Silveira <https://github.com/maursilveira>
-* Clara Marshall <https://github.com/claramarshall>
+* Barbara Bombachini - Front End Dev - <https://github.com/bbombachini>
+* Mauricio Silveira - Back End Dev - <https://github.com/maursilveira>
+* Clara Marshall - Project Manager, Designer and Front End Dev - <https://github.com/claramarshall>
 
 
