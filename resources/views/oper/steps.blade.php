@@ -108,8 +108,8 @@
         <div class="opItem" data-id="op1">
 
             <div class="opInfo" id="opInfo1">
-                <p class="opItemTitle">Operation 1</p>
-                <p class="viewOpImg">View Image</p>
+                <p class="opItemTitle">Operation One</p>
+                <!-- <p class="viewOpImg">View Image</p> -->
                 <p class="viewOpComments">1 Comment</p>
             </div>
 
@@ -118,21 +118,16 @@
                 <div id="steps">
 
                     <div class="stepItem">
-                        <p class=stepTitle>1.1: Step Title</p>
-                        <p class="stepDesc">This is the step description. Follow these instructions along with the image below to properly comlete this step. Then scroll down to the next step.</p>
-                        <p class="stepNote"><span class="yellow">Note:</span> This is a note written about this step.</p>
-                        <p class="stepCap"><span class="green">Image 1 of 5 :</span> Put the piece on the other piece.</p>
-                        <img src="../../images/placeholderImg.jpg" alt="step Image" class="stepImage">
-                    </div>
-
-
-                    <div class="stepItem">
-                        <h3 class=stepTitle>1.2: Step Title</h3>
-                        <p class="stepDesc">This is the step description. Follow these instructions along with the image below to properly comlete this step. Then scroll down to the next step.</p>
-                        <p class="stepNote"><span class="yellow">Note:</span> This is a note written about this step.</p>
-                        <p class="stepCap"><span class="green">Image 1 of 5 :</span> Put the piece on the other piece.</p>
-                        <img src="../../images/placeholderImg.jpg" alt="step Image" class="stepImage">
-
+                        <p class=stepTitle>1.1: Cut Materials</p>
+                        <p class="stepDesc">Cut the following pieces of wood:</p>
+                        <ul>
+                            <li>1 ¾" plywood @ 18 ¾" x 61" (top)</li>
+                            <li>1 ¾" plywood @ 15" x 56 ½" (base shelf)</li>
+                            <li>4 2×2 @ 56 ½" (front and back supports)</li>
+                            <li>4 2×2 @ 15" (side supports)</li>
+                            <li>4 2×2 @ 17" (legs)</li>
+                            <li>6 2×2 @ 12" (center supports)</li>
+                        </ul>
                     </div>
 
                 </div>
@@ -142,8 +137,8 @@
         <div class="opItem" data-id="op2">
 
             <div class="opInfo" id="opInfo2">
-                <p class="opItemTitle">Operation 2</p>
-                <p class="viewOpImg">View Image</p>
+                <p class="opItemTitle">Operation Two</p>
+                <!-- <p class="viewOpImg">View Image</p> -->
                 <p class="viewOpComments">3 Comments</p>
             </div>
 
@@ -152,21 +147,51 @@
                 <div id="steps">
 
                     <div class="stepItem">
-                        <p class=stepTitle>1.1: Step Title</p>
-                        <p class="stepDesc">This is the step description. Follow these instructions along with the image below to properly comlete this step. Then scroll down to the next step.</p>
-                        <p class="stepNote"><span class="yellow">Note:</span> This is a note written about this step.</p>
-                        <p class="stepCap"><span class="green">Image 1 of 5 :</span> Put the piece on the other piece.</p>
-                        <img src="../../images/placeholderImg.jpg" alt="step Image" class="stepImage">
+                        <p class=stepTitle>2.1: Make Frame</p>
+                        <p class="stepDesc">Attach supports to legs using wood glue and 2 ½" pocket hole screws.</p>
+                        <p class="stepNote"><span class="yellow">Note:</span> Don't use too much glue as it will take too long to dry.</p>
+                        <!-- <p class="stepCap"><span class="green">Image 1 of 1:</span></p> -->
+                        <img src="../../images/steptwo.jpg" alt="step Image" class="stepImage">
 
                     </div>
 
 
                     <div class="stepItem">
-                        <h3 class=stepTitle>1.2: Step Title</h3>
-                        <p class="stepDesc">This is the step description. Follow these instructions along with the image below to properly comlete this step. Then scroll down to the next step.</p>
-                        <p class="stepNote"><span class="yellow">Note:</span> This is a note written about this step.</p>
-                        <p class="stepCap"><span class="green">Image 1 of 5 :</span> Put the piece on the other piece.</p>
-                        <img src="../../images/placeholderImg.jpg" alt="step Image" class="stepImage">
+                        <h3 class=stepTitle>2.2: Make Frame Continued</h3>
+                        <p class="stepDesc">Attach center supports to long supports using wood glue and 2 ½" pocket hole screws.</p>
+                        <p class="stepNote"><span class="yellow">Note:</span>Keep pocket holes all facing same direction (towards back).</p>
+                        <!-- <p class="stepCap"><span class="green">Image 1 of 5 :</span> Put the piece on the other piece.</p> -->
+                        <img src="../../images/stepthree.jpg" alt="step Image" class="stepImage">
+
+                    </div>
+
+                    <div class="stepItem">
+                        <h3 class=stepTitle>2.3: Make Base</h3>
+                        <p class="stepDesc">Drill pocket holes in the supports and then attach to base. Use wood glue and 1 ¼" pocket hole screws.</p>
+                        <p class="stepNote"><span class="yellow">Note:</span> Don't use too much glue as it will take too long to dry.</p>
+                        <!-- <p class="stepCap"><span class="green">Image 1 of 5 :</span> Put the piece on the other piece.</p> -->
+                        <img src="../../images/stepfour.jpg" alt="step Image" class="stepImage">
+
+                    </div>
+
+                    <div class="stepItem">
+                        <h3 class=stepTitle>2.4: Attach Base to Frame</h3>
+                        <p class="stepDesc">Use wood glue and 2 1⁄2" pocket hole screws. Then attach center supports to base shelf using wood glue and 2 1⁄2" pocket hole screws.
+
+                        <p class="stepNote"><span class="yellow">Note:</span> Be sure to drill the supports with pocket holes BEFORE attaching supports to base.</p>
+                        <!-- <p class="stepCap"><span class="green">Image 1 of 5 :</span> Put the piece on the other piece.</p> -->
+                        <img src="../../images/stepFour2.jpg" alt="step Image" class="stepImage">
+
+                    </div>
+
+
+                    <div class="stepItem">
+                        <h3 class=stepTitle>2.5: Attach Top</h3>
+                        <p class="stepDesc">Attach top to frame using wood glue and pre-drilled countersink holes. Use 2" wood screws from underside.
+
+                        <p class="stepNote"><span class="yellow">Note:</span> Let the top overhang on front and both sides by 3⁄4".</p>
+                        <!-- <p class="stepCap"><span class="green">Image 1 of 5 :</span> Put the piece on the other piece.</p> -->
+                        <img src="../../images/stepfive.jpg" alt="step Image" class="stepImage">
 
                     </div>
 
@@ -178,8 +203,8 @@
         <div class="opItem" data-id="op3">
 
             <div class="opInfo" id="opInfo3">
-                <p class="opItemTitle">Operation 3</p>
-                <p class="viewOpImg">View Image</p>
+                <p class="opItemTitle">Operation Three</p>
+                <!-- <p class="viewOpImg">View Image</p> -->
                 <p class="viewOpComments">3 Comments</p>
             </div>
 
@@ -188,22 +213,10 @@
                 <div id="steps">
 
                     <div class="stepItem">
-                        <p class=stepTitle>1.1: Step Title</p>
-                        <p class="stepDesc">This is the step description. Follow these instructions along with the image below to properly comlete this step. Then scroll down to the next step.</p>
-                        <p class="stepNote"><span class="yellow">Note:</span> This is a note written about this step.</p>
-                        <p class="stepCap"><span class="green">Image 1 of 5 :</span> Put the piece on the other piece.</p>
-
-                        <img src="../../images/placeholderImg.jpg" alt="step Image" class="stepImage">
-
-                    </div>
-
-
-                    <div class="stepItem">
-                        <h3 class=stepTitle>1.2: Step Title</h3>
-                        <p class="stepDesc">This is the step description. Follow these instructions along with the image below to properly comlete this step. Then scroll down to the next step.</p>
-                        <p class="stepNote"><span class="yellow">Note:</span> This is a note written about this step.</p>
-                        <p class="stepCap"><span class="green">1/5</span> Put the piece on the other piece.</p>
-                        <img src="../../images/placeholderImg.jpg" alt="step Image" class="stepImage">
+                        <p class=stepTitle>3.1: Paint</p>
+                        <p class="stepDesc">Paint bench your favorite color. Then leave to dry.</p>
+                        <p class="stepNote"><span class="yellow">Note:</span> Sand bench before painting for best results</p>
+                        <!-- <p class="stepCap"><span class="green">Image 1 of 5 :</span> Put the piece on the other piece.</p> -->
 
                     </div>
 
@@ -215,8 +228,8 @@
         <div class="opItem" data-id="op4">
 
             <div class="opInfo" id="opInfo4">
-                <p class="opItemTitle">Operation 4</p>
-                <p class="viewOpImg">View Image</p>
+                <p class="opItemTitle">Operation Four</p>
+                <!-- <p class="viewOpImg">View Image</p> -->
                 <p class="viewOpComments">3 Comments</p>
             </div>
 
@@ -225,22 +238,18 @@
                 <div id="steps">
 
                     <div class="stepItem">
-                        <p class=stepTitle>1.1: Step Title</p>
-                        <p class="stepDesc">This is the step description. Follow these instructions along with the image below to properly comlete this step. Then scroll down to the next step.</p>
-                        <p class="stepNote"><span class="yellow">Note:</span> This is a note written about this step.</p>
-                        <img src="../../images/placeholderImg.jpg" alt="step Image" class="stepImage">
-                        <p class="stepCap"><span class="green">1/5</span> Put the piece on the other piece.</p>
+                        <p class=stepTitle>4.1 Insert Wood Crates</p>
+                        <p class="stepDesc">Insert wooden crates or baskets into 4 slots.</p>
+                        <p class="stepNote"><span class="yellow">Note:</span> Add Felt tips on the bottom of boxes or baskets for best sliding effect.</p>
+                        <img src="../../images/benchwithboxes.jpg" alt="step Image" class="stepImage">
 
                     </div>
 
 
                     <div class="stepItem">
-                        <h3 class=stepTitle>1.2: Step Title</h3>
-                        <p class="stepDesc">This is the step description. Follow these instructions along with the image below to properly comlete this step. Then scroll down to the next step.</p>
-                        <p class="stepNote"><span class="yellow">Note:</span> This is a note written about this step.</p>
-                        <img src="../../images/placeholderImg.jpg" alt="step Image" class="stepImage">
-                        <p class="stepCap"><span class="green">1/5</span> Put the piece on the other piece.</p>
-
+                        <h3 class=stepTitle>4.2: Decorate with pillows as see fit (optional)</h3>
+                        <p class="stepDesc">This is the final step! Congratulations on completing your bench!</p>
+                        <img src="../../images/final.jpg" alt="step Image" class="stepImage">
                     </div>
 
                 </div>

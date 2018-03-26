@@ -51,6 +51,13 @@ Route::group(['middleware' => ['supervisor']] , function () {
   Route::get('/admin/part/list', 'PartController@list');
   Route::get('/admin/part/edit/{id}', ['uses' => 'PartController@edit']);
   Route::post('/admin/part/update', 'PartController@update');
+  Route::get('/admin/part/add-step', function(){
+    return view('admin.part.add-step');
+  } );
+    Route::get('/admin/part/add-alert', function(){
+    return view('admin.part.add-alert');
+  } );
+
   Route::get('/admin/part/list/search/{str}', ['uses' => 'PartController@search']);
 
   // Steps // This might be deleted in future
@@ -71,7 +78,7 @@ Route::group(['middleware' => ['supervisor']] , function () {
   // Fixture //
   Route::get('/admin/fixture/list', 'FixtureController@list');
   Route::get('/admin/fixture/edit/{id}', ['uses' => 'FixtureController@edit']);
-Route::get('/admin/fixture/list/search/{str}', ['uses' => 'FixtureController@search']);
+  Route::get('/admin/fixture/list/search/{str}', ['uses' => 'FixtureController@search']);
   Route::post('/admin/fixture/update', 'FixtureController@update');
   Route::get('/admin/fixture/list/{id}',['uses' => 'FixtureController@quickview']);
   Route::get('/admin/fixture/editMedia/{id}', ['uses' => 'FixtureController@editMedia']);
@@ -79,7 +86,7 @@ Route::get('/admin/fixture/list/search/{str}', ['uses' => 'FixtureController@sea
   // Material //
   Route::get('/admin/material/list', 'MaterialController@list');
   Route::get('/admin/material/edit/{id}', ['uses' => 'MaterialController@edit']);
-Route::get('/admin/material/list/search/{str}', ['uses' => 'MaterialController@search']);
+  Route::get('/admin/material/list/search/{str}', ['uses' => 'MaterialController@search']);
   Route::post('/admin/material/update', 'MaterialController@update');
   Route::get('/admin/material/list/{id}',['uses' => 'MaterialController@quickview']);
   Route::get('/admin/material/editMedia/{id}', ['uses' => 'MaterialController@editMedia']);

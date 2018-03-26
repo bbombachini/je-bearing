@@ -1359,6 +1359,16 @@ a{
 
 .stepItem{
   margin-bottom: 100px;
+
+  ul{
+    margin-top: 20px;
+  }
+
+  ul li{
+    margin-bottom: 20px;
+    list-style-type: circle;
+    list-style-position: inside;
+  }
 }
 
 .stepTitle{
@@ -1370,6 +1380,7 @@ a{
 .stepDesc{
   font-size: 16px;
   line-height: 26px;
+
 }
 
 .stepNote{
@@ -1633,6 +1644,177 @@ a{
     color: #fff;
   }
 }
+
+
+///STEPS **************************************************************
+.progress-bar-con {
+  width: 100%;
+  display: grid;
+}
+
+.progress-bar {
+  counter-reset: step;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.progress-bar li {
+  list-style: none;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  color: #ddd;
+}
+.progress-bar li:before {
+  content: counter(step);
+  counter-increment: step;
+  width: 34px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #ddd;
+  border-radius: 100%;
+  display: block;
+  text-align: center;
+  margin: 0 auto 15px auto;
+  background-color: #fff;
+  padding-top: 4px;
+  color: #ddd;
+}
+
+.progress-bar li.active {
+  color: green;
+}
+.progress-bar li.active:before {
+  border-color: green;
+  background-color: green;
+  color: #fff;
+} 
+
+#progress-one{
+  justify-self: start;
+}
+
+#progress-three{
+  justify-self: end;
+}
+
+#progress-line{
+  position: absolute;
+  z-index: -1;
+  align-self: center;
+  left: 5%;
+  margin-top: 15px;
+  width: 88%;
+  border-top: 1px solid #ddd;
+}
+
+
+.step-details{
+
+  margin-top: 40px;
+
+  h3{
+      font-family: 'Medium';
+      font-size: 16px;
+      line-height: 0px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      display: inline;
+  }
+
+  #addStep{
+    margin-top: 40px;
+
+  .add-item input{
+    width: 100%;
+  }
+
+  .add-item{
+    clear: both;
+    display: block;
+  }
+  .addItemLabel::placeholder{
+    color: $yellow;
+  }
+
+  .add-media{
+    width: 45%;
+    float: left;
+    height: 62px;
+  }
+
+  .media-caption{
+    width: 45%;
+    float: right;
+  }
+
+  label{
+    color: #a2a2a2;
+  }
+
+  input{
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    padding-bottom: 10px;
+    padding-top:10px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(0,0,0, 0.1);
+  }
+
+  .step-name{
+    float: left;
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 40px;
+    input{
+    width: 100%;
+    }
+  }
+  .part-number{
+    float: right;
+    margin-bottom: 40px;
+    width: 40%;
+    margin-top: 0px;
+  }
+
+  textarea{
+    border: 1px solid rgba(0,0,0,0.1);
+    max-width: 100%;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  input{
+    width: 100%;
+  }
+
+  fieldset{
+    margin-bottom: 10px;
+    margin-top: 40px;
+    width: 100%;
+  }
+
+}
+
+}
+
+#images{
+  clear: both;
+  display: block;
+  padding-top: 10px; 
+  color: $lightgreen;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
 //Run SASS
 //$ cd public
 //$ sass --watch css/sass/main.scss:css/main.css

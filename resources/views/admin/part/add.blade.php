@@ -21,7 +21,7 @@
           <div class="formHeader">
               <h3>PART DETAILS</h3>
           </div>
-
+          
             {!! Form::open(['id' => 'addPart', 'files' => true]) !!}
             <fieldset class="part-name">
               <p>{!! Form::label('name', 'Part Name') !!}</p>
@@ -81,22 +81,22 @@
             </div>
 
                 <a class="white-button" href="{{ url('/admin/part/list')}}">CANCEL</a>
-								<button type="submit" class="green-button next" name="button">NEXT</button>
+								<button type="submit" class="green-button next" name="button">SAVE</button>
 							{!! Form::close() !!}
 
 
 
-            <div id="opperations" class="partStep">
+       <!--      <div id="opperations" class="partStep">
 
               <div class="formHeader">
                 <h3>OPERATIONS</h3>
               </div>
 
-              <!-- <div class="openForm" id="addOpperation">
+              <div class="openForm" id="addOpperation">
                 <img src="../../../images/add_icon.svg" alt="add Button" class="addButt">
                 <p>Add Opperation</p>
               </div>
- -->
+
               <div class="opperInfo">
 
                  <fieldset class="alert-name">
@@ -201,7 +201,7 @@
 
 
 
-            </div>
+            </div> -->
 
 				</div>
 </section>
