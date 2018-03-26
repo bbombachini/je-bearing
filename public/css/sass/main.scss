@@ -303,7 +303,7 @@ a{
       align-self: center;
     }
     #logout{
-      padding: 4%;
+      padding: 20px;
       align-self: end;
       justify-self: start;
       p {
@@ -482,7 +482,7 @@ a{
     justify-content: center;
 
     img{
-      height: 100%;
+      height: 108%;
       width: auto;
     }
 }
@@ -776,16 +776,15 @@ a{
 }
 
 .operInfo{
-  margin: 0 auto;
+  margin: 50px auto;
   width: 90%;
   padding-bottom: 100px;
-
   .add-media{
     float: right;
   }
-
-
 }
+
+
 
  .addSubForm{
     color: $blue;
@@ -1160,6 +1159,16 @@ a{
   transform: rotate(-90deg);
 }
 
+.form-select {
+  -webkit-appearance: textfield;
+  background-color: rgba(0,0,0,0);
+  color: $yellow;
+  font-size: 14px;
+  border: none;
+  margin-top: 10px;
+  outline: 0;
+}
+
 .form-input{
     -webkit-appearance: textfield;
     background-color: rgba(0,0,0,0);
@@ -1340,12 +1349,67 @@ a{
 }
 
 #operations{
-  border-bottom: 1px solid rgba(0,0,0, 0.2);
   padding-top: 30px;
+  h4{
+    font-family: 'Light';
+    font-size: 1.5vw;
+    line-height: 3vw;
+  }
+  .partName{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 15px 0;
+    h4{
+      display: block;
+      font-size: 1.3vw;
+    }
+  }
+  .form-control{
+    color: $yellow;
+    font-weight: 400;
+    padding-bottom: 10px;
+  }
+    button.white-button{
+      float: left;
+      @extend .button;
+      margin: 15% 0 0 0;
+      text-align: center;
+      height: 40px;
+      border-radius: 100px;
+      font-size: 18px;
+      line-height: 30px;
+    }
+    button.white-button:nth-of-type(2){
+      float: right;
+      width: 20vw;
+    }
+  .addItem{
+    display: grid;
+
+    a{
+      color: $blue;
+      font-family: 'Light';
+      cursor: pointer;
+      text-decoration: none;
+      float: right;
+      font-size: 1.4vw;
+      justify-self: end;
+      margin: 15px 0;
+    }
+  }
+  .formHeader{
+    @extend .formHeader;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
 }
 
 .opOpen{
   display: none;
+}
+
+.opOpen.open{
+  display: block;
 }
 
 .opHeader{
@@ -1359,11 +1423,9 @@ a{
 
 .stepItem{
   margin-bottom: 100px;
-
   ul{
     margin-top: 20px;
   }
-
   ul li{
     margin-bottom: 20px;
     list-style-type: circle;
@@ -1408,7 +1470,7 @@ a{
   box-shadow: 3px 3px 15px rgba(0,0,0,0.2);
 }
 
-// Comments
+// Comments Section
 
 
 .commentDate{

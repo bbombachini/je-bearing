@@ -17,6 +17,14 @@
 			</div>
 
 				<div>
+					<div class="progress-bar-con">
+            <ul class="progress-bar">
+              <li id="progress-one">Part Details</li>
+              <li  id="progress-two">Operations</li>
+              <li class="active" id="progress-three">Quality Alerts</li>
+            </ul>
+            <hr id="progress-line">
+        </div>
 
           <div class="formHeader">
               <h3>PART DETAILS</h3>
@@ -80,10 +88,14 @@
 
             </div>
 
+						<fieldset class="part-category">
+							<p>{!! Form::label('category', 'Category') !!}</p>
+              {!! Form::select('category', array('' => 'Select a Category &#x25BC;', '1' => 'Work Instructions', '2' => 'Assembly', '3' => 'Repair & Overhaul'), null, ['class' => 'form-select', 'required' => 'required']) !!}
+            </fieldset>
+
                 <a class="white-button" href="{{ url('/admin/part/list')}}">CANCEL</a>
 								<button type="submit" class="green-button next" name="button">SAVE</button>
 							{!! Form::close() !!}
-
 
 
        <!--      <div id="opperations" class="partStep">
@@ -148,10 +160,10 @@
               </div>
               <p class="addSubForm">Add Another Step</p>
 
-            </div>
+            </div> -->
 
 
-            <div id="qualityAlerts" class="partStep">
+            <!-- <div id="qualityAlerts" class="partStep">
 
               <div class="formHeader">
                   <h3>QUALITY ALERTS</h3>

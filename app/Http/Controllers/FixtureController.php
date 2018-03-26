@@ -124,7 +124,7 @@ class FixtureController extends Controller {
 
     public function search($str) {
       if(isset($str)) {
-        $fixture = Fixture::where('name','LIKE',"{$str}%")->get();
+        $fixture = Fixture::where('name','LIKE',"{$str}%")->where('active', 1)->get();
         if(!$fixture->isEmpty()){
             return (['item' => $fixture]);
         } else {

@@ -1,8 +1,8 @@
--- MySQL dump 10.16  Distrib 10.2.12-MariaDB, for Linux (x86_64)
+-- MySQL dump 10.16  Distrib 10.2.13-MariaDB, for Linux (x86_64)
 --
 -- Host: localhost    Database: db_jebearing
 -- ------------------------------------------------------
--- Server version	10.2.12-MariaDB
+-- Server version	10.2.13-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -88,7 +88,7 @@ CREATE TABLE `fixture` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +97,7 @@ CREATE TABLE `fixture` (
 
 LOCK TABLES `fixture` WRITE;
 /*!40000 ALTER TABLE `fixture` DISABLE KEYS */;
-INSERT INTO `fixture` VALUES (1,'Fixture 1','001','Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(2,'Fixture 2','002','Fixture with a photo',1,'2018-01-29 05:00:00','2018-02-07 19:26:40'),(3,'Fixture 3','003','Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(4,'Fixture 4','004','Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(5,'Clara','sasas',NULL,1,'2018-02-13 03:32:01','2018-02-13 03:32:01');
+INSERT INTO `fixture` VALUES (1,'Fixture 1','001','Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1 Fixture 1',0,'2018-01-29 05:00:00','2018-03-14 17:23:46'),(2,'Fixture 2','002','Fixture with a photo',0,'2018-01-29 05:00:00','2018-03-14 17:23:50'),(3,'Fixture 3','003','Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3 Fixture 3',0,'2018-01-29 05:00:00','2018-03-14 17:23:52'),(4,'Fixture 4','004','Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4 Fixture 4',0,'2018-01-29 05:00:00','2018-03-14 17:23:53'),(5,'Clara','sasas',NULL,0,'2018-02-13 03:32:01','2018-03-14 17:23:44'),(6,'Clamp','445-213','A clamp is a fastening device used to hold or secure objects tightly together to prevent movement or separation through the application of inward pressure.',1,'2018-03-14 17:27:31','2018-03-14 17:27:31');
 /*!40000 ALTER TABLE `fixture` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,7 +116,7 @@ CREATE TABLE `fixture_media` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +125,7 @@ CREATE TABLE `fixture_media` (
 
 LOCK TABLES `fixture_media` WRITE;
 /*!40000 ALTER TABLE `fixture_media` DISABLE KEYS */;
-INSERT INTO `fixture_media` VALUES (2,1,16,1,'2018-01-31 22:04:46','2018-01-31 22:04:46'),(3,2,19,1,'2018-02-07 19:26:41','2018-02-07 19:26:41');
+INSERT INTO `fixture_media` VALUES (2,1,16,1,'2018-01-31 22:04:46','2018-01-31 22:04:46'),(3,2,19,1,'2018-02-07 19:26:41','2018-02-07 19:26:41'),(4,6,35,1,'2018-03-14 17:27:31','2018-03-14 17:27:31');
 /*!40000 ALTER TABLE `fixture_media` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,7 +145,7 @@ CREATE TABLE `material` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,7 +154,7 @@ CREATE TABLE `material` (
 
 LOCK TABLES `material` WRITE;
 /*!40000 ALTER TABLE `material` DISABLE KEYS */;
-INSERT INTO `material` VALUES (1,'Wood','001','Wood is a porous and fibrous structural tissue found in the stems and roots of trees and other woody plants.',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(2,'Iron','002','Iron is a chemical element with symbol Fe and atomic number 26. It is a metal in the first transition series. It is by mass the most common element on Earth, forming much of Earth\'s outer and inner core.',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(3,'Steel','003','Steel is an alloy of iron and carbon and other elements. Because of its high tensile strength and low cost, it is a major component used in buildings, infrastructure, tools, ships, automobiles, machines, appliances, and weapons.',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(4,'Glass','004','Glass is a non-crystalline amorphous solid that is often transparent and has widespread practical, technological, and decorative usage in, for example, window panes, tableware, and optoelectronics.',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(5,'Plastic','005','Plastic is material consisting of any of a wide range of synthetic or semi-synthetic organic compounds that are malleable and so can be molded into solid objects.',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(6,'Clara','1111','1111',1,'2018-02-13 03:32:14','2018-02-13 03:32:14');
+INSERT INTO `material` VALUES (1,'Wood','001','Wood is a porous and fibrous structural tissue found in the stems and roots of trees and other woody plants.',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(2,'Iron','002','Iron is a chemical element with symbol Fe and atomic number 26. It is a metal in the first transition series. It is by mass the most common element on Earth, forming much of Earth\'s outer and inner core.',0,'2018-01-29 05:00:00','2018-03-14 18:45:58'),(3,'Steel','003','Steel is an alloy of iron and carbon and other elements. Because of its high tensile strength and low cost, it is a major component used in buildings, infrastructure, tools, ships, automobiles, machines, appliances, and weapons.',0,'2018-01-29 05:00:00','2018-03-14 17:32:08'),(4,'Glass','004','Glass is a non-crystalline amorphous solid that is often transparent and has widespread practical, technological, and decorative usage in, for example, window panes, tableware, and optoelectronics.',0,'2018-01-29 05:00:00','2018-03-14 18:45:53'),(5,'Plastic','005','Plastic is material consisting of any of a wide range of synthetic or semi-synthetic organic compounds that are malleable and so can be molded into solid objects.',0,'2018-01-29 05:00:00','2018-03-14 17:30:44'),(6,'Clara','1111','1111',0,'2018-02-13 03:32:14','2018-03-14 17:28:32'),(7,'Wood Glue','345-234','Gorilla Wood Glue is the reliable adhesive that woodworkers, carpenters and hobbyists trust for their woodworking projects.',1,'2018-03-14 17:29:44','2018-03-14 17:29:44'),(8,'Nails','345-345','In woodworking and construction, a nail is a pin-shaped object of metal which is used as a fastener, as a peg to hang something, or sometimes as a decoration.',1,'2018-03-14 17:31:47','2018-03-14 17:31:47'),(9,'Felt Pads','234-253','Felt is a textile material that is produced by matting, condensing and pressing fibers together. Felt can be made of natural fibers such as wool or animal fur, or from synthetic fibers such as petroleum-based acrylic or acrylonitrile.',1,'2018-03-14 17:34:52','2018-03-14 17:34:52');
 /*!40000 ALTER TABLE `material` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,7 +173,7 @@ CREATE TABLE `material_media` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -182,7 +182,7 @@ CREATE TABLE `material_media` (
 
 LOCK TABLES `material_media` WRITE;
 /*!40000 ALTER TABLE `material_media` DISABLE KEYS */;
-INSERT INTO `material_media` VALUES (1,2,17,1,'2018-02-07 19:22:43','2018-02-07 19:22:43'),(2,1,18,1,'2018-02-07 19:25:41','2018-02-07 19:25:41');
+INSERT INTO `material_media` VALUES (6,9,39,1,'2018-03-14 17:34:52','2018-03-14 17:34:52'),(7,8,40,2,'2018-03-14 18:45:13','2018-03-14 18:45:13'),(8,1,41,2,'2018-03-14 18:45:22','2018-03-14 18:45:22'),(9,7,42,2,'2018-03-14 18:45:33','2018-03-14 18:45:33');
 /*!40000 ALTER TABLE `material_media` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -201,7 +201,7 @@ CREATE TABLE `media` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,7 +210,7 @@ CREATE TABLE `media` (
 
 LOCK TABLES `media` WRITE;
 /*!40000 ALTER TABLE `media` DISABLE KEYS */;
-INSERT INTO `media` VALUES (1,'1516819843.jpg',NULL,NULL,'2018-01-24 23:50:44','2018-01-24 23:50:44'),(2,'1516819892.jpg',NULL,NULL,'2018-01-24 23:51:32','2018-01-24 23:51:32'),(4,'1516819950.jpg',NULL,NULL,'2018-01-24 23:52:30','2018-01-24 23:52:30'),(5,'1516819992.jpg',NULL,NULL,'2018-01-24 23:53:12','2018-01-24 23:53:12'),(6,'1516820081.jpg',NULL,NULL,'2018-01-24 23:54:41','2018-01-24 23:54:41'),(7,'1516820125.jpg',NULL,NULL,'2018-01-24 23:55:25','2018-01-24 23:55:25'),(8,'1516820186.jpg',NULL,NULL,'2018-01-24 23:56:27','2018-01-24 23:56:27'),(9,'1516820275.jpg',NULL,NULL,'2018-01-24 23:57:55','2018-01-24 23:57:55'),(10,'1516820328.jpg',NULL,NULL,'2018-01-24 23:58:48','2018-01-24 23:58:48'),(11,'1517417574.JPG',NULL,NULL,'2018-01-31 21:52:55','2018-01-31 21:52:55'),(12,'1517417943.JPG',NULL,NULL,'2018-01-31 21:59:04','2018-01-31 21:59:04'),(13,'1517418079.JPG',NULL,NULL,'2018-01-31 22:01:20','2018-01-31 22:01:20'),(15,'1517418199.JPG',NULL,NULL,'2018-01-31 22:03:20','2018-01-31 22:03:20'),(16,'1517418285.JPG',NULL,NULL,'2018-01-31 22:04:46','2018-01-31 22:04:46'),(17,'1518013363.png',NULL,NULL,'2018-02-07 19:22:43','2018-02-07 19:22:43'),(18,'1518013541.jpg',NULL,NULL,'2018-02-07 19:25:41','2018-02-07 19:25:41'),(19,'1518013600.jpg',NULL,NULL,'2018-02-07 19:26:40','2018-02-07 19:26:40'),(20,'1520289727.jpg',NULL,NULL,'2018-03-06 03:42:07','2018-03-06 03:42:07'),(21,'1520289939.jpg',NULL,NULL,'2018-03-06 03:45:39','2018-03-06 03:45:39'),(23,'1520290318.jpg',NULL,NULL,'2018-03-06 03:51:58','2018-03-06 03:51:58'),(24,'1520433626.jpg',NULL,NULL,'2018-03-07 19:40:26','2018-03-07 19:40:26'),(25,'1520433722.jpg',NULL,NULL,'2018-03-07 19:42:02','2018-03-07 19:42:02');
+INSERT INTO `media` VALUES (1,'1516819843.jpg',NULL,NULL,'2018-01-24 23:50:44','2018-01-24 23:50:44'),(11,'1517417574.JPG',NULL,NULL,'2018-01-31 21:52:55','2018-01-31 21:52:55'),(12,'1517417943.JPG',NULL,NULL,'2018-01-31 21:59:04','2018-01-31 21:59:04'),(13,'1517418079.JPG',NULL,NULL,'2018-01-31 22:01:20','2018-01-31 22:01:20'),(15,'1517418199.JPG',NULL,NULL,'2018-01-31 22:03:20','2018-01-31 22:03:20'),(16,'1517418285.JPG',NULL,NULL,'2018-01-31 22:04:46','2018-01-31 22:04:46'),(19,'1518013600.jpg',NULL,NULL,'2018-02-07 19:26:40','2018-02-07 19:26:40'),(20,'1520289727.jpg',NULL,NULL,'2018-03-06 03:42:07','2018-03-06 03:42:07'),(21,'1520289939.jpg',NULL,NULL,'2018-03-06 03:45:39','2018-03-06 03:45:39'),(23,'1520290318.jpg',NULL,NULL,'2018-03-06 03:51:58','2018-03-06 03:51:58'),(24,'1520433626.jpg',NULL,NULL,'2018-03-07 19:40:26','2018-03-07 19:40:26'),(25,'1520433722.jpg',NULL,NULL,'2018-03-07 19:42:02','2018-03-07 19:42:02'),(26,'1520435256.jpg',NULL,NULL,'2018-03-07 20:07:36','2018-03-07 20:07:36'),(27,'1521033610.jpg',NULL,NULL,'2018-03-14 17:20:10','2018-03-14 17:20:10'),(28,'1521033624.jpg',NULL,NULL,'2018-03-14 17:20:24','2018-03-14 17:20:24'),(29,'1521033723.jpg',NULL,NULL,'2018-03-14 17:22:03','2018-03-14 17:22:03'),(30,'1521033738.jpg',NULL,NULL,'2018-03-14 17:22:18','2018-03-14 17:22:18'),(31,'1521033748.jpg',NULL,NULL,'2018-03-14 17:22:28','2018-03-14 17:22:28'),(32,'1521033761.jpg',NULL,NULL,'2018-03-14 17:22:41','2018-03-14 17:22:41'),(33,'1521033780.jpg',NULL,NULL,'2018-03-14 17:23:00','2018-03-14 17:23:00'),(34,'1521033792.jpg',NULL,NULL,'2018-03-14 17:23:12','2018-03-14 17:23:12'),(35,'1521034051.jpg',NULL,NULL,'2018-03-14 17:27:31','2018-03-14 17:27:31'),(39,'1521034492.jpg',NULL,NULL,'2018-03-14 17:34:52','2018-03-14 17:34:52'),(40,'1521038713.jpg',NULL,NULL,'2018-03-14 18:45:13','2018-03-14 18:45:13'),(41,'1521038721.jpg',NULL,NULL,'2018-03-14 18:45:22','2018-03-14 18:45:22'),(42,'1521038732.jpg',NULL,NULL,'2018-03-14 18:45:32','2018-03-14 18:45:32'),(43,'1521041094.jpg',NULL,NULL,'2018-03-14 19:24:54','2018-03-14 19:24:54');
 /*!40000 ALTER TABLE `media` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -365,7 +365,7 @@ CREATE TABLE `part` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -374,7 +374,7 @@ CREATE TABLE `part` (
 
 LOCK TABLES `part` WRITE;
 /*!40000 ALTER TABLE `part` DISABLE KEYS */;
-INSERT INTO `part` VALUES (1,'001','Part 1','Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(2,'002','Part 2','Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(3,'003','Part 3','Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(4,'004','Part 4','Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(5,'005','Part 5','Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5',1,'2018-01-29 05:00:00','2018-01-29 05:00:00'),(20,'000','Final Test',NULL,1,'2018-03-01 21:10:02','2018-03-01 21:10:02'),(21,'000','Final Test',NULL,1,'2018-03-01 21:10:23','2018-03-01 21:10:23'),(22,'000','Final Test',NULL,0,'2018-03-01 21:10:59','2018-03-06 00:15:17');
+INSERT INTO `part` VALUES (1,'001','Part 1','Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1 Part 1',0,'2018-01-29 05:00:00','2018-03-14 17:17:41'),(2,'002','Part 2','Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2 Part 2',0,'2018-01-29 05:00:00','2018-03-14 17:17:43'),(3,'003','Part 3','Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3 Part 3',0,'2018-01-29 05:00:00','2018-03-14 17:17:44'),(4,'004','Part 4','Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4 Part 4',0,'2018-01-29 05:00:00','2018-03-14 17:17:47'),(5,'005','Part 5','Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5 Part 5',0,'2018-01-29 05:00:00','2018-03-14 17:17:50'),(20,'000','Final Test',NULL,0,'2018-03-01 21:10:02','2018-03-14 17:17:37'),(21,'000','Final Test',NULL,0,'2018-03-01 21:10:23','2018-03-14 17:17:39'),(22,'000','Final Test',NULL,0,'2018-03-01 21:10:59','2018-03-06 00:15:17'),(23,'test','test redirect',NULL,0,'2018-03-14 17:04:02','2018-03-14 17:17:51'),(24,'111','Test should redirect',NULL,0,'2018-03-14 17:05:11','2018-03-14 17:17:54'),(25,'123-456','Bench',NULL,1,'2018-03-14 17:20:38','2018-03-14 17:20:38'),(26,'123-456','Bench',NULL,0,'2018-03-14 17:20:40','2018-03-14 17:20:49'),(27,'123-456','Bench',NULL,0,'2018-03-14 17:20:41','2018-03-14 17:20:51'),(28,'123-456','Bench',NULL,0,'2018-03-14 17:20:42','2018-03-14 17:20:53'),(29,'123-456','Bench',NULL,0,'2018-03-14 17:20:42','2018-03-14 17:20:55'),(30,'123-456','Bench',NULL,0,'2018-03-14 17:20:43','2018-03-14 17:20:58'),(31,'123-456','Bench',NULL,0,'2018-03-14 17:20:43','2018-03-14 17:21:00'),(32,'123-456','Bench',NULL,0,'2018-03-14 17:20:43','2018-03-14 17:21:02'),(33,'123-456','Bench',NULL,0,'2018-03-14 17:20:43','2018-03-14 17:21:03'),(34,'56575','Table',NULL,1,'2018-03-14 17:26:19','2018-03-14 17:26:19');
 /*!40000 ALTER TABLE `part` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -418,7 +418,7 @@ CREATE TABLE `part_fixture` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -427,7 +427,7 @@ CREATE TABLE `part_fixture` (
 
 LOCK TABLES `part_fixture` WRITE;
 /*!40000 ALTER TABLE `part_fixture` DISABLE KEYS */;
-INSERT INTO `part_fixture` VALUES (1,1,1,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(2,1,3,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(3,2,2,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(4,3,1,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(5,3,2,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(6,3,3,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(7,3,4,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(8,4,4,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(9,4,3,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(12,20,1,'2018-03-01 21:10:03','2018-03-01 21:10:03'),(13,20,2,'2018-03-01 21:10:03','2018-03-01 21:10:03'),(14,21,1,'2018-03-01 21:10:23','2018-03-01 21:10:23'),(15,21,2,'2018-03-01 21:10:23','2018-03-01 21:10:23'),(16,22,1,'2018-03-01 21:10:59','2018-03-01 21:10:59'),(17,22,2,'2018-03-01 21:10:59','2018-03-01 21:10:59');
+INSERT INTO `part_fixture` VALUES (1,1,1,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(2,1,3,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(3,2,2,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(4,3,1,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(5,3,2,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(6,3,3,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(7,3,4,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(8,4,4,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(9,4,3,'2018-01-29 19:22:21','2018-01-29 19:22:21'),(12,20,1,'2018-03-01 21:10:03','2018-03-01 21:10:03'),(13,20,2,'2018-03-01 21:10:03','2018-03-01 21:10:03'),(14,21,1,'2018-03-01 21:10:23','2018-03-01 21:10:23'),(15,21,2,'2018-03-01 21:10:23','2018-03-01 21:10:23'),(16,22,1,'2018-03-01 21:10:59','2018-03-01 21:10:59'),(17,22,2,'2018-03-01 21:10:59','2018-03-01 21:10:59'),(18,23,1,'2018-03-14 17:04:02','2018-03-14 17:04:02'),(19,24,2,'2018-03-14 17:05:12','2018-03-14 17:05:12'),(20,24,3,'2018-03-14 17:05:12','2018-03-14 17:05:12');
 /*!40000 ALTER TABLE `part_fixture` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -447,7 +447,7 @@ CREATE TABLE `part_material` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -456,7 +456,7 @@ CREATE TABLE `part_material` (
 
 LOCK TABLES `part_material` WRITE;
 /*!40000 ALTER TABLE `part_material` DISABLE KEYS */;
-INSERT INTO `part_material` VALUES (1,1,1,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(2,1,5,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(3,2,1,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(4,2,2,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(5,2,4,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(6,3,4,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(7,4,3,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(8,4,4,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(9,4,5,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(10,5,1,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(11,22,3,NULL,NULL,'2018-03-01 21:10:59','2018-03-01 21:10:59'),(12,22,4,NULL,NULL,'2018-03-01 21:10:59','2018-03-01 21:10:59');
+INSERT INTO `part_material` VALUES (1,1,1,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(2,1,5,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(3,2,1,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(4,2,2,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(5,2,4,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(6,3,4,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(7,4,3,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(8,4,4,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(9,4,5,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(10,5,1,NULL,NULL,'2018-01-29 19:21:02','2018-01-29 19:21:02'),(11,22,3,NULL,NULL,'2018-03-01 21:10:59','2018-03-01 21:10:59'),(12,22,4,NULL,NULL,'2018-03-01 21:10:59','2018-03-01 21:10:59'),(13,23,4,NULL,NULL,'2018-03-14 17:04:03','2018-03-14 17:04:03'),(14,24,1,NULL,NULL,'2018-03-14 17:05:12','2018-03-14 17:05:12');
 /*!40000 ALTER TABLE `part_material` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -529,7 +529,7 @@ CREATE TABLE `part_tool` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -538,7 +538,7 @@ CREATE TABLE `part_tool` (
 
 LOCK TABLES `part_tool` WRITE;
 /*!40000 ALTER TABLE `part_tool` DISABLE KEYS */;
-INSERT INTO `part_tool` VALUES (1,1,1,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(2,1,3,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(3,2,2,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(4,2,3,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(5,2,9,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(6,2,10,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(7,3,5,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(8,3,4,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(9,4,1,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(10,5,10,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(11,5,9,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(12,5,2,'2018-01-29 19:17:41','2018-01-29 19:17:41');
+INSERT INTO `part_tool` VALUES (1,1,1,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(2,1,3,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(3,2,2,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(4,2,3,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(5,2,9,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(6,2,10,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(7,3,5,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(8,3,4,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(9,4,1,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(10,5,10,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(11,5,9,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(12,5,2,'2018-01-29 19:17:41','2018-01-29 19:17:41'),(17,23,1,'2018-03-14 17:04:02','2018-03-14 17:04:02'),(18,24,3,'2018-03-14 17:05:11','2018-03-14 17:05:11');
 /*!40000 ALTER TABLE `part_tool` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -694,7 +694,7 @@ CREATE TABLE `step` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -703,7 +703,7 @@ CREATE TABLE `step` (
 
 LOCK TABLES `step` WRITE;
 /*!40000 ALTER TABLE `step` DISABLE KEYS */;
-INSERT INTO `step` VALUES (1,'Step 1','Step 1 Step 1 Step 1 Step 1 Step 1 Step 1 Step 1 Step 1 Step 1',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(2,'Step 2','Step 2 Step 2 Step 2 Step 2 Step 2 Step 2 Step 2 Step 2 Step 2 Step 2',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(3,'Step 3','Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(4,'Step 4','Step 4 Step 4 Step 4 Step 4 Step 4 Step 4 Step 4 Step 4 Step 4 Step 4',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(5,'Step 5','Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 ',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(6,'Step 6','Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(7,'Step 7','Step 7 Step 7 Step 7 Step 7 Step 7 Step 7 Step 7 Step 7 Step 7',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(8,'Step 8','Step 8 Step 8 Step 8 Step 8 Step 8 Step 8 Step 8 Step 8 Step 8 Step 8',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(9,'Step 9','Step 9 Step 9 Step 9 Step 9 Step 9 Step 9 Step 9 Step 9',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(10,'Step 10','Step 10 Step 10 Step 10 Step 10 Step 10 Step 10 Step 10',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(11,'Step 11','Step 11 Step 11 Step 11 Step 11 Step 11 Step 11 Step 11 Step 11',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(12,'Step 12','Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(13,'Step 13','Step 13 Step 13 Step 13 Step 13 Step 13 Step 13 Step 13 Step 13 Step 13',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(14,'Step 14','Step 14 Step 14 Step 14 Step 14 Step 14 Step 14 Step 14 Step 14',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(15,'Step 15','Step 15 Step 15 Step 15 Step 15 Step 15 Step 15 Step 15 Step 15 Step 15',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(16,'New step2','description of the step description of the step description of the step',0,'2018-03-06 03:14:54','2018-03-06 03:52:46'),(17,'Test new step','sdsdsdsdsdsds',0,'2018-03-07 19:40:26','2018-03-07 19:44:07'),(18,'Test new step','New step',0,'2018-03-07 19:42:02','2018-03-07 19:43:53');
+INSERT INTO `step` VALUES (1,'Step 1','Step 1 Step 1 Step 1 Step 1 Step 1 Step 1 Step 1 Step 1 Step 1',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(2,'Step 2','Step 2 Step 2 Step 2 Step 2 Step 2 Step 2 Step 2 Step 2 Step 2 Step 2',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(3,'Step 3','Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3 Step 3',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(4,'Step 4','Step 4 Step 4 Step 4 Step 4 Step 4 Step 4 Step 4 Step 4 Step 4 Step 4',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(5,'Step 5','Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 Step 5 ',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(6,'Step 6','Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6 Step 6',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(7,'Step 7','Step 7 Step 7 Step 7 Step 7 Step 7 Step 7 Step 7 Step 7 Step 7',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(8,'Step 8','Step 8 Step 8 Step 8 Step 8 Step 8 Step 8 Step 8 Step 8 Step 8 Step 8',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(9,'Step 9','Step 9 Step 9 Step 9 Step 9 Step 9 Step 9 Step 9 Step 9',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(10,'Step 10','Step 10 Step 10 Step 10 Step 10 Step 10 Step 10 Step 10',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(11,'Step 11','Step 11 Step 11 Step 11 Step 11 Step 11 Step 11 Step 11 Step 11',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(12,'Step 12','Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12 Step 12',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(13,'Step 13','Step 13 Step 13 Step 13 Step 13 Step 13 Step 13 Step 13 Step 13 Step 13',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(14,'Step 14','Step 14 Step 14 Step 14 Step 14 Step 14 Step 14 Step 14 Step 14',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(15,'Step 15','Step 15 Step 15 Step 15 Step 15 Step 15 Step 15 Step 15 Step 15 Step 15',1,'2018-01-29 19:29:03','2018-01-29 19:29:03'),(16,'New step2','description of the step description of the step description of the step',0,'2018-03-06 03:14:54','2018-03-06 03:52:46'),(17,'Test new step','sdsdsdsdsdsds',0,'2018-03-07 19:40:26','2018-03-07 19:44:07'),(18,'Test new step','New step',0,'2018-03-07 19:42:02','2018-03-07 19:43:53'),(19,'A new step','new step right now',1,'2018-03-07 20:07:36','2018-03-07 20:07:36');
 /*!40000 ALTER TABLE `step` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -722,7 +722,7 @@ CREATE TABLE `step_media` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -731,7 +731,7 @@ CREATE TABLE `step_media` (
 
 LOCK TABLES `step_media` WRITE;
 /*!40000 ALTER TABLE `step_media` DISABLE KEYS */;
-INSERT INTO `step_media` VALUES (1,16,21,1,'2018-03-06 03:45:39','2018-03-06 03:45:39'),(3,16,23,2,'2018-03-06 03:51:59','2018-03-06 03:51:59'),(4,18,25,1,'2018-03-07 19:42:02','2018-03-07 19:42:02');
+INSERT INTO `step_media` VALUES (1,16,21,1,'2018-03-06 03:45:39','2018-03-06 03:45:39'),(3,16,23,2,'2018-03-06 03:51:59','2018-03-06 03:51:59'),(4,18,25,1,'2018-03-07 19:42:02','2018-03-07 19:42:02'),(5,19,26,1,'2018-03-07 20:07:36','2018-03-07 20:07:36');
 /*!40000 ALTER TABLE `step_media` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -831,7 +831,7 @@ CREATE TABLE `tool` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -840,7 +840,7 @@ CREATE TABLE `tool` (
 
 LOCK TABLES `tool` WRITE;
 /*!40000 ALTER TABLE `tool` DISABLE KEYS */;
-INSERT INTO `tool` VALUES (1,'Hammer','123-345','A hammer is a tool or device that delivers a blow to an object. Most hammers are hand tools used to drive nails, fit parts, forge metal, and break apart objects.',1,'2018-01-24 23:44:10','2018-01-29 05:01:37'),(2,'Mallet','345-643','Mallets come in different types, the most common of which are: Rubber mallets are used when a softer blow is called for than that delivered by a metal hammer.',1,'2018-01-24 23:44:42','2018-01-24 23:44:42'),(3,'Hacksaw','356-345','A hacksaw is a fine-toothed saw, originally and mainly made for cutting metal. The equivalent saw for cutting wood is usually called bow saw.',1,'2018-01-24 23:45:16','2018-01-24 23:45:16'),(4,'Screwdriver','345-234','A screwdriver is a tool, manual or powered, for screwing and unscrewing screws. A typical simple screwdriver has a handle and a shaft, ending in a tip the user puts into the screw head before turning the handle.',1,'2018-01-24 23:45:40','2018-01-24 23:45:40'),(5,'Wire Stripper','654-533','A wire stripper is a small, hand-held device used to strip the electrical insulation from electric wires.',1,'2018-01-24 23:46:17','2018-01-24 23:46:17'),(6,'Electric Drill','234-342','A drill is a tool fitted with a cutting tool attachment or driving tool attachment, usually a drill bit or driver bit, used for boring holes in various materials or fastening various materials together.',1,'2018-01-24 23:46:46','2018-01-24 23:46:46'),(7,'Belt Sander','345-345','Belt Sanders are the best!!!',0,'2018-01-24 23:47:32','2018-01-29 21:09:50'),(8,'Saw','345-353','A saw is a tool consisting of a tough blade, wire, or chain with a hard toothed edge. It is used to cut through material, very often wood.',1,'2018-01-24 23:48:12','2018-01-24 23:48:12'),(9,'Sandpaper','245-352','Sandpaper is produced in a range of grit sizes and is used to remove material from surfaces, either to make them smoother (for example, in painting and wood finishing), to remove a layer of material (such as old paint).',1,'2018-01-24 23:49:00','2018-01-24 23:49:00'),(10,'Clamp','234-253','A clamp is a fastening device used to hold or secure objects tightly together to prevent movement or separation through the application of inward pressure.',0,'2018-01-24 23:51:04','2018-01-31 22:03:26'),(11,'Clara','123-345','Clara is the best tool!',1,'2018-01-29 21:10:09','2018-01-29 21:10:09');
+INSERT INTO `tool` VALUES (1,'Hammer','123-345','A hammer is a tool or device that delivers a blow to an object. Most hammers are hand tools used to drive nails, fit parts, forge metal, and break apart objects.',1,'2018-01-24 23:44:10','2018-01-29 05:01:37'),(2,'Mallet','345-643','Mallets come in different types, the most common of which are: Rubber mallets are used when a softer blow is called for than that delivered by a metal hammer.',0,'2018-01-24 23:44:42','2018-03-14 17:33:27'),(3,'Hacksaw','356-345','A hacksaw is a fine-toothed saw, originally and mainly made for cutting metal. The equivalent saw for cutting wood is usually called bow saw.',0,'2018-01-24 23:45:16','2018-03-14 17:33:32'),(4,'Screwdriver','345-234','A screwdriver is a tool, manual or powered, for screwing and unscrewing screws. A typical simple screwdriver has a handle and a shaft, ending in a tip the user puts into the screw head before turning the handle.',1,'2018-01-24 23:45:40','2018-01-24 23:45:40'),(5,'Wire Stripper','654-533','A wire stripper is a small, hand-held device used to strip the electrical insulation from electric wires.',0,'2018-01-24 23:46:17','2018-03-14 17:33:42'),(6,'Electric Drill','234-342','A drill is a tool fitted with a cutting tool attachment or driving tool attachment, usually a drill bit or driver bit, used for boring holes in various materials or fastening various materials together.',1,'2018-01-24 23:46:46','2018-01-24 23:46:46'),(7,'Belt Sander','345-345','Belt Sanders are the best!!!',0,'2018-01-24 23:47:32','2018-01-29 21:09:50'),(8,'Saw','345-353','A saw is a tool consisting of a tough blade, wire, or chain with a hard toothed edge. It is used to cut through material, very often wood.',1,'2018-01-24 23:48:12','2018-01-24 23:48:12'),(9,'Sandpaper','245-352','Sandpaper is produced in a range of grit sizes and is used to remove material from surfaces, either to make them smoother (for example, in painting and wood finishing), to remove a layer of material (such as old paint).',1,'2018-01-24 23:49:00','2018-01-24 23:49:00'),(10,'Clamp','234-253','A clamp is a fastening device used to hold or secure objects tightly together to prevent movement or separation through the application of inward pressure.',0,'2018-01-24 23:51:04','2018-01-31 22:03:26'),(11,'Clara','123-345','Clara is the best tool!',0,'2018-01-29 21:10:09','2018-03-14 17:19:52'),(12,'Mallet','756-98B','A mallet is a kind of hammer, often made of rubber or sometimes wood, that is smaller than a maul or beetle, and usually has a relatively large head. The term is descriptive of the overall size and proportions of the tool, and not the materials it may be made of, though most mallets have striking faces that are softer than steel.',1,'2018-03-14 19:20:24','2018-03-14 19:20:24');
 /*!40000 ALTER TABLE `tool` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -859,7 +859,7 @@ CREATE TABLE `tool_media` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -868,7 +868,7 @@ CREATE TABLE `tool_media` (
 
 LOCK TABLES `tool_media` WRITE;
 /*!40000 ALTER TABLE `tool_media` DISABLE KEYS */;
-INSERT INTO `tool_media` VALUES (1,7,1,1,'2018-01-24 23:50:44','2018-01-24 23:50:44'),(2,6,2,1,'2018-01-24 23:51:32','2018-01-24 23:51:32'),(4,3,4,1,'2018-01-24 23:52:30','2018-01-24 23:52:30'),(5,1,5,1,'2018-01-24 23:53:12','2018-01-24 23:53:12'),(6,2,6,1,'2018-01-24 23:54:42','2018-01-24 23:54:42'),(7,9,7,1,'2018-01-24 23:55:25','2018-01-24 23:55:25'),(8,8,8,1,'2018-01-24 23:56:27','2018-01-24 23:56:27'),(9,4,9,1,'2018-01-24 23:57:55','2018-01-24 23:57:55'),(10,5,10,1,'2018-01-24 23:58:48','2018-01-24 23:58:48'),(11,10,15,2,'2018-01-31 22:03:20','2018-01-31 22:03:20');
+INSERT INTO `tool_media` VALUES (1,7,1,1,'2018-01-24 23:50:44','2018-01-24 23:50:44'),(11,10,15,2,'2018-01-31 22:03:20','2018-01-31 22:03:20'),(12,6,27,2,'2018-03-14 17:20:10','2018-03-14 17:20:10'),(13,3,28,2,'2018-03-14 17:20:24','2018-03-14 17:20:24'),(14,1,29,1,'2018-03-14 17:22:03','2018-03-14 17:22:03'),(15,2,30,2,'2018-03-14 17:22:18','2018-03-14 17:22:18'),(16,9,31,2,'2018-03-14 17:22:28','2018-03-14 17:22:28'),(17,8,32,2,'2018-03-14 17:22:41','2018-03-14 17:22:41'),(18,4,33,2,'2018-03-14 17:23:01','2018-03-14 17:23:01'),(19,5,34,2,'2018-03-14 17:23:12','2018-03-14 17:23:12'),(20,12,43,1,'2018-03-14 19:24:54','2018-03-14 19:24:54');
 /*!40000 ALTER TABLE `tool_media` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -897,7 +897,7 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -906,7 +906,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Barbara','sasas','$2y$10$pyHVJfSB7PV3n.H998wgdO83bHYLWSwF7sey0fO/VrE8WN/qaLQj.','gsMe2g620lzjp4wuU33wSiAxaxvrHuithgyXM2PpcqkzHEC17W7Ih6FS5dq0','111111111111','232323323232','jimi@hendrix.ca','images/default.jpg',3,1,1,1,1,'2018-02-13 02:28:02','2018-02-13 02:28:02'),(2,'Clara','The Best','$2y$10$sItuiz/PAQVZ0JOGomNNVe4H48CmDY7qM7mV52yv8LuN1VB2Tl1ky','LLMGAF6LioAi0wTvt0Yaa56JLFUzLReEdmizWk6zt825cBS34kkE3VUpEfIi','23232323','12121212121212','clara@clara.com','images/default.jpg',3,0,0,0,1,'2018-02-13 02:56:55','2018-02-13 02:56:55'),(3,'Mauricio','Me NEW','$2y$10$PULC00YX5ooUvhZbNnlRR.IQUeaTLoJT1YJA.by9./ja.vUPuOtvK','VUvSveEmhLaRkKALVURF01j7zjoD3WrWkcA9dApcLbDhQy7uv37BRGYgGv1M','989898989','232323323232','me@email.com','images/default.jpg',3,1,1,0,1,'2018-02-13 02:57:43','2018-02-14 21:50:17'),(4,'Teste','Hidden input','$2y$10$7AGBBwD21xT0fsgDDduPCeruHM7WqYXwz7Z1IgYeLlozdAHBmZ.6W','p3vOqYxpUs1SnRre3cknkDzdvzDgBvFTgc649dVtVpNFjpvsEArYX76keI6X','00000000','232323323232','hidden@youcantsee.me','images/default.jpg',2,0,1,1,1,'2018-02-13 03:14:37','2018-02-14 21:31:04'),(5,'Mauricio','Silveira','$2y$10$ClgxpbdLco5CZQWTs4lm0ezLvPna9MgXbCGxAdLKK4hGRQTDVTyaq','UVpCschOuAAxbgkgI3HwvL5ssHgje7VEWeBfaRMC1KfEUYrumGirRiWOZviQ','1111111','232323323232','mauricio@email.com','images/1518716838.jpg',1,0,0,1,1,'2018-02-14 18:13:55','2018-02-15 22:47:18'),(6,'New','User2','$2y$10$QIb2xrRvNrUVMc0vLZRH0eOc2FeMu7GDbwQ3qjdrE1ScDDfXSuUwG','DW5V5LmnAm74F57JwRdwzWbHuvkXapFb9pvxHeXZbkNsxlxi50e72qteee9K','00000022','323232323232','newuser2@email.com','images/default.jpg',1,1,1,1,1,'2018-02-14 19:54:15','2018-02-14 21:38:04'),(7,'clara','marshall','$2y$10$0WuSkUh6/v.h5fF5XQXaZ.nLZ7kX/oBNewgr8CX43Lm54QaJ9/ZWa',NULL,'123','4164710808','clara@claramarshall.com','images/default.jpg',3,0,0,0,1,'2018-02-14 20:29:18','2018-02-14 20:30:16'),(8,'Test photo','Photo','$2y$10$.N//2JSyPFf1Q1KXt3sABujH.ReaE0EsxfuQX.YU2vG231zy82pU6',NULL,'1111111','232323323232','photo@email.com','images/1518714867.jpg',3,1,1,1,1,'2018-02-15 22:03:13','2018-02-15 22:14:27');
+INSERT INTO `users` VALUES (1,'Barbara','sasas','$2y$10$pyHVJfSB7PV3n.H998wgdO83bHYLWSwF7sey0fO/VrE8WN/qaLQj.','gsMe2g620lzjp4wuU33wSiAxaxvrHuithgyXM2PpcqkzHEC17W7Ih6FS5dq0','111111111111','232323323232','jimi@hendrix.ca','images/default.jpg',3,1,1,1,0,'2018-02-13 02:28:02','2018-03-14 17:11:00'),(2,'Clara','The Best','$2y$10$sItuiz/PAQVZ0JOGomNNVe4H48CmDY7qM7mV52yv8LuN1VB2Tl1ky','LLMGAF6LioAi0wTvt0Yaa56JLFUzLReEdmizWk6zt825cBS34kkE3VUpEfIi','23232323','12121212121212','clara@clara.com','images/default.jpg',3,0,0,0,0,'2018-02-13 02:56:55','2018-03-14 17:11:03'),(3,'Mauricio','Me NEW','$2y$10$PULC00YX5ooUvhZbNnlRR.IQUeaTLoJT1YJA.by9./ja.vUPuOtvK','VUvSveEmhLaRkKALVURF01j7zjoD3WrWkcA9dApcLbDhQy7uv37BRGYgGv1M','989898989','232323323232','me@email.com','images/default.jpg',3,1,1,0,0,'2018-02-13 02:57:43','2018-03-14 17:10:55'),(4,'Teste','Hidden input','$2y$10$7AGBBwD21xT0fsgDDduPCeruHM7WqYXwz7Z1IgYeLlozdAHBmZ.6W','p3vOqYxpUs1SnRre3cknkDzdvzDgBvFTgc649dVtVpNFjpvsEArYX76keI6X','00000000','232323323232','hidden@youcantsee.me','images/default.jpg',2,0,1,1,0,'2018-02-13 03:14:37','2018-03-14 17:10:48'),(5,'Mauricio','Silveira','$2y$10$ClgxpbdLco5CZQWTs4lm0ezLvPna9MgXbCGxAdLKK4hGRQTDVTyaq','gQfYWn2ws6W1RUOBm5sRAZsN53rkirc6nBoXN54VfiDojORjD9V5vvaLeo1o','111-111','232323323232','mauricio@email.com','images/1518716838.jpg',1,0,0,1,1,'2018-02-14 18:13:55','2018-03-14 17:37:42'),(6,'New','User2','$2y$10$QIb2xrRvNrUVMc0vLZRH0eOc2FeMu7GDbwQ3qjdrE1ScDDfXSuUwG','DW5V5LmnAm74F57JwRdwzWbHuvkXapFb9pvxHeXZbkNsxlxi50e72qteee9K','00000022','323232323232','newuser2@email.com','images/default.jpg',1,1,1,1,0,'2018-02-14 19:54:15','2018-03-14 17:11:05'),(7,'clara','marshall','$2y$10$0WuSkUh6/v.h5fF5XQXaZ.nLZ7kX/oBNewgr8CX43Lm54QaJ9/ZWa',NULL,'123','4164710808','clara@claramarshall.com','images/default.jpg',3,0,0,0,0,'2018-02-14 20:29:18','2018-03-14 17:10:52'),(8,'Test photo','Photo','$2y$10$.N//2JSyPFf1Q1KXt3sABujH.ReaE0EsxfuQX.YU2vG231zy82pU6',NULL,'1111111','232323323232','photo@email.com','images/1518714867.jpg',3,1,1,1,0,'2018-02-15 22:03:13','2018-03-14 17:10:57'),(9,'John','Doe','$2y$10$EgPoIpHx1jZ5n6Y9Q1VAvOei/LqiXU01z8tnsoH76O10x9wmg6IIe','xSwhGQPqiVtDCSqLdhBl7tozkC3KMiiEJC9FqwL0kSgVpvTvKd2oTSWiNwyo','123-456','(519) 234-5678','john@email.com','images/1521033025.jpg',1,1,1,1,1,'2018-03-14 17:10:25','2018-03-14 17:10:25');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -949,4 +949,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-07  9:46:32
+-- Dump completed on 2018-03-19 14:31:31

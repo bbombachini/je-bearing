@@ -25,7 +25,6 @@
             <div id="itemImgInfo">
 
                 <div id="itemImg">
-                    <!-- <img src="../../images/placeholderImg.jpg" alt="placeholder Image"> -->
                     <img src="" alt="Image">
                 </div>
 
@@ -39,7 +38,6 @@
 
             </div>
 
-            <!-- <p id="desc"></p> -->
             <a class="confirmEdit" href="#">Edit</a>
 
         </div>
@@ -54,7 +52,7 @@
             </div>
 
 
-            <div class="add-button">
+      <div class="add-button">
 				<a href="{{ url('/admin/user/add')}}"><img src="../../images/plusIcon.png" alt="add an user" width="25px;"></a>
 			</div>
 
@@ -88,8 +86,7 @@
                   <p>{{$user->employee_id}}</p>
                 </div>
                 <div class="item-column">
-                  <!-- removed link to edit users {{action('UsersController@edit', ['$id' => $user->id])}} -->
-                  <a class="edit" href="#">Edit</a>
+                  <a class="edit" href="{{action('UsersController@edit', ['$id' => $user->id])}}">Edit</a>
                 </div>
                 <div class="item-column">
                   <a class="delete" data-id="{{$user->id}}" href="#">Delete</a>

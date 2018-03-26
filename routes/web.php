@@ -20,8 +20,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Operator Routes
 Route::get('/oper/tooling', 'ToolingController@opList');
+Route::get('/oper/tooling/search/{str}', ['uses' => 'ToolingController@search']);
 Route::get('/oper/fixture', 'FixtureController@opList');
+Route::get('/oper/fixture/search/{str}', ['uses' => 'FixtureController@search']);
 Route::get('/oper/material', 'MaterialController@opList');
+Route::get('/oper/material/search/{str}', ['uses' => 'MaterialController@search']);
 Route::get('/oper/comments', function(){
   return view('oper.comments');
 } );
@@ -44,7 +47,7 @@ Route::get('/searchpart', function(){
 Route::post('/oper/part/search', 'PartController@searchPartNumber');
 Route::get('/oper/part/tooling/{id}', ['uses' => 'PartController@listPartTooling']);
 
-//Supervisor and Admin shared routes
+//SUPERVISOR AND ADMIN SHARED ROUTES
 Route::group(['middleware' => ['supervisor']] , function () {
 
   // Parts
@@ -95,12 +98,9 @@ Route::group(['middleware' => ['supervisor']] , function () {
   Route::get('/admin/media/add', 'MediaController@add');
   Route::post('/admin/media/store', 'MediaController@store');
 
-  Route::get('/admin/addnew', function() {
-      return view('admin.addnew');
-  });
 });
 
-// Admin only routes
+// ADMIN ONLY ROUTES
 Route::middleware(['admin'])->group(function () {
 
   // Parts //
@@ -108,6 +108,14 @@ Route::middleware(['admin'])->group(function () {
   Route::post('/admin/part/store', 'PartController@store');
   Route::get('/admin/part/destroy/{id}', ['uses' => 'PartController@destroy']);
   Route::get('/admin/part/add/search/{str}', ['uses' => 'ToolingController@search']);
+
+  // Operations //
+  Route::get('/admin/part/add/operations', function(){
+    return view('admin.operation.add');
+  });
+  Route::get('/admin/part/add/opdetails', function(){
+    return view('admin.operation.details');
+  });
 
   // Steps // This might be deleted in future
   Route::get('/admin/step/add', 'StepController@add');

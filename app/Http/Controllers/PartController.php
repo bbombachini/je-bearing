@@ -43,9 +43,11 @@ class PartController extends Controller {
       $part['number'] = $request['number'];
       $part['desc'] = $request['desc'];
       $part['active'] = 1;
+      $part['category'] = $request['category'];
       $tools = $request['tooling'];
       $fixtures = $request['fixture'];
       $materials = $request['material'];
+
       Log::info($request);
 
       // save info in database
@@ -199,6 +201,7 @@ class PartController extends Controller {
       $part = Part::find($id);
       $part['name'] = $request['name'];
       $part['number'] = $request['number'];
+      $part['category'] = $request['category'];
       $tools = $request['tooling'];
       $fixtures = $request['fixture'];
       $materials = $request['material'];
