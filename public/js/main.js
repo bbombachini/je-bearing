@@ -6,7 +6,10 @@
 	var delBtn = document.querySelectorAll('.delete');
 	var search = document.querySelectorAll('.searchfeild');
 	var nameLink = document.querySelectorAll('.itemName');
+	var searchfeilds = document.querySelectorAll(".itemsearchfeild");
+	var url;
 
+	//Temporary arrays to show and save Tooling/Fixture and Materials into a Part.
 	var Selections = [];
 	Selections['tooling'] = new Array();
 	Selections['fixture'] = new Array();
@@ -20,8 +23,8 @@
 		var ignore = popup.querySelector('.ignoreDelete');
 
 		function ignoreDelete(){
-		popup.style.display = 'none';
-		popup.style.opacity = 0;
+			popup.style.display = 'none';
+			popup.style.opacity = 0;
 		}
 
 		ignore.removeEventListener("click", ignoreDelete, false);
@@ -49,7 +52,6 @@
 	});
 
 
-	var nameLink = document.querySelectorAll('.itemName');
 
 	function showView(){
 		//e.preventDefault();
@@ -140,9 +142,7 @@
 		}
 	}
 
-	var url;
 
-	var searchfeilds = document.querySelectorAll(".itemsearchfeild");
 
 	// function switchSearch(e){
 	// 	var id = e.currentTarget.id;
@@ -237,15 +237,12 @@
 	// 	photo.src = window.URL.createObjectURL(curFile[0]);
 	// }
 
+	//Dynamic search function
 	function showItemResults(e){
 		var id = e.currentTarget.id;
 		var val = e.currentTarget.value;
 		var itemResultDiv = document.querySelectorAll(".itemResult");
-		// console.log(val);
-		// var link = "http://localhost:8000/admin/"+id+'/list/search/'+val;
-		// console.log(window.location.href);
 		var link = "/admin/"+id+'/list/search/'+val;
-		// console.log(link);
 
 		if(val !== "") {
 
@@ -256,6 +253,7 @@
 
 			function respRequest() {
 				if(resultRequest.readyState === 4 || resultRequest.readyState === "complete"){
+					//Depending on which input clicked, it will select one of the three sections to look for (Tooling/Fixtures/Materials)
 					var result = document.querySelector('#searchTables [data-id="'+ id +'"]');
 					var itemListId = result.dataset.id;
 
@@ -267,9 +265,6 @@
 						var itemList = document.querySelector('.listItem [data-id="'+ itemListId +'List"]').children.length;
 						let curList = document.querySelectorAll('.listItem [data-id="'+ itemListId +'List"] li');
 						// var curList;
-						// console.log(curList);
-						// console.log('initial');
-						// console.log(jsonfile);
 						for(let i =0; i< jsonfile.item.length; i++){
 							if(itemList > 0){
 								// console.log(curList);
@@ -372,6 +367,7 @@
 			printData(parent);
 		}
 
+		//Takes all the three arrays and save into a Part.
 		function savePart(e) {
 			e.preventDefault();
 			let url = '/admin/part/store';

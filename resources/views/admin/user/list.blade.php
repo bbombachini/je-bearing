@@ -17,8 +17,7 @@
             <div id="dimClick2"></div>
     </div>
 
-    <!-- commented due to presentation -->
-    <!-- <div id="dim2">
+    <div id="dim2">
         <div id="dimClick"></div>
         <div id="quickView">
             <a class="xButt" href="#">X</a>
@@ -42,7 +41,7 @@
             <a class="confirmEdit" href="#">Edit</a>
 
         </div>
-    </div> -->
+    </div>
 
 <section id="content">
     <div class="section-head">
@@ -54,8 +53,7 @@
 
 
       <div class="add-button">
-        <!-- removed link to add user {{ url('/admin/user/add')}} -->
-				<a href="#"><img src="../../images/plusIcon.png" alt="add an user" width="25px;"></a>
+				<a href="{{ url('/admin/user/add')}}"><img src="../../images/plusIcon.png" alt="add an user" width="25px;"></a>
 			</div>
 
     </div>
@@ -88,8 +86,7 @@
                   <p>{{$user->employee_id}}</p>
                 </div>
                 <div class="item-column">
-                  <!-- removed link to edit users {{action('UsersController@edit', ['$id' => $user->id])}} -->
-                  <a class="edit" href="#">Edit</a>
+                  <a class="edit" href="{{action('UsersController@edit', ['$id' => $user->id])}}">Edit</a>
                 </div>
                 <div class="item-column">
                   <a class="delete" data-id="{{$user->id}}" href="#">Delete</a>

@@ -85,7 +85,6 @@
                   <p>{{$item->number}}</p>
                 </div>
                 <div class="item-column">
-                  <!-- removed link for editing parts {{action('PartController@edit', ['$id' => $item->id])}} -->
                   <a class="edit" href="{{action('PartController@edit', ['$id' => $item->id])}}">Edit</a>
                 </div>
                 <div class="item-column">
