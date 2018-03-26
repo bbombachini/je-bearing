@@ -12,7 +12,8 @@ class Part extends Model
   protected $rules = [
     'name' => ['required'],
     'number' => ['required'],
-    'active' => ['required']
+    'active' => ['required'],
+    'category' => ['required']
   ];
 
   public function tools() {
