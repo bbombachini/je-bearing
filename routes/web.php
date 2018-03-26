@@ -47,7 +47,7 @@ Route::get('/searchpart', function(){
 Route::post('/oper/part/search', 'PartController@searchPartNumber');
 Route::get('/oper/part/tooling/{id}', ['uses' => 'PartController@listPartTooling']);
 
-//Supervisor and Admin shared routes
+//SUPERVISOR AND ADMIN SHARED ROUTES
 Route::group(['middleware' => ['supervisor']] , function () {
 
   // Parts
@@ -74,7 +74,7 @@ Route::group(['middleware' => ['supervisor']] , function () {
   // Fixture //
   Route::get('/admin/fixture/list', 'FixtureController@list');
   Route::get('/admin/fixture/edit/{id}', ['uses' => 'FixtureController@edit']);
-Route::get('/admin/fixture/list/search/{str}', ['uses' => 'FixtureController@search']);
+  Route::get('/admin/fixture/list/search/{str}', ['uses' => 'FixtureController@search']);
   Route::post('/admin/fixture/update', 'FixtureController@update');
   Route::get('/admin/fixture/list/{id}',['uses' => 'FixtureController@quickview']);
   Route::get('/admin/fixture/editMedia/{id}', ['uses' => 'FixtureController@editMedia']);
@@ -91,12 +91,9 @@ Route::get('/admin/fixture/list/search/{str}', ['uses' => 'FixtureController@sea
   Route::get('/admin/media/add', 'MediaController@add');
   Route::post('/admin/media/store', 'MediaController@store');
 
-  Route::get('/admin/addnew', function() {
-      return view('admin.addnew');
-  });
 });
 
-// Admin only routes
+// ADMIN ONLY ROUTES
 Route::middleware(['admin'])->group(function () {
 
   // Parts //
@@ -104,6 +101,14 @@ Route::middleware(['admin'])->group(function () {
   Route::post('/admin/part/store', 'PartController@store');
   Route::get('/admin/part/destroy/{id}', ['uses' => 'PartController@destroy']);
   Route::get('/admin/part/add/search/{str}', ['uses' => 'ToolingController@search']);
+
+  // Operations //
+  Route::get('/admin/part/add/operations', function(){
+    return view('admin.operation.add');
+  });
+  Route::get('/admin/part/add/opdetails', function(){
+    return view('admin.operation.details');
+  });
 
   // Steps // This might be deleted in future
   Route::get('/admin/step/add', 'StepController@add');
