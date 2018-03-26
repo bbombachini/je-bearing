@@ -29,7 +29,7 @@
           <div class="formHeader">
               <h3>PART DETAILS</h3>
           </div>
-
+          
             {!! Form::open(['id' => 'addPart', 'files' => true]) !!}
             <fieldset class="part-name">
               <p>{!! Form::label('name', 'Part Name') !!}</p>
@@ -98,11 +98,15 @@
 							{!! Form::close() !!}
 
 
-
-            <!-- <div id="opperations" class="partStep">
+       <!--      <div id="opperations" class="partStep">
 
               <div class="formHeader">
                 <h3>OPERATIONS</h3>
+              </div>
+
+              <div class="openForm" id="addOpperation">
+                <img src="../../../images/add_icon.svg" alt="add Button" class="addButt">
+                <p>Add Opperation</p>
               </div>
 
               <div class="opperInfo">

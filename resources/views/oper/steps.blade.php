@@ -161,6 +161,7 @@
                         <p class="stepNote"><span class="yellow">Note:</span> Let the top overhang on front and both sides by 3⁄4".</p>
                         <!-- <p class="stepCap"><span class="green">Image 1 of 5 :</span> Put the piece on the other piece.</p> -->
                         <img src="../../images/stepfive.jpg" alt="step Image" class="stepImage">
+
                     </div>
                 </div>
             </div>
@@ -173,11 +174,13 @@
             </div>
             <div class="opOpen" data-id="op3">
                 <div id="steps">
+
                     <div class="stepItem">
                         <p class=stepTitle>3.1: Paint</p>
                         <p class="stepDesc">Paint bench your favorite color. Then leave to dry.</p>
                         <p class="stepNote"><span class="yellow">Note:</span> Sand bench before painting for best results</p>
                         <!-- <p class="stepCap"><span class="green">Image 1 of 5 :</span> Put the piece on the other piece.</p> -->
+
                     </div>
                 </div>
             </div>
@@ -195,6 +198,7 @@
                         <p class="stepDesc">Insert wooden crates or baskets into 4 slots.</p>
                         <p class="stepNote"><span class="yellow">Note:</span> Add Felt tips on the bottom of boxes or baskets for best sliding effect.</p>
                         <img src="../../images/benchwithboxes.jpg" alt="step Image" class="stepImage">
+
                     </div>
                     <div class="stepItem">
                         <h3 class=stepTitle>4.2: Decorate with pillows as see fit (optional)</h3>
