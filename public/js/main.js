@@ -378,6 +378,7 @@
 			let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 			let name = document.querySelector('input[name="name"]').value;
 			let number = document.querySelector('input[name="number"]').value;
+			let category = document.querySelector('select[name="category"]').value;
 			let form = document.querySelector('#addPart');
 			let redirect = '/admin/part/list';
 
@@ -415,6 +416,7 @@
 				body: JSON.stringify({
 					name: name,
 					number: number,
+					category: category,
 					tooling: tooling,
 					fixture: fixture,
 					material: material

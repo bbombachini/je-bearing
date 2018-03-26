@@ -930,6 +930,15 @@ a {
   align-self: center;
   transform: rotate(-90deg); }
 
+.form-select {
+  -webkit-appearance: textfield;
+  background-color: rgba(0, 0, 0, 0);
+  color: #ECB900;
+  font-size: 14px;
+  border: none;
+  margin-top: 10px;
+  outline: 0; }
+
 .form-input {
   -webkit-appearance: textfield;
   background-color: rgba(0, 0, 0, 0);
