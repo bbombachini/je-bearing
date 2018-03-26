@@ -21,10 +21,6 @@ button{
   letter-spacing: 2px;
 }
 
-.white-button{
-  letter-spacing: 2px;
-}
-
 .backText{
   font-family: "Medium";
   letter-spacing: 1px;
@@ -753,7 +749,7 @@ a{
 #qualityAlerts, #operations{
 
   display: block;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -949,21 +945,30 @@ a{
   button{
     margin-top: 50px;
   }
-  .white-button{
+
+}
+
+.white-button{
     @extend .button;
     font-family: 'Medium';
     display: inline-block;
     text-align: center;
-    margin: 5% 15%;
-    width: 15vw;
-    height: 40px;
+    width: 240px;
     border-radius: 100px;
-    font-size: 18px;
-    line-height: 40px;
+    font-size: 16px;
+    line-height: 36px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
   }
+
+#buttonCon{
+  padding-top: 50px;
+  clear: both;
+}
+
+#continueButt{
+  float:right;
 }
 
 #add {
@@ -1383,24 +1388,22 @@ a{
       float: right;
       width: 20vw;
     }
-  .addItem{
-    display: grid;
-
-    a{
-      color: $blue;
-      font-family: 'Light';
-      cursor: pointer;
-      text-decoration: none;
-      float: right;
-      font-size: 1.4vw;
-      justify-self: end;
-      margin: 15px 0;
-    }
-  }
   .formHeader{
     @extend .formHeader;
     margin-bottom: 10px;
     cursor: pointer;
+  }
+}
+
+.addItem{
+
+  a{
+    color: $lightgreen;
+    font-family: 'Light';
+    cursor: pointer;
+    text-decoration: none;
+    float: right;
+    font-size: 16px;
   }
 }
 
@@ -1471,8 +1474,6 @@ a{
 }
 
 // Comments Section
-
-
 .commentDate{
   display: inline;
   color: #999;
@@ -1612,9 +1613,6 @@ a{
   width: 40%;
 }
 
-
-
-
 #oplist{
   .grid-list{
     display: grid;
@@ -1707,11 +1705,11 @@ a{
   }
 }
 
-
 ///STEPS **************************************************************
 .progress-bar-con {
   width: 100%;
   display: grid;
+  margin-bottom: 30px;
 }
 
 .progress-bar {
@@ -1770,9 +1768,13 @@ a{
   border-top: 1px solid #ddd;
 }
 
+label{
+  color: #a2a2a2;
+}
 
 .step-details{
-
+  width: 90%;
+  margin: 0 auto;
   margin-top: 40px;
 
   h3{
@@ -1784,10 +1786,7 @@ a{
       display: inline;
   }
 
-  #addStep{
-    margin-top: 40px;
-
-  .add-item input{
+  .add-item, .add-media{
     width: 100%;
   }
 
@@ -1795,33 +1794,16 @@ a{
     clear: both;
     display: block;
   }
+
   .addItemLabel::placeholder{
     color: $yellow;
   }
 
-  .add-media{
-    width: 45%;
-    float: left;
-    height: 62px;
-  }
-
-  .media-caption{
-    width: 45%;
-    float: right;
-  }
-
-  label{
-    color: #a2a2a2;
-  }
-
-  input{
-    border-top: 0px;
-    border-left: 0px;
-    border-right: 0px;
-    padding-bottom: 10px;
-    padding-top:10px;
-    font-size: 14px;
-    border-bottom: 1px solid rgba(0,0,0, 0.1);
+  .step-image-item{
+    display:grid;
+    grid-template-columns: 40% 35% 15%;
+    justify-content: space-between;
+    grid-gap: auto;
   }
 
   .step-name{
@@ -1840,6 +1822,21 @@ a{
     margin-top: 0px;
   }
 
+  input{
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    padding-bottom: 10px;
+    padding-top:10px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(0,0,0, 0.1);
+  }
+
+  select{
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+
   textarea{
     border: 1px solid rgba(0,0,0,0.1);
     max-width: 100%;
@@ -1847,26 +1844,20 @@ a{
     margin-top: 10px;
   }
 
-  input{
-    width: 100%;
-  }
-
   fieldset{
     margin-bottom: 10px;
     margin-top: 40px;
-    width: 100%;
   }
 
 }
 
-}
-
-#images{
+#addImgButt{
   clear: both;
   display: block;
   padding-top: 10px; 
   color: $lightgreen;
   cursor: pointer;
+  width: 25%;
 }
 
 
