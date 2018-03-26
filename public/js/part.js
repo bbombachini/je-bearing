@@ -4,7 +4,7 @@
 
 	// Variables **************************************************
 
-	var addImgButt = document.querySelector("#images");
+	var addImgButt = document.querySelector("#addImgButt");
 	var stepImageCon = document.querySelector(".step-image");
 
 	// Functions **************************************************
