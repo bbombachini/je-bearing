@@ -44,7 +44,8 @@ Route::get('/oper/qualityalerts', function(){
 Route::get('/searchpart', function(){
   return view('searchpart');
 } );
-Route::post('/oper/part/search', 'PartController@searchPartNumber');
+Route::get('/oper/part/info/{id}', ['uses' =>'PartController@getPartInfo']);
+Route::get('/searchpart/search/{id}/{field?}', ['uses' => 'PartController@search']);
 Route::get('/oper/part/tooling/{id}', ['uses' => 'PartController@listPartTooling']);
 
 //SUPERVISOR AND ADMIN SHARED ROUTES
