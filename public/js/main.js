@@ -9,7 +9,7 @@
 	var searchfeilds = document.querySelectorAll(".itemsearchfeild");
 	var url;
 
-	//Temporary arrays to show and save Tooling/Fixture and Materials into a Part.
+	//Temporary arrays to show and save Tooling/Fixture/Materials into a Part.
 	var Selections = [];
 	Selections['tooling'] = new Array();
 	Selections['fixture'] = new Array();
@@ -45,13 +45,9 @@
 				break;
 		}
 	}
-
-
 		delBtn.forEach(function(btn, index) {
 		btn.addEventListener('click', changeDeleteUrl, false);
 	});
-
-
 
 	function showView(){
 		//e.preventDefault();
@@ -93,8 +89,6 @@
 				var infoDiv = document.querySelector('#quickView');
 				infoDiv.style.display = 'block';
 				var jsondoc = JSON.parse(displayRequest.responseText);
-				// console.log(jsondoc);
-				// console.log(jsondoc.section[0].section_name);
 				document.querySelector("#itemname").innerHTML = jsondoc.item[0].name;
 				document.querySelector("#number").innerHTML = jsondoc.item[0].number;
 				document.querySelector("#desc").innerHTML = jsondoc.item[0].desc;
@@ -131,10 +125,7 @@
 		    document.querySelector("#user-role").innerHTML = role;
 				document.querySelector("#user-email").innerHTML = jsondoc.item[0].email;
 				document.querySelector("#user-phone").innerHTML = jsondoc.item[0].phone;
-
 		    document.querySelector("#itemImg > img").src = '../../'+jsondoc.item[0].photo;
-		    // console.log(infoDiv);
-		    // console.log(jsondoc);
 		    infoDiv.querySelector(".confirmEdit").href = '/admin/'+section+'/edit/'+ jsondoc.item[0].id;
 		    quickView.style.display = 'block';
 		    TweenMax.to(quickView, 0.3, {opacity: 1});
@@ -156,10 +147,15 @@
 	// 	searchfeilds[i].addEventListener("click", switchSearch,false);
 	// }
 
-
+	//Standard live search function
 	function showResults(e){
 		var str = e.currentTarget.value;
-		var url = window.location.href+'/search/'+str;
+		//If this selector is on screen, search for number field instead of name
+		if(document.querySelector('#searchPart')){
+			var url = window.location.href+'/search/'+str+'/number';
+		} else {
+			var url = window.location.href+'/search/'+str;
+		}
 
 		if(str !== "") {
 
@@ -184,15 +180,19 @@
 							newDiv = `<div><p id="`+jsonfile.item[i].id+`">`+jsonfile.item[i].lname+', '+jsonfile.item[i].fname+`</p></div>`;
 						}
 						else {
-							newDiv = `<div><p class="selectItem" id="`+jsonfile.item[i].id+`">`+jsonfile.item[i].name+`</p></div>`;
+							newDiv = `<div><p class="selectItem" data-id="`+jsonfile.item[i].id+`">`+jsonfile.item[i].name+` - #`+jsonfile.item[i].number+`</p></div>`;
 						}
 						result.innerHTML += newDiv;
 						}
-						//Create event listener to quickView -> Not working
-							// let  selectItem = result.querySelectorAll('.selectItem');
-							// selectItem.forEach((item) => {
-							// 	item.addEventListener('click', showView, false);
-							// });
+						//Create event listener to quickView -> Not finished
+							let  selectItem = result.querySelectorAll('.selectItem');
+							selectItem.forEach((item) => {
+								if(document.querySelector('#searchPart')){
+									item.addEventListener('click', selectedItemList, false);
+								} else {
+									item.addEventListener('click', showView, false);
+								}
+							});
 					} else {
 						result.style.display = "block";
 						var newDiv = document.createElement("div");
@@ -209,6 +209,30 @@
 			result.style.display = 'none';
 		}
 	}
+	//Function runs when you select a Part from livesearch
+	function selectedItemList(e){
+		let id = e.currentTarget.dataset.id;
+		let name = e.currentTarget.innerHTML;
+		let searchInput = document.querySelector('#searchPart');
+		searchInput.value = name;
+		let searchPart = document.querySelector('#nextPart');
+		searchPart.href += `/${id}`;
+		result.style.display = "none";
+		// let searchPart = document.querySelector('#nextPart');
+		// searchPart.addEventListener('click', selectPart, false);
+
+		// function selectPart(e){
+		// 	let searchInput = document.querySelector('#searchPart');
+		// 	let id = searchInput.dataset.id;
+		// 	let link = '/oper/part/search/'+id;
+		// 	// let reqPart = createRequest();
+		// 	// reqPart.onreadystatechange = resPart;
+		// 	// reqPart.open("GET", link, true);
+		// 	// reqPart.send( id, null);
+		// }
+
+	}
+
 
 
 	if(document.querySelector('input#media') !== null){
@@ -237,13 +261,12 @@
 	// 	photo.src = window.URL.createObjectURL(curFile[0]);
 	// }
 
-	//Dynamic search function
+	//Dynamic search through tooling/fixtures and materials
 	function showItemResults(e){
 		var id = e.currentTarget.id;
 		var val = e.currentTarget.value;
 		var itemResultDiv = document.querySelectorAll(".itemResult");
 		var link = "/admin/"+id+'/list/search/'+val;
-
 		if(val !== "") {
 
 			resultRequest = createRequest();
@@ -256,48 +279,57 @@
 					//Depending on which input clicked, it will select one of the three sections to look for (Tooling/Fixtures/Materials)
 					var result = document.querySelector('#searchTables [data-id="'+ id +'"]');
 					var itemListId = result.dataset.id;
-
 					while(result.firstChild) {
 					 result.removeChild(result.firstChild);
 					}
 					if(resultRequest.response !== 'not-found'){
 						let jsonfile = JSON.parse(resultRequest.responseText);
-						var itemList = document.querySelector('.listItem [data-id="'+ itemListId +'List"]').children.length;
-						let curList = document.querySelectorAll('.listItem [data-id="'+ itemListId +'List"] li');
-						// var curList;
-						for(let i =0; i< jsonfile.item.length; i++){
-							if(itemList > 0){
-								// console.log(curList);
-								let jsonId = jsonfile.item[i].id;
+						var itemList = document.querySelector('.listItem [data-id="'+ itemListId +'List"]').children.length; //selected result length
+						let curList = document.querySelectorAll('.listItem [data-id="'+ itemListId +'List"] li'); //selected result results
 
-								for(let j = 0; j< itemList; j++){
-									// console.log(curList[j].dataset[itemListId+"Id"]);
-									let compare = curList[j].dataset[itemListId+"Id"];
-									if(compare != jsonId){
-										// print
-										result.style.display = "block";
-										let newResult = `<li class=${itemListId} data-id=${jsonfile.item[i].id}>${jsonfile.item[i].name}</li>`;
-										result.innerHTML += newResult;
-									}
-									else {
-										// console.log("equal ids");
-										// //dont print json item name on SEARCH list
-										// console.log('full');
-										// console.log(jsonfile);
-										jsonfile.item.splice(i, 1);
-										delete jsonfile.item[i];
-										// console.log('spliced ');
-										// console.log(jsonfile);
-									}
-								}
-							} else {
-								 // console.log("list is empty");
-										result.style.display = "block";
-										let newResult = `<li class=${itemListId} data-id=${jsonfile.item[i].id}>${jsonfile.item[i].name}</li>`;
+						for(let i = 0; i< jsonfile.item.length; i++){ //check the length of json results
+							//TRIAL TO FILTER THROUGH SELECTED ITEMS BEFORE PRINTING THE SEARCH RESULT
+							// if(itemList > 0){ // if there's something on selected list
+								// let jsonId = jsonfile.item[i].id; //id of the json results
 
-										result.innerHTML += newResult;
-										// console.log(curList);
-								}
+								// curList.forEach((item) => {
+								// 	console.log(item.dataset.id);//new id of selected items
+								// 	if(item.dataset.id == jsonId){ //compare both ids
+								// 		jsonfile.item.splice(i, 1);
+								// 		delete jsonfile.item[i];
+								// 	}
+								// 	else {
+								// 		// push to temp array
+								// 		tempPrint.push(jsonfile.item[i]);
+								// 	}
+								// });
+								// for(let j = 0; j< itemList; j++){ //selected result length
+								// 			let compare = curList[j].dataset.id; // id of the selected items
+								// 			// console.log("compare: "+compare);
+								// 			// console.log("jsonId: "+jsonId);
+								// 			if(compare != jsonId){ //compare both ids
+								// 				// push to temp array
+								// 				tempPrint.push(jsonfile.item);
+								// 				// result.style.display = "block";
+								// 				// let newResult = `<li class=${itemListId} data-id=${jsonfile.item[i].id}>${jsonfile.item[i].name}</li>`;
+								// 				// result.innerHTML += newResult;
+								//
+								// 			}
+								// 			else {
+								// 				jsonfile.item.splice(i, 1);
+								// 				delete jsonfile.item[i];
+								// 			}
+								// }
+							result.style.display = "block";
+							let newResult = `<li class=${itemListId} data-id=${jsonfile.item[i].id}>${jsonfile.item[i].name}</li>`;
+							result.innerHTML += newResult;
+							// }
+							// else {
+							// 	console.log("list is empty");
+							// 	result.style.display = "block";
+							// 	let newResult = `<li class=${itemListId} data-id=${jsonfile.item[i].id}>${jsonfile.item[i].name}</li>`;
+							// 	result.innerHTML += newResult;
+							// 	}
 						}
 						let searchItems = result.querySelectorAll('li');
 						for(let i = 0; i < searchItems.length ; i++) {
@@ -318,14 +350,14 @@
 						let itemId = e.currentTarget.dataset.id;
 						let itemListName = e.currentTarget.innerHTML;
 						let itemList = document.querySelector('.listItem [data-id="'+ itemListId +'List"]');
-					//Check if it's already on the list before inserting in it
-					let filtered = Selections[itemListId].filter(item => item[0] === itemId);
-						if (filtered.length > 0) {
-							return;
-						} else {
-							Selections[itemListId].push([itemId,itemListName]);
-						}
-						printData(itemListId);
+						//Check if it's already on the list before inserting in it
+						let filtered = Selections[itemListId].filter(item => item[0] === itemId);
+							if (filtered.length > 0) {
+								return;
+							} else {
+								Selections[itemListId].push([itemId,itemListName]);
+							}
+							printData(itemListId);
 					}
 				}
 			}
@@ -356,14 +388,14 @@
 
 		function removeUnit(e){
 			let removeId = e.currentTarget.dataset.id;
-			console.log(removeId); //Undefined because data-fixture-id - removed from the li
+			// console.log(removeId); //Undefined because data-fixture-id - removed from the li
 			let parent = e.currentTarget.parentNode.dataset.id.slice(0, -4);
 			// Selections[parent]
 			let index = Selections[parent].findIndex(item => item[0] == removeId);
 			if(index > -1) {
 				Selections[parent].splice(index,1);
 			}
-			console.log(index);
+			// console.log(index);
 			printData(parent);
 		}
 
@@ -453,10 +485,20 @@
 	for(var i = 0; i<searchfeilds.length; i++){
 		searchfeilds[i].addEventListener("input", showItemResults,false);
 	}
+
+	//Add event listeners only when query selector is available
 	if(document.querySelector('.next')){
 		var nextBtn = document.querySelector('.next');
 		nextBtn.addEventListener('click', savePart, false);
 	}
+	if(document.querySelector('#searchPart')){
+		let searchInput = document.querySelector('#searchPart');
+		searchInput.addEventListener('input', showResults, false);
+	}
+	// if(document.querySelector('#nextPart')){
+	// 	let searchPart = document.querySelector('#nextPart');
+	// 	searchPart.addEventListener('click', selectPart, false);
+	// }
 
 	// chooseImageBtn.addEventListener('change', updatePhotoDisplay, false);
 })();

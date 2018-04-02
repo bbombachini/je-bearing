@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // require 'vendor/autoload.php';
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 use App\Part;
 // use App\ToolingMedia;
 use Illuminate\Http\Request;
@@ -142,9 +143,9 @@ class PartController extends Controller {
       return (['item' => $part, 'tool' => $partTooling, 'fixture' => $partFixture, 'material' => $partMaterial]);
     }
 
-    public function search($str) {
+    public function search($str, $field = 'name') {
       if(isset($str)) {
-        $part = Part::where('name','LIKE',"{$str}%")->get();
+        $part = Part::where($field, 'LIKE' ,"{$str}%")->where('active', 1)->get();
         if(!$part->isEmpty()){
             return (['item' => $part]);
         } else {
@@ -156,22 +157,26 @@ class PartController extends Controller {
       }
     }
 
-    public function searchPartNumber(Request $number) {
-      // return $number['partnumber'];
-      if(isset($number)) {
-        $part = Part::where('number','=',"{$number}")->get();
-        if(!$part->isEmpty()){
-            return $part;
-            // return (['item' => $part]);
-            return redirect()->action('PartController@partTooling');
-        } else {
-          return redirect()->back()->withErrors(['Part Number not found']);
-        }
-      }
-      else {
-        return redirect()->back()->withErrors(['Please fill Part Number field']);
-      }
+    public function getPartInfo($id){
+      $part = Part::where('id', $id)->get();
+      return $part;
     }
+    // public function searchPartNumber(Request $number) {
+    //   return $number['partnumber'];
+      // if(isset($number)) {
+      //   $part = Part::where('number','=',"{$number}")->get();
+      //   if(!$part->isEmpty()){
+      //       return $part;
+      //       // return (['item' => $part]);
+      //       // return redirect()->action('PartController@partTooling');
+      //   } else {
+      //     return redirect()->back()->withErrors(['Part Number not found']);
+      //   }
+      // }
+      // else {
+      //   return redirect()->back()->withErrors(['Please fill Part Number field']);
+      // }
+    // }
 
     public function edit($id) {
       $part = Part::where('id', $id)->where('active', 1)->get();

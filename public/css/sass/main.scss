@@ -624,18 +624,21 @@ a{
   font-size: 18px;
   line-height: 40px;
   text-transform: uppercase;
+  cursor: pointer;
 }
 .green-button {
   @extend .button;
   background: linear-gradient(134.06deg, #00CBBE 0%, #007A4A 88.18%, #006F3B 100%);
   color: #fff;
   border: none;
+  cursor: pointer;
 }
 .white-button {
   @extend .button;
   background: #fff;
   border: 2px solid $lightgreen;
   color: $lightgreen;
+  cursor: pointer;
 }
 .add-button {
   display: flex;
@@ -1059,6 +1062,7 @@ a{
 
   }
   button.green-button {
+    cursor: pointer;
     justify-self: center;
     align-self: flex-end;
   }
@@ -1160,6 +1164,9 @@ a{
   align-content: center;
   justify-content: center;
   text-align: center;
+  input, button {
+    align-self: center;
+  }
 }
 #loginLogo{
   width: 150px;
@@ -1176,7 +1183,6 @@ a{
 }
 
 #content-form{
-
   display: flex;
   width: 400px;
   display: block;
@@ -1562,6 +1568,7 @@ a{
   color: #fff;
   font-size: 18px;
   font-family: 'Book';
+  cursor: pointer;
 }
 
 //Operator style
@@ -1779,7 +1786,7 @@ a{
   border-color: green;
   background-color: green;
   color: #fff;
-} 
+}
 
 #progress-one{
   justify-self: start;
@@ -1885,7 +1892,7 @@ label{
 #addImgButt{
   clear: both;
   display: block;
-  padding-top: 10px; 
+  padding-top: 10px;
   color: $lightgreen;
   cursor: pointer;
   width: 25%;
