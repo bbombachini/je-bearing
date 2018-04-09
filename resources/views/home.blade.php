@@ -4,7 +4,7 @@
   <div id="adminLoginCon">
     <a href="{{url('admin/part/list')}}">
       <div id="adminLogin">
-        <img src="../../../images/user-icon.png" alt="user ucon" id="userIcon">
+        <img src="/images/user-icon.png" alt="user ucon" id="userIcon">
         <p>Admin</p>
       </div>
     </a>
@@ -23,7 +23,7 @@
 
 @section('login')
 <div id="logout">
-  <img src="../../../images/white-arrow.png" alt="left arrow" id="leftarrow">
+  <img src="/images/white-arrow.png" alt="left arrow" id="leftarrow">
 
   <!-- TEMPORARY LOGOUT -->
   <ul class="dropdown-menu">
@@ -49,7 +49,7 @@
 
   <a href="oper/tooling" class="dash-section">
     <div class="dash-icon">
-      <img src="../../../images/repairIcon.svg" alt="Work Instructions">
+      <img src="/images/repairIcon.svg" alt="Work Instructions">
     </div>
 
     <div class="dash-text">
@@ -59,7 +59,7 @@
 
   <a href="oper/tooling" class="dash-section">
     <div class="dash-icon">
-      <img src="../../../images/assembly.svg" alt="Assembly">
+      <img src="/images/assembly.svg" alt="Assembly">
     </div>
 
     <div class="dash-text">
@@ -69,7 +69,7 @@
 
   <a href="oper/tooling" class="dash-section">
       <div class="dash-icon">
-        <img src="../../../images/workIcon.svg" alt="Repair and Overhaul">
+        <img src="/images/workIcon.svg" alt="Repair and Overhaul">
       </div>
 
       <div class="dash-text">
@@ -79,7 +79,7 @@
 
 <a href="#" class="dash-section">
     <div class="dash-icon">
-      <img src="../../../images/newsIcon.svg" alt="J/E News">
+      <img src="/images/newsIcon.svg" alt="J/E News">
     </div>
     <div class="dash-text">
       <h3>J/E News</h3>
@@ -88,7 +88,7 @@
 
 <a href="#" class="dash-section">
     <div class="dash-icon">
-      <img src="../../../images/humanIcon.svg" alt="Human Resources">
+      <img src="/images/humanIcon.svg" alt="Human Resources">
     </div>
     <div class="dash-text">
       <h3>Human Resources</h3>
@@ -97,7 +97,7 @@
 
 <a href="#" class="dash-section">
     <div class="dash-icon">
-      <img src="../../../images/freepointIcon.svg" alt="Freepoint">
+      <img src="/images/freepointIcon.svg" alt="Freepoint">
     </div>
     <div class="dash-text">
       <h3>Freepoint</h3>

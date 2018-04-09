@@ -758,7 +758,7 @@ a{
 
 #goodExampleDiv, #badExampleDiv{
   display: block;
-  clear: both; 
+  clear: both;
   padding-top: 70px;
   h3{
     color: $lightgreen;
@@ -921,7 +921,8 @@ a{
   }
 }
 
-#addPart{
+#addPart,
+#editPart {
   width: 90%;
   margin: 0 auto;
   .add-item input{

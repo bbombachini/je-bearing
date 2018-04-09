@@ -751,19 +751,25 @@ a {
   #searchTables .itemResult ul p:hover {
     color: #006F3B; }
 
-#addPart {
+#addPart,
+#editPart {
   width: 90%;
   margin: 0 auto; }
-  #addPart .add-item input {
+  #addPart .add-item input,
+  #editPart .add-item input {
     width: 100%; }
-  #addPart .add-item {
+  #addPart .add-item,
+  #editPart .add-item {
     clear: both;
     display: block; }
-  #addPart .addItemLabel::placeholder {
+  #addPart .addItemLabel::placeholder,
+  #editPart .addItemLabel::placeholder {
     color: #ECB900; }
-  #addPart label {
+  #addPart label,
+  #editPart label {
     color: #a2a2a2; }
-  #addPart input {
+  #addPart input,
+  #editPart input {
     border-top: 0px;
     border-left: 0px;
     border-right: 0px;
@@ -771,24 +777,30 @@ a {
     padding-top: 10px;
     font-size: 14px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-  #addPart .part-name {
+  #addPart .part-name,
+  #editPart .part-name {
     float: left;
     width: 40%;
     margin-top: 0px;
     margin-bottom: 40px; }
-    #addPart .part-name input {
+    #addPart .part-name input,
+    #editPart .part-name input {
       width: 100%; }
-  #addPart .part-number {
+  #addPart .part-number,
+  #editPart .part-number {
     float: right;
     margin-bottom: 40px;
     width: 40%;
     margin-top: 0px; }
-    #addPart .part-number input {
+    #addPart .part-number input,
+    #editPart .part-number input {
       width: 100%; }
-  #addPart fieldset {
+  #addPart fieldset,
+  #editPart fieldset {
     margin-bottom: 10px;
     margin-top: 40px; }
-  #addPart button {
+  #addPart button,
+  #editPart button {
     margin-top: 50px; }
 
 .white-button {
