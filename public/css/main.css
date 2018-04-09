@@ -101,7 +101,8 @@ h5 {
 p {
   font-family: 'Light';
   font-size: 14px;
-  font-weight: 500; }
+  font-weight: 500;
+  line-height: 24px; }
 
 /*@import 'delete';*/
 body.quickview-enabled {
@@ -112,9 +113,6 @@ textarea:focus, input:focus {
   outline: none; }
 
 button {
-  letter-spacing: 2px; }
-
-.white-button {
   letter-spacing: 2px; }
 
 .backText {
@@ -532,24 +530,26 @@ a {
       color: #A2A2A2 !important;
       line-height: 20px; }
 
-.button, .green-button, .white-button, #addPart .white-button,
-#editPart .white-button, #operations button.white-button {
+.button, .green-button, .white-button, #operations button.white-button {
   width: 15vw;
   height: 40px;
   border-radius: 100px;
   font-size: 18px;
   line-height: 40px;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  cursor: pointer; }
 
 .green-button {
   background: linear-gradient(134.06deg, #00CBBE 0%, #007A4A 88.18%, #006F3B 100%);
   color: #fff;
-  border: none; }
+  border: none;
+  cursor: pointer; }
 
 .white-button {
   background: #fff;
   border: 2px solid #009B60;
-  color: #009B60; }
+  color: #009B60;
+  cursor: pointer; }
 
 .add-button {
   display: flex;
@@ -634,8 +634,30 @@ a {
 
 #qualityAlerts, #operations {
   display: block;
-  width: 80%;
+  width: 90%;
   margin: 0 auto; }
+
+#goodExampleDiv, #badExampleDiv {
+  display: block;
+  clear: both;
+  padding-top: 70px; }
+  #goodExampleDiv h3, #badExampleDiv h3 {
+    color: #009B60;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    padding-left: 20px; }
+  #goodExampleDiv .alertImg, #badExampleDiv .alertImg {
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    display: inline;
+    float: left;
+    background-color: #ebebeb; }
+
+#badExampleDiv .alertImg h1 {
+  color: #F34C18;
+  padding: 20px; }
 
 .partStep .addButt {
   float: left;
@@ -780,20 +802,25 @@ a {
   #addPart button,
   #editPart button {
     margin-top: 50px; }
-  #addPart .white-button,
-  #editPart .white-button {
-    font-family: 'Medium';
-    display: inline-block;
-    text-align: center;
-    margin: 5% 15%;
-    width: 15vw;
-    height: 40px;
-    border-radius: 100px;
-    font-size: 18px;
-    line-height: 40px;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box; }
+
+.white-button {
+  font-family: 'Medium';
+  display: inline-block;
+  text-align: center;
+  width: 240px;
+  border-radius: 100px;
+  font-size: 16px;
+  line-height: 36px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box; }
+
+#buttonCon {
+  padding-top: 50px;
+  clear: both; }
+
+#continueButt {
+  float: right; }
 
 #add, #edit {
   display: grid;
@@ -834,6 +861,7 @@ a {
     grid-area: desc;
     margin-bottom: 30px; }
   #add button.green-button, #edit button.green-button {
+    cursor: pointer;
     justify-self: center;
     align-self: flex-end; }
   #add a.white-button, #edit a.white-button {
@@ -916,6 +944,8 @@ a {
   align-content: center;
   justify-content: center;
   text-align: center; }
+  #content-con input, #content-con button {
+    align-self: center; }
 
 #loginLogo {
   width: 150px;
@@ -1116,20 +1146,17 @@ a {
   #operations button.white-button:nth-of-type(2) {
     float: right;
     width: 20vw; }
-  #operations .addItem {
-    display: grid; }
-    #operations .addItem a {
-      color: #009B89;
-      font-family: 'Light';
-      cursor: pointer;
-      text-decoration: none;
-      float: right;
-      font-size: 1.4vw;
-      justify-self: end;
-      margin: 15px 0; }
   #operations .formHeader {
     margin-bottom: 10px;
     cursor: pointer; }
+
+.addItem a {
+  color: #009B60;
+  font-family: 'Light';
+  cursor: pointer;
+  text-decoration: none;
+  float: right;
+  font-size: 16px; }
 
 .opOpen {
   display: none; }
@@ -1230,7 +1257,8 @@ a {
   border: none;
   color: #fff;
   font-size: 18px;
-  font-family: 'Book'; }
+  font-family: 'Book';
+  cursor: pointer; }
 
 #homeButt p {
   float: right; }
@@ -1367,7 +1395,8 @@ a {
 
 .progress-bar-con {
   width: 100%;
-  display: grid; }
+  display: grid;
+  margin-bottom: 30px; }
 
 .progress-bar {
   counter-reset: step;
@@ -1420,7 +1449,12 @@ a {
   width: 88%;
   border-top: 1px solid #ddd; }
 
+label {
+  color: #a2a2a2; }
+
 .step-details {
+  width: 90%;
+  margin: 0 auto;
   margin-top: 40px; }
   .step-details h3 {
     font-family: 'Medium';
@@ -1429,61 +1463,56 @@ a {
     font-weight: 700;
     letter-spacing: 1px;
     display: inline; }
-  .step-details #addStep {
+  .step-details .add-item, .step-details .add-media {
+    width: 100%; }
+  .step-details .add-item {
+    clear: both;
+    display: block; }
+  .step-details .addItemLabel::placeholder {
+    color: #ECB900; }
+  .step-details .step-image-item {
+    display: grid;
+    grid-template-columns: 40% 35% 15%;
+    justify-content: space-between;
+    grid-gap: auto; }
+  .step-details .step-name {
+    float: left;
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 40px; }
+    .step-details .step-name input {
+      width: 100%; }
+  .step-details .part-number {
+    float: right;
+    margin-bottom: 40px;
+    width: 40%;
+    margin-top: 0px; }
+  .step-details input {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  .step-details select {
+    margin-top: 30px;
+    margin-bottom: 10px; }
+  .step-details textarea {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    width: 100%;
+    margin-top: 10px; }
+  .step-details fieldset {
+    margin-bottom: 10px;
     margin-top: 40px; }
-    .step-details #addStep .add-item input {
-      width: 100%; }
-    .step-details #addStep .add-item {
-      clear: both;
-      display: block; }
-    .step-details #addStep .addItemLabel::placeholder {
-      color: #ECB900; }
-    .step-details #addStep .add-media {
-      width: 45%;
-      float: left;
-      height: 62px; }
-    .step-details #addStep .media-caption {
-      width: 45%;
-      float: right; }
-    .step-details #addStep label {
-      color: #a2a2a2; }
-    .step-details #addStep input {
-      border-top: 0px;
-      border-left: 0px;
-      border-right: 0px;
-      padding-bottom: 10px;
-      padding-top: 10px;
-      font-size: 14px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
-    .step-details #addStep .step-name {
-      float: left;
-      width: 100%;
-      margin-top: 0px;
-      margin-bottom: 40px; }
-      .step-details #addStep .step-name input {
-        width: 100%; }
-    .step-details #addStep .part-number {
-      float: right;
-      margin-bottom: 40px;
-      width: 40%;
-      margin-top: 0px; }
-    .step-details #addStep textarea {
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      max-width: 100%;
-      width: 100%;
-      margin-top: 10px; }
-    .step-details #addStep input {
-      width: 100%; }
-    .step-details #addStep fieldset {
-      margin-bottom: 10px;
-      margin-top: 40px;
-      width: 100%; }
 
-#images {
+#addImgButt {
   clear: both;
   display: block;
   padding-top: 10px;
   color: #009B60;
-  cursor: pointer; }
+  cursor: pointer;
+  width: 25%; }
 
 /*# sourceMappingURL=main.css.map */

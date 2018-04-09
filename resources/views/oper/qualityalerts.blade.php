@@ -11,21 +11,26 @@
             </div>
     </div>
 
-    <div id="steps">
-        <div class="stepItem">
-            <h3 class=stepTitle>Final Bench</h3>
-            <p class="stepDesc">This is what the final bench should look like...</p>
-            <p class="stepNote"><span class="yellow">Note:</span> It can be painted different colors or filled in with baskets instead of boxes.</p>
-            <img src="/images/final.jpg" alt="step Image" class="stepImage">
+    <div>
+        <p id="alertDesc">Minim pariatur est ut pariatur sit velit ut laboris nostrud dolore velit qui velit ut ullamco. Labore do veniam quis velit cillum esse irure ad sunt elit consectetur id pariatur eiusmod eu dolor dolore sit et magna ut in aliquip anim ex dolore velit occaecat cillum.</p>
+    </div>
 
-    	<div class="stepItem">
-	    	<h3 class=stepTitle>Final Bench</h3>
-	    	<p class="stepDesc">This is what the final bench should look like...</p>
-	    	<p class="stepNote"><span class="yellow">Note:</span> It can be painted different colors or filled in with baskets instead of boxes.</p>
-        <img src="/images/final.jpg" alt="step Image" class="stepImage">
 
-    	</div>
+    <div id="goodExampleDiv">
+        <h3>GOOD EXAMPLES</h3>
 
+        <div class="alertImg"></div>
+        <div class="alertImg"></div>
+        <div class="alertImg"></div>
+        <div class="alertImg"></div>
+    </div>
+
+    <div id="badExampleDiv">
+        <h3>BAD EXAMPLES</h3>
+        <div class="alertImg"><h1>X</h1></div>
+        <div class="alertImg"><h1>X</h1></div>
+        <div class="alertImg"><h1>X</h1></div>
+        <div class="alertImg"><h1>X</h1></div>
     </div>
 
 </section>

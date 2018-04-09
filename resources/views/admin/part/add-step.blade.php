@@ -18,8 +18,11 @@
             <hr id="progress-line">
         </div>
 
+        <div class="formHeader">
+              <h3>STEP DETAILS</h3>
+          </div>
+
         <div class="step-details">
-          <h3>STEP DETAILS</h3>
 
           {!! Form::open(['id' => 'addStep', 'files' => true]) !!}
             <fieldset class="step-name">
@@ -40,21 +43,28 @@
             <div class="step-image">
 
               <div class="step-image-item">
-              <fieldset class="add-media">
-                <p>{!! Form::label('media', 'Add Image') !!}</p>
-                {!! Form::file('media', ['class' => 'form-control']) !!}
-              </fieldset>
+                <fieldset class="add-media">
+                  <p>{!! Form::label('media', 'Add Image') !!}</p>
+                  {!! Form::file('media', ['class' => 'form-control']) !!}
+                </fieldset>
 
-               <fieldset class="media-caption">
-                <p>{!! Form::label('caption', 'Caption') !!}</p>
-                {!! Form::text('caption', '', ['class' => 'form-control form-add']) !!}
-              </fieldset>
+                 <fieldset class="media-caption">
+                  <p>{!! Form::label('caption', 'Caption') !!}</p>
+                  {!! Form::text('caption', '', ['class' => 'form-control form-add']) !!}
+                </fieldset>
               </div>
 
             </div>
+
+            <div id="addImgButt"><p>+ Add Another Image</p></div>
+
+            <div id="buttonCon">
+              <a href="{{ url('/admin/part/list')}}" class="white-button" name="button">SAVE AND FINISH</a>
+              <a href="{{ url('/admin/part/operation-details')}}" class="white-button" id="continueButt" name="button">SAVE AND CONTINUE</a>
+            </div>
         </div>
 
-        <div id="images"><p>+ Add Another Image</p></div>
+    
 
         <script type="text/javascript" src="../../../js/part.js"></script>
 

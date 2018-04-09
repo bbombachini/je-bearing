@@ -1,9 +1,11 @@
 @extends('layouts.login-app')
 
 @section('message')
-<div>
-   <h1>Choose a Part</h1>
-   <h3>Search for a part number to get started.</h3>
+<div id="welcome-user-text">
+  <div>
+     <h1>Choose a Part</h1>
+     <h3>Search for a part number to get started.</h3>
+  </div>
 </div>
 @endsection
 
@@ -29,18 +31,11 @@
 
 @section('content')
   <section id="content-con">
-    <div class="content-form">
-        <!-- {!! Form::open(['action' => 'PartController@searchPartNumber']) !!} -->
-        <form class="" action="/oper/part/search" method="post">
-          {{ csrf_field() }}
           <h1>Part Number:</h1>
-          <input type="text" name="partnumber" class="form-input" placeholder="enter part #" value="">
-          <button type="submit" class="green-button" name="button">Next<img src="/images/white-arrow.png" id="right-arrow" alt="right arrow"></button>
-        <!-- {!! Form::close() !!} -->
-        </form>
-
-
-    </div>
+          <input type="text" name="partnumber" id="searchPart" class="form-input" placeholder="enter part #" value="">
+          <div id="result"></div>
+          <a id="nextPart"  href="{{ url('/oper/part/info/') }}">
+          <button type="submit" class="green-button" name="button">Next<img src="/images/white-arrow.png" id="right-arrow" alt="right arrow"></button></a>
   </section>
 
 @endsection

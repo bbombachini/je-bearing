@@ -44,7 +44,8 @@ Route::get('/oper/qualityalerts', function(){
 Route::get('/searchpart', function(){
   return view('searchpart');
 } );
-Route::post('/oper/part/search', 'PartController@searchPartNumber');
+Route::get('/oper/part/info/{id}', ['uses' =>'PartController@getPartInfo']);
+Route::get('/searchpart/search/{id}/{field?}', ['uses' => 'PartController@search']);
 Route::get('/oper/part/tooling/{id}', ['uses' => 'PartController@listPartTooling']);
 
 //SUPERVISOR AND ADMIN SHARED ROUTES
@@ -56,10 +57,22 @@ Route::group(['middleware' => ['supervisor']] , function () {
   Route::post('/admin/part/update', 'PartController@update');
   Route::get('/admin/part/add-step', function(){
     return view('admin.part.add-step');
-  } );
-    Route::get('/admin/part/add-alert', function(){
+  });
+  Route::get('/admin/part/add-alert', function(){
     return view('admin.part.add-alert');
-  } );
+  });
+  Route::get('/admin/part/add-operation', function(){
+    return view('admin.part.add-operation');
+  });
+  Route::get('/admin/part/part-details', function(){
+    return view('admin.part.part-details');
+  });
+  Route::get('/admin/part/operation-details', function(){
+    return view('admin.part.operation-details');
+  });
+   Route::get('/admin/part/add-alert', function(){
+    return view('admin.part.add-alert');
+  });
 
   Route::get('/admin/part/list/search/{str}', ['uses' => 'PartController@search']);
 

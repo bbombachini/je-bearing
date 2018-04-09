@@ -2,7 +2,7 @@
 
 @section('admin-login')
   <div id="adminLoginCon">
-    <a href="{{url('admin/tooling/list')}}">
+    <a href="{{url('admin/part/list')}}">
       <div id="adminLogin">
         <img src="/images/user-icon.png" alt="user ucon" id="userIcon">
         <p>Admin</p>
