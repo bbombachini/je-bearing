@@ -19,9 +19,9 @@
 				<div>
 					<div class="progress-bar-con">
             <ul class="progress-bar">
-              <li id="progress-one">Part Details</li>
+              <li id="progress-one" class="active">Part Details</li>
               <li  id="progress-two">Operations</li>
-              <li class="active" id="progress-three">Quality Alerts</li>
+              <li id="progress-three">Quality Alerts</li>
             </ul>
             <hr id="progress-line">
         </div>
@@ -29,8 +29,8 @@
           <div class="formHeader">
               <h3>PART DETAILS</h3>
           </div>
-          
-            {!! Form::open(['id' => 'addPart', 'files' => true]) !!}
+
+            {!! Form::open(['id' => 'addPart', 'class' => 'partForm']) !!}
             <fieldset class="part-name">
               <p>{!! Form::label('name', 'Part Name') !!}</p>
               {!! Form::text('name', '', ['required' => 'required']) !!}
@@ -90,7 +90,7 @@
 
 						<fieldset class="part-category">
 							<p>{!! Form::label('category', 'Category') !!}</p>
-              {!! Form::select('category', array('' => 'Select a Category &#x25BC;', '1' => 'Work Instructions', '2' => 'Assembly', '3' => 'Repair & Overhaul'), null, ['class' => 'form-select', 'required' => 'required']) !!}
+              {!! Form::select('category', array(' ' => 'Select a Category &#x25BC;', '1' => 'Work Instructions', '2' => 'Assembly', '3' => 'Repair & Overhaul'), null, ['class' => 'form-select', 'required']) !!}
             </fieldset>
 
                 <a class="white-button" href="{{ url('/admin/part/list')}}">CANCEL</a>

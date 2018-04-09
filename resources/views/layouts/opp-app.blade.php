@@ -8,10 +8,10 @@
       	<div id="userinfo">
 
           <div id="homeIcon">
-            <a href="{{ url('/home')}}"><img src="../../../images/home.svg" alt="Home Icon" ></a>
+            <a href="{{ url('/home')}}"><img src="/images/home.svg" alt="Home Icon" ></a>
           </div>
 
-      		<div class="image-cropper"><img src="../../../{{ Auth::user()->photo }}" alt="{{ Auth::user()->fname }} {{ Auth::user()->lname }} photo"></div>
+      		<div class="image-cropper"><img src="/{{ Auth::user()->photo }}" alt="{{ Auth::user()->fname }} {{ Auth::user()->lname }} photo"></div>
       		<div>
       			<h2 id="userName">{{ Auth::user()->fname }} {{ Auth::user()->lname }}</h2>
       			<p>Part: #1234</p>
@@ -19,7 +19,7 @@
       	</div>
 
         <div id="search">
-          <img src="../../../images/search.png" alt="search icon" id="searchicon">
+          <img src="/images/search.png" alt="search icon" id="searchicon">
           <input class="searchfeild" type="search" placeholder="search">
 
           <div id="result">
@@ -138,7 +138,7 @@
             <a href="{{ route('login') }}"
               onclick="event.preventDefault();
                        document.getElementById('logout-form').submit();">
-                  <img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
+                  <img src="/images/arrow.png" alt="left arrow" id="leftarrow">
                   <p>LOGOUT</p>
             </a>
 

@@ -16,14 +16,14 @@
             <h3 class=stepTitle>Final Bench</h3>
             <p class="stepDesc">This is what the final bench should look like...</p>
             <p class="stepNote"><span class="yellow">Note:</span> It can be painted different colors or filled in with baskets instead of boxes.</p>
-            <img src="../../images/final.jpg" alt="step Image" class="stepImage">
+            <img src="/images/final.jpg" alt="step Image" class="stepImage">
 
     	<div class="stepItem">
 	    	<h3 class=stepTitle>Final Bench</h3>
 	    	<p class="stepDesc">This is what the final bench should look like...</p>
 	    	<p class="stepNote"><span class="yellow">Note:</span> It can be painted different colors or filled in with baskets instead of boxes.</p>
-        <img src="../../images/final.jpg" alt="step Image" class="stepImage">
-            
+        <img src="/images/final.jpg" alt="step Image" class="stepImage">
+
     	</div>
 
     </div>

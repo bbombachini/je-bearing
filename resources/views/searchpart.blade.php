@@ -9,7 +9,7 @@
 
 @section('login')
 <div id="logout">
-  <img src="../../../images/white-arrow.png" alt="left arrow" id="leftarrow">
+  <img src="/images/white-arrow.png" alt="left arrow" id="leftarrow">
 
   <!-- TEMPORARY LOGOUT -->
   <ul class="dropdown-menu">
@@ -35,7 +35,7 @@
           {{ csrf_field() }}
           <h1>Part Number:</h1>
           <input type="text" name="partnumber" class="form-input" placeholder="enter part #" value="">
-          <button type="submit" class="green-button" name="button">Next<img src="../../../images/white-arrow.png" id="right-arrow" alt="right arrow"></button>
+          <button type="submit" class="green-button" name="button">Next<img src="/images/white-arrow.png" id="right-arrow" alt="right arrow"></button>
         <!-- {!! Form::close() !!} -->
         </form>
 

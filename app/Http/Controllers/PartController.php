@@ -77,7 +77,8 @@ class PartController extends Controller {
       }
 
       //success
-      return redirect()->action('PartController@list');
+      $lastPart = $part;
+      return $lastPart;
     }
 
     public function list(Part $part) {
@@ -157,12 +158,10 @@ class PartController extends Controller {
     }
 
     public function searchPartNumber(Request $number) {
-      // return $number['partnumber'];
       if(isset($number)) {
         $part = Part::where('number','=',"{$number}")->get();
         if(!$part->isEmpty()){
             return $part;
-            // return (['item' => $part]);
             return redirect()->action('PartController@partTooling');
         } else {
           return redirect()->back()->withErrors(['Part Number not found']);
@@ -175,24 +174,10 @@ class PartController extends Controller {
 
     public function edit($id) {
       $part = Part::where('id', $id)->where('active', 1)->get();
-      // $partTooling = Part::find($id)->getToolingRelationship()->get();
-      // $partFixture = Part::find($id)->getFixtureRelationship()->get();
-      // $partMaterial = Part::find($id)->getMaterialRelationship()->get();
       $partTooling = Part::find($id)->tools()->get();
       $partFixture = Part::find($id)->fixtures()->get();
       $partMaterial = Part::find($id)->materials()->get();
-      // $toolMedia = Tooling::find($id)->getMediaRelationship()->latest()->first();
-      // if (empty($toolMedia)) {
-      //   $photo = 'images/noimage.jpg';
-      //   $defaultPhoto = 1;
-      // }
-      // else {
-      //   $media = $this->mediaService->getMedia($toolMedia['media_id']);
-      //   $photo = 'images/'.$media['path'];
-      //   $defaultPhoto = 0;
-      // }
 
-      // return view('admin.part.edit', ['old' => $part, 'photo' => $photo, 'id' => $id, 'defaultPhoto' => $defaultPhoto]);
       return view('admin.part.edit', ['old' => $part, 'id' => $id, 'oldTool' => $partTooling, 'oldFixture' => $partFixture, 'oldMaterial' => $partMaterial]);
     }
 
@@ -215,25 +200,17 @@ class PartController extends Controller {
       }
 
       // save PartTooling relationship
-      for($i = 0; $i < count($tools); $i++) {
-        $tool = $this->toolService->getTool($tools[$i]);
-        $part->tools()->save($tool);
-      }
+      $part->tools()->sync($tools);
 
       // save PartFixture relationship
-      for($i = 0; $i < count($fixtures); $i++) {
-        $fixture = $this->fixtureService->getFixture($fixtures[$i]);
-        $part->fixtures()->save($fixture);
-      }
+      $part->fixtures()->sync($fixtures);
 
       // save PartMaterial relationship
-      for($i = 0; $i < count($materials); $i++) {
-        $material = $this->materialService->getMaterial($materials[$i]);
-        $part->materials()->save($material);
-      }
+      $part->materials()->sync($materials);
 
       //success
-      return redirect()->action('PartController@list');
+      $lastPart = $part;
+      return $lastPart;
     }
 
 

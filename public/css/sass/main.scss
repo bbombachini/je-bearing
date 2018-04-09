@@ -891,7 +891,8 @@ a{
   }
 }
 
-#addPart{
+#addPart,
+#editPart {
   width: 90%;
   margin: 0 auto;
   .add-item input{
@@ -1750,7 +1751,7 @@ a{
   border-color: green;
   background-color: green;
   color: #fff;
-} 
+}
 
 #progress-one{
   justify-self: start;
@@ -1864,7 +1865,7 @@ a{
 #images{
   clear: both;
   display: block;
-  padding-top: 10px; 
+  padding-top: 10px;
   color: $lightgreen;
   cursor: pointer;
 }

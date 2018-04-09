@@ -16,7 +16,7 @@
               @foreach ($items as $item)
                   <li class="item">
                     <div class="item-media">
-                      <img src="../../../images/{{ $item['media_path'] }}" alt="{{ $item->name }} image">
+                      <img src="/images/{{ $item['media_path'] }}" alt="{{ $item->name }} image">
 
                       <div class="item-desc">
                         <h3>{{$item->name}}</h3>
