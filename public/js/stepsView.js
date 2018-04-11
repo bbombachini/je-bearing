@@ -25,14 +25,14 @@
 			height = pageCon.clientHeight;
 
 			// console.log(height);
-			console.log(window.scrollY);
+			// console.log(window.scrollY);
 
 		if (windowScroll > 170) {
 			toolBar.classList.add('itemBarFixed');
-			console.log("Stick");
+			// console.log("Stick");
 		}else{
 			toolBar.classList.remove('itemBarFixed');
-			console.log("not yet");
+			// console.log("not yet");
 		}
 	}
 
