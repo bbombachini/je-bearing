@@ -58,9 +58,9 @@ Route::group(['middleware' => ['supervisor']] , function () {
   Route::get('/admin/part/list', 'PartController@list');
   Route::get('/admin/part/edit/{id}', ['uses' => 'PartController@edit']);
   Route::post('/admin/part/update', 'PartController@update');
-  Route::get('/admin/part/add-step', function(){
-    return view('admin.part.add-step');
-  });
+  // Route::get('/admin/part/add-step', function(){
+  //   return view('admin.part.add-step');
+  // });
   Route::get('/admin/part/add-alert', function(){
     return view('admin.part.add-alert');
   });
