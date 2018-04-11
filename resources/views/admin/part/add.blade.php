@@ -29,8 +29,8 @@
           <div class="formHeader">
               <h3>PART DETAILS</h3>
           </div>
-          
-            {!! Form::open(['id' => 'addPart', 'files' => true]) !!}
+
+            {!! Form::open(['id' => 'addPart', 'class' => 'partForm']) !!}
             <fieldset class="part-name">
               <p>{!! Form::label('name', 'Part Name') !!}</p>
               {!! Form::text('name', '', ['required' => 'required']) !!}
@@ -87,7 +87,7 @@
 
 						<fieldset class="part-category">
 							<p>{!! Form::label('category', 'Category') !!}</p>
-              {!! Form::select('category', array('' => 'Select a Category &#x25BC;', '1' => 'Work Instructions', '2' => 'Assembly', '3' => 'Repair & Overhaul'), null, ['class' => 'form-select', 'required' => 'required']) !!}
+              {!! Form::select('category', array(' ' => 'Select a Category &#x25BC;', '1' => 'Work Instructions', '2' => 'Assembly', '3' => 'Repair & Overhaul'), null, ['class' => 'form-select', 'required']) !!}
             </fieldset>
 
             <div id="buttonCon">
@@ -98,7 +98,7 @@
 
 
 
-            </div> 
+            </div>
 
 				</div>
 </section>

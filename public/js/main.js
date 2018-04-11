@@ -15,6 +15,11 @@
 	Selections['fixture'] = new Array();
 	Selections['material'] = new Array();
 
+	// var Original = [];
+	// Original['tooling'] = new Array();
+	// Original['fixture'] = new Array();
+	// Original['material'] = new Array();
+
 	function changeDeleteUrl(e) {
 		e.preventDefault();
 		var id = this.dataset.id;
@@ -399,36 +404,82 @@
 			printData(parent);
 		}
 
+		// function to populate Tools, Fixture and Material arrays when editing a part
+		function populateArrays() {
+			let toolingItems = document.querySelectorAll('.listItem.tooling li');
+			toolingItems.forEach((item) => {
+				let name = item.querySelector('p');
+				// Original['tooling'].push(item.dataset.id);
+				Selections['tooling'].push([item.dataset.id, name.innerHTML]);
+				item.addEventListener('click', removeUnit, false);
+			});
+
+			let fixtureItems = document.querySelectorAll('.listItem.fixture li');
+			fixtureItems.forEach((item) => {
+				let name = item.querySelector('p');
+				// Original['fixture'].push(item.dataset.id);
+				Selections['fixture'].push([item.dataset.id, name.innerHTML]);
+				item.addEventListener('click', removeUnit, false);
+			});
+
+			let MaterialItems = document.querySelectorAll('.listItem.material li');
+			MaterialItems.forEach((item) => {
+				let name = item.querySelector('p');
+				// Original['material'].push(item.dataset.id);
+				Selections['material'].push([item.dataset.id, name.innerHTML]);
+				item.addEventListener('click', removeUnit, false);
+			});
+		}
+
 		//Takes all the three arrays and save into a Part.
 		function savePart(e) {
 			e.preventDefault();
-			let url = '/admin/part/store';
+
+			var form = document.querySelector('.partForm');
+			let url;
+			let partId;
+
+			if(form.id === 'addPart') {
+				url = '/admin/part/store';
+			}
+			else if(form.id === 'editPart') {
+				let curUrl = location.pathname.split('/');
+				partId = curUrl[curUrl.length-1];
+				url = '/admin/part/update';
+			}
+
 			let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 			let name = document.querySelector('input[name="name"]').value;
 			let number = document.querySelector('input[name="number"]').value;
 			let category = document.querySelector('select[name="category"]').value;
-			let form = document.querySelector('#addPart');
-			let redirect = '/admin/part/list';
+			let redirect = '/admin/part/add/operation';
+
 
 			if (Selections['tooling'].length > 0) {
+				console.log(Selections['tooling']);
 				var tooling = new Array();
 				Selections['tooling'].forEach((item) => {
 					let id = item[0];
 					tooling.push(id);
 				});
 			}
+			console.log(tooling);
 			if (Selections['fixture'].length > 0) {
 				var fixture = new Array();
 				Selections['fixture'].forEach((item) => {
 					let id = item[0];
-					fixture.push(id);
+					// if(Original['fixture'].indexOf(id) == -1) {
+						fixture.push(id);
+					// }
 				});
 			}
 			if (Selections['material'].length > 0) {
 				var material = new Array();
 				Selections['material'].forEach((item) => {
 					let id = item[0];
-					material.push(id);
+					// if(Original['material'].indexOf(id) == -1) {
+						material.push(id);
+					// }
 				});
 			}
 
@@ -442,6 +493,7 @@
 				method: 'post',
 				credentials: "same-origin",
 				body: JSON.stringify({
+					id: partId,
 					name: name,
 					number: number,
 					category: category,
@@ -450,9 +502,60 @@
 					material: material
 				})
 			 })
+			 .then((resp) => resp.json())
+			 .then((data) => {
+				cleanSearch();
+				form.reset();
+				// debugger;
+				window.location.href = redirect + '/' + data.id;
+			 })
+			 .catch(function(error) {
+        console.log(error);
+      });
+		}
+
+		function saveOperation(e) {
+			e.preventDefault();
+			let curUrl = location.pathname.split('/');
+			// console.log(curUrl);
+			let partId = curUrl[curUrl.length-1];
+			// console.log(partId);
+			// debugger;
+			let url = '/admin/operation/store';
+			let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+			let name = document.querySelector('input[name="name"]').value;
+			let photo = document.querySelector('input[name="media"]').files[0];
+			// let form = document.querySelector('.addOPer');
+
+			// console.log(photo);
+
+			// console.log(e.currentTarget.getAttribute('name'));
+			// debugger;
+			// let redirect = (e.currentTarget.getAttribute('name') === 'continue') ? '/admin/operation/add/step' : '/admin/part/list';
+
+			fetch(url, {
+				headers: {
+					"Content-Type": "application/json",
+	        "Accept": "application/json, text-plain, */*",
+	        "X-Requested-With": "XMLHttpRequest",
+					'X-CSRF-TOKEN': token
+				},
+				method: 'post',
+				credentials: "same-origin",
+				body: JSON.stringify({
+					name: name,
+					media: photo,
+					partId: partId
+				})
+			 })
+			 .then((resp) => resp.json())
 				 .then((data) => {
+					// console.log(data.id);
+					// debugger;
 					cleanSearch();
 					form.reset();
+					// console.log(redirect);
+					let redirect = (e.currentTarget.getAttribute('name') === 'continue') ? '/admin/operation/add/step/' + data.id: '/admin/part/list';
 					window.location.href = redirect;
 				 })
 				 .catch(function(error) {
@@ -486,9 +589,12 @@
 		searchfeilds[i].addEventListener("input", showItemResults,false);
 	}
 
-	//Add event listeners only when query selector is available
+	if(document.querySelector('#editPart')) {
+		populateArrays.call();
+	}
 	if(document.querySelector('.next')){
 		var nextBtn = document.querySelector('.next');
+		// console.log(nextBtn);
 		nextBtn.addEventListener('click', savePart, false);
 	}
 	if(document.querySelector('#searchPart')){
@@ -499,6 +605,13 @@
 	// 	let searchPart = document.querySelector('#nextPart');
 	// 	searchPart.addEventListener('click', selectPart, false);
 	// }
+
+	if(document.querySelector('.oper-next')){
+		var saveOper = document.querySelectorAll('.oper-next');
+		saveOper.forEach((button) => {
+			button.addEventListener('click', saveOperation, false);
+		});
+	}
 
 	// chooseImageBtn.addEventListener('change', updatePhotoDisplay, false);
 })();

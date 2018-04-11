@@ -138,7 +138,7 @@
             <a href="{{ route('login') }}"
               onclick="event.preventDefault();
                        document.getElementById('logout-form').submit();">
-                  <img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
+                  <img src="/images/arrow.png" alt="left arrow" id="leftarrow">
                   <p>LOGOUT</p>
             </a>
 

@@ -126,9 +126,11 @@ Route::middleware(['admin'])->group(function () {
   Route::get('/admin/part/add/search/{str}', ['uses' => 'ToolingController@search']);
 
   // Operations //
-  Route::get('/admin/part/add/operations', function(){
-    return view('admin.operation.add');
-  });
+  // Route::get('/admin/part/add/operations/{id}', function(){
+  //   return view('admin.operation.add');
+  // });
+  Route::get('/admin/part/add/operation/{id}', ['uses' => 'OperationController@add']);
+  Route::post('/admin/operation/store', 'OperationController@store');
   Route::get('/admin/part/add/opdetails', function(){
     return view('admin.operation.details');
   });
