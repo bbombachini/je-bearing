@@ -649,18 +649,21 @@ a {
   font-size: 18px;
   line-height: 40px;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .green-button {
   background: linear-gradient(134.06deg, #00CBBE 0%, #007A4A 88.18%, #006F3B 100%);
   color: #fff;
   border: none;
+  cursor: pointer;
 }
 
 .white-button {
   background: #fff;
   border: 2px solid #009B60;
   color: #009B60;
+  cursor: pointer;
 }
 
 .add-button {
@@ -910,24 +913,30 @@ a {
   color: #006F3B;
 }
 
-#addPart {
+#addPart,
+#editPart {
   width: 90%;
   margin: 0 auto;
 }
-#addPart .add-item input {
+#addPart .add-item input,
+#editPart .add-item input {
   width: 100%;
 }
-#addPart .add-item {
+#addPart .add-item,
+#editPart .add-item {
   clear: both;
   display: block;
 }
-#addPart .addItemLabel::placeholder {
+#addPart .addItemLabel::placeholder,
+#editPart .addItemLabel::placeholder {
   color: #ECB900;
 }
-#addPart label {
+#addPart label,
+#editPart label {
   color: #a2a2a2;
 }
-#addPart input {
+#addPart input,
+#editPart input {
   border-top: 0px;
   border-left: 0px;
   border-right: 0px;
@@ -936,29 +945,35 @@ a {
   font-size: 14px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-#addPart .part-name {
+#addPart .part-name,
+#editPart .part-name {
   float: left;
   width: 40%;
   margin-top: 0px;
   margin-bottom: 40px;
 }
-#addPart .part-name input {
+#addPart .part-name input,
+#editPart .part-name input {
   width: 100%;
 }
-#addPart .part-number {
+#addPart .part-number,
+#editPart .part-number {
   float: right;
   margin-bottom: 40px;
   width: 40%;
   margin-top: 0px;
 }
-#addPart .part-number input {
+#addPart .part-number input,
+#editPart .part-number input {
   width: 100%;
 }
-#addPart fieldset {
+#addPart fieldset,
+#editPart fieldset {
   margin-bottom: 10px;
   margin-top: 40px;
 }
-#addPart button {
+#addPart button,
+#editPart button {
   margin-top: 50px;
 }
 
@@ -1033,6 +1048,7 @@ a {
   margin-bottom: 30px;
 }
 #add button.green-button, #edit button.green-button {
+  cursor: pointer;
   justify-self: center;
   align-self: flex-end;
 }
@@ -1129,6 +1145,9 @@ a {
   align-content: center;
   justify-content: center;
   text-align: center;
+}
+#content-con input, #content-con button {
+  align-self: center;
 }
 
 #loginLogo {
@@ -1521,6 +1540,7 @@ a {
   color: #fff;
   font-size: 18px;
   font-family: 'Book';
+  cursor: pointer;
 }
 
 #homeButt p {

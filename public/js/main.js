@@ -9,11 +9,16 @@
 	var searchfeilds = document.querySelectorAll(".itemsearchfeild");
 	var url;
 
-	//Temporary arrays to show and save Tooling/Fixture and Materials into a Part.
+	//Temporary arrays to show and save Tooling/Fixture/Materials into a Part.
 	var Selections = [];
 	Selections['tooling'] = new Array();
 	Selections['fixture'] = new Array();
 	Selections['material'] = new Array();
+
+	// var Original = [];
+	// Original['tooling'] = new Array();
+	// Original['fixture'] = new Array();
+	// Original['material'] = new Array();
 
 	function changeDeleteUrl(e) {
 		e.preventDefault();
@@ -45,13 +50,9 @@
 				break;
 		}
 	}
-
-
 		delBtn.forEach(function(btn, index) {
 		btn.addEventListener('click', changeDeleteUrl, false);
 	});
-
-
 
 	function showView(){
 		//e.preventDefault();
@@ -93,8 +94,6 @@
 				var infoDiv = document.querySelector('#quickView');
 				infoDiv.style.display = 'block';
 				var jsondoc = JSON.parse(displayRequest.responseText);
-				// console.log(jsondoc);
-				// console.log(jsondoc.section[0].section_name);
 				document.querySelector("#itemname").innerHTML = jsondoc.item[0].name;
 				document.querySelector("#number").innerHTML = jsondoc.item[0].number;
 				document.querySelector("#desc").innerHTML = jsondoc.item[0].desc;
@@ -131,10 +130,7 @@
 		    document.querySelector("#user-role").innerHTML = role;
 				document.querySelector("#user-email").innerHTML = jsondoc.item[0].email;
 				document.querySelector("#user-phone").innerHTML = jsondoc.item[0].phone;
-
 		    document.querySelector("#itemImg > img").src = '../../'+jsondoc.item[0].photo;
-		    // console.log(infoDiv);
-		    // console.log(jsondoc);
 		    infoDiv.querySelector(".confirmEdit").href = '/admin/'+section+'/edit/'+ jsondoc.item[0].id;
 		    quickView.style.display = 'block';
 		    TweenMax.to(quickView, 0.3, {opacity: 1});
@@ -156,10 +152,15 @@
 	// 	searchfeilds[i].addEventListener("click", switchSearch,false);
 	// }
 
-
+	//Standard live search function
 	function showResults(e){
 		var str = e.currentTarget.value;
-		var url = window.location.href+'/search/'+str;
+		//If this selector is on screen, search for number field instead of name
+		if(document.querySelector('#searchPart')){
+			var url = window.location.href+'/search/'+str+'/number';
+		} else {
+			var url = window.location.href+'/search/'+str;
+		}
 
 		if(str !== "") {
 
@@ -184,15 +185,19 @@
 							newDiv = `<div><p id="`+jsonfile.item[i].id+`">`+jsonfile.item[i].lname+', '+jsonfile.item[i].fname+`</p></div>`;
 						}
 						else {
-							newDiv = `<div><p class="selectItem" id="`+jsonfile.item[i].id+`">`+jsonfile.item[i].name+`</p></div>`;
+							newDiv = `<div><p class="selectItem" data-id="`+jsonfile.item[i].id+`">`+jsonfile.item[i].name+` - #`+jsonfile.item[i].number+`</p></div>`;
 						}
 						result.innerHTML += newDiv;
 						}
-						//Create event listener to quickView -> Not working
-							// let  selectItem = result.querySelectorAll('.selectItem');
-							// selectItem.forEach((item) => {
-							// 	item.addEventListener('click', showView, false);
-							// });
+						//Create event listener to quickView -> Not finished
+							let  selectItem = result.querySelectorAll('.selectItem');
+							selectItem.forEach((item) => {
+								if(document.querySelector('#searchPart')){
+									item.addEventListener('click', selectedItemList, false);
+								} else {
+									item.addEventListener('click', showView, false);
+								}
+							});
 					} else {
 						result.style.display = "block";
 						var newDiv = document.createElement("div");
@@ -209,6 +214,30 @@
 			result.style.display = 'none';
 		}
 	}
+	//Function runs when you select a Part from livesearch
+	function selectedItemList(e){
+		let id = e.currentTarget.dataset.id;
+		let name = e.currentTarget.innerHTML;
+		let searchInput = document.querySelector('#searchPart');
+		searchInput.value = name;
+		let searchPart = document.querySelector('#nextPart');
+		searchPart.href += `/${id}`;
+		result.style.display = "none";
+		// let searchPart = document.querySelector('#nextPart');
+		// searchPart.addEventListener('click', selectPart, false);
+
+		// function selectPart(e){
+		// 	let searchInput = document.querySelector('#searchPart');
+		// 	let id = searchInput.dataset.id;
+		// 	let link = '/oper/part/search/'+id;
+		// 	// let reqPart = createRequest();
+		// 	// reqPart.onreadystatechange = resPart;
+		// 	// reqPart.open("GET", link, true);
+		// 	// reqPart.send( id, null);
+		// }
+
+	}
+
 
 
 	if(document.querySelector('input#media') !== null){
@@ -237,13 +266,12 @@
 	// 	photo.src = window.URL.createObjectURL(curFile[0]);
 	// }
 
-	//Dynamic search function
+	//Dynamic search through tooling/fixtures and materials
 	function showItemResults(e){
 		var id = e.currentTarget.id;
 		var val = e.currentTarget.value;
 		var itemResultDiv = document.querySelectorAll(".itemResult");
 		var link = "/admin/"+id+'/list/search/'+val;
-
 		if(val !== "") {
 
 			resultRequest = createRequest();
@@ -256,48 +284,57 @@
 					//Depending on which input clicked, it will select one of the three sections to look for (Tooling/Fixtures/Materials)
 					var result = document.querySelector('#searchTables [data-id="'+ id +'"]');
 					var itemListId = result.dataset.id;
-
 					while(result.firstChild) {
 					 result.removeChild(result.firstChild);
 					}
 					if(resultRequest.response !== 'not-found'){
 						let jsonfile = JSON.parse(resultRequest.responseText);
-						var itemList = document.querySelector('.listItem [data-id="'+ itemListId +'List"]').children.length;
-						let curList = document.querySelectorAll('.listItem [data-id="'+ itemListId +'List"] li');
-						// var curList;
-						for(let i =0; i< jsonfile.item.length; i++){
-							if(itemList > 0){
-								// console.log(curList);
-								let jsonId = jsonfile.item[i].id;
+						var itemList = document.querySelector('.listItem [data-id="'+ itemListId +'List"]').children.length; //selected result length
+						let curList = document.querySelectorAll('.listItem [data-id="'+ itemListId +'List"] li'); //selected result results
 
-								for(let j = 0; j< itemList; j++){
-									// console.log(curList[j].dataset[itemListId+"Id"]);
-									let compare = curList[j].dataset[itemListId+"Id"];
-									if(compare != jsonId){
-										// print
-										result.style.display = "block";
-										let newResult = `<li class=${itemListId} data-id=${jsonfile.item[i].id}>${jsonfile.item[i].name}</li>`;
-										result.innerHTML += newResult;
-									}
-									else {
-										// console.log("equal ids");
-										// //dont print json item name on SEARCH list
-										// console.log('full');
-										// console.log(jsonfile);
-										jsonfile.item.splice(i, 1);
-										delete jsonfile.item[i];
-										// console.log('spliced ');
-										// console.log(jsonfile);
-									}
-								}
-							} else {
-								 // console.log("list is empty");
-										result.style.display = "block";
-										let newResult = `<li class=${itemListId} data-id=${jsonfile.item[i].id}>${jsonfile.item[i].name}</li>`;
+						for(let i = 0; i< jsonfile.item.length; i++){ //check the length of json results
+							//TRIAL TO FILTER THROUGH SELECTED ITEMS BEFORE PRINTING THE SEARCH RESULT
+							// if(itemList > 0){ // if there's something on selected list
+								// let jsonId = jsonfile.item[i].id; //id of the json results
 
-										result.innerHTML += newResult;
-										// console.log(curList);
-								}
+								// curList.forEach((item) => {
+								// 	console.log(item.dataset.id);//new id of selected items
+								// 	if(item.dataset.id == jsonId){ //compare both ids
+								// 		jsonfile.item.splice(i, 1);
+								// 		delete jsonfile.item[i];
+								// 	}
+								// 	else {
+								// 		// push to temp array
+								// 		tempPrint.push(jsonfile.item[i]);
+								// 	}
+								// });
+								// for(let j = 0; j< itemList; j++){ //selected result length
+								// 			let compare = curList[j].dataset.id; // id of the selected items
+								// 			// console.log("compare: "+compare);
+								// 			// console.log("jsonId: "+jsonId);
+								// 			if(compare != jsonId){ //compare both ids
+								// 				// push to temp array
+								// 				tempPrint.push(jsonfile.item);
+								// 				// result.style.display = "block";
+								// 				// let newResult = `<li class=${itemListId} data-id=${jsonfile.item[i].id}>${jsonfile.item[i].name}</li>`;
+								// 				// result.innerHTML += newResult;
+								//
+								// 			}
+								// 			else {
+								// 				jsonfile.item.splice(i, 1);
+								// 				delete jsonfile.item[i];
+								// 			}
+								// }
+							result.style.display = "block";
+							let newResult = `<li class=${itemListId} data-id=${jsonfile.item[i].id}>${jsonfile.item[i].name}</li>`;
+							result.innerHTML += newResult;
+							// }
+							// else {
+							// 	console.log("list is empty");
+							// 	result.style.display = "block";
+							// 	let newResult = `<li class=${itemListId} data-id=${jsonfile.item[i].id}>${jsonfile.item[i].name}</li>`;
+							// 	result.innerHTML += newResult;
+							// 	}
 						}
 						let searchItems = result.querySelectorAll('li');
 						for(let i = 0; i < searchItems.length ; i++) {
@@ -318,14 +355,14 @@
 						let itemId = e.currentTarget.dataset.id;
 						let itemListName = e.currentTarget.innerHTML;
 						let itemList = document.querySelector('.listItem [data-id="'+ itemListId +'List"]');
-					//Check if it's already on the list before inserting in it
-					let filtered = Selections[itemListId].filter(item => item[0] === itemId);
-						if (filtered.length > 0) {
-							return;
-						} else {
-							Selections[itemListId].push([itemId,itemListName]);
-						}
-						printData(itemListId);
+						//Check if it's already on the list before inserting in it
+						let filtered = Selections[itemListId].filter(item => item[0] === itemId);
+							if (filtered.length > 0) {
+								return;
+							} else {
+								Selections[itemListId].push([itemId,itemListName]);
+							}
+							printData(itemListId);
 					}
 				}
 			}
@@ -356,47 +393,93 @@
 
 		function removeUnit(e){
 			let removeId = e.currentTarget.dataset.id;
-			console.log(removeId); //Undefined because data-fixture-id - removed from the li
+			// console.log(removeId); //Undefined because data-fixture-id - removed from the li
 			let parent = e.currentTarget.parentNode.dataset.id.slice(0, -4);
 			// Selections[parent]
 			let index = Selections[parent].findIndex(item => item[0] == removeId);
 			if(index > -1) {
 				Selections[parent].splice(index,1);
 			}
-			console.log(index);
+			// console.log(index);
 			printData(parent);
+		}
+
+		// function to populate Tools, Fixture and Material arrays when editing a part
+		function populateArrays() {
+			let toolingItems = document.querySelectorAll('.listItem.tooling li');
+			toolingItems.forEach((item) => {
+				let name = item.querySelector('p');
+				// Original['tooling'].push(item.dataset.id);
+				Selections['tooling'].push([item.dataset.id, name.innerHTML]);
+				item.addEventListener('click', removeUnit, false);
+			});
+
+			let fixtureItems = document.querySelectorAll('.listItem.fixture li');
+			fixtureItems.forEach((item) => {
+				let name = item.querySelector('p');
+				// Original['fixture'].push(item.dataset.id);
+				Selections['fixture'].push([item.dataset.id, name.innerHTML]);
+				item.addEventListener('click', removeUnit, false);
+			});
+
+			let MaterialItems = document.querySelectorAll('.listItem.material li');
+			MaterialItems.forEach((item) => {
+				let name = item.querySelector('p');
+				// Original['material'].push(item.dataset.id);
+				Selections['material'].push([item.dataset.id, name.innerHTML]);
+				item.addEventListener('click', removeUnit, false);
+			});
 		}
 
 		//Takes all the three arrays and save into a Part.
 		function savePart(e) {
 			e.preventDefault();
-			let url = '/admin/part/store';
+
+			var form = document.querySelector('.partForm');
+			let url;
+			let partId;
+
+			if(form.id === 'addPart') {
+				url = '/admin/part/store';
+			}
+			else if(form.id === 'editPart') {
+				let curUrl = location.pathname.split('/');
+				partId = curUrl[curUrl.length-1];
+				url = '/admin/part/update';
+			}
+
 			let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 			let name = document.querySelector('input[name="name"]').value;
 			let number = document.querySelector('input[name="number"]').value;
 			let category = document.querySelector('select[name="category"]').value;
-			let form = document.querySelector('#addPart');
-			let redirect = '/admin/part/list';
+			let redirect = '/admin/part/add/operation';
+
 
 			if (Selections['tooling'].length > 0) {
+				console.log(Selections['tooling']);
 				var tooling = new Array();
 				Selections['tooling'].forEach((item) => {
 					let id = item[0];
 					tooling.push(id);
 				});
 			}
+			console.log(tooling);
 			if (Selections['fixture'].length > 0) {
 				var fixture = new Array();
 				Selections['fixture'].forEach((item) => {
 					let id = item[0];
-					fixture.push(id);
+					// if(Original['fixture'].indexOf(id) == -1) {
+						fixture.push(id);
+					// }
 				});
 			}
 			if (Selections['material'].length > 0) {
 				var material = new Array();
 				Selections['material'].forEach((item) => {
 					let id = item[0];
-					material.push(id);
+					// if(Original['material'].indexOf(id) == -1) {
+						material.push(id);
+					// }
 				});
 			}
 
@@ -410,6 +493,7 @@
 				method: 'post',
 				credentials: "same-origin",
 				body: JSON.stringify({
+					id: partId,
 					name: name,
 					number: number,
 					category: category,
@@ -418,9 +502,60 @@
 					material: material
 				})
 			 })
+			 .then((resp) => resp.json())
+			 .then((data) => {
+				cleanSearch();
+				form.reset();
+				// debugger;
+				window.location.href = redirect + '/' + data.id;
+			 })
+			 .catch(function(error) {
+        console.log(error);
+      });
+		}
+
+		function saveOperation(e) {
+			e.preventDefault();
+			let curUrl = location.pathname.split('/');
+			// console.log(curUrl);
+			let partId = curUrl[curUrl.length-1];
+			// console.log(partId);
+			// debugger;
+			let url = '/admin/operation/store';
+			let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+			let name = document.querySelector('input[name="name"]').value;
+			let photo = document.querySelector('input[name="media"]').files[0];
+			// let form = document.querySelector('.addOPer');
+
+			// console.log(photo);
+
+			// console.log(e.currentTarget.getAttribute('name'));
+			// debugger;
+			// let redirect = (e.currentTarget.getAttribute('name') === 'continue') ? '/admin/operation/add/step' : '/admin/part/list';
+
+			fetch(url, {
+				headers: {
+					"Content-Type": "application/json",
+	        "Accept": "application/json, text-plain, */*",
+	        "X-Requested-With": "XMLHttpRequest",
+					'X-CSRF-TOKEN': token
+				},
+				method: 'post',
+				credentials: "same-origin",
+				body: JSON.stringify({
+					name: name,
+					media: photo,
+					partId: partId
+				})
+			 })
+			 .then((resp) => resp.json())
 				 .then((data) => {
+					// console.log(data.id);
+					// debugger;
 					cleanSearch();
 					form.reset();
+					// console.log(redirect);
+					let redirect = (e.currentTarget.getAttribute('name') === 'continue') ? '/admin/operation/add/step/' + data.id: '/admin/part/list';
 					window.location.href = redirect;
 				 })
 				 .catch(function(error) {
@@ -453,9 +588,29 @@
 	for(var i = 0; i<searchfeilds.length; i++){
 		searchfeilds[i].addEventListener("input", showItemResults,false);
 	}
+
+	if(document.querySelector('#editPart')) {
+		populateArrays.call();
+	}
 	if(document.querySelector('.next')){
 		var nextBtn = document.querySelector('.next');
+		// console.log(nextBtn);
 		nextBtn.addEventListener('click', savePart, false);
+	}
+	if(document.querySelector('#searchPart')){
+		let searchInput = document.querySelector('#searchPart');
+		searchInput.addEventListener('input', showResults, false);
+	}
+	// if(document.querySelector('#nextPart')){
+	// 	let searchPart = document.querySelector('#nextPart');
+	// 	searchPart.addEventListener('click', selectPart, false);
+	// }
+
+	if(document.querySelector('.oper-next')){
+		var saveOper = document.querySelectorAll('.oper-next');
+		saveOper.forEach((button) => {
+			button.addEventListener('click', saveOperation, false);
+		});
 	}
 
 	// chooseImageBtn.addEventListener('change', updatePhotoDisplay, false);

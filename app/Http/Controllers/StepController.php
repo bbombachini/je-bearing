@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Step;
 use App\StepMedia;
+use App\Operation;
 use Illuminate\Http\Request;
 use App\Services\MediaService;
 use Illuminate\Support\Facades\Log;
@@ -24,8 +25,9 @@ class StepController extends Controller {
         $this->mediaService = $service;
     }
 
-    public function add() {
+    public function add($operId) {
       $step = new Step;
+      $operation = Operation::where('id', $operId)->get();
       return view('admin.step.add', ['step' => $step]);
     }
 

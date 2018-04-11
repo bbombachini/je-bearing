@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Operation;
+use App\Part;
+use App\Services\MediaService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -16,60 +18,65 @@ use Intervention\Image\ImageManager;
 
 class OperationController extends Controller {
 
-    // private $toolsrv;
-    // private $fixturesrv;
-    // private $materialsrv;
-    //
-    // public function __construct(ToolService $toolsrv, FixtureService $fixturesrv, MaterialService $materialsrv) {
-    //     $this->toolService = $toolsrv;
-    //     $this->fixtureService = $fixturesrv;
-    //     $this->materialService = $materialsrv;
-    // }
+    private $service;
 
-    public function add() {
-      $operation = new Operation;
-      return view('admin.operation.add', ['operation' => $operation]);
+    // service to get all relationships with media
+    public function __construct(MediaService $service) {
+        $this->mediaService = $service;
     }
 
+    public function add($partId) {
+      $operation = new Operation;
+      $part = Part::where('id', $partId)->get();
+      // return $part[0]['number'];
+      $partNumber = $part[0]['number'];
+      $partName = $part[0]['name'];
+      return view('admin.operation.add', ['operation' => $operation, 'partId' => $partId, 'partNumber' => $partNumber, 'partName' => $partName]);
+    }
 
     public function store(Request $request) {
       $operation = new Operation;
-      $operation['title'] = $request['title'];
-      // $part['number'] = $request['number'];
-      $operation['desc'] = $request['desc'];
+      $operation['name'] = $request['name'];
       $operation['active'] = 1;
-      // $tools = $request['tooling'];
-      // $fixtures = $request['fixture'];
-      // $materials = $request['material'];
+
+      //validates photo media
+      if(isset($request['media'])) {
+        $this->validate($request, ['media' => 'mimes:jpeg,png,jpg,gif,svg']);
+        //save media file in images folder
+        $media_id = $this->mediaService->storeMedia($request);
+      }
 
       // save info in database
       if (!$operation->save()) {
         $errors = $operation->getErrors();
-        if($errors) {
+        return redirect()->back()->with('errors', $errors)->withInput();
+      }
+
+      if(isset($media_id)) {
+        $order = Operation::find($operation['id'])->getMediaRelationship()->latest()->first();
+        if (empty($order)) {
+          $order = 1;
+        }
+        else {
+          $order++;
+        }
+        $operMedia = new ToolingMedia;
+        $operMedia['tool_id'] = $operation['id'];
+        $operMedia['media_id'] = $media_id;
+        $operMedia['order'] = $order;
+
+        // save relational info in database
+        if (!$operMedia->save()) {
+          $errors = $operMedia->getErrors();
           return redirect()->back()->with('errors', $errors)->withInput();
         }
       }
 
-      // // save PartTooling relationship
-      // for($i = 0; $i < count($tools); $i++) {
-      //   $tool = $this->toolService->getTool($tools[$i]);
-      //   $part->tools()->save($tool);
-      // }
-      //
-      // // save PartFixture relationship
-      // for($i = 0; $i < count($fixtures); $i++) {
-      //   $fixture = $this->fixtureService->getFixture($fixtures[$i]);
-      //   $part->fixtures()->save($fixture);
-      // }
-      //
-      // // save PartMaterial relationship
-      // for($i = 0; $i < count($materials); $i++) {
-      //   $material = $this->materialService->getMaterial($materials[$i]);
-      //   $part->materials()->save($material);
-      // }
+      // success
+      $lastOper = $operation;
+      return $lastOper;
 
-      //success
-      return redirect()->back();
+      // return redirect()->action('StepController@add', ['operId' => $lastId]);
     }
 
     public function list(Operation $operation) {
