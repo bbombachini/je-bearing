@@ -110,7 +110,7 @@ class ToolingController extends Controller {
           $item['media_path'] = $media['path'];
         }
       }
-      return view('oper.items', ['items' => $items, 'title' => 'Tooling', 'name' => 'tools']);
+      return view('oper.items', ['items' => $items, 'pid' => $id, 'title' => 'Tooling', 'name' => 'tools']);
     }
 
     public function quickview($id) {

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 use App\Part;
 // use App\ToolingMedia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 // use App\Services\MediaService;
 use App\Services\ToolService;
 use App\Services\FixtureService;
@@ -159,17 +160,14 @@ class PartController extends Controller {
       }
     }
 
+    //Eventually this function should redirect to steps with all that information
     public function getPartInfo($id){
       $part = Part::where('id', $id)->get();
       $partTooling = Part::find($id)->tools()->get();
       $partFixture = Part::find($id)->fixtures()->get();
       $partMaterial = Part::find($id)->materials()->get();
-      // $partTooling = Part::find($id)->getToolingRelationship()->get();
-      // $partFixture = Part::find($id)->getFixtureRelationship()->get();
-      // $partMaterial = Part::find($id)->getMaterialRelationship()->get();
-      // return view('admin.part.edit', ['old' => $part, 'id' => $id, 'oldTool' => $partTooling, 'oldFixture' => $partFixture, 'oldMaterial' => $partMaterial]);
-      return view('oper.items', ['items' => $partTooling, 'title' => "Tools", 'name' => "tools" ]);
-      // return $partTooling;
+      session(['partNumber'=> $part[0]->number]);
+      return view('oper.items', ['items' => $partTooling, 'pid' => $id, 'title' => "Tools", 'name' => "tools" ]);
     }
 
     // public function searchPartNumber(Request $number) {

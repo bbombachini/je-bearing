@@ -11,7 +11,7 @@
 
 @section('login')
 <div id="logout">
-  <img src="../../../images/white-arrow.png" alt="left arrow" id="leftarrow">
+  <img src="/images/white-arrow.png" alt="left arrow" id="leftarrow">
 
   <!-- TEMPORARY LOGOUT -->
   <ul class="dropdown-menu">

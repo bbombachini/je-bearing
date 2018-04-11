@@ -14,12 +14,12 @@
       		<div class="image-cropper"><img src="/{{ Auth::user()->photo }}" alt="{{ Auth::user()->fname }} {{ Auth::user()->lname }} photo"></div>
       		<div>
       			<h2 id="userName">{{ Auth::user()->fname }} {{ Auth::user()->lname }}</h2>
-      			<p>Part: #1234</p>
+      			<p>Part: #{{ session('partNumber') }}</p>
       		</div>
       	</div>
 
         <div id="search">
-          <img src="../../../images/search.png" alt="search icon" id="searchicon">
+          <img src="/images/search.png" alt="search icon" id="searchicon">
           <input class="searchfeild" type="search" placeholder="search">
 
           <div id="result">
@@ -29,7 +29,7 @@
 
       	<nav id="adminNav">
       		<ul>
-      			<a href="{{ url('oper/part/tooling') }}"  id="tooling">
+      			<a href="{{ url('oper/part/tooling') }}/{{ $pid }}"  id="tooling">
       				<svg version="1.1" id="toolingicon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       				viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
       				<g>
@@ -46,7 +46,7 @@
       				<li>Tooling</li>
       			</a>
 
-      			<a href="{{ url('oper/part/fixture') }}" id="fixture">
+      			<a href="{{ url('oper/part/fixture') }}/{{ $pid }}" id="fixture">
       				<svg version="1.1" id="fictureicon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       				viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
       				<path class="st0" d="M320.9,268.6v83.6c0,5.9-4.8,10.7-10.7,10.7s-10.7-4.8-10.7-10.7V159.8c0-5.9,4.8-10.7,10.7-10.7
@@ -58,7 +58,7 @@
       				<li>Fixtures</li>
       			</a>
 
-      			<a href="{{ url('oper/part/material') }}" id="material">
+      			<a href="{{ url('oper/part/material') }}/{{ $pid }}" id="material">
       				<svg version="1.1" id="materialicon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       				viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
       				<g>

@@ -20,6 +20,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Operator Routes - TEMPORARY
 
+//Search Part Views
+Route::get('/searchpart', function(){
+  return view('searchpart');
+} );
+Route::get('/searchpart/search/{id}/{field?}', ['uses' => 'PartController@search']);
+
 //Operator Part Related Views
 Route::get('/oper/part/info/{id}', ['uses' =>'PartController@getPartInfo']);
 Route::get('/oper/part/tooling/{id}', ['uses' => 'ToolingController@opList']);
@@ -44,11 +50,6 @@ Route::get('/oper/part/steps', function(){
 Route::get('/oper/part/qualityalerts', function(){
   return view('oper.qualityalerts');
 } );
-//Search Part Views
-Route::get('/searchpart', function(){
-  return view('searchpart');
-} );
-Route::get('/searchpart/search/{id}/{field?}', ['uses' => 'PartController@search']);
 
 //SUPERVISOR AND ADMIN SHARED ROUTES
 Route::group(['middleware' => ['supervisor']] , function () {
