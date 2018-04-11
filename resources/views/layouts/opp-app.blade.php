@@ -90,7 +90,6 @@
       				</svg>
       				<li>Materials</li>
       			</a>
-
                         <a href="{{ url('oper/steps') }}" id="comment">
                               <svg version="1.1" id="commentsicon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                               viewBox="0 0 100 100" style="enable-background:new 0 0 500 500;" xml:space="preserve">
@@ -120,7 +119,7 @@
       				<li>Comments</li>
       			</a>
 
-      			<a href="{{ url('oper/contactsuper') }}" id="supervisor">
+      			<a href="{{ url('contact/create') }}" id="supervisor">
       				<svg version="1.1" id="supervisoricon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       				viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
       				<path class="st0" d="M276.6,274l-15.1,27.8l17.1,78.5c0.1,0.5,0.1,0.9-0.1,1.4l-23.2,64.7c-0.8,2.1-3.8,2.2-4.6,0.1l-26.6-64.7
