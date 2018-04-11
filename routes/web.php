@@ -21,22 +21,31 @@ Route::get('/', ['uses' => 'AuthController@checkLogin']);
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Operator Routes
-Route::get('/oper/tooling', 'ToolingController@opList');
-Route::get('/oper/tooling/search/{str}', ['uses' => 'ToolingController@search']);
-Route::get('/oper/fixture', 'FixtureController@opList');
-Route::get('/oper/fixture/search/{str}', ['uses' => 'FixtureController@search']);
-Route::get('/oper/material', 'MaterialController@opList');
-Route::get('/oper/material/search/{str}', ['uses' => 'MaterialController@search']);
-Route::get('/oper/comments', function(){
+//Operator Routes - TEMPORARY
+
+//Search Part Views
+Route::get('/searchpart', function(){
+  return view('searchpart');
+} );
+Route::get('/searchpart/search/{id}/{field?}', ['uses' => 'PartController@search']);
+
+//Operator Part Related Views
+Route::get('/oper/part/info/{id}', ['uses' =>'PartController@getPartInfo']);
+Route::get('/oper/part/tooling/{id}', ['uses' => 'ToolingController@opList']);
+Route::get('/oper/part/fixture/{id}', ['uses' => 'FixtureController@opList']);
+Route::get('/oper/part/material/{id}', ['uses' => 'MaterialController@opList']);
+Route::get('/oper/part/tooling/search/{str}', ['uses' => 'ToolingController@search']);
+Route::get('/oper/part/fixture/search/{str}', ['uses' => 'FixtureController@search']);
+Route::get('/oper/part/material/search/{str}', ['uses' => 'MaterialController@search']);
+Route::get('/oper/part/comments', function(){
   return view('oper.comments');
 } );
 
-Route::get('/oper/contactsuper', function(){
-  return view('oper.contactsuper');
+Route::get('contact/contactSupervisor', function(){
+  return view('contact.contactSupervisor');
 } );
 
-Route::get('/oper/steps', function(){
+Route::get('/oper/part/steps', function(){
   return view('oper.steps');
 } );
 
@@ -47,15 +56,9 @@ Route::post('contact/create', 'ContactController@store')->name('contact.store');
 
 // Route::get('/oper/steps', 'ToolingController@opList');
 
-Route::get('/oper/qualityalerts', function(){
+Route::get('/oper/part/qualityalerts', function(){
   return view('oper.qualityalerts');
 } );
-Route::get('/searchpart', function(){
-  return view('searchpart');
-} );
-Route::get('/oper/part/info/{id}', ['uses' =>'PartController@getPartInfo']);
-Route::get('/searchpart/search/{id}/{field?}', ['uses' => 'PartController@search']);
-Route::get('/oper/part/tooling/{id}', ['uses' => 'PartController@listPartTooling']);
 
 //SUPERVISOR AND ADMIN SHARED ROUTES
 Route::group(['middleware' => ['supervisor']] , function () {
@@ -64,9 +67,9 @@ Route::group(['middleware' => ['supervisor']] , function () {
   Route::get('/admin/part/list', 'PartController@list');
   Route::get('/admin/part/edit/{id}', ['uses' => 'PartController@edit']);
   Route::post('/admin/part/update', 'PartController@update');
-  Route::get('/admin/part/add-step', function(){
-    return view('admin.part.add-step');
-  });
+  // Route::get('/admin/part/add-step', function(){
+  //   return view('admin.part.add-step');
+  // });
   Route::get('/admin/part/add-alert', function(){
     return view('admin.part.add-alert');
   });
@@ -93,7 +96,7 @@ Route::group(['middleware' => ['supervisor']] , function () {
   // Route::get('/admin/step/editMedia/{id}', ['uses' => 'StepController@editMedia']);
 
   // Tool //
-  Route::get('/admin/tooling/list', 'ToolingController@list');
+  Route::get('/admin/tooling/list/', 'ToolingController@list');
   Route::get('/admin/tooling/edit/{id}', ['uses' => 'ToolingController@edit']);
   Route::get('/admin/tooling/list/search/{str}', ['uses' => 'ToolingController@search']);
   Route::post('/admin/tooling/update', 'ToolingController@update');

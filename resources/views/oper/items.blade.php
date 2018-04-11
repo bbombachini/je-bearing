@@ -27,7 +27,7 @@
               @endforeach
           </ul>
           <div id="pagination-container">
-                {{ $items->links() }}
+              
           </div>
         </div>
 </section>

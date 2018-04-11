@@ -2,15 +2,16 @@
 
 @section('admin-login')
   <div id="adminLoginCon">
+    @if(Auth::user()->role !==3)
     <a href="{{url('admin/part/list')}}">
       <div id="adminLogin">
         <img src="/images/user-icon.png" alt="user ucon" id="userIcon">
         <p>Admin</p>
       </div>
     </a>
+      @endif
   </div>
 @endsection
-
 
 @section('message')
 <div id="welcome-user-text">
@@ -46,8 +47,8 @@
 
 <section id="dashboard">
 
-
-  <a href="oper/tooling" class="dash-section">
+  @if (Auth::user()->role !== 3 || Auth::user()->instructions_access === 1)
+  <a href="/searchpart" class="dash-section">
     <div class="dash-icon">
       <img src="/images/repairIcon.svg" alt="Work Instructions">
     </div>
@@ -56,8 +57,10 @@
         <h3>Work Instructions</h3>
     </div>
   </a>
+  @endif
 
-  <a href="oper/tooling" class="dash-section">
+  @if (Auth::user()->role !== 3 || Auth::user()->assembly_access === 1)
+  <a href="/searchpart" class="dash-section">
     <div class="dash-icon">
       <img src="/images/assembly.svg" alt="Assembly">
     </div>
@@ -66,8 +69,10 @@
         <h3>Assembly</h3>
     </div>
   </a>
+  @endif
 
-  <a href="oper/tooling" class="dash-section">
+  @if (Auth::user()->role !== 3 || Auth::user()->repair_access === 1)
+  <a href="/searchpart" class="dash-section">
       <div class="dash-icon">
         <img src="/images/workIcon.svg" alt="Repair and Overhaul">
       </div>
@@ -76,6 +81,7 @@
         <h3>Repair and Overhaul</h3>
       </div>
   </a>
+  @endif
 
 <a href="#" class="dash-section">
     <div class="dash-icon">

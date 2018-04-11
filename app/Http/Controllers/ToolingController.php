@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Tooling;
+use App\Part;
 use App\ToolingMedia;
 use Illuminate\Http\Request;
 use App\Services\MediaService;
@@ -97,14 +98,8 @@ class ToolingController extends Controller {
       return view('admin.tooling.list', ['items' => $tools, 'count' => $count]);
     }
 
-    //TEMPORARY FUNCTION - CHANGE LATER
-    public function opList(Tooling $tooling) {
-      $items = Tooling::where('active', 1)->orderBy('name', 'asc')->paginate(6);
-      // $items = DB::table('tool')
-      //       ->join('part', 'users.id', '=', 'contacts.user_id')
-      //       ->join('orders', 'users.id', '=', 'orders.user_id')
-      //       ->select('users.*', 'contacts.phone', 'orders.price')
-      //       ->get();
+    public function opList($id) {
+      $items = Part::find($id)->tools()->where('active', 1)->orderBy('name', 'asc')->paginate(6);
       foreach ($items as $item) {
         $itemMedia = Tooling::find($item['id'])->getMediaRelationship()->latest()->first();
         $media = $this->mediaService->getMedia($itemMedia['media_id']);
@@ -115,8 +110,7 @@ class ToolingController extends Controller {
           $item['media_path'] = $media['path'];
         }
       }
-        // return $tools;
-        return view('oper.items', ['items' => $items, 'title' => 'Tooling', 'name' => 'tools']);
+      return view('oper.items', ['items' => $items, 'pid' => $id, 'title' => 'Tooling', 'name' => 'tools']);
     }
 
     public function quickview($id) {
