@@ -11,14 +11,13 @@
             </div>
     </div>
 
-
-
     <div id="contactFormCon">
 
     	<form id="contactForm">
 
-    		<fieldset class="add-name">
-
+        @if(Session::has('message'))
+            <div class="alert alert-sucess">{{Session::get('message')}}</div>
+        @endif
               <fieldset class="contactLabel" id="contactName">
               	<p>{!! Form::label('Supervisor Name') !!}</p>
               	{!! Form::text('number', '', ['class' => 'contactInput']) !!}
@@ -37,10 +36,8 @@
               <fieldset class="contactLabel">
               	<p>{!! Form::label('message') !!}</p>
               	{!! Form::textarea('desc', '', ['class' => 'contactInputMessage', 'size' => '50x10']) !!}
-			  </fieldset>
 
             </fieldset>
-
 
             <button type="submit" class="green-button" name="button">SUBMIT</button>
     	</form>

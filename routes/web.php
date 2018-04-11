@@ -12,9 +12,12 @@
 */
 
 //Authentication Routes
-Route::get('/', function(){
-  return view('auth.login');
-} );
+// Route::get('/', function(){
+//   return view('auth.login');
+// });
+
+Route::get('/', ['uses' => 'AuthController@checkLogin']);
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -37,13 +40,19 @@ Route::get('/oper/part/material/search/{str}', ['uses' => 'MaterialController@se
 Route::get('/oper/part/comments', function(){
   return view('oper.comments');
 } );
-Route::get('/oper/part/contactsuper', function(){
-  return view('oper.contactsuper');
+
+Route::get('contact/contactSupervisor', function(){
+  return view('contact.contactSupervisor');
 } );
 
 Route::get('/oper/part/steps', function(){
   return view('oper.steps');
 } );
+
+
+
+Route::get('contact/create', 'ContactController@create')->name('contact.create');
+Route::post('contact/create', 'ContactController@store')->name('contact.store');
 
 // Route::get('/oper/steps', 'ToolingController@opList');
 
