@@ -8,46 +8,44 @@ use Session;
 use App\User;
 use App\Http\Requests;
 use App\Applications;
-
+use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller {
 
       public function create(User $user)
     {
-        // $supers = User::where('role', 2);
-        // $supers = User::all();
         $supers = User::where('role', 2)->orderBy('fname', 'asc')->get();
-        return view('contact.create', compact('supers'));
+        return view('contact.contactSupervisor', compact('supers'));
 
     }
 
     public function store(Request $request)
     {
-        $from = 'Clara Testing'; 
-        $to = 'claramarshall@rogers.com'; 
-
         $contact = [];
 
         $this->validate($request,[
             'name' => 'required',
-            'email' => 'required|email',
+            // 'email' => 'required|email',
             'msg'=> 'required',
             'subject'=> 'required'
         ]);
 
         $message = $request->message;
-        $name = $request->name;
-        $email = $request->email;
+        $id = $request->name;
+        $email = User::where('id', $id)->first()->email;
+        // $email = "claramarshall@rogers.com";
+
         $subject = $request->subject;
+        $from = Auth::user()->fname;
 
 
         // Mail delivery logic goes here
-        dd($request->all());
+        // dd($email, $id, $subject, $from);
 
-        if (mail($to, $subject, $message)) { 
+        if (mail($email, $subject, $message)) { 
             Session::flash('message', 'Your message has been sent...now get back to work!!'); 
             //return view('admin')->with('message', 'News Article Added');;
-            return redirect()->route('contact.create');
+            return redirect()->back();
         } 
     }
 

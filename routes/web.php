@@ -15,6 +15,10 @@
 // Route::get('/', function(){
 //   return view('auth.login');
 // });
+$this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+$this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+$this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+$this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/', ['uses' => 'AuthController@checkLogin']);
 
@@ -51,8 +55,8 @@ Route::get('/oper/part/steps', function(){
 
 
 
-Route::get('contact/create', 'ContactController@create')->name('contact.create');
-Route::post('contact/create', 'ContactController@store')->name('contact.store');
+Route::get('contact/contactSupervisor', 'ContactController@create')->name('contact.create');
+Route::post('contact/contactSupervisor', 'ContactController@store')->name('contact.store');
 
 // Route::get('/oper/steps', 'ToolingController@opList');
 
@@ -179,3 +183,7 @@ Route::middleware(['admin'])->group(function () {
   Route::get('/admin/user/destroyMedia/{id}', ['uses' => 'UsersController@destroyMedia']);
   Route::get('/admin/user/list/search/{str}', ['uses' => 'UsersController@search']);
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
