@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Fixture;
+use App\Part;
 use App\FixtureMedia;
 use Illuminate\Http\Request;
 use App\Services\MediaService;
@@ -93,8 +94,24 @@ class FixtureController extends Controller {
 
     ///MAKE AN ITEM CONTROLLER?
 
-    public function opList(Fixture $fixture) {
-      $items = Fixture::where('active', 1)->orderBy('name', 'asc')->paginate(6);
+    // public function opList(Fixture $fixture) {
+    //   $items = Fixture::where('active', 1)->orderBy('name', 'asc')->paginate(6);
+    //   foreach ($items as $item) {
+    //     $itemMedia = Fixture::find($item['id'])->getMediaRelationship()->latest()->first();
+    //     $media = $this->mediaService->getMedia($itemMedia['media_id']);
+    //     if(empty($media)){
+    //       $item['media_path'] = 'noimage.jpg';
+    //     }
+    //     else {
+    //       $item['media_path'] = $media['path'];
+    //     }
+    //   }
+    //     return $items;
+    //     // return view('oper.items', ['items' => $items, 'title' => 'Fixtures', 'name' => 'fixtures']);
+    // }
+
+    public function opList($id) {
+      $items = Part::find($id)->fixtures()->where('active', 1)->orderBy('name', 'asc')->paginate(6);
       foreach ($items as $item) {
         $itemMedia = Fixture::find($item['id'])->getMediaRelationship()->latest()->first();
         $media = $this->mediaService->getMedia($itemMedia['media_id']);
@@ -105,8 +122,7 @@ class FixtureController extends Controller {
           $item['media_path'] = $media['path'];
         }
       }
-        // return $fixtures;
-        return view('oper.items', ['items' => $items, 'title' => 'Fixtures', 'name' => 'fixtures']);
+      return view('oper.items', ['items' => $items, 'pid' => $id, 'title' => 'Fixtures', 'name' => 'fixtures']);
     }
 
     public function quickview($id) {

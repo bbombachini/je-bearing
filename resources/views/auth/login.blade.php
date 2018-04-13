@@ -8,13 +8,6 @@
 </div>
 @endsection
 
-@section('login')
-    <div id="logout">
-        <!-- <img src="../../../images/white-arrow.png" alt="left arrow" id="leftarrow">
-        <a href="{{ route('register') }}"><p>REGISTER</p></a> -->
-    </div>
-@endsection
-
 @section('content')
 
 <section id="content-con">

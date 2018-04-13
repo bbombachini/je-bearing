@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\Input;
 use App\Part;
 // use App\ToolingMedia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 // use App\Services\MediaService;
 use App\Services\ToolService;
 use App\Services\FixtureService;
 use App\Services\MaterialService;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\ToolingController;
 
 use Image;
 
@@ -106,12 +108,13 @@ class PartController extends Controller {
       return view('admin.part.list', ['items' => $parts, 'count' => $count]);
     }
 
-    public function listPartTooling($id) {
-      $tools = Part::find($id)->tools()->get();
-      // return $tools;
-      // return view('oper.item', ['items' => $parts, 'count' => $count]);
-      return redirect()->action('ToolingController@opList', ['id' => $id]);
-    }
+    //TEMPORARY FUNCTION
+    // public function listPartTooling($id) {
+    //   $tools = Part::find($id)->tools()->get();
+    //   // return $tools;
+    //   // return view('oper.item', ['items' => $parts, 'count' => $count]);
+    //   return redirect()->action('ToolingController@opList', ['id' => $id]);
+    // }
 
     //TEMPORARY FUNCTION - CHANGE LATER
     // public function opList(Tooling $tooling) {
@@ -158,10 +161,16 @@ class PartController extends Controller {
       }
     }
 
+    //Eventually this function should redirect to steps with all that information
     public function getPartInfo($id){
       $part = Part::where('id', $id)->get();
-      return $part;
+      $partTooling = Part::find($id)->tools()->get();
+      $partFixture = Part::find($id)->fixtures()->get();
+      $partMaterial = Part::find($id)->materials()->get();
+      session(['partNumber'=> $part[0]->number]);
+      return view('oper.items', ['items' => $partTooling, 'pid' => $id, 'title' => "Tools", 'name' => "tools" ]);
     }
+
     // public function searchPartNumber(Request $number) {
     //   return $number['partnumber'];
       // if(isset($number)) {

@@ -14,7 +14,7 @@
       		<div class="image-cropper"><img src="/{{ Auth::user()->photo }}" alt="{{ Auth::user()->fname }} {{ Auth::user()->lname }} photo"></div>
       		<div>
       			<h2 id="userName">{{ Auth::user()->fname }} {{ Auth::user()->lname }}</h2>
-      			<p>Part: #1234</p>
+      			<p>Part: #{{ session('partNumber') }}</p>
       		</div>
       	</div>
 
@@ -29,7 +29,7 @@
 
       	<nav id="adminNav">
       		<ul>
-      			<a href="{{ url('oper/tooling') }}"  id="tooling">
+      			<a href="{{ url('oper/part/tooling') }}/{{ $pid }}"  id="tooling">
       				<svg version="1.1" id="toolingicon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       				viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
       				<g>
@@ -46,7 +46,7 @@
       				<li>Tooling</li>
       			</a>
 
-      			<a href="{{ url('oper/fixture') }}" id="fixture">
+      			<a href="{{ url('oper/part/fixture') }}/{{ $pid }}" id="fixture">
       				<svg version="1.1" id="fictureicon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       				viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
       				<path class="st0" d="M320.9,268.6v83.6c0,5.9-4.8,10.7-10.7,10.7s-10.7-4.8-10.7-10.7V159.8c0-5.9,4.8-10.7,10.7-10.7
@@ -58,7 +58,7 @@
       				<li>Fixtures</li>
       			</a>
 
-      			<a href="{{ url('oper/material') }}" id="material">
+      			<a href="{{ url('oper/part/material') }}/{{ $pid }}" id="material">
       				<svg version="1.1" id="materialicon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       				viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
       				<g>
@@ -90,7 +90,8 @@
       				</svg>
       				<li>Materials</li>
       			</a>
-                        <a href="{{ url('oper/steps') }}" id="comment">
+
+                        <a href="{{ url('oper/part/steps') }}" id="comment">
                               <svg version="1.1" id="commentsicon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                               viewBox="0 0 100 100" style="enable-background:new 0 0 500 500;" xml:space="preserve">
                               <rect class="st0" y="35.73" width="17.43" height="17.43" rx="3.21" ry="3.21"/><rect class="st0" y="71.46" width="17.43" height="17.43" rx="3.21" ry="3.21"/><rect class="st0" width="17.43" height="17.43" rx="3.21" ry="3.21"/><rect class="st0" x="34.55" y="40.56" width="57.81" height="7.76" rx="3.88" ry="3.88"/><rect class="st0" x="34.55" y="4.83" width="57.81" height="7.76" rx="3.88" ry="3.88"/><rect class="st0" x="34.55" y="76.29" width="57.81" height="7.76" rx="3.88" ry="3.88"/>
@@ -98,7 +99,7 @@
                               <li>Steps</li>
                         </a>
 
-                        <a href="{{ url('oper/qualityalerts') }}" id="quality">
+                        <a href="{{ url('oper/part/qualityalerts') }}" id="quality">
                               <svg version="1.1" id="qualityicon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                               viewBox="0 0 100 100" style="enable-background:new 0 0 500 500;" xml:space="preserve">
                               <path class="st0" d="M44.44,0A44.45,44.45,0,1,0,88.89,44.44,44.44,44.44,0,0,0,44.44,0ZM66.53,32.82,39,62.56a3.47,3.47,0,0,1-2.47,1.11h-.06a3.46,3.46,0,0,1-2.44-1L22.44,51a3.44,3.44,0,0,1,4.88-4.85l9.08,9.15L61.48,28.15a3.44,3.44,0,0,1,5.05,4.67Z"/>
@@ -106,7 +107,7 @@
                               <li>Quality Alerts</li>
                         </a>
 
-      			<a href="{{ url('oper/comments') }}" id="comment">
+      			<a href="{{ url('oper/part/comments') }}" id="comment">
       				<svg version="1.1" id="commentsicon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       				viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
       				<path class="st0" d="M448.7,43H52.4c-5.1,0-9.3,4.1-9.3,9.3v285.1c0,5.1,4.1,9.3,9.3,9.3h77.9c5,0,9.2,4,9.3,9.1l1.4,76.8
