@@ -137,6 +137,14 @@ button {
   letter-spacing: 2px;
 }
 
+.alert-success {
+  font-family: 'Book';
+  font-size: 16px;
+  font-weight: 500;
+  color: #009B60;
+  margin-top: 20px;
+}
+
 .backText {
   font-family: "Medium";
   letter-spacing: 1px;
@@ -333,6 +341,17 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
+}
+
+#reset-text {
+  color: #fff;
+  display: block;
+  height: 75px;
+  margin: auto 0;
+  padding-left: 20px;
+}
+#reset-text h3 {
+  margin-top: 20px;
 }
 
 #welcome-con {
@@ -843,10 +862,10 @@ a {
 .form-control {
   box-sizing: border-box;
   border: none;
-  color: #009B60;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   width: 100%;
   font-size: 16px;
+  padding: 5px;
   margin-top: 10px;
 }
 
@@ -1467,6 +1486,10 @@ a {
   width: 50%;
 }
 
+.gallery:hover {
+  width: 100%;
+}
+
 .stepImage {
   width: 100%;
   margin-bottom: 30px;
@@ -1575,6 +1598,11 @@ a {
   margin-bottom: 10px;
 }
 
+#successMsg {
+  color: #009B60;
+  margin-bottom: 30px;
+}
+
 .contactInput {
   border-bottom: solid 2px #ddd;
   border-top: none;
@@ -1582,7 +1610,6 @@ a {
   border-right: none;
   width: 100%;
   font-size: 16px;
-  color: #ECB900;
   margin-bottom: 40px;
 }
 
@@ -1591,7 +1618,6 @@ a {
   width: 100%;
   max-width: 100%;
   font-size: 16px;
-  color: #ECB900;
   margin-top: 20px;
   margin-bottom: 30px;
 }
@@ -1607,7 +1633,7 @@ a {
 }
 
 #contactSubject {
-  clear: both;
+  padding-left: 50px;
 }
 
 #sup-name-inpu {

@@ -35,6 +35,7 @@ class ToolingController extends Controller {
       return view('admin.tooling.add', ['tool' => $tool]);
     }
 
+// Image is being stored ans resized in a function called storeMedia in Media Services.php app/services/MediaService.php
 
     public function store(Request $request) {
       $tool = new Tooling;

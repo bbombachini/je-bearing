@@ -6,11 +6,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Log;
 
+
 class User extends Authenticatable
 {
-    // use Notifiable;
+    use Notifiable;
     // protected $table = 'tbl_person';
     // protected $primaryKey = 'person_id';
+
 
     /**
      * The attributes that are mass assignable.
