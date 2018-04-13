@@ -7,6 +7,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use App\Part;
+use App\Operation;
+use App\Step;
 // use App\ToolingMedia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -161,14 +163,19 @@ class PartController extends Controller {
       }
     }
 
-    //Eventually this function should redirect to steps with all that information
     public function getPartInfo($id){
       $part = Part::where('id', $id)->get();
-      $partTooling = Part::find($id)->tools()->get();
-      $partFixture = Part::find($id)->fixtures()->get();
-      $partMaterial = Part::find($id)->materials()->get();
+      $operations = Part::find($id)->operations()->get();
+      $opSteps = [];
+      foreach ($operations as $operation) {
+        $steps = Operation::find($operation->id)->steps()->get();
+        $opSteps[] =  $steps;
+      }
+      // $partTooling = Part::find($id)->tools()->get();
+      // $partFixture = Part::find($id)->fixtures()->get();
+      // $partMaterial = Part::find($id)->materials()->get();
       session(['partNumber'=> $part[0]->number]);
-      return view('oper.items', ['items' => $partTooling, 'pid' => $id, 'title' => "Tools", 'name' => "tools" ]);
+      return view('oper.steps', [ 'operations' => $operations, 'steps'=> $opSteps,  'pid' => $id]);
     }
 
     // public function searchPartNumber(Request $number) {

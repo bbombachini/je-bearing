@@ -17,6 +17,7 @@
 // });
 
 Route::get('/', ['uses' => 'AuthController@checkLogin']);
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
@@ -30,7 +31,8 @@ Route::get('/searchpart', function(){
 Route::get('/searchpart/search/{id}/{field?}', ['uses' => 'PartController@search']);
 
 //Operator Part Related Views
-Route::get('/oper/part/info/{id}', ['uses' =>'PartController@getPartInfo']);
+// Route::get('/oper/part/info/{id}', ['uses' =>'PartController@getPartInfo']);
+Route::get('/oper/part/steps/{id}', ['uses' =>'PartController@getPartInfo']);
 Route::get('/oper/part/tooling/{id}', ['uses' => 'ToolingController@opList']);
 Route::get('/oper/part/fixture/{id}', ['uses' => 'FixtureController@opList']);
 Route::get('/oper/part/material/{id}', ['uses' => 'MaterialController@opList']);
@@ -44,11 +46,6 @@ Route::get('/oper/part/comments', function(){
 Route::get('contact/contactSupervisor', function(){
   return view('contact.contactSupervisor');
 } );
-
-Route::get('/oper/part/steps', function(){
-  return view('oper.steps');
-} );
-
 
 
 Route::get('contact/create', 'ContactController@create')->name('contact.create');
