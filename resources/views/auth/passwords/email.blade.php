@@ -1,11 +1,20 @@
-@extends('layouts.app')
+@extends('layouts.login-app')
+
+@section('message')
+<div id="reset-text">
+    <h1>Reset Password</h1>
+    <h3>Enter your email to recieve a reset link.</h3>
+</div>
+@endsection
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+<section id="content-con">
+
+    <div id="content-form">
+
+    <div>
+        <img src="../images/je-bearing-logo-icon.png" alt="JE Bearing logo" id="loginLogo">
+    </div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -18,30 +27,27 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                           
+                        <input id="email" type="email" class="form-input" name="email" value="{{ old('email') }}" placeholder="Email" required autofocus>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
+                           
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
-                                </button>
-                            </div>
+                        <div>
+                            <button type="submit" class="loginButt">Submit</button>
                         </div>
+
+                        <div id="forgotPassCon">
+                            <a href="{{ route('home') }}" id="forgotPass"><p>Login</p></a>
+                        </div>
+
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+     </div>       
+</section>
 @endsection
