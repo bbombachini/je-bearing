@@ -175,6 +175,7 @@ button {
   overflow: hidden;
   overflow-wrap: break-word;
   overflow-y: auto; }
+
   #quickView #itemname {
     margin-bottom: 20px;
     padding-right: 20px; }
@@ -242,10 +243,20 @@ button {
 
 #itemInfo {
   float: right;
-  text-align: left; }
-  #itemInfo #number {
-    text-align: left;
-    padding: 0; }
+}
+#itemInfo h2, #itemInfo p {
+  text-align: left;
+  padding: 0px;
+  margin-bottom: 5px;
+}
+#itemInfo h2 {
+  margin-bottom: 20px;
+}
+#itemInfo #number {
+  text-align: left;
+  padding: 0;
+}
+
 
 .ignoreDelete {
   font-size: 18px;
