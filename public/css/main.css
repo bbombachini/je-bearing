@@ -216,7 +216,7 @@ button {
 }
 #quickView .confirmEdit {
   background-color: #ECB900;
-  height: 50px;
+  height: 30px;
   display: grid;
   width: 100%;
   border-radius: 0  0 7px 7px;
@@ -224,7 +224,10 @@ button {
   text-align: center;
   color: #fff;
   font-size: 18px;
+  margin-top: 50px;
   font-family: 'Book';
+  display: inline-block;
+  padding: 20px 0 10px 0;
 }
 #quickView #desc {
   text-align: center;
@@ -232,7 +235,7 @@ button {
   display: block;
   line-height: 24px;
   font-size: 16px;
-  padding: 20px 20px 40px 20px;
+  padding: 20px 20px 0px 20px;
 }
 
 #confirm {
@@ -282,7 +285,14 @@ button {
 
 #itemInfo {
   float: right;
+}
+#itemInfo h2, #itemInfo p {
   text-align: left;
+  padding: 0px;
+  margin-bottom: 5px;
+}
+#itemInfo h2 {
+  margin-bottom: 20px;
 }
 #itemInfo #number {
   text-align: left;

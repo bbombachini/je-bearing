@@ -6,14 +6,14 @@
 
 	var imgGallery = document.querySelector('.stepImage');
 	var caption = document.querySelector('.stepCap');
-	console.log(caption);
 
 	var stepCaptions = ["Caption one", "caption Two", "caption three"];
+
+	// These images are hard coded for now but should be pulled in from the database
 	var stepImgs = ['../../images/steptwo.jpg','../../images/stepthree.jpg', '../../images/stepfour.jpg'];
-	console.log(imgGallery.src);
 	var i = 0;
 
-
+	//Functions that sort through the images of the gallery
 	function nextImage(){
 
 		i =(i+1);
@@ -25,7 +25,6 @@
 			imgGallery.src = stepImgs[i];
 			caption.innerHTML = stepCaptions[i];
 		}
-	
 	}
 
 	function prevImage(){
@@ -33,15 +32,11 @@
 		imgGallery.src = stepImgs[i];
 		caption.innerHTML = stepCaptions[i];
 
-		console.log(i);
-
 		if(i<0) {
 			i=stepImgs.length-1;
 			imgGallery.src = stepImgs[i];
 			caption.innerHTML = stepCaptions[i];
-
 		}
-
 	}
 
 	nextbutt.addEventListener("click", nextImage, false);

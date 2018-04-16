@@ -89,12 +89,12 @@ button{
   overflow-wrap: break-word;
   overflow-y: auto;
 
-  #itemname {
+  #itemname{
     margin-bottom: 20px;
     padding-right: 20px;
   }
 
-  p {
+  p{
     font-size: 18px;
     font-family: 'Book';
     text-align: center;
@@ -104,7 +104,7 @@ button{
 
   .confirmEdit {
     background-color: $yellow;
-    height: 50px;
+    height: 30px;
     display: grid;
     width: 100%;
     border-radius: 0  0 7px 7px;
@@ -112,7 +112,10 @@ button{
     text-align: center;
     color: #fff;
     font-size: 18px;
+    margin-top: 50px;
     font-family: 'Book';
+    display: inline-block;
+    padding: 20px 0 10px 0;
     // margin: 10% auto 0% auto;
     // position: relative;
     // bottom: 0;
@@ -126,7 +129,7 @@ button{
     display: block;
     line-height: 24px;
     font-size: 16px;
-    padding: 20px 20px 40px 20px;
+    padding: 20px 20px 0px 20px;
     // margin-bottom: 40px;
   }
 
@@ -218,17 +221,26 @@ button{
   img{
     width: 70%;
     margin-left: 30px;
-
   }
   float: left;
 }
 
 #itemInfo{
   float: right;
-  text-align: left;
-  #number {
+
+  h2, p{
     text-align: left;
-    padding: 0
+    padding: 0px;
+    margin-bottom: 5px;
+  }
+
+  h2{
+    margin-bottom: 20px;
+  }
+  
+  #number{
+  text-align: left;
+  padding: 0
   }
 }
 
