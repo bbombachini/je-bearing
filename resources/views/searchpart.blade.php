@@ -1,5 +1,13 @@
 @extends('layouts.login-app')
 
+@section('admin-login')
+  <div id="adminLoginCon">
+    <div id="homeIcon">
+      <a href="{{ url('/home')}}"><img src="/images/home.svg" alt="Home Icon" ></a>
+    </div>
+  </div>
+@endsection
+
 @section('message')
 <div id="welcome-user-text">
   <div>

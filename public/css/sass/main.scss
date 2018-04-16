@@ -320,12 +320,18 @@ a{
     background-image: url('../images/bearings_background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    #adminLoginCon{
+      #homeIcon{
+        img{
+          width: 30px;
+        }
+      }
+    }
+
     #welcome-text, #welcome-user-text{
       width: 80%;
       text-align: center;
-      align-self: end;
-      justify-self: center;
-
+      align-self: center;
       h1{
         font-size: 50px;
       }
@@ -335,12 +341,15 @@ a{
         text-align: left;
       }
     }
-
-    #welcome-user-text{
-      align-self: center;
+    #welcome-text{
+      justify-self: center;
     }
+    #welcome-user-text, #logout, #adminLoginCon {
+      padding: 3vw;
+    }
+
     #logout{
-      padding: 20px;
+      // padding: 20px;
       align-self: end;
       justify-self: start;
       p {
@@ -361,7 +370,7 @@ a{
 
   #dashboard{
     display: grid;
-    grid-template-rows: repeat(6, 1fr);
+    // grid-template-rows: repeat(6, 1fr);
     grid-gap: 4%;
     padding: 4%;
     .dash-section{
@@ -588,8 +597,6 @@ a{
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
-
   p{
     color: $text;
     font-family: 'Medium';
@@ -1798,7 +1805,7 @@ a{
 #adminLogin{
   text-align:center;
   float: right;
-  padding: 20px;
+  // padding: 20px;
   img{
     width: 20px;
     margin-bottom: 10px;
@@ -1966,16 +1973,6 @@ label{
   cursor: pointer;
   width: 25%;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 //Run SASS
