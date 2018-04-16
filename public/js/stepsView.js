@@ -20,63 +20,52 @@
 
 	// Functions **************************************************
 
+
+	// Checks the scroll position to stick the part(tools,fixtures,materials) menu to the top of the page
 	function checkScroll(){
 		var windowScroll = window.scrollY,
 			height = pageCon.clientHeight;
-
-			// console.log(height);
-			// console.log(window.scrollY);
-
 		if (windowScroll > 170) {
 			toolBar.classList.add('itemBarFixed');
-			// console.log("Stick");
 		}else{
 			toolBar.classList.remove('itemBarFixed');
-			// console.log("not yet");
 		}
 	}
 
+	// Opens the operation
 	function openOperation(){
 		let opSingle = this.parentNode.parentNode.dataset.id;
 		let opDesc = this.parentNode;
 		let opInfo = document.querySelector(".opItem [data-id='"+ opSingle +"']");
 		let p = opDesc.querySelectorAll('p');
 
-		if(!opInfo.classList.contains('open')) {
+		if(!opInfo.classList.contains('open')){
 			opInfo.classList.add('open');
 			opDesc.style.backgroundColor = "#009B60";
 			p.forEach((column) => {
 				column.classList.add("whiteText");
 			});
-
 		}
-		else {
+		else{
 			opInfo.classList.remove('open');
 			opDesc.style.backgroundColor = "#FFF";
 			p.forEach((column) => {
 				column.classList.remove("whiteText");
 			});
 		}
-
 	}
 
+	// Opens the part(tools,fixtures,materials) menu
 	function openLibrary(e){
-		// console.log("open");
 		library.style.display = "block";
 		libraryHeaderH3.innerHTML = e.currentTarget.id + " For Part Number #123";
-
 	}
 
 	function closeLibrary(){
-		// console.log("close");
 		library.style.display = "none";
 	}
 
 	// Event Listeners ******************************************
-
-	// for(var i=0; i<operationLinks.length; i++){
-	// 	operationLinks[i].addEventListener("click", openOperation, false);
-	// }
 	operationLinks.forEach((operation) => {
 		operation.querySelector('.opItemTitle').addEventListener('click', openOperation, false);
 	});
@@ -86,9 +75,7 @@
 	}
 
 	closeButt.addEventListener("click", closeLibrary, false);
-
 	window.addEventListener("scroll", checkScroll, false);
 	window.addEventListener("onload", checkScroll, false);
-
 
 })();
