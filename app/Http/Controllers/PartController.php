@@ -171,11 +171,9 @@ class PartController extends Controller {
         $steps = Operation::find($operation->id)->steps()->get();
         $opSteps[] =  $steps;
       }
-      // $partTooling = Part::find($id)->tools()->get();
-      // $partFixture = Part::find($id)->fixtures()->get();
-      // $partMaterial = Part::find($id)->materials()->get();
       session(['partNumber'=> $part[0]->number]);
-      return view('oper.steps', [ 'operations' => $operations, 'steps'=> $opSteps,  'pid' => $id]);
+      session(['partId'=> $id]);
+      return view('oper.steps', [ 'operations' => $operations, 'steps'=> $opSteps]);
     }
 
     // public function searchPartNumber(Request $number) {

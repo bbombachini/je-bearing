@@ -122,7 +122,7 @@ class FixtureController extends Controller {
           $item['media_path'] = $media['path'];
         }
       }
-      return view('oper.items', ['items' => $items, 'pid' => $id, 'title' => 'Fixtures', 'name' => 'fixtures']);
+      return view('oper.items', ['items' => $items, 'title' => 'Fixtures', 'name' => 'fixtures']);
     }
 
     public function quickview($id) {

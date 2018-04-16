@@ -29,7 +29,7 @@
 
       	<nav id="adminNav">
       		<ul>
-      			<a href="{{ url('oper/part/tooling') }}/{{ $pid }}"  id="tooling">
+      			<a href="{{ url('oper/part/tooling') }}/{{ session('partId') }}"  id="tooling">
       				<svg version="1.1" id="toolingicon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       				viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
       				<g>
@@ -46,7 +46,7 @@
       				<li>Tooling</li>
       			</a>
 
-      			<a href="{{ url('oper/part/fixture') }}/{{ $pid }}" id="fixture">
+      			<a href="{{ url('oper/part/fixture') }}/{{ session('partId') }}" id="fixture">
       				<svg version="1.1" id="fictureicon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       				viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
       				<path class="st0" d="M320.9,268.6v83.6c0,5.9-4.8,10.7-10.7,10.7s-10.7-4.8-10.7-10.7V159.8c0-5.9,4.8-10.7,10.7-10.7
@@ -58,7 +58,7 @@
       				<li>Fixtures</li>
       			</a>
 
-      			<a href="{{ url('oper/part/material') }}/{{ $pid }}" id="material">
+      			<a href="{{ url('oper/part/material') }}/{{ session('partId') }}" id="material">
       				<svg version="1.1" id="materialicon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       				viewBox="0 0 500 500" style="enable-background:new 0 0 500 500;" xml:space="preserve">
       				<g>
@@ -91,7 +91,7 @@
       				<li>Materials</li>
       			</a>
 
-                        <a href="{{ url('oper/part/steps') }}" id="comment">
+                        <a href="{{ url('oper/part/steps') }}/{{ session('partId') }}" id="comment">
                               <svg version="1.1" id="commentsicon" class="navicons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                               viewBox="0 0 100 100" style="enable-background:new 0 0 500 500;" xml:space="preserve">
                               <rect class="st0" y="35.73" width="17.43" height="17.43" rx="3.21" ry="3.21"/><rect class="st0" y="71.46" width="17.43" height="17.43" rx="3.21" ry="3.21"/><rect class="st0" width="17.43" height="17.43" rx="3.21" ry="3.21"/><rect class="st0" x="34.55" y="40.56" width="57.81" height="7.76" rx="3.88" ry="3.88"/><rect class="st0" x="34.55" y="4.83" width="57.81" height="7.76" rx="3.88" ry="3.88"/><rect class="st0" x="34.55" y="76.29" width="57.81" height="7.76" rx="3.88" ry="3.88"/>

@@ -121,7 +121,7 @@ class MaterialController extends Controller {
           $item['media_path'] = $media['path'];
         }
       }
-      return view('oper.items', ['items' => $items, 'pid' => $id, 'title' => 'Material', 'name' => 'material']);
+      return view('oper.items', ['items' => $items, 'title' => 'Material', 'name' => 'material']);
     }
 
     public function quickview($id) {
