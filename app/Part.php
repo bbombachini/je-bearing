@@ -17,19 +17,19 @@ class Part extends Model
   ];
 
   public function tools() {
-      return $this->belongsToMany('App\Tooling', 'part_tool', 'part_id', 'tool_id')->withTimestamps();;
+      return $this->belongsToMany('App\Tooling', 'part_tool', 'part_id', 'tool_id')->withTimestamps();
   }
 
   public function fixtures() {
-      return $this->belongsToMany('App\Fixture', 'part_fixture', 'part_id', 'fixture_id')->withTimestamps();;
+      return $this->belongsToMany('App\Fixture', 'part_fixture', 'part_id', 'fixture_id')->withTimestamps();
   }
 
   public function materials() {
-      return $this->belongsToMany('App\Material', 'part_material', 'part_id', 'material_id')->withTimestamps();;
+      return $this->belongsToMany('App\Material', 'part_material', 'part_id', 'material_id')->withTimestamps();
   }
 
   public function operations() {
-      return $this->belongsToMany('App\Operation', 'part_operation', 'part_id', 'operation_id')->withTimestamps();;
+      return $this->belongsToMany('App\Operation', 'part_operation', 'part_id', 'operation_id')->withPivot('order')->withTimestamps();
   }
 
   public function getToolingRelationship() {
