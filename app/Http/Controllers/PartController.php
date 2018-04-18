@@ -7,13 +7,17 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use App\Part;
+use App\Operation;
+use App\Step;
 // use App\ToolingMedia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 // use App\Services\MediaService;
 use App\Services\ToolService;
 use App\Services\FixtureService;
 use App\Services\MaterialService;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\ToolingController;
 
 use Image;
 
@@ -106,12 +110,13 @@ class PartController extends Controller {
       return view('admin.part.list', ['items' => $parts, 'count' => $count]);
     }
 
-    public function listPartTooling($id) {
-      $tools = Part::find($id)->tools()->get();
-      // return $tools;
-      // return view('oper.item', ['items' => $parts, 'count' => $count]);
-      return redirect()->action('ToolingController@opList', ['id' => $id]);
-    }
+    //TEMPORARY FUNCTION
+    // public function listPartTooling($id) {
+    //   $tools = Part::find($id)->tools()->get();
+    //   // return $tools;
+    //   // return view('oper.item', ['items' => $parts, 'count' => $count]);
+    //   return redirect()->action('ToolingController@opList', ['id' => $id]);
+    // }
 
     //TEMPORARY FUNCTION - CHANGE LATER
     // public function opList(Tooling $tooling) {
@@ -160,8 +165,17 @@ class PartController extends Controller {
 
     public function getPartInfo($id){
       $part = Part::where('id', $id)->get();
-      return $part;
+      $operations = Part::find($id)->operations()->get();
+      $opSteps = [];
+      foreach ($operations as $operation) {
+        $steps = Operation::find($operation->id)->steps()->get();
+        $opSteps[] =  $steps;
+      }
+      session(['partNumber'=> $part[0]->number]);
+      session(['partId'=> $id]);
+      return view('oper.steps', [ 'operations' => $operations, 'steps'=> $opSteps]);
     }
+
     // public function searchPartNumber(Request $number) {
     //   return $number['partnumber'];
       // if(isset($number)) {

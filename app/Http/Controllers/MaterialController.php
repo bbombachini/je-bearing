@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Material;
+use App\Part;
 use App\MaterialMedia;
 use Illuminate\Http\Request;
 use App\Services\MediaService;
@@ -92,8 +93,24 @@ class MaterialController extends Controller {
 
     ///MAKE AN ITEM CONTROLLER?
 
-    public function opList(Material $material) {
-      $items = Material::where('active', 1)->orderBy('name', 'asc')->paginate(6);
+    // public function opList(Material $material) {
+    //   $items = Material::where('active', 1)->orderBy('name', 'asc')->paginate(6);
+    //   foreach ($items as $item) {
+    //     $itemMedia = Material::find($item['id'])->getMediaRelationship()->latest()->first();
+    //     $media = $this->mediaService->getMedia($itemMedia['media_id']);
+    //     if(empty($media)){
+    //       $item['media_path'] = 'noimage.jpg';
+    //     }
+    //     else {
+    //       $item['media_path'] = $media['path'];
+    //     }
+    //   }
+    //     // return $materials;
+    //     return view('oper.items', ['items' => $items, 'title' => 'Materials', 'name' => 'materials']);
+    // }
+    //
+    public function opList($id) {
+      $items = Part::find($id)->materials()->where('active', 1)->orderBy('name', 'asc')->paginate(6);
       foreach ($items as $item) {
         $itemMedia = Material::find($item['id'])->getMediaRelationship()->latest()->first();
         $media = $this->mediaService->getMedia($itemMedia['media_id']);
@@ -104,8 +121,7 @@ class MaterialController extends Controller {
           $item['media_path'] = $media['path'];
         }
       }
-        // return $materials;
-        return view('oper.items', ['items' => $items, 'title' => 'Materials', 'name' => 'materials']);
+      return view('oper.items', ['items' => $items, 'title' => 'Material', 'name' => 'material']);
     }
 
     public function quickview($id) {

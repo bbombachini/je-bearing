@@ -115,6 +115,14 @@ textarea:focus, input:focus {
 button {
   letter-spacing: 2px; }
 
+.alert-success {
+  font-family: 'Book';
+  font-size: 16px;
+  font-weight: 500;
+  color: #009B60;
+  margin-top: 20px;
+}
+
 .backText {
   font-family: "Medium";
   letter-spacing: 1px; }
@@ -127,6 +135,13 @@ button {
   font-family: 'Book';
   letter-spacing: 1px;
   color: #000; }
+
+#descTitle {
+  font-family: 'Book';
+  letter-spacing: 1px;
+  color: #000;
+  font-size: 16px;
+  margin-bottom: 20px; }
 
 #dim, #dim2 {
   position: absolute;
@@ -160,6 +175,7 @@ button {
   overflow: hidden;
   overflow-wrap: break-word;
   overflow-y: auto; }
+
   #quickView #itemname {
     margin-bottom: 20px;
     padding-right: 20px; }
@@ -227,10 +243,20 @@ button {
 
 #itemInfo {
   float: right;
-  text-align: left; }
-  #itemInfo #number {
-    text-align: left;
-    padding: 0; }
+}
+#itemInfo h2, #itemInfo p {
+  text-align: left;
+  padding: 0px;
+  margin-bottom: 5px;
+}
+#itemInfo h2 {
+  margin-bottom: 20px;
+}
+#itemInfo #number {
+  text-align: left;
+  padding: 0;
+}
+
 
 .ignoreDelete {
   font-size: 18px;
@@ -279,26 +305,39 @@ a {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto; }
 
+#reset-text {
+  color: #fff;
+  display: block;
+  height: 75px;
+  margin: auto 0;
+  padding-left: 20px;
+}
+#reset-text h3 {
+  margin-top: 20px;
+}
+
 #welcome-con {
   display: grid;
   background-image: url("../images/bearings_background.jpg");
   background-repeat: no-repeat;
   background-size: cover; }
+  #welcome-con #adminLoginCon #homeIcon img {
+    width: 30px; }
   #welcome-con #welcome-text, #welcome-con #welcome-user-text {
     width: 80%;
     text-align: center;
-    align-self: end;
-    justify-self: center; }
+    align-self: center; }
     #welcome-con #welcome-text h1, #welcome-con #welcome-user-text h1 {
       font-size: 50px; }
     #welcome-con #welcome-text h1, #welcome-con #welcome-text h3, #welcome-con #welcome-user-text h1, #welcome-con #welcome-user-text h3 {
       color: #fff;
       line-height: 60px;
       text-align: left; }
-  #welcome-con #welcome-user-text {
-    align-self: center; }
+  #welcome-con #welcome-text {
+    justify-self: center; }
+  #welcome-con #welcome-user-text, #welcome-con #logout, #welcome-con #adminLoginCon {
+    padding: 3vw; }
   #welcome-con #logout {
-    padding: 20px;
     align-self: end;
     justify-self: start; }
     #welcome-con #logout p {
@@ -312,7 +351,6 @@ a {
 
 #dashboard {
   display: grid;
-  grid-template-rows: repeat(6, 1fr);
   grid-gap: 4%;
   padding: 4%; }
   #dashboard .dash-section {
@@ -478,8 +516,7 @@ a {
 #logout {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 20px; }
+  justify-content: center; }
   #logout p {
     color: #A2A2A2;
     font-family: 'Medium';
@@ -638,19 +675,18 @@ a {
   margin: 0 auto; }
 
 #goodExampleDiv, #badExampleDiv {
-  display: block;
   clear: both;
-  padding-top: 70px; }
+  padding-top: 70px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px; }
   #goodExampleDiv h3, #badExampleDiv h3 {
     color: #009B60;
     font-size: 18px;
     letter-spacing: 1px;
-    font-weight: 700;
-    padding-left: 20px; }
+    font-weight: 700; }
   #goodExampleDiv .alertImg, #badExampleDiv .alertImg {
-    width: 200px;
     height: 200px;
-    margin: 20px;
     display: inline;
     float: left;
     background-color: #ebebeb; }
@@ -696,11 +732,12 @@ a {
 .form-control {
   box-sizing: border-box;
   border: none;
-  color: #009B60;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   width: 100%;
   font-size: 16px;
-  margin-top: 10px; }
+  padding: 5px;
+  margin-top: 10px;
+}
 
 .subForm {
   clear: both;
@@ -1205,11 +1242,31 @@ a {
 
 .stepCap {
   font-size: 16px;
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  color: #009B60; }
+
+.gallery {
+  width: 50%; }
+
+.gallery:hover {
+  width: 100%;
+}
 
 .stepImage {
-  width: 50%;
+  width: 100%;
+  margin-bottom: 30px;
   box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2); }
+
+#prevMediaButt, #nextMediaButt {
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: medium;
+  cursor: pointer;
+  color: #009B60; }
+
+#nextMediaButt {
+  float: right; }
 
 .commentDate {
   display: inline;
@@ -1285,6 +1342,11 @@ a {
   .contactLabel p {
     margin-bottom: 10px; }
 
+#successMsg {
+  color: #009B60;
+  margin-bottom: 30px;
+}
+
 .contactInput {
   border-bottom: solid 2px #ddd;
   border-top: none;
@@ -1292,15 +1354,15 @@ a {
   border-right: none;
   width: 100%;
   font-size: 16px;
-  color: #ECB900;
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+}
+
 
 .contactInputMessage {
   border: solid 2px #ddd;
   width: 100%;
   max-width: 100%;
   font-size: 16px;
-  color: #ECB900;
   margin-top: 20px;
   margin-bottom: 30px; }
 
@@ -1313,7 +1375,9 @@ a {
   width: 50%; }
 
 #contactSubject {
-  clear: both; }
+  padding-left: 50px;
+}
+
 
 #sup-name-inpu {
   width: 40%; }
@@ -1381,8 +1445,7 @@ a {
 
 #adminLogin {
   text-align: center;
-  float: right;
-  padding: 20px; }
+  float: right; }
   #adminLogin img {
     width: 20px;
     margin-bottom: 10px; }

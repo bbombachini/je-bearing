@@ -55,7 +55,6 @@
 	});
 
 	function showView(){
-		//e.preventDefault();
 			var bodyarea = document.querySelector('body');
 			var quickView = document.querySelector('#dim2');
 			var close = quickView.querySelector('.xButt');
@@ -576,10 +575,10 @@
 	nameLink.forEach(function(btn, index) {
 		btn.addEventListener('click', showView, false);
 	});
+
 	delBtn.forEach(function(btn, index) {
 		btn.addEventListener('click', changeDeleteUrl, false);
 	});
-
 
 	for(var i = 0; i<search.length; i++){
 		search[i].addEventListener('input', showResults, false);

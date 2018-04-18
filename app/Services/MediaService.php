@@ -5,7 +5,8 @@ namespace App\Services;
 use App\Media;
 use Illuminate\Support\Facades\File;
 
-use Image;
+use Intervention\Image\Facades\Image;
+
 
 class MediaService {
 
@@ -13,6 +14,8 @@ class MediaService {
     $media = Media::find($id);
     return $media;
   }
+
+  //Store and Resize Image
 
   public function storeMedia($input) {
     $dir = 'images';
@@ -22,10 +25,7 @@ class MediaService {
       $img = Image::make($image);
       // $img = Image::make(Request::file('media'));
       $img->orientate();
-      $img->resize(400, null, function($constraint){
-      $constraint->upsize();
-      $constraint->aspectRatio();
-      });
+      $img->fit(400, 400);
       $img->save(public_path('/images/' . $name));
 
       // $destinationPath = $dir;
