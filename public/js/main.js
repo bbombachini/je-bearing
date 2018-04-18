@@ -552,8 +552,8 @@
 				 .then((data) => {
 					// console.log(data.id);
 					// debugger;
-					cleanSearch();
-					form.reset();
+					// cleanSearch();
+					// form.reset();
 					// console.log(redirect);
 					let redirect = (e.currentTarget.getAttribute('name') === 'continue') ? '/admin/operation/add/step/' + data.id: '/admin/part/list';
 					window.location.href = redirect;
@@ -577,7 +577,7 @@
 		btn.addEventListener('click', showView, false);
 	});
 	delBtn.forEach(function(btn, index) {
-	btn.addEventListener('click', changeDeleteUrl, false);
+		btn.addEventListener('click', changeDeleteUrl, false);
 	});
 
 
@@ -606,12 +606,12 @@
 	// 	searchPart.addEventListener('click', selectPart, false);
 	// }
 
-	if(document.querySelector('.oper-next')){
-		var saveOper = document.querySelectorAll('.oper-next');
-		saveOper.forEach((button) => {
-			button.addEventListener('click', saveOperation, false);
-		});
-	}
+	// if(document.querySelector('.oper-next')){
+	// 	var saveOper = document.querySelectorAll('.oper-next');
+	// 	saveOper.forEach((button) => {
+	// 		button.addEventListener('click', saveOperation, false);
+	// 	});
+	// }
 
 	// chooseImageBtn.addEventListener('change', updatePhotoDisplay, false);
 })();

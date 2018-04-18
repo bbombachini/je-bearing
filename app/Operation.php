@@ -15,12 +15,12 @@ class Operation extends Model
 
   // get all parts that the operation belongs to
   public function parts() {
-      return $this->belongsToMany('App\Part', 'part_operation', 'operation_id', 'part_id')->withTimestamps();;
+      return $this->belongsToMany('App\Part', 'part_operation', 'operation_id', 'part_id')->withPivot('order')->withTimestamps();
   }
 
   // get all steps that belong to the operation
   public function steps() {
-      return $this->belongsToMany('App\Step', 'operation_step', 'operation_id', 'step_id')->withTimestamps();;
+      return $this->belongsToMany('App\Step', 'operation_step', 'operation_id', 'step_id')->withPivot('order')->withTimestamps();
   }
 
   // get all images (media) related to the operation

@@ -4,12 +4,12 @@
 <section id="content">
   <div class="section-head">
       <div class="section-title">
-        <h1>Operations</h1>
+        <h1>Edit Operation</h1>
       </div>
   </div>
 
   <div class="formHeader">
-    <h3>OPERATIONS - PART #{{$partNumber}}: {{$partName}}</h3>
+    <h3>OPERATION {{$old->title}}</h3>
   </div>
 
   <div id="dim">
@@ -72,14 +72,11 @@
         <ul>
           @foreach ($items as $item)
             <li class="list-item">
-              <div class="item-order">
-                <span>#{{$item->pivot->order}}</span>
-              </div>
               <div>
                 <a class="item-name itemName" href="#" data-id="{{$item->id}}">{{$item->title}}</a>
               </div>
               <div class="item-column">
-                <a class="edit" href="{{action('OperationController@edit', ['$id' => $item->id])}}">Edit</a>
+                <a class="edit" href="{{action('StepController@edit', ['$id' => $item->id])}}">Edit</a>
               </div>
               <div class="item-column">
                 <a class="delete" data-id="{{$item->id}}" href="#">Delete</a>
@@ -93,29 +90,20 @@
 
   <div id="operations">
 
-    <div class="section-title small">
-      <h1>Add Operation</h1>
-    </div>
-
     <div class="operInfo">
-      {!! Form::model($operation, ['action' => 'OperationController@store', 'class' => 'addOper', 'files' => true]) !!}
+      {!! Form::model($old, ['action' => 'OperationController@update', 'id' => 'edit', 'class' => 'editOper', 'files' => true]) !!}
+      @foreach ($old as $operation)
        <fieldset class="add-name">
-        <p>{!! Form::label('name', 'Name') !!}</p>
-        {!! Form::text('name', '', ['required' => 'required', 'class' => 'form-control']) !!}
+        <p>{!! Form::label('title', 'Name') !!}</p>
+        {!! Form::text('title', $operation->title, ['required' => 'required', 'class' => 'form-control']) !!}
         </fieldset>
 
-        <fieldset class="add-number">
-         <p>{!! Form::label('order', 'Order') !!}</p>
-         {!! Form::number('order', '', ['required' => 'required', 'class' => 'form-control']) !!}
-         </fieldset>
 
         <fieldset class="add-media">
         <p>{!! Form::label('media', 'Media') !!}</p>
         {!! Form::file('media', ['class' => 'form-control']) !!}
         </fieldset>
-
-        {!! Form::hidden('part', $partId) !!}
-
+        @endforeach
         <button type="submit" class="white-button oper-next" name="finish">SAVE AND FINISH</button>
         <button type="submit" class="white-button oper-next" name="continue">SAVE AND CONTINUE</button>
       {!! Form::close() !!}

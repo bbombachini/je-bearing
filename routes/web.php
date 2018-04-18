@@ -76,6 +76,10 @@ Route::group(['middleware' => ['supervisor']] , function () {
 
   Route::get('/admin/part/list/search/{str}', ['uses' => 'PartController@search']);
 
+  // Operations
+  Route::get('/admin/operation/edit/{id}', ['uses' => 'OperationController@edit']);
+  Route::post('/admin/operation/update', 'OperationController@update');
+
   // Steps // This might be deleted in future
   Route::get('/admin/step/list', 'StepController@list');
   Route::get('/admin/step/edit/{id}', ['uses' => 'StepController@edit']);
@@ -127,13 +131,14 @@ Route::middleware(['admin'])->group(function () {
   //   return view('admin.operation.add');
   // });
   Route::get('/admin/part/add/operation/{id}', ['uses' => 'OperationController@add']);
+  Route::get('/admin/part/add/operation/destroy/{id}', ['uses' => 'OperationController@destroy']);
   Route::post('/admin/operation/store', 'OperationController@store');
   Route::get('/admin/part/add/opdetails', function(){
     return view('admin.operation.details');
   });
 
   // Steps // This might be deleted in future
-  Route::get('/admin/step/add', 'StepController@add');
+  Route::get('/admin/operation/add/step/{id}', 'StepController@add');
   Route::post('/admin/step/store', 'StepController@store');
   Route::get('/admin/step/destroy/{id}', ['uses' => 'StepController@destroy']);
   Route::get('/admin/step/destroyMedia/{id}', ['uses' => 'StepController@destroyMedia']);
