@@ -785,7 +785,6 @@ a{
 
 .formHeader{
   background-color: #1EA773;
-  margin-bottom: 50px;
   width: 100%;
    h3{
     margin: 0px;
@@ -853,11 +852,21 @@ a{
 }
 
 .operInfo{
-  margin: 50px auto;
-  width: 90%;
-  padding-bottom: 100px;
-  .add-media{
+
+  .add-name{
+    width: 40%;
+    display: inline;
+  }
+
+  .add-number{
+    width: 40%;
     float: right;
+  }
+  .add-media{
+    width: 100%;
+    margin-top: 20px;
+    display: block;
+    clear: both;
   }
 }
 
@@ -972,6 +981,7 @@ a{
 #editPart {
   width: 90%;
   margin: 0 auto;
+  padding-top: 50px;
   .add-item input{
     width: 100%;
   }
@@ -1025,7 +1035,7 @@ a{
   }
 
   button{
-    margin-top: 50px;
+    float: right;
   }
 
 }
@@ -1439,7 +1449,7 @@ a{
 }
 
 #operations{
-  padding-top: 30px;
+  margin-top: 40px;
   h4{
     font-family: 'Light';
     font-size: 1.5vw;
@@ -1462,7 +1472,7 @@ a{
     button.white-button{
       float: left;
       @extend .button;
-      margin: 15% 0 0 0;
+      width: 240px;
       text-align: center;
       height: 40px;
       border-radius: 100px;
