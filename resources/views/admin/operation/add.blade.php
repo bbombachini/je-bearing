@@ -7,6 +7,16 @@
         <h1>Operations</h1>
       </div>
   </div>
+  
+    <div class="progress-bar-con">
+      <ul class="progress-bar">
+        <li id="progress-one">Part Details</li>
+        <li id="progress-two" class="active" >Operations</li>
+        <li id="progress-three">Quality Alerts</li>
+      </ul>
+
+      <hr id="progress-line">
+  </div>
 
   <div class="formHeader">
     <h3>OPERATIONS - PART #{{$partNumber}}: {{$partName}}</h3>
@@ -50,8 +60,6 @@
       </div>
   </div>
 
-<section id="content">
-
   <div class="grid-view">
       <div id="quickView" style="display:none;">
         <img src="/images/person.jpg" width="100px">
@@ -93,10 +101,6 @@
 
   <div id="operations">
 
-    <div class="section-title small">
-      <h1>Add Operation</h1>
-    </div>
-
     <div class="operInfo">
       {!! Form::model($operation, ['action' => 'OperationController@store', 'class' => 'addOper', 'files' => true]) !!}
        <fieldset class="add-name">
@@ -116,8 +120,10 @@
 
         {!! Form::hidden('part', $partId) !!}
 
-        <button type="submit" class="white-button oper-next" name="finish">SAVE AND FINISH</button>
-        <button type="submit" class="white-button oper-next" name="continue">SAVE AND CONTINUE</button>
+        <div id="buttonCon">
+          <button type="submit" class="white-button oper-next" name="finish">SAVE AND FINISH</button>
+          <button type="submit" class="white-button oper-next" name="continue">SAVE AND CONTINUE</button>
+        </div>
       {!! Form::close() !!}
     </div>
   </div>
