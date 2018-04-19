@@ -785,8 +785,7 @@ a{
 
 .formHeader{
   background-color: #1EA773;
-  margin-bottom: 50px;
-  width: 100%;
+
    h3{
     margin: 0px;
     padding: 20px;
@@ -795,13 +794,6 @@ a{
     letter-spacing: 2px;
     color: #fff;
    }
-}
-
-#qualityAlerts, #operations{
-
-  display: block;
-  width: 90%;
-  margin: 0 auto;
 }
 
 #goodExampleDiv, #badExampleDiv{
@@ -853,8 +845,6 @@ a{
 }
 
 .operInfo{
-  margin: 50px auto;
-  width: 90%;
   padding-bottom: 100px;
   .add-media{
     float: right;
@@ -870,9 +860,27 @@ a{
     margin-top: 20px;
   }
 
-  .alert-name, .add-media{
+  .alert-name{
     width: 40%;
   }
+
+  .add-name{
+    width: 40%;
+    display: inline;
+  }
+
+  .add-number{
+    width: 40%;
+    float: right;
+  }
+
+  .add-media{
+    width: 100%;
+    display: block;
+    clear: both;
+    margin-top: 20px;
+  }
+
   .alert-name{
     float: left;
     display: inline;
@@ -972,6 +980,7 @@ a{
 #editPart {
   width: 90%;
   margin: 0 auto;
+  padding-top: 50px;
   .add-item input{
     width: 100%;
   }
@@ -1025,7 +1034,7 @@ a{
   }
 
   button{
-    margin-top: 50px;
+    float: right;
   }
 
 }
@@ -1379,7 +1388,6 @@ a{
   justify-content: space-between;
   padding: 20px 10% 20px 10%;
   transition: 0.5s;
-
   a{
 
   }
@@ -1439,7 +1447,8 @@ a{
 }
 
 #operations{
-  padding-top: 30px;
+  width: 90%;
+  margin: 0 auto;
   h4{
     font-family: 'Light';
     font-size: 1.5vw;
@@ -1454,6 +1463,10 @@ a{
       font-size: 1.3vw;
     }
   }
+  .addOper{
+    padding-top: 40px;
+  }
+
   .form-control{
     color: $yellow;
     font-weight: 400;
@@ -1462,9 +1475,9 @@ a{
     button.white-button{
       float: left;
       @extend .button;
-      margin: 15% 0 0 0;
       text-align: center;
       height: 40px;
+      width: 240px;
       border-radius: 100px;
       font-size: 18px;
       line-height: 30px;
@@ -1784,15 +1797,17 @@ a{
   border-radius: 30px;
   p {
     color: $blue;
-    line-height: 1.2rem;
-    font-size: 1.3rem;
+    line-height: 1.4rem;
+    font-size: 1rem;
+    padding-left: 5px;
   }
   .popItem{
     width: 15px;
     height: 15px;
     border-radius: 150px;
-    margin-left: 15px;
-    padding: 2px;
+    margin-left: 5px;
+    padding-top: 3px;
+    padding-right: 5px;
     font-family: Helvetica, Arial, sans-serif;
     display: inline-flex;
     justify-content: center;
