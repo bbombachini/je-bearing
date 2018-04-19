@@ -863,8 +863,25 @@ a {
   margin-top: 20px;
 }
 
-.alert-name, .add-media {
+.alert-name {
   width: 40%;
+}
+
+.add-name {
+  width: 40%;
+  display: inline;
+}
+
+.add-number {
+  width: 40%;
+  float: right;
+}
+
+.add-media {
+  width: 100%;
+  display: block;
+  clear: both;
+  margin-top: 20px;
 }
 
 .alert-name {
@@ -1406,6 +1423,10 @@ a {
   display: block;
   font-size: 1.3vw;
 }
+#operations .addOper {
+  padding-top: 40px;
+}
+
 #operations .form-control {
   color: #ECB900;
   font-weight: 400;
@@ -1713,15 +1734,17 @@ a {
 }
 .selected p {
   color: #009B89;
-  line-height: 1.2rem;
-  font-size: 1.3rem;
+  line-height: 1.4rem;
+  font-size: 1rem;
+  padding-left: 5px;
 }
 .selected .popItem {
   width: 15px;
   height: 15px;
   border-radius: 150px;
-  margin-left: 15px;
-  padding: 2px;
+  margin-left: 5px;
+  padding-top: 3px;
+  padding-right: 5px;
   font-family: Helvetica, Arial, sans-serif;
   display: inline-flex;
   justify-content: center;
