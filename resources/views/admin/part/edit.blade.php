@@ -109,8 +109,11 @@
 
 						@endforeach
 
-            <a class="white-button" href="{{ url('/admin/part/list')}}">CANCEL</a>
-						<button type="submit" class="green-button next" name="button">SAVE</button>
+					<div id="buttonCon">
+            			<a class="white-button" href="{{ url('/admin/part/list')}}">CANCEL</a>
+          				<button type="submit" class="white-button next" name="continue">SAVE AND CONTINUE</button>
+          			</div>
+
 					{!! Form::close() !!}
 
 				</div>
