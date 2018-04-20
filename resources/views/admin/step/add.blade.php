@@ -2,41 +2,130 @@
 
 @section('content')
 <section id="content">
-			<div class="section-head">
-					<div class="section-title">
-						<h1>Add Step</h1>
-					</div>
+  <div class="section-head">
+      <div class="section-title">
+        <h1>Steps</h1>
+      </div>
+  </div>
 
-					<div>
-            <a id="back-button" href="{{ url('/admin/step/list')}}">
-  						<img src="/images/arrow.png" alt="left arrow" id="leftarrow">
-              <p class="backText">BACK TO STEP</p>
-            </a>
-					</div>
+  <div class="formHeader">
+    <h3>STEPS - Operation #{{$operNumber}}: {{$operName}}</h3>
+  </div>
 
-			</div>
+  <div id="dim">
+          <div id="confirm">
+              <a class="ignoreDelete" href="#">X</a>
 
-				<div>
+                  <img src="/images/warning.png" alt="warning icon">
+                  <h2>Wait!</h2>
+                  <p>Are you sure you want to delete this?</p>
+                  <a id="deleteItem" class="confirmDelete" href="destroy">Yes, Delete</a>
 
-            {!! Form::model($step, ['action' => 'StepController@store', 'id' => 'add', 'files' => true]) !!}
-            <fieldset class="add-name">
-              <p>{!! Form::label('title', 'Title') !!}</p>
-              {!! Form::text('title', '', ['required' => 'required']) !!}
-            </fieldset>
+          </div>
+          <div id="dimClick2"></div>
+  </div>
 
-            <fieldset class="add-media">
-              <p>{!! Form::label('media', 'Media') !!}</p>
-              {!! Form::file('media') !!}
-            </fieldset>
+  <div id="dim2">
+      <div id="dimClick"></div>
+      <div id="quickView">
+          <a class="xButt" href="#">X</a>
 
-						<fieldset class="add-desc">
-              <p>{!! Form::label('desc', 'Description') !!}</p>
-              {!! Form::textarea('desc', '', ['class' => 'form-control form-add', 'size' => '50x10']) !!}
-						</fieldset>
-                <a class="white-button" href="{{ url('/admin/step/list')}}">CANCEL</a>
-								<button type="submit" class="green-button" name="button">ADD</button>
-							{!! Form::close() !!}
+          <div id="itemImgInfo">
 
-				</div>
+              <div id="itemImg">
+                  <!-- <img src="../../images/placeholderImg.jpg" alt="placeholder Image"> -->
+                  <img src="" alt="Image">
+              </div>
+
+              <div id="itemInfo">
+                  <h2 id="itemname"></h2>
+                  <p id="number"></p>
+              </div>
+
+          </div>
+
+          <p id="desc"></p>
+          <a class="confirmEdit" href="#">Edit</a>
+
+      </div>
+  </div>
+
+<section id="content">
+
+  <div class="grid-view">
+      <div id="quickView" style="display:none;">
+        <img src="/images/person.jpg" width="100px">
+        <h2>Name</h2>
+        <p>Number</p>
+        <p>Desc</p>
+       </div>
+
+      <div id="confirm" style="display:none;">
+          <h2>Wait!</h2>
+          <p>Are you sure you want to delete this item?</p>
+          <a class="confirmDelete" href="destroy"><p>Yes, Delete</p></a>
+          <a class="ignoreDelete" href="#">No, Thank You</a>
+
+      </div>
+
+      <div class="list">
+        <ul>
+          @foreach ($items as $item)
+            <li class="list-item">
+              <div class="item-order">
+                <span>#{{$item->pivot->order}}</span>
+              </div>
+              <div>
+                <a class="item-name itemName" href="#" data-id="{{$item->id}}">{{$item->title}}</a>
+              </div>
+              <div class="item-column">
+                <a class="edit" href="{{action('StepController@edit', ['$id' => $item->id])}}">Edit</a>
+              </div>
+              <div class="item-column">
+                <a class="delete" data-id="{{$item->id}}" href="#">Delete</a>
+              </div>
+            </li>
+          @endforeach
+        </ul>
+      </div>
+
+  </div>
+
+  <div id="operations">
+
+    <div class="section-title small">
+      <h1>Add Step</h1>
+    </div>
+
+    <div class="operInfo">
+      {!! Form::model($step, ['action' => 'StepController@store', 'class' => 'addOper', 'files' => true]) !!}
+       <fieldset class="add-name">
+        <p>{!! Form::label('name', 'Name') !!}</p>
+        {!! Form::text('name', '', ['required' => 'required', 'class' => 'form-control']) !!}
+        </fieldset>
+
+        <fieldset class="add-number">
+         <p>{!! Form::label('order', 'Order') !!}</p>
+         {!! Form::number('order', '', ['required' => 'required', 'class' => 'form-control']) !!}
+         </fieldset>
+
+				 <fieldset class="add-desc">
+					 <p>{!! Form::label('desc', 'Description') !!}</p>
+					 {!! Form::textarea('desc', '', ['class' => 'form-control form-add', 'size' => '50x10']) !!}
+				 </fieldset>
+
+        <fieldset class="add-media">
+        <p>{!! Form::label('media', 'Media') !!}</p>
+        {!! Form::file('media', ['class' => 'form-control']) !!}
+        </fieldset>
+
+        {!! Form::hidden('oper', $operId) !!}
+
+        <!-- <button type="submit" class="white-button oper-next" name="finish">SAVE AND FINISH</button> -->
+        <button type="submit" class="white-button oper-next" name="continue">SAVE AND CONTINUE</button>
+      {!! Form::close() !!}
+    </div>
+  </div>
+
 </section>
 @endsection
