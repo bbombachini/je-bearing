@@ -42,7 +42,7 @@
 
                   <li class="item">
                     <div class="item-media">
-                        <img src="/images/1520955235.jpg" alt="item Image">
+                        <!-- <img src="/images/1520955235.jpg" alt="item Image"> -->
                       <div class="item-desc">
                         <h3>Screwdriver</h3>
                       </div>
@@ -72,19 +72,21 @@
             </div>
     </div>
 
-    <div id="itemBar">
-        <a href="#" class="itemBarItem" id="Tools">
-            <img src="/images/tool-icon.png" alt="Tools Icon" class="itemIcon">
-            <p>View Tools</p>
-        </a>
-        <a href="#" class="itemBarItem" id="Fixtures">
-            <img src="/images/fixture-icon.png" alt="Fixture Icon" class="itemIcon">
-            <p>View Fixtures</p>
-        </a>
-        <a href="#" class="itemBarItem" id="Materials">
-            <img src="/images/material-icon.png" alt="Material Icon" class="itemIcon">
-            <p>View Materials</p>
-        </a>
+    <div id="fixHeight">
+      <div id="itemBar">
+          <a href="#" class="itemBarItem" id="Tools">
+              <img src="/images/tool-icon.png" alt="Tools Icon" class="itemIcon">
+              <p>View Tools</p>
+          </a>
+          <a href="#" class="itemBarItem" id="Fixtures">
+              <img src="/images/fixture-icon.png" alt="Fixture Icon" class="itemIcon">
+              <p>View Fixtures</p>
+          </a>
+          <a href="#" class="itemBarItem" id="Materials">
+              <img src="/images/material-icon.png" alt="Material Icon" class="itemIcon">
+              <p>View Materials</p>
+          </a>
+      </div>
     </div>
 
     <div id="operations">
@@ -93,18 +95,34 @@
       <div class="opItem" data-id="{{$operation->id}}">
           <div class="opInfo" id="opInfo1">
               <p class="opItemTitle">{{$operation->title}}</p>
+              <!-- Comments will be added in later implementation -->
               <!-- <p class="viewOpComments">1 Comment</p> -->
           </div>
-          
+
             <div class="opOpen" data-id="{{$operation->id}}">
                 <div id="steps">
-                  @foreach ($operation->steps as $op)
-                  <div class="stepItem">
-                    <p class=stepTitle>{{$op->title}}</p>
-                    <p class="stepDesc">{{$op->desc}}</p>
-                    <!-- <p>{{$op}}</p> -->
-                  </div>
+                  @foreach ($operation->steps as $step)
+                    <div class="stepItem">
+                      <p class=stepTitle>{{$step->title}}</p>
+                      <p class="stepDesc">{{$step->desc}}</p>
+                    </div>
+                    <!-- Loop inside array of matches between steps and media to check if there's related images with it -->
+                    @foreach ($matchMedia as $match)
+                      <!-- For each matching array check if the step id of the array matches the id of the step -->
+                      @foreach($match as $compare)
+                        @if($compare->step_id === $step->id)
+                          <!-- If so, for each media inside the array of media, print the ones that the id matches the id's in the array -->
+                          @foreach($media as $img)
+                            @if($img->id === $compare->media_id)
+                            <img src="/images/{{$img->path}}" alt="step Image">
+                            @endif
+                          @endforeach
+                        @endif
+                      @endforeach
+                    @endforeach
                   @endforeach
+
+
                 </div>
             </div>
       </div>
@@ -112,9 +130,7 @@
 
 
 
-
-
-      <!-- Hard coded operations for demonstration purpose -->
+    <!-- Later implementation of image gallery on steps - Here's an example of a hard coded operation/steps with code for gallery.js that's also commmented out and style -->
         <!-- <div class="opItem" data-id="op1">
             <div class="opInfo" id="opInfo1">
                 <p class="opItemTitle">Operation One</p>
@@ -212,10 +228,8 @@
 
     </div>
 </section>
-
-
-        <script type="text/javascript" src="../../../js/stepsView.js"></script>
-        <script type="text/javascript" src="../../../js/gallery.js"></script>
+        <script type="text/javascript" src="/js/stepsView.js"></script>
+        <!-- <script type="text/javascript" src="/js/gallery.js"></script> -->
 
 
 
