@@ -92,7 +92,8 @@
 
             <div id="buttonCon">
                <a href="{{ url('/admin/part/list')}}" class="white-button" name="button">SAVE AND FINISH</a>
-               <a href="{{ url('/admin/part/add-operation')}}" class="white-button" id="continueButt" name="button">SAVE AND CONTINUE</a>
+               <a href="#" class="white-button" id="continueButt" name="button">SAVE AND CONTINUE</a>
+							 <!--  used to redirect to {{ url('/admin/part/add-operation')}} -->
             </div>
 			   {!! Form::close() !!}
 

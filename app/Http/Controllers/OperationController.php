@@ -110,7 +110,7 @@ class OperationController extends Controller {
         $defaultPhoto = 1;
       }
       else {
-        $media = $this->mediaService->getMedia($toolMedia['media_id']);
+        $media = $this->mediaService->getMedia($operationMedia['media_id']);
         $photo = 'images/'.$media['path'];
         $defaultPhoto = 0;
       }

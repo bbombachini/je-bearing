@@ -1157,7 +1157,8 @@ a {
   color: #3C3B3B;
   transition: 0.2s; }
   .opInfo .opItemTitle {
-    font-weight: 600; }
+    font-weight: 600;
+    text-transform: uppercase; }
   .opInfo .opItemTitle:hover {
     cursor: pointer; }
 
@@ -1166,7 +1167,7 @@ a {
   color: #fff; }
 
 #operations {
-  margin-top: 40px; }
+  margin: 50px; }
   #operations h4 {
     font-family: 'Light';
     font-size: 1.5vw;
@@ -1210,6 +1211,8 @@ a {
 
 .opOpen {
   display: none; }
+  .opOpen #steps {
+    padding-left: 60px; }
 
 .opOpen.open {
   display: block; }

@@ -72,6 +72,9 @@
         <ul>
           @foreach ($items as $item)
             <li class="list-item">
+              <div class="item-order">
+                <span>#{{$item->pivot->order}}</span>
+              </div>
               <div>
                 <a class="item-name itemName" href="#" data-id="{{$item->id}}">{{$item->title}}</a>
               </div>

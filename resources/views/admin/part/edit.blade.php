@@ -111,7 +111,7 @@
 
 					<div id="buttonCon">
             			<a class="white-button" href="{{ url('/admin/part/list')}}">CANCEL</a>
-          				<button type="submit" class="white-button next" name="continue">SAVE AND CONTINUE</button>
+          				<button type="submit" class="white-button next" id="continueButt" name="continue">SAVE AND CONTINUE</button>
           			</div>
 
 					{!! Form::close() !!}
