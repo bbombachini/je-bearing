@@ -558,8 +558,8 @@
 	if(document.querySelector('#editPart')) {
 		populateArrays.call();
 	}
-	if(document.querySelector('.next')){
-		var nextBtn = document.querySelector('.next');
+	if(document.querySelector('#continueButt')){
+		var nextBtn = document.querySelector('#continueButt');
 		// console.log(nextBtn);
 		nextBtn.addEventListener('click', savePart, false);
 	}

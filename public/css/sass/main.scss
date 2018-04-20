@@ -1444,7 +1444,7 @@ a{
 
   .opItemTitle{
     font-weight: 600;
-    // color: $lightgreen;
+    text-transform: uppercase;
   }
 
   .opItemTitle:hover{
@@ -1458,7 +1458,7 @@ a{
 }
 
 #operations{
-  margin-top: 40px;
+  margin: 50px;
   h4{
     font-family: 'Light';
     font-size: 1.5vw;
@@ -1518,6 +1518,9 @@ a{
 
 .opOpen{
   display: none;
+  #steps {
+    padding-left: 60px;
+  }
 }
 
 .opOpen.open{

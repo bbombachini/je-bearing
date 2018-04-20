@@ -121,7 +121,7 @@
 
         {!! Form::hidden('oper', $operId) !!}
 
-        <!-- <button type="submit" class="white-button oper-next" name="finish">SAVE AND FINISH</button> -->
+        <a href="{{ url('/admin/operation/edit/')}}/{{$operId}}" class="white-button oper-next">BACK</a>
         <button type="submit" class="white-button oper-next" name="continue">SAVE AND CONTINUE</button>
       {!! Form::close() !!}
     </div>

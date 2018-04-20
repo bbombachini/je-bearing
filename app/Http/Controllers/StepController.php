@@ -81,7 +81,7 @@ class StepController extends Controller {
       }
 
       // success
-      return redirect()->action('PartController@list');
+      return redirect()->action('StepController@add', ['operId' => $operId]);
     }
 
     public function list(Step $step) {
@@ -155,7 +155,7 @@ class StepController extends Controller {
       }
 
       //success
-      return redirect()->action('PartController@list');
+      return redirect()->action('StepController@add', ['operId' => $operId]);
     }
 
 
