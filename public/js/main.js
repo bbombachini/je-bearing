@@ -9,16 +9,11 @@
 	var searchfeilds = document.querySelectorAll(".itemsearchfeild");
 	var url;
 
-	//Temporary arrays to show and save Tooling/Fixture/Materials into a Part.
+	//Array of arrays created to temporary show and save Tooling/Fixture/Materials into a Part.
 	var Selections = [];
 	Selections['tooling'] = new Array();
 	Selections['fixture'] = new Array();
 	Selections['material'] = new Array();
-
-	// var Original = [];
-	// Original['tooling'] = new Array();
-	// Original['fixture'] = new Array();
-	// Original['material'] = new Array();
 
 	function changeDeleteUrl(e) {
 		e.preventDefault();
@@ -137,20 +132,6 @@
 		}
 	}
 
-
-
-	// function switchSearch(e){
-	// 	var id = e.currentTarget.id;
-	// 	var str = e.currentTarget.value;
-	// 	// console.log(id);
-	// 	var url = "http://localhost:8000/admin/"+id+'/list/search/'+str;
-	// 	console.log(url);
-	// }
-
-	// for(var i = 0; i<searchfeilds.length; i++){
-	// 	searchfeilds[i].addEventListener("click", switchSearch,false);
-	// }
-
 	//Standard live search function
 	function showResults(e){
 		var str = e.currentTarget.value;
@@ -160,9 +141,8 @@
 		} else {
 			var url = window.location.href+'/search/'+str;
 		}
-
+		//If the field is not empty
 		if(str !== "") {
-
 			resultRequest = createRequest();
 			resultRequest.onreadystatechange = respRequest;
 			resultRequest.open("GET", url, true);

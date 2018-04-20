@@ -23,9 +23,8 @@
 
 	// Checks the scroll position to stick the part(tools,fixtures,materials) menu to the top of the page
 	function checkScroll(){
-		var windowScroll = window.scrollY,
-			height = pageCon.clientHeight;
-		if (windowScroll > 170) {
+		var windowScroll = window.scrollY;
+		if (windowScroll > 150) {
 			toolBar.classList.add('itemBarFixed');
 		}else{
 			toolBar.classList.remove('itemBarFixed');

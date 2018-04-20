@@ -120,8 +120,7 @@ button {
   font-size: 16px;
   font-weight: 500;
   color: #009B60;
-  margin-top: 20px;
-}
+  margin-top: 20px; }
 
 .backText {
   font-family: "Medium";
@@ -175,7 +174,6 @@ button {
   overflow: hidden;
   overflow-wrap: break-word;
   overflow-y: auto; }
-
   #quickView #itemname {
     margin-bottom: 20px;
     padding-right: 20px; }
@@ -186,7 +184,7 @@ button {
     padding: 0 20px 0 20px; }
   #quickView .confirmEdit {
     background-color: #ECB900;
-    height: 50px;
+    height: 30px;
     display: grid;
     width: 100%;
     border-radius: 0  0 7px 7px;
@@ -194,14 +192,17 @@ button {
     text-align: center;
     color: #fff;
     font-size: 18px;
-    font-family: 'Book'; }
+    margin-top: 50px;
+    font-family: 'Book';
+    display: inline-block;
+    padding: 20px 0 10px 0; }
   #quickView #desc {
     text-align: center;
     clear: both;
     display: block;
     line-height: 24px;
     font-size: 16px;
-    padding: 20px 20px 40px 20px; }
+    padding: 20px 20px 0px 20px; }
 
 #confirm {
   background: #fff;
@@ -242,21 +243,16 @@ button {
     margin-left: 30px; }
 
 #itemInfo {
-  float: right;
-}
-#itemInfo h2, #itemInfo p {
-  text-align: left;
-  padding: 0px;
-  margin-bottom: 5px;
-}
-#itemInfo h2 {
-  margin-bottom: 20px;
-}
-#itemInfo #number {
-  text-align: left;
-  padding: 0;
-}
-
+  float: right; }
+  #itemInfo h2, #itemInfo p {
+    text-align: left;
+    padding: 0px;
+    margin-bottom: 5px; }
+  #itemInfo h2 {
+    margin-bottom: 20px; }
+  #itemInfo #number {
+    text-align: left;
+    padding: 0; }
 
 .ignoreDelete {
   font-size: 18px;
@@ -310,11 +306,9 @@ a {
   display: block;
   height: 75px;
   margin: auto 0;
-  padding-left: 20px;
-}
-#reset-text h3 {
-  margin-top: 20px;
-}
+  padding-left: 20px; }
+  #reset-text h3 {
+    margin-top: 20px; }
 
 #welcome-con {
   display: grid;
@@ -736,8 +730,7 @@ a {
   width: 100%;
   font-size: 16px;
   padding: 5px;
-  margin-top: 10px;
-}
+  margin-top: 10px; }
 
 .subForm {
   clear: both;
@@ -1110,30 +1103,34 @@ a {
       #itemLibraryCon #itemLibrary .item .item-media img {
         width: 100%; }
 
-#itemBar {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 10% 20px 10%;
-  transition: 0.5s; }
-  #itemBar .itemIcon {
-    width: 30px;
-    float: left; }
-  #itemBar .itemBarItem {
+#fixHeight {
+  height: 100px;
+  width: 100%; }
+  #fixHeight #itemBar {
     display: flex;
-    align-items: center; }
-    #itemBar .itemBarItem p {
-      float: left;
-      font-size: 18px;
-      color: #006F3B;
-      padding-left: 20px; }
+    justify-content: space-around;
+    height: 5vw;
+    transition: 0.5s; }
+    #fixHeight #itemBar .itemIcon {
+      width: 30px;
+      float: left; }
+    #fixHeight #itemBar .itemBarItem {
+      display: flex;
+      align-items: center; }
+      #fixHeight #itemBar .itemBarItem p {
+        float: left;
+        font-size: 18px;
+        color: #006F3B;
+        padding-left: 20px; }
 
 .itemBarFixed {
+  display: flex;
   background-color: #fff;
+  justify-content: space-around;
   box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.1);
   top: 0;
-  opacity: 1;
   position: fixed;
-  width: 55%; }
+  width: 80%; }
 
 .whiteText {
   color: #fff !important; }
@@ -1249,8 +1246,7 @@ a {
   width: 50%; }
 
 .gallery:hover {
-  width: 100%;
-}
+  width: 100%; }
 
 .stepImage {
   width: 100%;
@@ -1344,8 +1340,7 @@ a {
 
 #successMsg {
   color: #009B60;
-  margin-bottom: 30px;
-}
+  margin-bottom: 30px; }
 
 .contactInput {
   border-bottom: solid 2px #ddd;
@@ -1354,9 +1349,7 @@ a {
   border-right: none;
   width: 100%;
   font-size: 16px;
-  margin-bottom: 40px;
-}
-
+  margin-bottom: 40px; }
 
 .contactInputMessage {
   border: solid 2px #ddd;
@@ -1375,9 +1368,7 @@ a {
   width: 50%; }
 
 #contactSubject {
-  padding-left: 50px;
-}
-
+  padding-left: 50px; }
 
 #sup-name-inpu {
   width: 40%; }
