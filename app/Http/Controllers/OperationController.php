@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Operation;
+use App\OperationMedia;
 use App\Part;
 use App\Services\MediaService;
 use Illuminate\Http\Request;
@@ -28,16 +29,25 @@ class OperationController extends Controller {
     public function add($partId) {
       $operation = new Operation;
       $part = Part::where('id', $partId)->get();
-      // return $part[0]['number'];
+      $partOperations = Part::find($partId)->operations()->where('active', 1)->orderBy('order', 'asc')->get();
+      // return $partOperations[0]->pivot->order;
       $partNumber = $part[0]['number'];
       $partName = $part[0]['name'];
-      return view('admin.operation.add', ['operation' => $operation, 'partId' => $partId, 'partNumber' => $partNumber, 'partName' => $partName]);
+      return view('admin.operation.add', ['operation' => $operation, 'partId' => $partId, 'partNumber' => $partNumber, 'partName' => $partName, 'items' => $partOperations]);
     }
 
     public function store(Request $request) {
+
       $operation = new Operation;
-      $operation['name'] = $request['name'];
+      $operation['title'] = $request['name'];
+      $operation['desc'] = $request['desc'];
       $operation['active'] = 1;
+      $order = $request['order'];
+      $partId = $request['part'];
+      $part = Part::where('id', $partId)->get();
+      // return $part[0];
+      // return gettype($partId);
+      // return $operation;
 
       //validates photo media
       if(isset($request['media'])) {
@@ -52,6 +62,9 @@ class OperationController extends Controller {
         return redirect()->back()->with('errors', $errors)->withInput();
       }
 
+      // $part->operations()->save($operation);
+      $operation->parts()->save($part[0], ['order' => $order]);
+
       if(isset($media_id)) {
         $order = Operation::find($operation['id'])->getMediaRelationship()->latest()->first();
         if (empty($order)) {
@@ -60,8 +73,8 @@ class OperationController extends Controller {
         else {
           $order++;
         }
-        $operMedia = new ToolingMedia;
-        $operMedia['tool_id'] = $operation['id'];
+        $operMedia = new OperationMedia;
+        $operMedia['operation_id'] = $operation['id'];
         $operMedia['media_id'] = $media_id;
         $operMedia['order'] = $order;
 
@@ -74,9 +87,9 @@ class OperationController extends Controller {
 
       // success
       $lastOper = $operation;
-      return $lastOper;
+      // return $lastOper;
 
-      // return redirect()->action('StepController@add', ['operId' => $lastId]);
+      return redirect()->action('StepController@add', ['id' => $lastOper['id'], 'operId' => $lastOper]);
     }
 
     public function list(Operation $operation) {
@@ -135,36 +148,29 @@ class OperationController extends Controller {
 
     public function edit($id) {
       $operation = Operation::where('id', $id)->where('active', 1)->get();
-      // $partTooling = Part::find($id)->getToolingRelationship()->get();
-      // $partFixture = Part::find($id)->getFixtureRelationship()->get();
-      // $partMaterial = Part::find($id)->getMaterialRelationship()->get();
-      // $partTooling = Part::find($id)->tools()->get();
-      // $partFixture = Part::find($id)->fixtures()->get();
-      // $partMaterial = Part::find($id)->materials()->get();
-      // $toolMedia = Tooling::find($id)->getMediaRelationship()->latest()->first();
-      // if (empty($toolMedia)) {
-      //   $photo = 'images/noimage.jpg';
-      //   $defaultPhoto = 1;
-      // }
-      // else {
-      //   $media = $this->mediaService->getMedia($toolMedia['media_id']);
-      //   $photo = 'images/'.$media['path'];
-      //   $defaultPhoto = 0;
-      // }
+      $operationSteps = Operation::find($id)->steps()->get();
+      // return $operationSteps;
+
+      $operationMedia = Operation::find($id)->getMediaRelationship()->latest()->first();
+      if (empty($operationMedia)) {
+        $photo = 'images/noimage.jpg';
+        $defaultPhoto = 1;
+      }
+      else {
+        $media = $this->mediaService->getMedia($toolMedia['media_id']);
+        $photo = 'images/'.$media['path'];
+        $defaultPhoto = 0;
+      }
 
       // return view('admin.part.edit', ['old' => $part, 'photo' => $photo, 'id' => $id, 'defaultPhoto' => $defaultPhoto]);
-      return view('admin.operation.edit', ['old' => $operation, 'id' => $id]);
+      return view('admin.operation.edit', ['old' => $operation, 'id' => $id, 'items' => $operationSteps]);
     }
 
     public function update(Request $request) {
       $id = $request['id'];
       $operation = Operation::find($id);
-      $operation['title'] = $request['title'];
+      $operation['title'] = $request['name'];
       $operation['desc'] = $request['desc'];
-
-      // $tools = $request['tooling'];
-      // $fixtures = $request['fixture'];
-      // $materials = $request['material'];
 
       // save info in database
       if (!$operation->save()) {
@@ -173,24 +179,6 @@ class OperationController extends Controller {
           return redirect()->back()->with('errors', $errors)->withInput();
         }
       }
-
-      // // save PartTooling relationship
-      // for($i = 0; $i < count($tools); $i++) {
-      //   $tool = $this->toolService->getTool($tools[$i]);
-      //   $part->tools()->save($tool);
-      // }
-      //
-      // // save PartFixture relationship
-      // for($i = 0; $i < count($fixtures); $i++) {
-      //   $fixture = $this->fixtureService->getFixture($fixtures[$i]);
-      //   $part->fixtures()->save($fixture);
-      // }
-      //
-      // // save PartMaterial relationship
-      // for($i = 0; $i < count($materials); $i++) {
-      //   $material = $this->materialService->getMaterial($materials[$i]);
-      //   $part->materials()->save($material);
-      // }
 
       //success
       return redirect()->back();
@@ -204,15 +192,12 @@ class OperationController extends Controller {
         echo "not found id".$id;
       }
       else {
-        // do not delete entry from database
-        // just change active value from 1 to 0
-        $operation['active'] = 0;
-        if (!$operation->save()) {
+        if (!$operation->delete()) {
           $errors = $operation->getErrors();
           return redirect()->back()->with('errors', $errors)->withInput();
         }
         //success
-        return redirect()->back->with('message', 'Operation '. $operation->name . ' has been deleted!');
+        return redirect()->back()->with('message', 'Operation '. $operation->name . ' has been deleted!');
       }
     }
 }
