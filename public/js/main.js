@@ -9,16 +9,11 @@
 	var searchfeilds = document.querySelectorAll(".itemsearchfeild");
 	var url;
 
-	//Temporary arrays to show and save Tooling/Fixture/Materials into a Part.
+	//Array of arrays created to temporary show and save Tooling/Fixture/Materials into a Part.
 	var Selections = [];
 	Selections['tooling'] = new Array();
 	Selections['fixture'] = new Array();
 	Selections['material'] = new Array();
-
-	// var Original = [];
-	// Original['tooling'] = new Array();
-	// Original['fixture'] = new Array();
-	// Original['material'] = new Array();
 
 	function changeDeleteUrl(e) {
 		e.preventDefault();
@@ -99,7 +94,6 @@
 				document.querySelector("#itemImg > img").src = '../../images/'+jsondoc.item.media_path;
 				infoDiv.querySelector(".confirmEdit").href = '/admin/'+section+'/edit/'+ jsondoc.item[0].id;
 				quickView.style.display = 'block';
-				// quickView.style.opacity = 1;
 				TweenMax.to(quickView, 0.3, {opacity: 1});
 			}
 		}
@@ -137,20 +131,6 @@
 		}
 	}
 
-
-
-	// function switchSearch(e){
-	// 	var id = e.currentTarget.id;
-	// 	var str = e.currentTarget.value;
-	// 	// console.log(id);
-	// 	var url = "http://localhost:8000/admin/"+id+'/list/search/'+str;
-	// 	console.log(url);
-	// }
-
-	// for(var i = 0; i<searchfeilds.length; i++){
-	// 	searchfeilds[i].addEventListener("click", switchSearch,false);
-	// }
-
 	//Standard live search function
 	function showResults(e){
 		var str = e.currentTarget.value;
@@ -160,9 +140,8 @@
 		} else {
 			var url = window.location.href+'/search/'+str;
 		}
-
+		//If the field is not empty
 		if(str !== "") {
-
 			resultRequest = createRequest();
 			resultRequest.onreadystatechange = respRequest;
 			resultRequest.open("GET", url, true);
@@ -245,8 +224,6 @@
 			updatePhotoDisplay() {
 				var photo = document.querySelector('.image-hover > img');
 				var curFile = image.chooseImageBtn.files;
-				// console.log(photo);
-				// console.log(curFile);
 				photo.src = window.URL.createObjectURL(curFile[0]);
 			},
 			init(){
@@ -291,7 +268,7 @@
 						var itemList = document.querySelector('.listItem [data-id="'+ itemListId +'List"]').children.length; //selected result length
 						let curList = document.querySelectorAll('.listItem [data-id="'+ itemListId +'List"] li'); //selected result results
 
-						for(let i = 0; i< jsonfile.item.length; i++){ //check the length of json results
+						for(let i = 0; i< jsonfile.item.length; i++){
 							//TRIAL TO FILTER THROUGH SELECTED ITEMS BEFORE PRINTING THE SEARCH RESULT
 							// if(itemList > 0){ // if there's something on selected list
 								// let jsonId = jsonfile.item[i].id; //id of the json results
@@ -372,13 +349,12 @@
 			}
 		}
 }
-
+		//Function to print array of temporary fixtures/toolings/materials when adding a part
 		function printData(itemListId){
 			let itemList = document.querySelector('.listItem [data-id="'+ itemListId +'List"]');
 			while(itemList.firstChild){
 				itemList.removeChild(itemList.firstChild);
 			}
-
 			Selections[itemListId].forEach((unit) => {
 				let newListItem = `<li class="selected" data-id=${unit[0]}><p>${unit[1]}</p><span class="popItem">X</span></li>`;
 				itemList.innerHTML += newListItem;
@@ -392,18 +368,15 @@
 
 		function removeUnit(e){
 			let removeId = e.currentTarget.dataset.id;
-			// console.log(removeId); //Undefined because data-fixture-id - removed from the li
 			let parent = e.currentTarget.parentNode.dataset.id.slice(0, -4);
-			// Selections[parent]
 			let index = Selections[parent].findIndex(item => item[0] == removeId);
 			if(index > -1) {
 				Selections[parent].splice(index,1);
 			}
-			// console.log(index);
 			printData(parent);
 		}
 
-		// function to populate Tools, Fixture and Material arrays when editing a part
+		// Function to populate Tools, Fixture and Material arrays when editing a part
 		function populateArrays() {
 			let toolingItems = document.querySelectorAll('.listItem.tooling li');
 			toolingItems.forEach((item) => {
@@ -467,18 +440,14 @@
 				var fixture = new Array();
 				Selections['fixture'].forEach((item) => {
 					let id = item[0];
-					// if(Original['fixture'].indexOf(id) == -1) {
-						fixture.push(id);
-					// }
+					fixture.push(id);
 				});
 			}
 			if (Selections['material'].length > 0) {
 				var material = new Array();
 				Selections['material'].forEach((item) => {
 					let id = item[0];
-					// if(Original['material'].indexOf(id) == -1) {
-						material.push(id);
-					// }
+					material.push(id);
 				});
 			}
 
@@ -516,9 +485,7 @@
 		function saveOperation(e) {
 			e.preventDefault();
 			let curUrl = location.pathname.split('/');
-			// console.log(curUrl);
 			let partId = curUrl[curUrl.length-1];
-			// console.log(partId);
 			// debugger;
 			let url = '/admin/operation/store';
 			let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -611,6 +578,4 @@
 	// 		button.addEventListener('click', saveOperation, false);
 	// 	});
 	// }
-
-	// chooseImageBtn.addEventListener('change', updatePhotoDisplay, false);
 })();

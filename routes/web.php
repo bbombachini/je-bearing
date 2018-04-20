@@ -12,22 +12,16 @@
 */
 
 //Authentication Routes
-// Route::get('/', function(){
-//   return view('auth.login');
-// });
 $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
 $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
 $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
 $this->post('password/reset', 'Auth\ResetPasswordController@reset');
-
+Auth::routes();
 Route::get('/', ['uses' => 'AuthController@checkLogin']);
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
-Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Operator Routes - TEMPORARY
-
+//Operator Routes
 //Search Part Views
 Route::get('/searchpart', function(){
   return view('searchpart');
@@ -35,7 +29,6 @@ Route::get('/searchpart', function(){
 Route::get('/searchpart/search/{id}/{field?}', ['uses' => 'PartController@search']);
 
 //Operator Part Related Views
-// Route::get('/oper/part/info/{id}', ['uses' =>'PartController@getPartInfo']);
 Route::get('/oper/part/steps/{id}', ['uses' =>'PartController@getPartInfo']);
 Route::get('/oper/part/tooling/{id}', ['uses' => 'ToolingController@opList']);
 Route::get('/oper/part/fixture/{id}', ['uses' => 'FixtureController@opList']);
@@ -47,16 +40,10 @@ Route::get('/oper/part/comments', function(){
   return view('oper.comments');
 } );
 
-Route::get('contact/contactSupervisor', function(){
-  return view('contact.contactSupervisor');
-} );
-
-
 Route::get('contact/contactSupervisor', 'ContactController@create')->name('contact.create');
 Route::post('contact/contactSupervisor', 'ContactController@store')->name('contact.store');
 
-// Route::get('/oper/steps', 'ToolingController@opList');
-
+//Temporary route - returning only view
 Route::get('/oper/part/qualityalerts', function(){
   return view('oper.qualityalerts');
 } );
@@ -86,7 +73,6 @@ Route::group(['middleware' => ['supervisor']] , function () {
    Route::get('/admin/part/add-alert', function(){
     return view('admin.part.add-alert');
   });
-
   Route::get('/admin/part/list/search/{str}', ['uses' => 'PartController@search']);
 
   // Operations
@@ -185,7 +171,3 @@ Route::middleware(['admin'])->group(function () {
   Route::get('/admin/user/destroyMedia/{id}', ['uses' => 'UsersController@destroyMedia']);
   Route::get('/admin/user/list/search/{str}', ['uses' => 'UsersController@search']);
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

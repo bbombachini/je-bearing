@@ -12,7 +12,7 @@ use App\Step;
 // use App\ToolingMedia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-// use App\Services\MediaService;
+use App\Services\MediaService;
 use App\Services\ToolService;
 use App\Services\FixtureService;
 use App\Services\MaterialService;
@@ -30,10 +30,11 @@ class PartController extends Controller {
     private $fixturesrv;
     private $materialsrv;
 
-    public function __construct(ToolService $toolsrv, FixtureService $fixturesrv, MaterialService $materialsrv) {
+    public function __construct(ToolService $toolsrv, FixtureService $fixturesrv, MaterialService $materialsrv, MediaService $mediasrv) {
         $this->toolService = $toolsrv;
         $this->fixtureService = $fixturesrv;
         $this->materialService = $materialsrv;
+        $this->mediaService = $mediasrv;
     }
 
     public function add() {
@@ -165,15 +166,25 @@ class PartController extends Controller {
 
     public function getPartInfo($id){
       $part = Part::where('id', $id)->get();
-      $operations = Part::find($id)->operations()->get();
-      $opSteps = [];
+      $operations = Part::find($id)->operations()->with('steps')->get();
+      $stepInfo = [];
+      $stepImg = [];
       foreach ($operations as $operation) {
         $steps = Operation::find($operation->id)->steps()->get();
-        $opSteps[] =  $steps;
+        foreach ($steps as $step) {
+          $stepMedia = Step::find($step->id)->getMediaRelationship()->get();
+          if(!$stepMedia->isEmpty()){
+            $stepInfo[] = $stepMedia;
+            foreach ($stepMedia as $media){
+              $img = $this->mediaService->getMedia($media['media_id']);
+              $stepImg[] = $img;
+            }
+          }
+        }
       }
       session(['partNumber'=> $part[0]->number]);
       session(['partId'=> $id]);
-      return view('oper.steps', [ 'operations' => $operations, 'steps'=> $opSteps]);
+      return view('oper.steps', [ 'operations' => $operations, 'matchMedia' => $stepInfo, 'media' => $stepImg]);
     }
 
     // public function searchPartNumber(Request $number) {

@@ -237,7 +237,7 @@ button{
   h2{
     margin-bottom: 20px;
   }
-  
+
   #number{
   text-align: left;
   padding: 0
@@ -786,7 +786,7 @@ a{
 .formHeader{
   background-color: #1EA773;
   width: 100%;
-  
+
    h3{
     margin: 0px;
     padding: 20px;
@@ -1394,39 +1394,39 @@ a{
   }
 }
 
-#itemBar{
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 10% 20px 10%;
-  transition: 0.5s;
-  a{
-
-  }
-
-  .itemIcon{
-    width: 30px;
-    float: left;
-  }
-
-  .itemBarItem{
+#fixHeight{
+  height: 100px;
+  width: 100%;
+  #itemBar{
     display: flex;
-    align-items: center;
-    p{
+    justify-content: space-around;
+    height: 5vw;
+    transition: 0.5s;
+    .itemIcon{
+      width: 30px;
       float: left;
-      font-size: 18px;
-      color: $jegreen;
-      padding-left: 20px;
+    }
+    .itemBarItem{
+      display: flex;
+      align-items: center;
+      p{
+        float: left;
+        font-size: 18px;
+        color: $jegreen;
+        padding-left: 20px;
+      }
     }
   }
 }
 
 .itemBarFixed{
+  display: flex;
   background-color: #fff;
+  justify-content: space-around;
   box-shadow: 3px 3px 20px rgba(0,0,0,0.1);
   top: 0;
-  opacity: 1;
   position: fixed;
-  width: 55%;
+  width: 80%;
 }
 
 .whiteText{
