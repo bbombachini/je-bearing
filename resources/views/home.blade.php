@@ -46,7 +46,7 @@
 @section('content')
 
 <section id="dashboard">
-
+  <!-- Middleware to check for users credentials -->
   @if (Auth::user()->role !== 3 || Auth::user()->instructions_access === 1)
   <a href="/searchpart" class="dash-section">
     <div class="dash-icon">
@@ -59,6 +59,7 @@
   </a>
   @endif
 
+  <!-- Middleware to check for users credentials -->
   @if (Auth::user()->role !== 3 || Auth::user()->assembly_access === 1)
   <a href="/searchpart" class="dash-section">
     <div class="dash-icon">
@@ -70,7 +71,8 @@
     </div>
   </a>
   @endif
-
+  
+  <!-- Middleware to check for users credentials -->
   @if (Auth::user()->role !== 3 || Auth::user()->repair_access === 1)
   <a href="/searchpart" class="dash-section">
       <div class="dash-icon">
