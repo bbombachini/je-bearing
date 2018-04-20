@@ -28,15 +28,22 @@ class StepController extends Controller {
     public function add($operId) {
       $step = new Step;
       $operation = Operation::where('id', $operId)->get();
-      return view('admin.step.add', ['step' => $step]);
+      $operationSteps = Operation::find($operId)->steps()->where('active', 1)->orderBy('order', 'asc')->get();
+      $operNumber = $operation[0]['number'];
+      $operName = $operation[0]['title'];
+      return view('admin.step.add', ['step' => $step, 'operId' => $operId, 'operNumber' => $operNumber, 'operName' => $operName, 'items' => $operationSteps]);
     }
 
 
     public function store(Request $request) {
+
       $step = new Step;
-      $step['title'] = $request['title'];
+      $step['title'] = $request['name'];
       $step['desc'] = $request['desc'];
       $step['active'] = 1;
+      $order = $request['order'];
+      $operId = $request['oper'];
+      $operation = Operation::where('id', $operId)->get();
 
       //validates photo media
       if(isset($request['media'])) {
@@ -50,6 +57,8 @@ class StepController extends Controller {
         $errors = $step->getErrors();
         return redirect()->back()->with('errors', $errors)->withInput();
       }
+
+      $step->operations()->save($operation[0], ['order' => $order]);
 
       if(isset($media_id)) {
         $order = Step::find($step['id'])->getMediaRelationship()->latest()->first();
@@ -71,8 +80,8 @@ class StepController extends Controller {
         }
       }
 
-      //success
-      return redirect()->back();
+      // success
+      return redirect()->action('PartController@list');
     }
 
     public function list(Step $step) {
@@ -88,40 +97,8 @@ class StepController extends Controller {
         }
       }
       $count = Step::where('active', 1)->get()->count();
-      // return $tools;
       return view('admin.step.list', ['items' => $steps, 'count' => $count]);
     }
-
-    //TEMPORARY FUNCTION - CHANGE LATER
-
-
-    // public function quickview($id) {
-    //   $tool = Tooling::where('id', $id)->get();
-    //   $toolMedia = Tooling::find($id)->getMediaRelationship()->latest()->first();
-    //     $media = $this->mediaService->getMedia($toolMedia['media_id']);
-    //     if(empty($media)){
-    //       $tool['media_path'] = 'noimage.jpg';
-    //     }
-    //     else {
-    //       $tool['media_path'] = $media['path'];
-    //     }
-    //   return (['item' => $tool]);
-    // }
-
-    // public function search($str) {
-    //   if(isset($str)) {
-    //     $tool = Tooling::where('name','LIKE',"{$str}%")->get();
-    //     if(!$tool->isEmpty()){
-    //         return (['item' => $tool]);
-    //     } else {
-    //       print "not-found";
-    //     }
-    //   }
-    //   else {
-    //     print "empty";
-    //   }
-    // }
-
 
     public function edit($id) {
       $step = Step::where('id', $id)->where('active', 1)->get();
@@ -153,7 +130,7 @@ class StepController extends Controller {
 
       if (!$step->save()) {
         $errors = $step->getErrors();
-        // return redirect()->action('ToolingController@edit', ['id' => $id])->with('errors', $errors)->withInput();
+        return redirect()->back()->with('errors', $errors)->withInput();
       }
 
       if(isset($media_id)) {
@@ -173,12 +150,12 @@ class StepController extends Controller {
         // save relational info in database
         if (!$stepMedia->save()) {
           $errors = $stepMedia->getErrors();
-          // return redirect()->action('ToolingController@edit', ['id' => $id])->with('errors', $errors)->withInput();
+          return redirect()->back()->with('errors', $errors)->withInput();
         }
       }
 
       //success
-      // return redirect()->action('ToolingController@list');
+      return redirect()->action('PartController@list');
     }
 
 
@@ -189,15 +166,12 @@ class StepController extends Controller {
         echo "not found id".$id;
       }
       else {
-        // do not delete entry from database
-        // just change active value from 1 to 0
-        $step['active'] = 0;
-        if (!$step->save()) {
+        if (!$step->delete()) {
           $errors = $step->getErrors();
-          // return redirect()->action('ToolingController@list')->with('errors', $errors)->withInput();
+          return redirect()->back()->with('errors', $errors)->withInput();
         }
         //success
-        // return redirect()->action('ToolingController@list')->with('message', 'Your '. $tool->name . ' has been created!');
+        return redirect()->back()->with('message', 'Step '. $step->name . ' has been deleted!');
       }
     }
 

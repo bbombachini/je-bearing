@@ -45,9 +45,6 @@ class OperationController extends Controller {
       $order = $request['order'];
       $partId = $request['part'];
       $part = Part::where('id', $partId)->get();
-      // return $part[0];
-      // return gettype($partId);
-      // return $operation;
 
       //validates photo media
       if(isset($request['media'])) {
@@ -62,7 +59,6 @@ class OperationController extends Controller {
         return redirect()->back()->with('errors', $errors)->withInput();
       }
 
-      // $part->operations()->save($operation);
       $operation->parts()->save($part[0], ['order' => $order]);
 
       if(isset($media_id)) {
@@ -87,7 +83,6 @@ class OperationController extends Controller {
 
       // success
       $lastOper = $operation;
-      // return $lastOper;
 
       return redirect()->action('StepController@add', ['id' => $lastOper['id'], 'operId' => $lastOper]);
     }
@@ -100,56 +95,14 @@ class OperationController extends Controller {
       return view('admin.operation.list', ['items' => $operation, 'count' => $count]);
     }
 
-    //TEMPORARY FUNCTION - CHANGE LATER
-    // public function opList(Tooling $tooling) {
-    //   $items = Tooling::where('active', 1)->orderBy('name', 'asc')->paginate(6);
-    //   // $items = DB::table('tool')
-    //   //       ->join('part', 'users.id', '=', 'contacts.user_id')
-    //   //       ->join('orders', 'users.id', '=', 'orders.user_id')
-    //   //       ->select('users.*', 'contacts.phone', 'orders.price')
-    //   //       ->get();
-    //   foreach ($items as $item) {
-    //     $itemMedia = Tooling::find($item['id'])->getMediaRelationship()->latest()->first();
-    //     $media = $this->mediaService->getMedia($itemMedia['media_id']);
-    //     if(empty($media)){
-    //       $item['media_path'] = 'noimage.jpg';
-    //     }
-    //     else {
-    //       $item['media_path'] = $media['path'];
-    //     }
-    //   }
-    //     // return $tools;
-    //     return view('oper.items', ['items' => $items, 'title' => 'Tooling', 'name' => 'tools']);
-    // }
-
-    // public function quickview($id) {
-    //   $part = Part::where('id', $id)->get();
-    //   $partTooling = Part::find($id)->getToolingRelationship()->get();
-    //   $partFixture = Part::find($id)->getFixtureRelationship()->get();
-    //   $partMaterial = Part::find($id)->getMaterialRelationship()->get();
-    //
-    //   return (['item' => $part, 'tool' => $partTooling, 'fixture' => $partFixture, 'material' => $partMaterial]);
-    // }
-
-    // public function search($str) {
-    //   if(isset($str)) {
-    //     $part = Part::where('name','LIKE',"{$str}%")->get();
-    //     if(!$part->isEmpty()){
-    //         return (['item' => $part]);
-    //     } else {
-    //       print "not-found";
-    //     }
-    //   }
-    //   else {
-    //     print "empty";
-    //   }
-    // }
-
-
     public function edit($id) {
       $operation = Operation::where('id', $id)->where('active', 1)->get();
+
+      // get information about operation's part
+      $partOperation = Operation::find($id)->parts()->get();
+
+      // get information about operation's steps
       $operationSteps = Operation::find($id)->steps()->get();
-      // return $operationSteps;
 
       $operationMedia = Operation::find($id)->getMediaRelationship()->latest()->first();
       if (empty($operationMedia)) {
@@ -162,8 +115,7 @@ class OperationController extends Controller {
         $defaultPhoto = 0;
       }
 
-      // return view('admin.part.edit', ['old' => $part, 'photo' => $photo, 'id' => $id, 'defaultPhoto' => $defaultPhoto]);
-      return view('admin.operation.edit', ['old' => $operation, 'id' => $id, 'items' => $operationSteps]);
+      return view('admin.operation.edit', ['old' => $operation, 'id' => $id, 'partInfo' => $partOperation, 'items' => $operationSteps]);
     }
 
     public function update(Request $request) {
@@ -171,6 +123,7 @@ class OperationController extends Controller {
       $operation = Operation::find($id);
       $operation['title'] = $request['name'];
       $operation['desc'] = $request['desc'];
+      $order = $request['order'];
 
       // save info in database
       if (!$operation->save()) {
@@ -179,11 +132,17 @@ class OperationController extends Controller {
           return redirect()->back()->with('errors', $errors)->withInput();
         }
       }
+      //get part relationship information
+      $part = $operation->parts()->get();
+
+      //remove previous relationship and save new
+      $operation->parts()->detach($part[0]);
+      $operation->parts()->save($part[0], ['order' => $order]);
 
       //success
-      return redirect()->back();
+      $lastOper = $operation;
+      return redirect()->action('StepController@add', ['id' => $lastOper['id'], 'operId' => $lastOper]);
     }
-
 
     public function destroy($id) {
       $operation = Operation::find($id);
@@ -198,6 +157,24 @@ class OperationController extends Controller {
         }
         //success
         return redirect()->back()->with('message', 'Operation '. $operation->name . ' has been deleted!');
+      }
+    }
+
+    public function destroyMedia($id) {
+      $operMedia_id = Operation::find($id)->getMediaRelationship()->latest()->first();
+      if (empty($operMedia_id['id'])) {
+        return redirect()->back()->withErrors(['No photo to delete']);
+      }
+      $operMedia = OperationMedia::find($operMedia_id['id']);
+      $media_id = $operMedia['media_id'];
+      if (empty($operMedia)) {
+        echo "not found id".$operMedia_id['id'];
+      }
+      else {
+        $operMedia->delete();
+        $deleteMedia = $this->mediaService->destroyMedia($media_id);
+        //success
+        // return redirect()->action('ToolingController@edit', ['id' => $id]);
       }
     }
 }

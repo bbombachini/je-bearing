@@ -9,7 +9,7 @@
   </div>
 
   <div class="formHeader">
-    <h3>OPERATION {{$old->title}}</h3>
+    <h3>OPERATION {{$old[0]->title}}</h3>
   </div>
 
   <div id="dim">
@@ -93,19 +93,25 @@
     <div class="operInfo">
       {!! Form::model($old, ['action' => 'OperationController@update', 'id' => 'edit', 'class' => 'editOper', 'files' => true]) !!}
       @foreach ($old as $operation)
+      {{ Form::hidden('id', $operation->id) }}
        <fieldset class="add-name">
-        <p>{!! Form::label('title', 'Name') !!}</p>
-        {!! Form::text('title', $operation->title, ['required' => 'required', 'class' => 'form-control']) !!}
+        <p>{!! Form::label('name', 'Name') !!}</p>
+        {!! Form::text('name', $operation->title, ['required' => 'required', 'class' => 'form-control']) !!}
         </fieldset>
 
+        <fieldset class="add-number">
+         <p>{!! Form::label('order', 'Order') !!}</p>
+         {!! Form::number('order', $partInfo[0]->pivot->order, ['required' => 'required', 'class' => 'form-control']) !!}
+         </fieldset>
 
         <fieldset class="add-media">
         <p>{!! Form::label('media', 'Media') !!}</p>
         {!! Form::file('media', ['class' => 'form-control']) !!}
         </fieldset>
         @endforeach
-        <button type="submit" class="white-button oper-next" name="finish">SAVE AND FINISH</button>
-        <button type="submit" class="white-button oper-next" name="continue">SAVE AND CONTINUE</button>
+        <!-- <button type="submit" class="white-button oper-next" name="finish">SAVE AND FINISH</button> -->
+        <!-- <button type="submit" class="white-button oper-next" name="continue">SAVE AND CONTINUE</button> -->
+        <button type="submit" class="white-button oper-next" name="continue">SAVE</button>
       {!! Form::close() !!}
     </div>
   </div>
