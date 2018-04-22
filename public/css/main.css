@@ -1151,11 +1151,14 @@ a {
 .opInfo {
   display: flex;
   align-content: center;
-  justify-content: space-between;
   padding: 25px 30px;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   color: #3C3B3B;
-  transition: 0.2s; }
+  transition: 0.2s;
+  cursor: pointer; }
+  .opInfo .opStatusSignal {
+    font-size: 1rem;
+    margin-right: 1rem; }
   .opInfo .opItemTitle {
     font-weight: 600; }
   .opInfo .opItemTitle:hover {

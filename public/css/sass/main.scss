@@ -1436,11 +1436,16 @@ a{
 .opInfo{
   display: flex;
   align-content: center;
-  justify-content: space-between;
   padding: 25px 30px;
   border-top: 1px solid rgba(0,0,0, 0.2);
   color: $darkgrey;
   transition: 0.2s;
+  cursor: pointer;
+
+  .opStatusSignal {
+    font-size: 1rem;
+    margin-right: 1rem;
+  }
 
   .opItemTitle{
     font-weight: 600;
