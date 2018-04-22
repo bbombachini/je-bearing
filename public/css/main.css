@@ -582,6 +582,10 @@ a {
   color: #009B60;
   cursor: pointer; }
 
+#saveContinueButt {
+  width: 340px !important;
+  float: right !important; }
+
 .add-button {
   display: flex;
   justify-content: center;
@@ -865,49 +869,49 @@ a {
 #continueButt {
   float: right; }
 
-#add, #edit {
+#add {
   display: grid;
   position: relative;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(3, auto);
   grid-column-gap: 5%;
   grid-template-areas: "name number" "media media" "desc desc"; }
-  #add .form-control, #edit .form-control {
+  #add .form-control {
     box-sizing: border-box;
     border: none;
     color: #009B60;
     border-bottom: 1px solid #A2A2A2;
     width: 100%;
     font-size: 16px; }
-  #add textarea#desc.form-control, #edit textarea#desc.form-control {
+  #add textarea#desc.form-control {
     border: 1px solid #A2A2A2;
     font-family: 'Medium';
     font-size: 16px;
     font-weight: 500;
     padding: 20px 20px 0 20px; }
-  #add textarea#desc.form-control.form-edit, #edit textarea#desc.form-control.form-edit {
+  #add textarea#desc.form-control.form-edit {
     height: 100%; }
-  #add input#media.form-control, #edit input#media.form-control {
+  #add input#media.form-control {
     color: #ECB900;
     font-weight: 100;
     padding-bottom: 10px; }
-  #add p, #edit p {
+  #add p {
     color: #A2A2A2;
     padding: 3% 0; }
-  #add .add-name, #edit .add-name {
+  #add .add-name {
     grid-area: name; }
-  #add .add-number, #edit .add-number {
+  #add .add-number {
     grid-area: number; }
-  #add .add-media, #edit .add-media {
+  #add .add-media {
     grid-area: media; }
-  #add .add-desc, #edit .add-desc {
+  #add .add-desc {
     grid-area: desc;
     margin-bottom: 30px; }
-  #add button.green-button, #edit button.green-button {
+  #add button.green-button {
     cursor: pointer;
     justify-self: center;
     align-self: flex-end; }
-  #add a.white-button, #edit a.white-button {
+  #add a.white-button {
     text-align: center;
     display: flex;
     justify-content: center;
@@ -918,67 +922,64 @@ a {
     color: #F34C18;
     border-color: #F34C18; }
 
-#edit {
-  grid-row-gap: 30px;
-  grid-template-areas: "name number" "desc media"; }
-  #edit .add-media {
-    min-width: 0;
-    min-height: 0;
-    width: auto;
-    height: auto; }
-    #edit .add-media .image-hover {
-      position: relative; }
-      #edit .add-media .image-hover img {
-        max-width: 370px;
-        height: 100%;
-        width: 100%;
-        margin: 0 auto;
-        display: block; }
-      #edit .add-media .image-hover .edit-link {
-        display: flex;
-        text-align: center;
-        justify-content: center;
-        flex-direction: column;
-        position: absolute;
-        top: 0;
+#edit .add-media {
+  min-width: 0;
+  min-height: 0;
+  width: auto;
+  height: auto; }
+  #edit .add-media .image-hover {
+    position: relative; }
+    #edit .add-media .image-hover img {
+      max-width: 370px;
+      height: 100%;
+      width: 100%;
+      margin: 0 auto;
+      display: block; }
+    #edit .add-media .image-hover .edit-link {
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      flex-direction: column;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 20;
+      display: none;
+      cursor: pointer; }
+      #edit .add-media .image-hover .edit-link .links {
+        top: 50%;
         left: 0;
+        -webkit-transform: translate(0, -50%);
+        -ms-transform: translate(0, -50%);
+        transform: translate(0, -50%);
         width: 100%;
-        height: 100%;
-        z-index: 20;
-        display: none;
-        cursor: pointer; }
-        #edit .add-media .image-hover .edit-link .links {
-          top: 50%;
-          left: 0;
-          -webkit-transform: translate(0, -50%);
-          -ms-transform: translate(0, -50%);
-          transform: translate(0, -50%);
-          width: 100%;
-          margin: auto;
-          position: absolute;
-          display: block;
-          text-align: center; }
-          #edit .add-media .image-hover .edit-link .links input[type=file] {
-            display: none;
-            margin: 10px; }
-          #edit .add-media .image-hover .edit-link .links label[for=media] {
-            color: #009B60; }
-          #edit .add-media .image-hover .edit-link .links label, #edit .add-media .image-hover .edit-link .links a {
-            display: inline-block;
-            font-family: 'Medium';
-            font-size: 30px;
-            padding: 0 30px;
-            cursor: pointer;
-            margin: 20px; }
-          #edit .add-media .image-hover .edit-link .links label {
-            color: #ECB900; }
-          #edit .add-media .image-hover .edit-link .links a {
-            color: #F34C18; }
-    #edit .add-media .image-hover:hover .edit-link {
-      display: block;
-      border: 1px solid #A2A2A2;
-      background-color: #fff;
-      opacity: 0.9; }
+        margin: auto;
+        position: absolute;
+        display: block;
+        text-align: center; }
+        #edit .add-media .image-hover .edit-link .links input[type=file] {
+          display: none;
+          margin: 10px; }
+        #edit .add-media .image-hover .edit-link .links label[for=media] {
+          color: #009B60; }
+        #edit .add-media .image-hover .edit-link .links label, #edit .add-media .image-hover .edit-link .links a {
+          display: inline-block;
+          font-family: 'Medium';
+          font-size: 30px;
+          padding: 0 30px;
+          cursor: pointer;
+          margin: 20px; }
+        #edit .add-media .image-hover .edit-link .links label {
+          color: #ECB900; }
+        #edit .add-media .image-hover .edit-link .links a {
+          color: #F34C18; }
+  #edit .add-media .image-hover:hover .edit-link {
+    display: block;
+    border: 1px solid #A2A2A2;
+    background-color: #fff;
+    opacity: 0.9; }
 
 /*************** LOGIN PAGE *******************/
 #content-con {
@@ -1160,7 +1161,8 @@ a {
     font-size: 1rem;
     margin-right: 1rem; }
   .opInfo .opItemTitle {
-    font-weight: 600; }
+    font-weight: 600;
+    text-transform: uppercase; }
   .opInfo .opItemTitle:hover {
     cursor: pointer; }
 
@@ -1169,7 +1171,7 @@ a {
   color: #fff; }
 
 #operations {
-  margin-top: 40px; }
+  margin: 50px; }
   #operations h4 {
     font-family: 'Light';
     font-size: 1.5vw;
@@ -1183,6 +1185,8 @@ a {
       font-size: 1.3vw; }
   #operations .addOper {
     padding-top: 40px; }
+    #operations .addOper .add-desc {
+      margin-top: 20px; }
   #operations .form-control {
     color: #ECB900;
     font-weight: 400;
@@ -1213,6 +1217,8 @@ a {
 
 .opOpen {
   display: none; }
+  .opOpen #steps {
+    padding-left: 60px; }
 
 .opOpen.open {
   display: block; }

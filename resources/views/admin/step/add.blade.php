@@ -8,6 +8,16 @@
       </div>
   </div>
 
+  <div class="progress-bar-con">
+      <ul class="progress-bar">
+        <li id="progress-one">Part Details</li>
+        <li id="progress-two" class="active" >Operations</li>
+        <li id="progress-three">Quality Alerts</li>
+      </ul>
+
+      <hr id="progress-line">
+  </div>
+
   <div class="formHeader">
     <h3>STEPS - Operation #{{$operNumber}}: {{$operName}}</h3>
   </div>
@@ -49,8 +59,6 @@
 
       </div>
   </div>
-
-<section id="content">
 
   <div class="grid-view">
       <div id="quickView" style="display:none;">
@@ -111,7 +119,7 @@
 
 				 <fieldset class="add-desc">
 					 <p>{!! Form::label('desc', 'Description') !!}</p>
-					 {!! Form::textarea('desc', '', ['class' => 'form-control form-add', 'size' => '50x10']) !!}
+					 {!! Form::textarea('desc', '', ['class' => 'form-control form-add', 'size' => '20x5']) !!}
 				 </fieldset>
 
         <fieldset class="add-media">
@@ -121,8 +129,12 @@
 
         {!! Form::hidden('oper', $operId) !!}
 
-        <!-- <button type="submit" class="white-button oper-next" name="finish">SAVE AND FINISH</button> -->
-        <button type="submit" class="white-button oper-next" name="continue">SAVE AND CONTINUE</button>
+
+        <div id="buttonCon">
+          <a href="{{ url('/admin/operation/edit/')}}/{{$operId}}" class="white-button oper-next">BACK</a>
+          <button type="submit" class="white-button oper-next" name="continue" id="saveContinueButt">SAVE AND CONTINUE</button>
+        </div>
+
       {!! Form::close() !!}
     </div>
   </div>

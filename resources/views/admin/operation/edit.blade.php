@@ -8,8 +8,18 @@
       </div>
   </div>
 
+  <div class="progress-bar-con">
+      <ul class="progress-bar">
+        <li id="progress-one">Part Details</li>
+        <li id="progress-two" class="active" >Operations</li>
+        <li id="progress-three">Quality Alerts</li>
+      </ul>
+
+      <hr id="progress-line">
+  </div>
+
   <div class="formHeader">
-    <h3>OPERATION {{$old[0]->title}}</h3>
+    <h3>OPERATION: {{$old[0]->title}}</h3>
   </div>
 
   <div id="dim">
@@ -50,7 +60,7 @@
       </div>
   </div>
 
-<section id="content">
+<!-- <section id="content"> -->
 
   <div class="grid-view">
       <div id="quickView" style="display:none;">
@@ -114,8 +124,11 @@
         @endforeach
         <!-- <button type="submit" class="white-button oper-next" name="finish">SAVE AND FINISH</button> -->
         <!-- <button type="submit" class="white-button oper-next" name="continue">SAVE AND CONTINUE</button> -->
-        <button type="submit" class="white-button oper-next" name="continue">SAVE</button>
+        <div id="buttonCon">
+          <button type="submit" class="white-button oper-next" name="continue">SAVE</button>
+        </div>
       {!! Form::close() !!}
+
     </div>
   </div>
 

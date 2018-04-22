@@ -104,7 +104,7 @@
                 <div id="steps">
                   @foreach ($operation->steps as $step)
                     <div class="stepItem">
-                      <p class=stepTitle>{{$step->title}}</p>
+                      <p class="stepTitle">{{$step->pivot->order}}. {{$step->title}}</p>
                       <p class="stepDesc">{{$step->desc}}</p>
                     </div>
                     <!-- Loop inside array of matches between steps and media to check if there's related images with it -->

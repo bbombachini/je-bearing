@@ -688,6 +688,11 @@ a{
   color: $lightgreen;
   cursor: pointer;
 }
+
+#saveContinueButt{
+  width: 340px !important;
+  float: right !important;
+}
 .add-button {
   display: flex;
   justify-content: center;
@@ -1147,11 +1152,7 @@ a{
   }
 }
 #edit {
-  @extend #add;
-  grid-row-gap: 30px;
-  grid-template-areas:
-     "name number"
-     "desc media";
+
    .add-media{
      min-width: 0;
      min-height: 0;
@@ -1449,7 +1450,7 @@ a{
 
   .opItemTitle{
     font-weight: 600;
-    // color: $lightgreen;
+    text-transform: uppercase;
   }
 
   .opItemTitle:hover{
@@ -1463,7 +1464,7 @@ a{
 }
 
 #operations{
-  margin-top: 40px;
+  margin: 50px;
   h4{
     font-family: 'Light';
     font-size: 1.5vw;
@@ -1480,6 +1481,10 @@ a{
   }
   .addOper{
     padding-top: 40px;
+
+    .add-desc{
+      margin-top: 20px;
+    }
   }
 
   .form-control{
@@ -1523,6 +1528,9 @@ a{
 
 .opOpen{
   display: none;
+  #steps {
+    padding-left: 60px;
+  }
 }
 
 .opOpen.open{
