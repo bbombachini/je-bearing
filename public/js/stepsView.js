@@ -33,10 +33,11 @@
 
 	// Opens the operation
 	function openOperation(){
-		let opSingle = this.parentNode.parentNode.dataset.id;
-		let opDesc = this.parentNode;
+		let opSingle = this.dataset.id;
+		let opDesc = this.querySelector('.opInfo');
 		let opInfo = document.querySelector(".opItem [data-id='"+ opSingle +"']");
 		let p = opDesc.querySelectorAll('p');
+		let signal = opDesc.querySelector('.opStatusSignal');
 
 		if(!opInfo.classList.contains('open')){
 			opInfo.classList.add('open');
@@ -44,6 +45,7 @@
 			p.forEach((column) => {
 				column.classList.add("whiteText");
 			});
+			signal.innerHTML = "&#8211;";
 		}
 		else{
 			opInfo.classList.remove('open');
@@ -51,6 +53,7 @@
 			p.forEach((column) => {
 				column.classList.remove("whiteText");
 			});
+			signal.innerHTML = "+";
 		}
 	}
 
@@ -66,7 +69,8 @@
 
 	// Event Listeners ******************************************
 	operationLinks.forEach((operation) => {
-		operation.querySelector('.opItemTitle').addEventListener('click', openOperation, false);
+		// operation.querySelector('.opItemTitle').addEventListener('click', openOperation, false);
+		operation.addEventListener('click', openOperation, false);
 	});
 
 	for(var i=0; i<itemLinks.length; i++){

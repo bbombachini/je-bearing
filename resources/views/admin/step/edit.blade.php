@@ -36,6 +36,11 @@
                 {!! Form::text('title', $step->title, ['class' => 'form-control', 'required' => 'required']) !!}
               </fieldset>
 
+							<fieldset class="add-number">
+			         <p>{!! Form::label('order', 'Order') !!}</p>
+			         {!! Form::number('order', $operInfo[0]->pivot->order, ['required' => 'required', 'class' => 'form-control']) !!}
+			         </fieldset>
+
               <fieldset class="add-desc">
                 <p>{!! Form::label('desc', 'Description') !!}</p>
                 {!! Form::textarea('desc', $step->desc, ['class' => 'form-control form-edit', 'size' => '50x10']) !!}
@@ -65,8 +70,10 @@
 								</div>
               </fieldset>
 
+							{!! Form::hidden('oper', $operInfo[0]->pivot->operation_id) !!}
+
             @endforeach
-	              <a class="white-button" href="{{ url('/admin/step/list')}}"> CANCEL</a>
+	              <a class="white-button" href="javascript:history.back()"> CANCEL</a>
 	              <button class="green-button" type="submit" name="button">SAVE</button>
             {!! Form::close() !!}
       </div>

@@ -102,6 +102,10 @@ class StepController extends Controller {
 
     public function edit($id) {
       $step = Step::where('id', $id)->where('active', 1)->get();
+
+      // get information about step's operation
+      $operSteps = Step::find($id)->operations()->get();
+
       $stepMedia = Step::find($id)->getMediaRelationship()->latest()->first();
       if (empty($stepMedia)) {
         $photo = 'images/noimage.jpg';
@@ -113,7 +117,7 @@ class StepController extends Controller {
         $defaultPhoto = 0;
       }
 
-      return view('admin.step.edit', ['old' => $step, 'photo' => $photo, 'id' => $id, 'defaultPhoto' => $defaultPhoto]);
+      return view('admin.step.edit', ['old' => $step, 'photo' => $photo, 'id' => $id, 'defaultPhoto' => $defaultPhoto, 'operInfo' => $operSteps]);
     }
 
     public function update(Request $request) {
@@ -121,6 +125,9 @@ class StepController extends Controller {
       $step = Step::find($id);
       $step['title'] = $request['title'];
       $step['desc'] = $request['desc'];
+      $order = $request['order'];
+      $operId = $request['oper'];
+      $operation = Operation::where('id', $operId)->get();
 
       if(isset($request['media'])) {
         $this->validate($request, ['media' => 'mimes:jpeg,png,jpg,gif,svg',]);
@@ -132,6 +139,13 @@ class StepController extends Controller {
         $errors = $step->getErrors();
         return redirect()->back()->with('errors', $errors)->withInput();
       }
+
+      //get part relationship information
+      $operation = $step->operations()->get();
+
+      //remove previous relationship and save new
+      $step->operations()->detach($operation[0]);
+      $step->operations()->save($operation[0], ['order' => $order]);
 
       if(isset($media_id)) {
         $rel = Step::find($step['id'])->getMediaRelationship()->latest()->first();

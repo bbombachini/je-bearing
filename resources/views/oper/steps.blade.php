@@ -94,6 +94,7 @@
       @foreach ($operations as $operation)
       <div class="opItem" data-id="{{$operation->id}}">
           <div class="opInfo" id="opInfo1">
+              <p class="opStatusSignal">+</p>
               <p class="opItemTitle">{{$operation->title}}</p>
               <!-- Comments will be added in later implementation -->
               <!-- <p class="viewOpComments">1 Comment</p> -->

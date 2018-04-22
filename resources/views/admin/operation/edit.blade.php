@@ -60,6 +60,47 @@
       </div>
   </div>
 
+<!-- <section id="content"> -->
+
+  <div class="grid-view">
+      <div id="quickView" style="display:none;">
+        <img src="/images/person.jpg" width="100px">
+        <h2>Name</h2>
+        <p>Number</p>
+        <p>Desc</p>
+       </div>
+
+      <div id="confirm" style="display:none;">
+          <h2>Wait!</h2>
+          <p>Are you sure you want to delete this item?</p>
+          <a class="confirmDelete" href="destroy"><p>Yes, Delete</p></a>
+          <a class="ignoreDelete" href="#">No, Thank You</a>
+
+      </div>
+
+      <div class="list">
+        <ul>
+          @foreach ($items as $item)
+            <li class="list-item">
+              <div class="item-order">
+                <span>#{{$item->pivot->order}}</span>
+              </div>
+              <div>
+                <a class="item-name itemName" href="#" data-id="{{$item->id}}">{{$item->title}}</a>
+              </div>
+              <div class="item-column">
+                <a class="edit" href="{{action('StepController@edit', ['$id' => $item->id])}}">Edit</a>
+              </div>
+              <div class="item-column">
+                <a class="delete" data-id="{{$item->id}}" href="#">Delete</a>
+              </div>
+            </li>
+          @endforeach
+        </ul>
+      </div>
+
+  </div>
+
   <div id="operations">
 
     <div class="operInfo">
@@ -87,7 +128,7 @@
           <button type="submit" class="white-button oper-next" name="continue">SAVE</button>
         </div>
       {!! Form::close() !!}
-        
+
     </div>
   </div>
 
