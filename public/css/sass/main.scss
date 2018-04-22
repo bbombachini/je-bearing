@@ -688,6 +688,11 @@ a{
   color: $lightgreen;
   cursor: pointer;
 }
+
+#saveContinueButt{
+  width: 340px !important;
+  float: right !important;
+}
 .add-button {
   display: flex;
   justify-content: center;
@@ -1147,11 +1152,7 @@ a{
   }
 }
 #edit {
-  @extend #add;
-  grid-row-gap: 30px;
-  grid-template-areas:
-     "name number"
-     "desc media";
+
    .add-media{
      min-width: 0;
      min-height: 0;
@@ -1475,6 +1476,10 @@ a{
   }
   .addOper{
     padding-top: 40px;
+
+    .add-desc{
+      margin-top: 20px;
+    }
   }
 
   .form-control{
