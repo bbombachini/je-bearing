@@ -539,6 +539,25 @@
 		}
 	}
 
+	//Function to select the progress bar according to the href of the page
+	function activeNav() {
+    let list = document.querySelector('.progress-bar'),
+      anchor = list.querySelectorAll('a'),
+      current = window.location.pathname.split('/')[3];
+			if(current == "edit"){
+				document.querySelector('#progress-one').classList.add('active');
+			}
+			else if(current == "add"){
+				document.querySelector('#progress-two').classList.add('active');
+			}
+      // for (let i = 0; i < anchor.length; i++) {
+      // if(anchor[i].href == current) {
+			// 		console.log("anchor"+anchor[i].href);
+      //     anchor[i].className = "active";
+      // }
+    // }
+	}
+
 	nameLink.forEach(function(btn, index) {
 		btn.addEventListener('click', showView, false);
 	});
@@ -555,6 +574,7 @@
 		searchfeilds[i].addEventListener("input", showItemResults,false);
 	}
 
+	//Event Listeners that check first if element is on page
 	if(document.querySelector('#editPart')) {
 		populateArrays.call();
 	}
@@ -566,6 +586,9 @@
 	if(document.querySelector('#searchPart')){
 		let searchInput = document.querySelector('#searchPart');
 		searchInput.addEventListener('input', showResults, false);
+	}
+	if(document.querySelector('.progress-bar')){
+		activeNav();
 	}
 	// if(document.querySelector('#nextPart')){
 	// 	let searchPart = document.querySelector('#nextPart');

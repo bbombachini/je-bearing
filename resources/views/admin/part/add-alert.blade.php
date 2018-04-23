@@ -8,15 +8,7 @@
 					</div>
 			</div>
 
-       <div class="progress-bar-con">
-            <ul class="progress-bar">
-              <li id="progress-one">Part Details</li>
-              <li  id="progress-two">Operations</li>
-              <li class="active" id="progress-three">Quality Alerts</li>
-            </ul>
-
-            <hr id="progress-line">
-        </div>
+    @include('partials.progressbar')
 
         <div class="formHeader">
           <h3>ALERT DETAILS</h3>
@@ -55,13 +47,13 @@
 
             <div id="addImgButt"><p>+ Add Another Image</p></div>
 
-            
+
             <div id="buttonCon">
               <a href="{{ url('/admin/part/list')}}" class="white-button" id="continueButt" name="button">SAVE AND FINISH</a>
             </div>
         </div>
 
-        
+
 
         <script type="text/javascript" src="../../../js/part.js"></script>
 

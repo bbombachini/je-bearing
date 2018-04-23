@@ -865,6 +865,8 @@ a {
 #buttonCon {
   padding-top: 50px;
   clear: both; }
+  #buttonCon .green-button {
+    float: right; }
 
 #continueButt {
   float: right; }
@@ -922,10 +924,15 @@ a {
     color: #F34C18;
     border-color: #F34C18; }
 
+#edit .add-desc {
+  width: 40%;
+  display: inline;
+  margin-top: 20px; }
 #edit .add-media {
   min-width: 0;
   min-height: 0;
-  width: auto;
+  width: 40%;
+  float: right;
   height: auto; }
   #edit .add-media .image-hover {
     position: relative; }
@@ -1484,7 +1491,7 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr; }
 
-.progress-bar li {
+.progress-bar a li {
   list-style: none;
   display: inline-block;
   position: relative;
@@ -1492,7 +1499,13 @@ a {
   cursor: pointer;
   color: #ddd; }
 
-.progress-bar li:before {
+.progress-bar a li:nth-child(2) {
+  align-self: center;
+  justify-content: center;
+  justify-self: center;
+  margin: 0 auto; }
+
+.progress-bar a li:before {
   content: counter(step);
   counter-increment: step;
   width: 34px;
@@ -1507,10 +1520,10 @@ a {
   padding-top: 4px;
   color: #ddd; }
 
-.progress-bar li.active {
+.progress-bar a.active li {
   color: green; }
 
-.progress-bar li.active:before {
+.progress-bar a.active li:before {
   border-color: green;
   background-color: green;
   color: #fff; }
