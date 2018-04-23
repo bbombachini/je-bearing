@@ -540,23 +540,23 @@
 	}
 
 	//Function to select the progress bar according to the href of the page
-	function activeNav() {
-    let list = document.querySelector('.progress-bar'),
-      anchor = list.querySelectorAll('a'),
-      current = window.location.pathname.split('/')[3];
-			if(current == "edit"){
-				document.querySelector('#progress-one').classList.add('active');
-			}
-			else if(current == "add"){
-				document.querySelector('#progress-two').classList.add('active');
-			}
-      // for (let i = 0; i < anchor.length; i++) {
-      // if(anchor[i].href == current) {
-			// 		console.log("anchor"+anchor[i].href);
-      //     anchor[i].className = "active";
-      // }
-    // }
-	}
+	// function activeNav() {
+ //    let list = document.querySelector('.progress-bar'),
+ //      anchor = list.querySelectorAll('a'),
+ //      current = window.location.pathname.split('/')[3];
+	// 		if(current == "edit"){
+	// 			document.querySelector('#progress-one').classList.add('active');
+	// 		}
+	// 		else if(current == "add"){
+	// 			document.querySelector('#progress-two').classList.add('active');
+	// 		}
+ //      // for (let i = 0; i < anchor.length; i++) {
+ //      // if(anchor[i].href == current) {
+	// 		// 		console.log("anchor"+anchor[i].href);
+ //      //     anchor[i].className = "active";
+ //      // }
+ //    // }
+	// }
 
 	nameLink.forEach(function(btn, index) {
 		btn.addEventListener('click', showView, false);

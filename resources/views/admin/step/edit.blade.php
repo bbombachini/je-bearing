@@ -73,8 +73,10 @@
 							{!! Form::hidden('oper', $operInfo[0]->pivot->operation_id) !!}
 
             @endforeach
-	              <a class="white-button" href="javascript:history.back()"> CANCEL</a>
-	              <button class="green-button" type="submit" name="button">SAVE</button>
+	            <div id="buttonCon">
+	            <a class="white-button" href="javascript:history.back()"> CANCEL</a>
+	            <button class="green-button" type="submit" name="button">SAVE</button>
+			</div>
             {!! Form::close() !!}
       </div>
 </section>
