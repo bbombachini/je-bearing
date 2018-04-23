@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 20, 2018 at 04:53 PM
+-- Generation Time: Apr 23, 2018 at 12:54 AM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -79,7 +79,8 @@ INSERT INTO `fixture` (`id`, `name`, `number`, `desc`, `active`, `created_at`, `
 (5, 'Clara', 'sasas', NULL, 0, '2018-02-13 03:32:01', '2018-03-14 17:23:44'),
 (6, 'Clamp', '445-213', 'A clamp is a fastening device used to hold or secure objects tightly together to prevent movement or separation through the application of inward pressure.', 1, '2018-03-14 17:27:31', '2018-03-14 17:27:31'),
 (7, 'Orbital Sander', '457758', 'This is an orbital sander.', 1, '2018-04-20 19:20:04', '2018-04-20 19:20:04'),
-(8, 'Kreg Jig', '5637', 'Cool kit.', 1, '2018-04-20 19:21:27', '2018-04-20 19:21:27');
+(8, 'Kreg Jig', '5637', 'Cool kit.', 1, '2018-04-20 19:21:27', '2018-04-20 19:21:27'),
+(9, 'Corner Brackets', '45622', 'Corner brackets put everything together', 1, '2018-04-23 01:50:29', '2018-04-23 01:50:29');
 
 -- --------------------------------------------------------
 
@@ -105,7 +106,8 @@ INSERT INTO `fixture_media` (`id`, `fixture_id`, `media_id`, `order`, `created_a
 (3, 2, 19, 1, '2018-02-07 19:26:41', '2018-02-07 19:26:41'),
 (4, 6, 35, 1, '2018-03-14 17:27:31', '2018-03-14 17:27:31'),
 (5, 7, 52, 1, '2018-04-20 19:20:04', '2018-04-20 19:20:04'),
-(6, 8, 54, 1, '2018-04-20 19:21:27', '2018-04-20 19:21:27');
+(6, 8, 54, 1, '2018-04-20 19:21:27', '2018-04-20 19:21:27'),
+(7, 9, 63, 1, '2018-04-23 01:50:29', '2018-04-23 01:50:29');
 
 -- --------------------------------------------------------
 
@@ -137,7 +139,8 @@ INSERT INTO `material` (`id`, `name`, `number`, `desc`, `active`, `created_at`, 
 (7, 'Wood Glue', '345-234', 'Gorilla Wood Glue is the reliable adhesive that woodworkers, carpenters and hobbyists trust for their woodworking projects.', 1, '2018-03-14 17:29:44', '2018-03-14 17:29:44'),
 (8, 'Nails', '345-345', 'In woodworking and construction, a nail is a pin-shaped object of metal which is used as a fastener, as a peg to hang something, or sometimes as a decoration.', 1, '2018-03-14 17:31:47', '2018-03-14 17:31:47'),
 (9, 'Felt Pads', '234-253', 'Felt is a textile material that is produced by matting, condensing and pressing fibers together. Felt can be made of natural fibers such as wool or animal fur, or from synthetic fibers such as petroleum-based acrylic or acrylonitrile.', 1, '2018-03-14 17:34:52', '2018-03-14 17:34:52'),
-(10, 'Torque Screws', '8967', 'Puts everything together.', 1, '2018-04-20 19:20:39', '2018-04-20 19:20:39');
+(10, 'Torque Screws', '8967', 'Puts everything together.', 1, '2018-04-20 19:20:39', '2018-04-20 19:20:39'),
+(11, 'Plywood', '9872111', 'Sort of wood, but cheap.', 1, '2018-04-23 01:51:43', '2018-04-23 01:51:43');
 
 -- --------------------------------------------------------
 
@@ -163,7 +166,8 @@ INSERT INTO `material_media` (`id`, `material_id`, `media_id`, `order`, `created
 (7, 8, 40, 2, '2018-03-14 18:45:13', '2018-03-14 18:45:13'),
 (8, 1, 41, 2, '2018-03-14 18:45:22', '2018-03-14 18:45:22'),
 (9, 7, 42, 2, '2018-03-14 18:45:33', '2018-03-14 18:45:33'),
-(10, 10, 53, 1, '2018-04-20 19:20:39', '2018-04-20 19:20:39');
+(10, 10, 53, 1, '2018-04-20 19:20:39', '2018-04-20 19:20:39'),
+(11, 11, 64, 1, '2018-04-23 01:51:43', '2018-04-23 01:51:43');
 
 -- --------------------------------------------------------
 
@@ -230,7 +234,17 @@ INSERT INTO `media` (`id`, `path`, `desc`, `caption`, `created_at`, `updated_at`
 (59, '1524239783.jpg', NULL, NULL, '2018-04-20 19:56:23', '2018-04-20 19:56:23'),
 (60, '1524239835.jpg', NULL, NULL, '2018-04-20 19:57:15', '2018-04-20 19:57:15'),
 (61, '1524239895.jpg', NULL, NULL, '2018-04-20 19:58:15', '2018-04-20 19:58:15'),
-(62, '1524239956.jpg', NULL, NULL, '2018-04-20 19:59:16', '2018-04-20 19:59:16');
+(62, '1524239956.jpg', NULL, NULL, '2018-04-20 19:59:16', '2018-04-20 19:59:16'),
+(63, '1524433829.jpg', NULL, NULL, '2018-04-23 01:50:29', '2018-04-23 01:50:29'),
+(64, '1524433903.jpg', NULL, NULL, '2018-04-23 01:51:43', '2018-04-23 01:51:43'),
+(65, '1524434066.jpg', NULL, NULL, '2018-04-23 01:54:26', '2018-04-23 01:54:26'),
+(66, '1524434160.jpg', NULL, NULL, '2018-04-23 01:56:00', '2018-04-23 01:56:00'),
+(67, '1524434199.jpg', NULL, NULL, '2018-04-23 01:56:39', '2018-04-23 01:56:39'),
+(68, '1524434245.jpg', NULL, NULL, '2018-04-23 01:57:25', '2018-04-23 01:57:25'),
+(69, '1524434386.jpg', NULL, NULL, '2018-04-23 01:59:46', '2018-04-23 01:59:46'),
+(70, '1524434429.jpg', NULL, NULL, '2018-04-23 02:00:29', '2018-04-23 02:00:29'),
+(71, '1524434589.jpg', NULL, NULL, '2018-04-23 02:03:09', '2018-04-23 02:03:09'),
+(72, '1524444854.jpg', NULL, NULL, '2018-04-23 04:54:14', '2018-04-23 04:54:14');
 
 -- --------------------------------------------------------
 
@@ -359,7 +373,10 @@ INSERT INTO `operation` (`id`, `title`, `desc`, `active`, `created_at`, `updated
 (26, 'New operation for Part 46', NULL, 1, '2018-04-18 19:38:54', '2018-04-18 19:38:54'),
 (28, 'New operation 1000', NULL, 1, '2018-04-20 18:19:29', '2018-04-20 18:19:29'),
 (29, 'Planning', NULL, 1, '2018-04-20 19:34:56', '2018-04-20 19:34:56'),
-(30, 'Build', NULL, 1, '2018-04-20 19:56:23', '2018-04-20 19:56:23');
+(30, 'Build', NULL, 1, '2018-04-20 19:56:23', '2018-04-20 19:56:23'),
+(31, 'Plan Phase', NULL, 1, '2018-04-23 01:54:26', '2018-04-23 01:54:26'),
+(32, 'Build Phase', NULL, 1, '2018-04-23 01:58:54', '2018-04-23 01:58:54'),
+(33, 'Finish Phase', NULL, 1, '2018-04-23 02:01:48', '2018-04-23 02:01:48');
 
 -- --------------------------------------------------------
 
@@ -383,7 +400,8 @@ CREATE TABLE `operation_media` (
 INSERT INTO `operation_media` (`id`, `operation_id`, `media_id`, `order`, `created_at`, `updated_at`) VALUES
 (1, 18, 48, 1, '2018-04-16 23:06:42', '2018-04-16 23:06:42'),
 (2, 29, 56, 1, '2018-04-20 19:34:56', '2018-04-20 19:34:56'),
-(3, 30, 59, 1, '2018-04-20 19:56:23', '2018-04-20 19:56:23');
+(3, 30, 59, 1, '2018-04-20 19:56:23', '2018-04-20 19:56:23'),
+(4, 31, 65, 1, '2018-04-23 01:54:26', '2018-04-23 01:54:26');
 
 -- --------------------------------------------------------
 
@@ -429,10 +447,19 @@ INSERT INTO `operation_step` (`id`, `operation_id`, `step_id`, `order`, `created
 (22, 26, 9, 2, NULL, NULL),
 (23, 26, 20, 3, '2018-04-20 18:13:55', '2018-04-20 18:13:55'),
 (24, 29, 21, 1, '2018-04-20 19:37:24', '2018-04-20 19:37:24'),
-(25, 29, 22, 2, '2018-04-20 19:47:03', '2018-04-20 19:47:03'),
 (26, 30, 23, 1, '2018-04-20 19:57:15', '2018-04-20 19:57:15'),
 (27, 30, 24, 2, '2018-04-20 19:58:15', '2018-04-20 19:58:15'),
-(28, 30, 25, 3, '2018-04-20 19:59:16', '2018-04-20 19:59:16');
+(28, 30, 25, 3, '2018-04-20 19:59:16', '2018-04-20 19:59:16'),
+(30, 31, 27, 2, '2018-04-23 01:56:39', '2018-04-23 01:56:39'),
+(31, 31, 28, 3, '2018-04-23 01:57:25', '2018-04-23 01:57:25'),
+(37, 29, 22, 2, '2018-04-23 02:10:04', '2018-04-23 02:10:04'),
+(39, 31, 26, 1, '2018-04-23 02:33:14', '2018-04-23 02:33:14'),
+(42, 32, 29, 1, '2018-04-23 02:39:26', '2018-04-23 02:39:26'),
+(45, 32, 30, 2, '2018-04-23 02:59:28', '2018-04-23 02:59:28'),
+(47, 33, 31, 3, '2018-04-23 03:07:52', '2018-04-23 03:07:52'),
+(49, 33, 32, 4, '2018-04-23 03:38:28', '2018-04-23 03:38:28'),
+(50, 33, 33, 1, '2018-04-23 04:53:43', '2018-04-23 04:53:43'),
+(51, 33, 34, 2, '2018-04-23 04:54:14', '2018-04-23 04:54:14');
 
 -- --------------------------------------------------------
 
@@ -458,17 +485,18 @@ CREATE TABLE `part` (
 INSERT INTO `part` (`id`, `number`, `name`, `desc`, `active`, `category`, `created_at`, `updated_at`) VALUES
 (25, '123-456', 'Bench', NULL, 1, 1, '2018-03-14 17:20:38', '2018-03-14 17:20:38'),
 (34, '56575', 'Table', NULL, 1, 2, '2018-03-14 17:26:19', '2018-03-14 17:26:19'),
-(36, '9999', 'Statue', NULL, 1, 3, '2018-03-20 01:03:40', '2018-03-20 01:03:40'),
-(46, '111', 'Part 1', NULL, 1, 2, '2018-03-27 01:42:55', '2018-03-27 01:42:55'),
-(47, '222', 'Part 2', NULL, 1, 2, '2018-03-27 01:43:50', '2018-03-27 01:43:50'),
-(48, '1111', 'Part 1000', NULL, 1, 1, '2018-03-28 18:07:49', '2018-03-28 18:07:49'),
-(49, '1001', 'Part 1001', NULL, 1, 2, '2018-03-28 18:08:54', '2018-03-28 18:08:54'),
-(50, '2000', 'Part 2000', NULL, 1, 3, '2018-03-28 18:10:11', '2018-03-28 18:10:11'),
+(36, '9999', 'Statue', NULL, 0, 3, '2018-03-20 01:03:40', '2018-04-23 01:23:46'),
+(46, '111', 'Part 1', NULL, 0, 2, '2018-03-27 01:42:55', '2018-04-23 01:23:33'),
+(47, '222', 'Part 2', NULL, 0, 2, '2018-03-27 01:43:50', '2018-04-23 01:23:40'),
+(48, '1111', 'Part 1000', NULL, 0, 1, '2018-03-28 18:07:49', '2018-04-23 01:23:35'),
+(49, '1001', 'Part 1001', NULL, 0, 2, '2018-03-28 18:08:54', '2018-04-23 01:23:38'),
+(50, '2000', 'Part 2000', NULL, 0, 3, '2018-03-28 18:10:11', '2018-04-23 01:23:43'),
 (51, '9999', 'Statue', NULL, 1, 3, '2018-04-02 22:11:21', '2018-04-02 22:11:21'),
 (52, '9999', 'Statue', NULL, 0, 3, '2018-04-02 22:12:06', '2018-04-03 00:35:55'),
 (53, '000', 'Part 0', NULL, 0, 2, '2018-04-10 00:24:20', '2018-04-10 00:50:27'),
 (54, 'aaaa', 'aaa', NULL, 0, 1, '2018-04-10 00:35:12', '2018-04-10 00:35:17'),
-(55, '21341', 'Outdoor Table', NULL, 1, 1, '2018-04-20 19:33:44', '2018-04-20 19:39:28');
+(55, '21341', 'Outdoor Table', NULL, 1, 1, '2018-04-20 19:33:44', '2018-04-20 19:39:28'),
+(56, '345442', 'Cabinet', NULL, 1, 1, '2018-04-23 01:53:34', '2018-04-23 01:53:34');
 
 -- --------------------------------------------------------
 
@@ -524,7 +552,8 @@ INSERT INTO `part_fixture` (`id`, `part_id`, `fixture_id`, `created_at`, `update
 (21, 51, 6, '2018-04-02 22:11:21', '2018-04-02 22:11:21'),
 (22, 52, 6, '2018-04-02 22:12:06', '2018-04-02 22:12:06'),
 (23, 36, 6, '2018-04-04 19:34:41', '2018-04-04 19:34:41'),
-(25, 55, 8, '2018-04-20 19:33:44', '2018-04-20 19:33:44');
+(25, 55, 8, '2018-04-20 19:33:44', '2018-04-20 19:33:44'),
+(26, 56, 9, '2018-04-23 01:53:34', '2018-04-23 01:53:34');
 
 -- --------------------------------------------------------
 
@@ -565,7 +594,10 @@ INSERT INTO `part_material` (`id`, `part_id`, `material_id`, `quantity`, `size`,
 (16, 36, 7, NULL, NULL, '2018-04-04 19:39:51', '2018-04-04 19:39:51'),
 (35, 46, 8, NULL, NULL, '2018-04-10 00:21:38', '2018-04-10 00:21:38'),
 (36, 53, 9, NULL, NULL, '2018-04-10 00:24:20', '2018-04-10 00:24:20'),
-(37, 55, 10, NULL, NULL, '2018-04-20 19:33:44', '2018-04-20 19:33:44');
+(37, 55, 10, NULL, NULL, '2018-04-20 19:33:44', '2018-04-20 19:33:44'),
+(38, 56, 8, NULL, NULL, '2018-04-23 01:53:34', '2018-04-23 01:53:34'),
+(39, 56, 7, NULL, NULL, '2018-04-23 01:53:34', '2018-04-23 01:53:34'),
+(40, 56, 11, NULL, NULL, '2018-04-23 01:53:34', '2018-04-23 01:53:34');
 
 -- --------------------------------------------------------
 
@@ -614,7 +646,10 @@ INSERT INTO `part_operation` (`id`, `part_id`, `operation_id`, `order`, `created
 (30, 46, 26, 2, '2018-04-20 17:47:36', '2018-04-20 17:47:36'),
 (31, 46, 28, 50, '2018-04-20 18:19:29', '2018-04-20 18:19:29'),
 (34, 55, 29, 1, '2018-04-20 19:46:32', '2018-04-20 19:46:32'),
-(41, 55, 30, 2, '2018-04-20 20:12:27', '2018-04-20 20:12:27');
+(41, 55, 30, 2, '2018-04-20 20:12:27', '2018-04-20 20:12:27'),
+(44, 56, 32, 2, '2018-04-23 01:58:54', '2018-04-23 01:58:54'),
+(47, 56, 31, 1, '2018-04-23 02:34:46', '2018-04-23 02:34:46'),
+(49, 56, 33, 3, '2018-04-23 04:53:06', '2018-04-23 04:53:06');
 
 -- --------------------------------------------------------
 
@@ -668,7 +703,8 @@ INSERT INTO `part_tool` (`id`, `part_id`, `tool_id`, `created_at`, `updated_at`)
 (20, 36, 9, '2018-03-20 01:03:41', '2018-03-20 01:03:41'),
 (64, 53, 6, '2018-04-10 00:24:20', '2018-04-10 00:24:20'),
 (65, 46, 1, '2018-04-11 19:01:47', '2018-04-11 19:01:47'),
-(66, 55, 14, '2018-04-20 19:33:44', '2018-04-20 19:33:44');
+(66, 55, 14, '2018-04-20 19:33:44', '2018-04-20 19:33:44'),
+(67, 56, 1, '2018-04-23 01:53:34', '2018-04-23 01:53:34');
 
 -- --------------------------------------------------------
 
@@ -790,7 +826,14 @@ INSERT INTO `step` (`id`, `title`, `desc`, `active`, `created_at`, `updated_at`)
 (22, 'Cut the Lumber', 'Cut the lumber for the tabletop. You may use construction-grade lumber if you don\'t mind a rustic look, but choose boards with as little warp as possible. Measure and mark the cut lines first, then cut the lumber with a miter saw. Cut five 2x10 boards to 69 inches (180 cm) in length.', 1, '2018-04-20 19:47:03', '2018-04-20 19:47:03'),
 (23, 'Mark the pocket holes', 'Mark the pocket hole locations. For each border between two boards, draw a series of marks along one side, spacing them 8–10 inches (20.3–25.4 cm) apart. This is where you\'ll drill pocket holes to hold the tabletop together. In addition, mark two spots on each end of each board, where you\'ll be attaching breadboard ends.', 1, '2018-04-20 19:57:15', '2018-04-20 19:57:15'),
 (24, 'Adjust the Kreg Jig depth.', 'Adjust the jig placement. Manually loosen the screw on the back of the jig so you can move the hole guide. Raise or lower it until set to the 1.5 inch (3.8 cm) mark, then tighten the screw.', 1, '2018-04-20 19:58:15', '2018-04-20 19:58:15'),
-(25, 'Drill the pocket holes.', 'Drill the pocket holes. Stand the edge of a board into the Kreg Jig, centered on one of your marks. Drill through the hole on top of the Kreg Jig to make a pocket hole in the board. Repeat with each mark on each board.\r\nIt can help to rest the board on a 3/4\" spacer, to keep it level.\r\nDon\'t forget the marks on the end of each board. Stand the board vertically to drill these.', 1, '2018-04-20 19:59:16', '2018-04-20 19:59:16');
+(25, 'Drill the pocket holes.', 'Drill the pocket holes. Stand the edge of a board into the Kreg Jig, centered on one of your marks. Drill through the hole on top of the Kreg Jig to make a pocket hole in the board. Repeat with each mark on each board.\r\nIt can help to rest the board on a 3/4\" spacer, to keep it level.\r\nDon\'t forget the marks on the end of each board. Stand the board vertically to drill these.', 1, '2018-04-20 19:59:16', '2018-04-20 19:59:16'),
+(26, 'Plan the Build', 'Standard counter depth is 25\", which the cabinets themselves being 24\" to allow for a 1\" countertop lip. Standard counter height is 36\", with the cabinets usually being around 34.5\" tall to allow room for the countertop material. For upper (or wall) cabinets, add 18-20\" to the 36\" counter height. Any space left over between that distance and your ceiling is fair game for upper cabinets. The cabinet width can be anywhere from 12-60\", but always should be made in 3\" increments. The most common sizes are 15\", 18\", 21\", and 24\". Always account for the size of the doors you want and can buy when planning the width of your cabinets.', 1, '2018-04-23 01:56:00', '2018-04-23 01:56:00'),
+(27, 'Cut the Sides', 'Cut out the side pieces out of 3/4\" MDF, plywood, or an appropriate type of laminate. As the sides will not be seen, the material appearance does not matter, only the strength and durability. These panels will be 34.5\" high and 24\" wide. Clamp the two sides together and then use a jigsaw to cut a 3x5.5\" toe-kick in one corner of the panels. This will be your bottom front corner.', 1, '2018-04-23 01:56:39', '2018-04-23 01:56:39'),
+(28, 'Cut the Bottom', 'The bottom piece will be 24\" deep but the width will depend on the dimensions of your kitchen. Make sure that the width of the bottom section accounts for the width that will be added by the side pieces being added on either side.', 1, '2018-04-23 01:57:25', '2018-04-23 01:57:25'),
+(29, 'Join the Base Panels', 'Join the base panels to the bottom. Align and glue the base panels so that one flat face is flush with the back edge of the panel and the other is 3\" back from the front end. Then, using butt joints, screw through the cabinet base and into the edge of the panels. Pilot holes are a good idea here.', 1, '2018-04-23 01:59:46', '2018-04-23 01:59:46'),
+(30, 'Nail on a back panel', 'Nail on a back panel. Measure and then screw a 1/2\" plywood back panel into place. A thicker back panel will be needed for wall cabinets, like 3/4\" MDF.', 1, '2018-04-23 02:00:29', '2018-04-23 02:00:29'),
+(33, 'Install the doors', 'Install the doors. Install the doors onto the face panels as recommended by their manufacturer. You can also install drawers, but this can become quite complex and is not recommended for a beginner.', 1, '2018-04-23 04:53:43', '2018-04-23 04:53:43'),
+(34, 'Place the cabinets', 'Place the cabinets. Place the cabinets in their location. Screw through the back panel and into the wall studs to secure the cabinet it place. Upper cabinets may require more support, such as L brackets (than can be covered up by a backsplash), if you plan to put heavy items such as dishes in the cabinet.', 1, '2018-04-23 04:54:14', '2018-04-23 04:54:14');
 
 -- --------------------------------------------------------
 
@@ -822,7 +865,14 @@ INSERT INTO `step_media` (`id`, `step_id`, `media_id`, `order`, `created_at`, `u
 (9, 22, 58, 1, '2018-04-20 19:47:03', '2018-04-20 19:47:03'),
 (10, 23, 60, 1, '2018-04-20 19:57:15', '2018-04-20 19:57:15'),
 (11, 24, 61, 1, '2018-04-20 19:58:15', '2018-04-20 19:58:15'),
-(12, 25, 62, 1, '2018-04-20 19:59:16', '2018-04-20 19:59:16');
+(12, 25, 62, 1, '2018-04-20 19:59:16', '2018-04-20 19:59:16'),
+(13, 26, 66, 1, '2018-04-23 01:56:00', '2018-04-23 01:56:00'),
+(14, 27, 67, 1, '2018-04-23 01:56:39', '2018-04-23 01:56:39'),
+(15, 28, 68, 1, '2018-04-23 01:57:25', '2018-04-23 01:57:25'),
+(16, 29, 69, 1, '2018-04-23 01:59:46', '2018-04-23 01:59:46'),
+(17, 30, 70, 1, '2018-04-23 02:00:29', '2018-04-23 02:00:29'),
+(18, 32, 71, 1, '2018-04-23 02:03:09', '2018-04-23 02:03:09'),
+(19, 34, 72, 1, '2018-04-23 04:54:14', '2018-04-23 04:54:14');
 
 -- --------------------------------------------------------
 
@@ -1237,31 +1287,31 @@ ALTER TABLE `comment_media`
 -- AUTO_INCREMENT for table `fixture`
 --
 ALTER TABLE `fixture`
-  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `fixture_media`
 --
 ALTER TABLE `fixture_media`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `material`
 --
 ALTER TABLE `material`
-  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `material_media`
 --
 ALTER TABLE `material_media`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1285,25 +1335,25 @@ ALTER TABLE `note_media`
 -- AUTO_INCREMENT for table `operation`
 --
 ALTER TABLE `operation`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `operation_media`
 --
 ALTER TABLE `operation_media`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `operation_step`
 --
 ALTER TABLE `operation_step`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `part`
 --
 ALTER TABLE `part`
-  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `part_comment`
@@ -1315,19 +1365,19 @@ ALTER TABLE `part_comment`
 -- AUTO_INCREMENT for table `part_fixture`
 --
 ALTER TABLE `part_fixture`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `part_material`
 --
 ALTER TABLE `part_material`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `part_operation`
 --
 ALTER TABLE `part_operation`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `part_quality`
@@ -1339,7 +1389,7 @@ ALTER TABLE `part_quality`
 -- AUTO_INCREMENT for table `part_tool`
 --
 ALTER TABLE `part_tool`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `person`
@@ -1369,13 +1419,13 @@ ALTER TABLE `quality_note`
 -- AUTO_INCREMENT for table `step`
 --
 ALTER TABLE `step`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `step_media`
 --
 ALTER TABLE `step_media`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `step_note`

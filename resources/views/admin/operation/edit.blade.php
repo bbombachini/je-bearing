@@ -8,15 +8,7 @@
       </div>
   </div>
 
-  <div class="progress-bar-con">
-      <ul class="progress-bar">
-        <li id="progress-one">Part Details</li>
-        <li id="progress-two" class="active" >Operations</li>
-        <li id="progress-three">Quality Alerts</li>
-      </ul>
-
-      <hr id="progress-line">
-  </div>
+@include('partials.progressbar')
 
   <div class="formHeader">
     <h3>OPERATION: {{$old[0]->title}}</h3>

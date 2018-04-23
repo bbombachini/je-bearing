@@ -9,7 +9,7 @@
 
 					<div>
             <a id="back-button" href="{{ url('/admin/part/list')}}">
-  						<img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
+  						<img src="/images/arrow.png" alt="left arrow" id="leftarrow">
               <p class="backText">BACK TO PARTS</p>
             </a>
 					</div>
@@ -17,14 +17,8 @@
 			</div>
 
 				<div>
-					<div class="progress-bar-con">
-            <ul class="progress-bar">
-              <li id="progress-one" class="active">Part Details</li>
-              <li id="progress-two">Operations</li>
-              <li id="progress-three">Quality Alerts</li>
-            </ul>
-            <hr id="progress-line">
-        </div>
+
+				@include('partials.progressbar')
 
           <div class="formHeader">
               <h3>PART DETAILS</h3>
@@ -93,7 +87,6 @@
             <div id="buttonCon">
                <a href="{{ url('/admin/part/list')}}" class="white-button" name="button">SAVE AND FINISH</a>
                <a href="#" class="white-button" id="continueButt" name="button">SAVE AND CONTINUE</a>
-							 <!--  used to redirect to {{ url('/admin/part/add-operation')}} -->
             </div>
 			   {!! Form::close() !!}
 

@@ -70,9 +70,7 @@ Route::group(['middleware' => ['supervisor']] , function () {
   // Route::get('/admin/part/operation-details', function(){
   //   return view('admin.part.operation-details');
   // });
-  //  Route::get('/admin/part/add-alert', function(){
-  //   return view('admin.part.add-alert');
-  // });
+
   Route::get('/admin/part/list/search/{str}', ['uses' => 'PartController@search']);
 
   // Operations

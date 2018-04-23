@@ -7,16 +7,8 @@
         <h1>Operations</h1>
       </div>
   </div>
-  
-    <div class="progress-bar-con">
-      <ul class="progress-bar">
-        <li id="progress-one">Part Details</li>
-        <li id="progress-two" class="active" >Operations</li>
-        <li id="progress-three">Quality Alerts</li>
-      </ul>
 
-      <hr id="progress-line">
-  </div>
+@include('partials.progressbar')
 
   <div class="formHeader">
     <h3>OPERATIONS - PART #{{$partNumber}}: {{$partName}}</h3>
@@ -100,6 +92,9 @@
   </div>
 
   <div id="operations">
+    <div class="section-title small">
+      <h1>Add New Operation</h1>
+    </div>
 
     <div class="operInfo">
       {!! Form::model($operation, ['action' => 'OperationController@store', 'class' => 'addOper', 'files' => true]) !!}

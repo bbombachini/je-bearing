@@ -8,18 +8,10 @@
       </div>
   </div>
 
-  <div class="progress-bar-con">
-      <ul class="progress-bar">
-        <li id="progress-one">Part Details</li>
-        <li id="progress-two" class="active" >Operations</li>
-        <li id="progress-three">Quality Alerts</li>
-      </ul>
-
-      <hr id="progress-line">
-  </div>
+  @include('partials.progressbar')
 
   <div class="formHeader">
-    <h3>STEPS - Operation #{{$operNumber}}: {{$operName}}</h3>
+    <h3>STEPS - Operation: {{$operName}}</h3>
   </div>
 
   <div id="dim">
@@ -97,12 +89,16 @@
         </ul>
       </div>
 
+      <div class="addItem">
+        <a href="{{ url('/admin/part/add/operation/')}}/{{ session('partId') }}">+ Add Another Operation</a>
+      </div>
+
   </div>
 
   <div id="operations">
 
     <div class="section-title small">
-      <h1>Add Step</h1>
+      <h1>Add New Step</h1>
     </div>
 
     <div class="operInfo">

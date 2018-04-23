@@ -5,7 +5,7 @@
 				<div id="confirm">
 						<a class="ignoreDelete" href="#">X</a>
 
-								<img src="../../../images/warning.png" alt="warning icon">
+								<img src="/images/warning.png" alt="warning icon">
 								<h2>Wait!</h2>
 								<p>Are you sure you want to delete this photo?</p>
 								<a id="deletePhoto" class="confirmDelete" href="../destroyMedia">Yes, Delete</a>
@@ -20,10 +20,10 @@
 					</div>
 
 					<div>
-            <a id="back-button" href="{{ url('/admin/step/list')}}">
-  						<img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
-              <p class="backText">BACK TO STEPS</p>
-            </a>
+						<a id="back-button" href="javascript:history.back()">
+					    <img src="/images/arrow.png" alt="left arrow" id="leftarrow">
+					    <p class="backText">BACK TO STEPS</p>
+						</a>
 					</div>
 			</div>
 
