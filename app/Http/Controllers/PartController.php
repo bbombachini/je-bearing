@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Input;
 use App\Part;
 use App\Operation;
 use App\Step;
-// use App\ToolingMedia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Services\MediaService;
@@ -89,57 +88,10 @@ class PartController extends Controller {
 
     public function list(Part $part) {
       $parts = Part::where('active', 1)->orderBy('name', 'asc')->paginate(5);
-      // foreach ($parts as $part) {
-      //   // return $part['name'];
-      //   // $toolMedia = Tooling::find($tool['id'])->getMediaRelationship()->latest()->first();
-      //   // $media = $this->mediaService->getMedia($toolMedia['media_id']);
-      //   // if(empty($media)){
-      //   //   $tool['media_path'] = 'images/noimage.jpg';
-      //   // }
-      //   // else {
-      //   //   $tool['media_path'] = $media['path'];
-      //   // }
-      //   $partTooling = Part::find($part['id'])->getToolingRelationship()->get();
-      //   // $partTooling = Part::with('getToolingRelationship')->where('part_id', $part['id'])->get();
-      //   for($i = 0; $i < count($partTooling); $i++) {
-      //     Log::info($partTooling[$i]->part_id.' '.$partTooling[$i]->tool_id);
-      //   }
-      // }
 
       $count = Part::where('active', 1)->get()->count();
-      // return $tools;
       return view('admin.part.list', ['items' => $parts, 'count' => $count]);
     }
-
-    //TEMPORARY FUNCTION
-    // public function listPartTooling($id) {
-    //   $tools = Part::find($id)->tools()->get();
-    //   // return $tools;
-    //   // return view('oper.item', ['items' => $parts, 'count' => $count]);
-    //   return redirect()->action('ToolingController@opList', ['id' => $id]);
-    // }
-
-    //TEMPORARY FUNCTION - CHANGE LATER
-    // public function opList(Tooling $tooling) {
-    //   $items = Tooling::where('active', 1)->orderBy('name', 'asc')->paginate(6);
-    //   // $items = DB::table('tool')
-    //   //       ->join('part', 'users.id', '=', 'contacts.user_id')
-    //   //       ->join('orders', 'users.id', '=', 'orders.user_id')
-    //   //       ->select('users.*', 'contacts.phone', 'orders.price')
-    //   //       ->get();
-    //   foreach ($items as $item) {
-    //     $itemMedia = Tooling::find($item['id'])->getMediaRelationship()->latest()->first();
-    //     $media = $this->mediaService->getMedia($itemMedia['media_id']);
-    //     if(empty($media)){
-    //       $item['media_path'] = 'noimage.jpg';
-    //     }
-    //     else {
-    //       $item['media_path'] = $media['path'];
-    //     }
-    //   }
-    //     // return $tools;
-    //     return view('oper.items', ['items' => $items, 'title' => 'Tooling', 'name' => 'tools']);
-    // }
 
     public function quickview($id) {
       $part = Part::where('id', $id)->get();
@@ -164,13 +116,15 @@ class PartController extends Controller {
       }
     }
 
+    // get information about operations and steps for a specific part on Operator view
     public function getPartInfo($id){
       $part = Part::where('id', $id)->get();
-      $operations = Part::find($id)->operations()->with('steps')->get();
+      $operations = Part::find($id)->operations()->orderBy('pivot_order', 'asc')->get();
       $stepInfo = [];
       $stepImg = [];
       foreach ($operations as $operation) {
-        $steps = Operation::find($operation->id)->steps()->get();
+        $steps = Operation::find($operation->id)->steps()->orderBy('pivot_order', 'asc')->get();
+        $operation['steps'] = $steps;
         foreach ($steps as $step) {
           $stepMedia = Step::find($step->id)->getMediaRelationship()->get();
           if(!$stepMedia->isEmpty()){
@@ -264,27 +218,4 @@ class PartController extends Controller {
         return redirect()->action('PartController@list')->with('message', 'Your '. $part->name . ' has been created!');
       }
     }
-
-    // public function editMedia($id) {
-    //   $rel = Tooling::find($id)->getMediaRelationship()->latest()->first();
-    //   return $rel;
-    // }
-
-    // public function destroyMedia($id) {
-    //   $toolMedia_id = Tooling::find($id)->getMediaRelationship()->latest()->first();
-    //   if (empty($toolMedia_id['id'])) {
-    //     return redirect()->back()->withErrors(['No photo to delete']);
-    //   }
-    //   $toolMedia = ToolingMedia::find($toolMedia_id['id']);
-    //   $media_id = $toolMedia['media_id'];
-    //   if (empty($toolMedia)) {
-    //     echo "not found id".$toolMedia_id['id'];
-    //   }
-    //   else {
-    //     $toolMedia->delete();
-    //     $deleteMedia = $this->mediaService->destroyMedia($media_id);
-    //     //success
-    //     return redirect()->action('ToolingController@edit', ['id' => $id]);
-    //   }
-    // }
 }

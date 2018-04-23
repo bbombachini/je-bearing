@@ -18,7 +18,7 @@ class Step extends Model
   }
 
   public function operations() {
-      return $this->belongsToMany('App\Operation', 'operation_step', 'step_id', 'operation_id')->withPivot('order')->withTimestamps();;
+      return $this->belongsToMany('App\Operation', 'operation_step', 'step_id', 'operation_id')->withPivot('order')->withTimestamps();
   }
 
 }
