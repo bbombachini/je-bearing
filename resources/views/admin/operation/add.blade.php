@@ -8,7 +8,15 @@
       </div>
   </div>
 
-@include('partials.progressbar')
+<!-- @include('partials.progressbar') -->
+        <div class="progress-bar-con">
+            <ul class="progress-bar">
+              <li id="progress-one">Part Details</li>
+              <li id="progress-two" class="active">Operations</li>
+              <li id="progress-three">Quality Alerts</li>
+            </ul>
+            <hr id="progress-line">
+        </div>
 
   <div class="formHeader">
     <h3>OPERATIONS - PART #{{$partNumber}}: {{$partName}}</h3>

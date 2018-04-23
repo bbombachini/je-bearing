@@ -17,7 +17,16 @@
 			</div>
 
 				<div>
-				@include('partials.progressbar')
+				<!-- @include('partials.progressbar') -->
+
+		<div class="progress-bar-con">
+            <ul class="progress-bar">
+              <li id="progress-one" class="active">Part Details</li>
+              <li id="progress-two">Operations</li>
+              <li id="progress-three">Quality Alerts</li>
+            </ul>
+            <hr id="progress-line">
+        </div>
 
           <div class="formHeader">
               <h3>PART DETAILS</h3>
