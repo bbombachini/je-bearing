@@ -1,3 +1,5 @@
+<!-- Nav Bar template for the admin sidebar -->
+
   @include('partials.head')
   <!-- CONTENT STARTS HERE -->
   <div id="container">

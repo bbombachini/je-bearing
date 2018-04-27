@@ -8,7 +8,7 @@
             <div id="confirm">
                 <a class="ignoreDelete" href="#">X</a>
 
-                    <img src="../../images/warning.png" alt="warning icon">
+                    <img src="/images/warning.png" alt="warning icon">
                     <h2>Wait!</h2>
                     <p>Are you sure you want to delete this?</p>
                     <a id="deleteItem" class="confirmDelete" href="destroy">Yes, Delete</a>

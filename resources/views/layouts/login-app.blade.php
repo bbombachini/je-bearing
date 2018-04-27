@@ -1,3 +1,5 @@
+<!-- Layout template for login page -->
+
   @include('partials.head')
   <!-- CONTENT STARTS HERE -->
 
@@ -6,12 +8,12 @@
 
         @yield('admin-login')
 
-      
+
         @yield('message')
-        
+
 
         @yield('login')
-        
+
 
       </section>
 

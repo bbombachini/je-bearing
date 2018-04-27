@@ -9,7 +9,7 @@
 
 					<div>
             <a id="back-button" href="{{ url('/admin/material/list')}}">
-  						<img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
+  						<img src="/images/arrow.png" alt="left arrow" id="leftarrow">
               <p class="backText">BACK TO MATERIAL</p>
             </a>
 					</div>

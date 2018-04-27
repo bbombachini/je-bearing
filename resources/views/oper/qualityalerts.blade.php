@@ -1,7 +1,7 @@
 @extends('layouts.opp-app')
 
 @section('content')
-
+    <!-- Dummy hard coded content, to be replaced by real comments -->
     <section id="content">
     <div class="section-head">
 

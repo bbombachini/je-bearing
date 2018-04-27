@@ -18,8 +18,6 @@
 
 				<div>
 
-				<!-- @include('partials.progressbar') -->
-
           <div class="progress-bar-con">
             <ul class="progress-bar">
               <li id="progress-one" class="active">Part Details</li>

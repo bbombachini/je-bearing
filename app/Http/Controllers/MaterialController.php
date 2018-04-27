@@ -91,24 +91,7 @@ class MaterialController extends Controller {
       return view('admin.material.list', ['items' => $materials, 'count' => $count]);
     }
 
-    ///MAKE AN ITEM CONTROLLER?
-
-    // public function opList(Material $material) {
-    //   $items = Material::where('active', 1)->orderBy('name', 'asc')->paginate(6);
-    //   foreach ($items as $item) {
-    //     $itemMedia = Material::find($item['id'])->getMediaRelationship()->latest()->first();
-    //     $media = $this->mediaService->getMedia($itemMedia['media_id']);
-    //     if(empty($media)){
-    //       $item['media_path'] = 'noimage.jpg';
-    //     }
-    //     else {
-    //       $item['media_path'] = $media['path'];
-    //     }
-    //   }
-    //     // return $materials;
-    //     return view('oper.items', ['items' => $items, 'title' => 'Materials', 'name' => 'materials']);
-    // }
-    //
+    // List materials for operators
     public function opList($id) {
       $items = Part::find($id)->materials()->where('active', 1)->orderBy('name', 'asc')->paginate(6);
       foreach ($items as $item) {

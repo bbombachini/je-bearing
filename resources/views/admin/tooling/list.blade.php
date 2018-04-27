@@ -8,7 +8,7 @@
             <div id="confirm">
                 <a class="ignoreDelete" href="#">X</a>
 
-                    <img src="../../images/warning.png" alt="warning icon">
+                    <img src="/images/warning.png" alt="warning icon">
                     <h2>Wait!</h2>
                     <p>Are you sure you want to delete this?</p>
                     <a id="deleteItem" class="confirmDelete" href="destroy">Yes, Delete</a>
@@ -59,7 +59,7 @@
 
     <div class="grid-view">
         <div id="quickView" style="display:none;">
-        	<img src="../../images/person.jpg" width="100px">
+        	<img src="/images/person.jpg" width="100px">
         	<h2>Name</h2>
         	<p>Number</p>
         	<p>Desc</p>

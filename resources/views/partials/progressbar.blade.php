@@ -1,3 +1,4 @@
+<!-- Progress Bar to be future implemented -->
 <div class="progress-bar-con">
     <ul class="progress-bar">
       <a href="{{ url('/admin/part/edit/')}}/{{ session('partId') }}" id="progress-one"><li>Part Details</li></a>

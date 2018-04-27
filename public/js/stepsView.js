@@ -1,8 +1,6 @@
 // JavaScript Document
 (function() {
 	"use strict";
-
-
 	// Variables **************************************************
 
 	var operationLinks = document.querySelectorAll('.opItem'),
@@ -31,7 +29,7 @@
 		}
 	}
 
-	// Opens the operation
+	// Opens the respective operation
 	function openOperation(){
 		let opSingle = this.dataset.id;
 		let opDesc = this.querySelector('.opInfo');

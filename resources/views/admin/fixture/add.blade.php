@@ -9,7 +9,7 @@
 
 					<div>
             <a id="back-button" href="{{ url('/admin/fixture/list')}}">
-  						<img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
+  						<img src="/images/arrow.png" alt="left arrow" id="leftarrow">
               <p class="backText">BACK TO FIXTURE</p>
             </a>
 					</div>

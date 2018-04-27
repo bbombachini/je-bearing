@@ -89,57 +89,9 @@ class PartController extends Controller {
 
     public function list(Part $part) {
       $parts = Part::where('active', 1)->orderBy('name', 'asc')->paginate(5);
-      // foreach ($parts as $part) {
-      //   // return $part['name'];
-      //   // $toolMedia = Tooling::find($tool['id'])->getMediaRelationship()->latest()->first();
-      //   // $media = $this->mediaService->getMedia($toolMedia['media_id']);
-      //   // if(empty($media)){
-      //   //   $tool['media_path'] = 'images/noimage.jpg';
-      //   // }
-      //   // else {
-      //   //   $tool['media_path'] = $media['path'];
-      //   // }
-      //   $partTooling = Part::find($part['id'])->getToolingRelationship()->get();
-      //   // $partTooling = Part::with('getToolingRelationship')->where('part_id', $part['id'])->get();
-      //   for($i = 0; $i < count($partTooling); $i++) {
-      //     Log::info($partTooling[$i]->part_id.' '.$partTooling[$i]->tool_id);
-      //   }
-      // }
-
       $count = Part::where('active', 1)->get()->count();
-      // return $tools;
       return view('admin.part.list', ['items' => $parts, 'count' => $count]);
     }
-
-    //TEMPORARY FUNCTION
-    // public function listPartTooling($id) {
-    //   $tools = Part::find($id)->tools()->get();
-    //   // return $tools;
-    //   // return view('oper.item', ['items' => $parts, 'count' => $count]);
-    //   return redirect()->action('ToolingController@opList', ['id' => $id]);
-    // }
-
-    //TEMPORARY FUNCTION - CHANGE LATER
-    // public function opList(Tooling $tooling) {
-    //   $items = Tooling::where('active', 1)->orderBy('name', 'asc')->paginate(6);
-    //   // $items = DB::table('tool')
-    //   //       ->join('part', 'users.id', '=', 'contacts.user_id')
-    //   //       ->join('orders', 'users.id', '=', 'orders.user_id')
-    //   //       ->select('users.*', 'contacts.phone', 'orders.price')
-    //   //       ->get();
-    //   foreach ($items as $item) {
-    //     $itemMedia = Tooling::find($item['id'])->getMediaRelationship()->latest()->first();
-    //     $media = $this->mediaService->getMedia($itemMedia['media_id']);
-    //     if(empty($media)){
-    //       $item['media_path'] = 'noimage.jpg';
-    //     }
-    //     else {
-    //       $item['media_path'] = $media['path'];
-    //     }
-    //   }
-    //     // return $tools;
-    //     return view('oper.items', ['items' => $items, 'title' => 'Tooling', 'name' => 'tools']);
-    // }
 
     public function quickview($id) {
       $part = Part::where('id', $id)->get();
@@ -184,25 +136,9 @@ class PartController extends Controller {
       }
       session(['partNumber'=> $part[0]->number]);
       session(['partId'=> $id]);
+      session(['partName' => $part[0]->name]);
       return view('oper.steps', [ 'operations' => $operations, 'matchMedia' => $stepInfo, 'media' => $stepImg]);
     }
-
-    // public function searchPartNumber(Request $number) {
-    //   return $number['partnumber'];
-      // if(isset($number)) {
-      //   $part = Part::where('number','=',"{$number}")->get();
-      //   if(!$part->isEmpty()){
-      //       return $part;
-      //       // return (['item' => $part]);
-      //       // return redirect()->action('PartController@partTooling');
-      //   } else {
-      //     return redirect()->back()->withErrors(['Part Number not found']);
-      //   }
-      // }
-      // else {
-      //   return redirect()->back()->withErrors(['Please fill Part Number field']);
-      // }
-    // }
 
     public function edit($id) {
       $part = Part::where('id', $id)->where('active', 1)->get();

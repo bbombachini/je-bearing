@@ -8,7 +8,7 @@
             <div id="confirm">
                 <a class="ignoreDelete" href="#">X</a>
 
-                    <img src="../../images/warning.png" alt="warning icon">
+                    <img src="/images/warning.png" alt="warning icon">
                     <h2>Wait!</h2>
                     <p>Are you sure you want to delete this?</p>
                     <a id="deleteItem" class="confirmDelete" href="destroy">Yes, Delete</a>
@@ -52,7 +52,7 @@
 
 
             <div class="add-button">
-				<a href="{{ url('/admin/material/add')}}"><img src="../../images/plusIcon.png" alt="add an item" width="25px;"></a>
+				<a href="{{ url('/admin/material/add')}}"><img src="/images/plusIcon.png" alt="add an item" width="25px;"></a>
 			</div>
 
     </div>

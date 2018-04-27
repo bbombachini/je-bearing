@@ -9,7 +9,7 @@
 
 					<div>
             <a id="back-button" href="{{ url('/admin/part/list')}}">
-  						<img src="../../../images/arrow.png" alt="left arrow" id="leftarrow">
+  						<img src="/images/arrow.png" alt="left arrow" id="leftarrow">
               <p class="backText">BACK TO PARTS</p>
             </a>
 					</div>
@@ -17,7 +17,6 @@
 			</div>
 
 				<div>
-				<!-- @include('partials.progressbar') -->
 
 		<div class="progress-bar-con">
             <ul class="progress-bar">

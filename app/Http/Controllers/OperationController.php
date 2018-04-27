@@ -80,10 +80,8 @@ class OperationController extends Controller {
           return redirect()->back()->with('errors', $errors)->withInput();
         }
       }
-
       // success
       $lastOper = $operation;
-
       return redirect()->action('StepController@add', ['id' => $lastOper['id'], 'operId' => $lastOper]);
     }
 

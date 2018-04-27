@@ -18,10 +18,10 @@ class Supervisor
     {
       if ( Auth::check() && Auth::user()->isSuper() )
         {
-          Log::info('user is supervisor');
+          // Log::info('user is supervisor');
           return $next($request);
         }
-          Log::info('user is NOT supervisor');
+          // Log::info('user is NOT supervisor');
           return redirect('home');
     }
 }

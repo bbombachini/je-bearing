@@ -8,7 +8,6 @@
 					</div>
 			</div>
 
-    @include('partials.progressbar')
 
         <div class="formHeader">
           <h3>ALERT DETAILS</h3>
