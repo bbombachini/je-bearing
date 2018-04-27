@@ -31,8 +31,8 @@
 
 	// Opens the respective operation
 	function openOperation(){
-		let opSingle = this.dataset.id;
-		let opDesc = this.querySelector('.opInfo');
+		let opSingle = this.parentNode.dataset.id;
+		let opDesc = this;
 		let opInfo = document.querySelector(".opItem [data-id='"+ opSingle +"']");
 		let p = opDesc.querySelectorAll('p');
 		let signal = opDesc.querySelector('.opStatusSignal');
@@ -66,8 +66,7 @@
 	}
 
 	// Event Listeners ******************************************
-	operationLinks.forEach((operation) => {
-		// operation.querySelector('.opItemTitle').addEventListener('click', openOperation, false);
+	operationHeader.forEach((operation) => {
 		operation.addEventListener('click', openOperation, false);
 	});
 

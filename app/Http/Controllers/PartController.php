@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Input;
 use App\Part;
 use App\Operation;
 use App\Step;
-// use App\ToolingMedia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Services\MediaService;
@@ -116,13 +115,15 @@ class PartController extends Controller {
       }
     }
 
+    // get information about operations and steps for a specific part on Operator view
     public function getPartInfo($id){
       $part = Part::where('id', $id)->get();
-      $operations = Part::find($id)->operations()->with('steps')->get();
+      $operations = Part::find($id)->operations()->orderBy('pivot_order', 'asc')->get();
       $stepInfo = [];
       $stepImg = [];
       foreach ($operations as $operation) {
-        $steps = Operation::find($operation->id)->steps()->get();
+        $steps = Operation::find($operation->id)->steps()->orderBy('pivot_order', 'asc')->get();
+        $operation['steps'] = $steps;
         foreach ($steps as $step) {
           $stepMedia = Step::find($step->id)->getMediaRelationship()->get();
           if(!$stepMedia->isEmpty()){
@@ -200,27 +201,4 @@ class PartController extends Controller {
         return redirect()->action('PartController@list')->with('message', 'Your '. $part->name . ' has been created!');
       }
     }
-
-    // public function editMedia($id) {
-    //   $rel = Tooling::find($id)->getMediaRelationship()->latest()->first();
-    //   return $rel;
-    // }
-
-    // public function destroyMedia($id) {
-    //   $toolMedia_id = Tooling::find($id)->getMediaRelationship()->latest()->first();
-    //   if (empty($toolMedia_id['id'])) {
-    //     return redirect()->back()->withErrors(['No photo to delete']);
-    //   }
-    //   $toolMedia = ToolingMedia::find($toolMedia_id['id']);
-    //   $media_id = $toolMedia['media_id'];
-    //   if (empty($toolMedia)) {
-    //     echo "not found id".$toolMedia_id['id'];
-    //   }
-    //   else {
-    //     $toolMedia->delete();
-    //     $deleteMedia = $this->mediaService->destroyMedia($media_id);
-    //     //success
-    //     return redirect()->action('ToolingController@edit', ['id' => $id]);
-    //   }
-    // }
 }
