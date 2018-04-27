@@ -55,14 +55,10 @@ And navigate into http://localhost:8000/
 
 # Compile SASS
 
-Navigate inside public folder:
-```
-cd public
-```
+Sass is being used in this project and built in Webpack is being used to bundle the assets. To compile SASS into CSS, run on terminal:
 
-And run sass in terminal:
 ```
-sass --watch css/sass:css
+npm run dev
 ```
 
 # Authors
@@ -70,5 +66,3 @@ sass --watch css/sass:css
 * Barbara Bombachini - Front End Dev - <https://github.com/bbombachini>
 * Mauricio Silveira - Back End Dev - <https://github.com/maursilveira>
 * Clara Marshall - Project Manager, Designer and Front End Dev - <https://github.com/claramarshall>
-
-

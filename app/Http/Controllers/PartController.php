@@ -88,7 +88,6 @@ class PartController extends Controller {
 
     public function list(Part $part) {
       $parts = Part::where('active', 1)->orderBy('name', 'asc')->paginate(5);
-
       $count = Part::where('active', 1)->get()->count();
       return view('admin.part.list', ['items' => $parts, 'count' => $count]);
     }
@@ -138,25 +137,9 @@ class PartController extends Controller {
       }
       session(['partNumber'=> $part[0]->number]);
       session(['partId'=> $id]);
+      session(['partName' => $part[0]->name]);
       return view('oper.steps', [ 'operations' => $operations, 'matchMedia' => $stepInfo, 'media' => $stepImg]);
     }
-
-    // public function searchPartNumber(Request $number) {
-    //   return $number['partnumber'];
-      // if(isset($number)) {
-      //   $part = Part::where('number','=',"{$number}")->get();
-      //   if(!$part->isEmpty()){
-      //       return $part;
-      //       // return (['item' => $part]);
-      //       // return redirect()->action('PartController@partTooling');
-      //   } else {
-      //     return redirect()->back()->withErrors(['Part Number not found']);
-      //   }
-      // }
-      // else {
-      //   return redirect()->back()->withErrors(['Please fill Part Number field']);
-      // }
-    // }
 
     public function edit($id) {
       $part = Part::where('id', $id)->where('active', 1)->get();

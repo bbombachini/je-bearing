@@ -9,7 +9,7 @@
 	var searchfeilds = document.querySelectorAll(".itemsearchfeild");
 	var url;
 
-	//Array of arrays created to temporary show and save Tooling/Fixture/Materials into a Part.
+	//Array of arrays created to temporary display and later on save Tooling/Fixture/Materials into a Part.
 	var Selections = [];
 	Selections['tooling'] = new Array();
 	Selections['fixture'] = new Array();
@@ -49,6 +49,7 @@
 		btn.addEventListener('click', changeDeleteUrl, false);
 	});
 
+	// Function that calls the quickview modal
 	function showView(){
 			var bodyarea = document.querySelector('body');
 			var quickView = document.querySelector('#dim2');
@@ -167,12 +168,14 @@
 						}
 						result.innerHTML += newDiv;
 						}
-						//Create event listener to quickView -> Not finished
+						//Create event listener to quickView -> Not finished/ not working
 							let  selectItem = result.querySelectorAll('.selectItem');
-							selectItem.forEach((item) => {
+							selectItem.forEach((item, index) => {
 								if(document.querySelector('#searchPart')){
+									//Working but change it to select first result if user do not click on any of the search results
 									item.addEventListener('click', selectedItemList, false);
 								} else {
+									//Not working - do not call the quickView yet
 									item.addEventListener('click', showView, false);
 								}
 							});
@@ -201,19 +204,6 @@
 		let searchPart = document.querySelector('#nextPart');
 		searchPart.href += `/${id}`;
 		result.style.display = "none";
-		// let searchPart = document.querySelector('#nextPart');
-		// searchPart.addEventListener('click', selectPart, false);
-
-		// function selectPart(e){
-		// 	let searchInput = document.querySelector('#searchPart');
-		// 	let id = searchInput.dataset.id;
-		// 	let link = '/oper/part/search/'+id;
-		// 	// let reqPart = createRequest();
-		// 	// reqPart.onreadystatechange = resPart;
-		// 	// reqPart.open("GET", link, true);
-		// 	// reqPart.send( id, null);
-		// }
-
 	}
 
 
@@ -381,7 +371,6 @@
 			let toolingItems = document.querySelectorAll('.listItem.tooling li');
 			toolingItems.forEach((item) => {
 				let name = item.querySelector('p');
-				// Original['tooling'].push(item.dataset.id);
 				Selections['tooling'].push([item.dataset.id, name.innerHTML]);
 				item.addEventListener('click', removeUnit, false);
 			});
@@ -389,7 +378,6 @@
 			let fixtureItems = document.querySelectorAll('.listItem.fixture li');
 			fixtureItems.forEach((item) => {
 				let name = item.querySelector('p');
-				// Original['fixture'].push(item.dataset.id);
 				Selections['fixture'].push([item.dataset.id, name.innerHTML]);
 				item.addEventListener('click', removeUnit, false);
 			});
@@ -397,7 +385,6 @@
 			let MaterialItems = document.querySelectorAll('.listItem.material li');
 			MaterialItems.forEach((item) => {
 				let name = item.querySelector('p');
-				// Original['material'].push(item.dataset.id);
 				Selections['material'].push([item.dataset.id, name.innerHTML]);
 				item.addEventListener('click', removeUnit, false);
 			});
@@ -428,14 +415,12 @@
 
 
 			if (Selections['tooling'].length > 0) {
-				console.log(Selections['tooling']);
 				var tooling = new Array();
 				Selections['tooling'].forEach((item) => {
 					let id = item[0];
 					tooling.push(id);
 				});
 			}
-			console.log(tooling);
 			if (Selections['fixture'].length > 0) {
 				var fixture = new Array();
 				Selections['fixture'].forEach((item) => {
@@ -450,6 +435,9 @@
 					material.push(id);
 				});
 			}
+
+			if(name != "" && number != "" && category != ""){
+
 
 			fetch(url, {
 				headers: {
@@ -480,6 +468,11 @@
 			 .catch(function(error) {
         console.log(error);
       });
+			}
+			else {
+				// console.log('empty');
+				return;
+			}
 		}
 
 		function saveOperation(e) {
@@ -492,11 +485,6 @@
 			let name = document.querySelector('input[name="name"]').value;
 			let photo = document.querySelector('input[name="media"]').files[0];
 			// let form = document.querySelector('.addOPer');
-
-			// console.log(photo);
-
-			// console.log(e.currentTarget.getAttribute('name'));
-			// debugger;
 			// let redirect = (e.currentTarget.getAttribute('name') === 'continue') ? '/admin/operation/add/step' : '/admin/part/list';
 
 			fetch(url, {
@@ -539,23 +527,17 @@
 		}
 	}
 
-	//Function to select the progress bar according to the href of the page
+	// // Function to select the progress bar according to the href of the page
 	// function activeNav() {
- //    let list = document.querySelector('.progress-bar'),
- //      anchor = list.querySelectorAll('a'),
- //      current = window.location.pathname.split('/')[3];
+  //   let list = document.querySelector('.progress-bar'),
+  //     anchor = list.querySelectorAll('a'),
+  //     current = window.location.pathname.split('/')[3];
 	// 		if(current == "edit"){
 	// 			document.querySelector('#progress-one').classList.add('active');
 	// 		}
 	// 		else if(current == "add"){
 	// 			document.querySelector('#progress-two').classList.add('active');
 	// 		}
- //      // for (let i = 0; i < anchor.length; i++) {
- //      // if(anchor[i].href == current) {
-	// 		// 		console.log("anchor"+anchor[i].href);
- //      //     anchor[i].className = "active";
- //      // }
- //    // }
 	// }
 
 	nameLink.forEach(function(btn, index) {
@@ -580,16 +562,15 @@
 	}
 	if(document.querySelector('#continueButt')){
 		var nextBtn = document.querySelector('#continueButt');
-		// console.log(nextBtn);
 		nextBtn.addEventListener('click', savePart, false);
 	}
 	if(document.querySelector('#searchPart')){
 		let searchInput = document.querySelector('#searchPart');
 		searchInput.addEventListener('input', showResults, false);
 	}
-	if(document.querySelector('.progress-bar')){
-		activeNav();
-	}
+	// if(document.querySelector('.progress-bar')){
+	// 	activeNav();
+	// }
 	// if(document.querySelector('#nextPart')){
 	// 	let searchPart = document.querySelector('#nextPart');
 	// 	searchPart.addEventListener('click', selectPart, false);

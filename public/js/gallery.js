@@ -1,6 +1,8 @@
 (function() {
 	"use strict";
-
+	// Gallery functionality to be used on steps multiple image feature - to be implemented as well
+	//
+	//
 	var nextbutt = document.querySelector("#nextMediaButt");
 	var prevbutt = document.querySelector("#prevMediaButt");
 
@@ -15,7 +17,6 @@
 
 	//Functions that sort through the images of the gallery
 	function nextImage(){
-
 		i =(i+1);
 		imgGallery.src = stepImgs[i];
 		caption.innerHTML = stepCaptions[i];
@@ -28,7 +29,7 @@
 	}
 
 	function prevImage(){
-		i = (i - 1); 
+		i = (i - 1);
 		imgGallery.src = stepImgs[i];
 		caption.innerHTML = stepCaptions[i];
 

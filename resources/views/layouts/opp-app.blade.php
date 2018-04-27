@@ -1,3 +1,5 @@
+<!-- Nav Bar template for the operator sidebar -->
+
   @include('partials.head')
   <!-- CONTENT STARTS HERE -->
   <div id="container">
@@ -14,6 +16,7 @@
       		<div class="image-cropper"><img src="/{{ Auth::user()->photo }}" alt="{{ Auth::user()->fname }} {{ Auth::user()->lname }} photo"></div>
       		<div>
       			<h2 id="userName">{{ Auth::user()->fname }} {{ Auth::user()->lname }}</h2>
+            <p>{{ session('partName') }}</p>
       			<p>Part: #{{ session('partNumber') }}</p>
       		</div>
       	</div>

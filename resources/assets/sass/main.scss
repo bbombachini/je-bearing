@@ -317,7 +317,7 @@ a{
 
 #welcome-con {
     display: grid;
-    background-image: url('../images/bearings_background.jpg');
+    background-image: url('/images/bearings_background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     #adminLoginCon{
@@ -1130,11 +1130,9 @@ a{
   }
   .add-media {
     grid-area: media;
-    // margin-bottom: 30px;
   }
   .add-desc {
     grid-area: desc;
-    // margin-bottom: 60px;
     margin-bottom: 30px;
 
   }
@@ -1156,20 +1154,29 @@ a{
   }
 }
 #edit {
-
+  @extend #add;
+  grid-template-rows: repeat(6,auto);
+  grid-column-gap: 5%;
+  grid-row-gap: 20%;
+  grid-template-areas:
+     "name number"
+     "desc media";
   .add-desc{
-    width: 40%;
-    display: inline;
-    margin-top: 20px;
+    grid-area: desc;
+    margin: 20px 0;
+    textarea{
+      margin: 0;
+    }
   }
-
+  .add-name, .add-number{
+    width: 100%;
+  }
    .add-media{
+     grid-area:media;
      min-width: 0;
      min-height: 0;
-     width: 40%;
      float: right;
      height: auto;
-    //  margin-bottom: 30px;
       .image-hover{
         position: relative;
         img{
@@ -1231,6 +1238,9 @@ a{
       background-color: #fff;
       opacity: 0.9;
     }
+  }
+  button.green-button, a.white-button {
+    margin-top: 50px;
   }
 }
 
