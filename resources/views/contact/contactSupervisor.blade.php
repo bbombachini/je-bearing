@@ -24,11 +24,12 @@
 
         <fieldset class="contactLabel" id="contactName">
             <p>{!! Form::label('name', 'Supervisors Name') !!}</p>
-        
+
             <select class="form-control" name="name">
-            @foreach($supers as $super)
-            <option value="{{ $super->id }}">{{ $super->fname }} {{ $super->lname }}</option>
-            @endforeach
+              <option value="" selected>- Select a Supervisor -</option>
+              @foreach($supers as $super)
+              <option value="{{ $super->id }}">{{ $super->fname }} {{ $super->lname }}</option>
+              @endforeach
             </select>
 
         </fieldset>
@@ -37,6 +38,7 @@
             <p>{!! Form::label('subject', 'Subject') !!}</p>
 
             <select class="form-control" name="subject">
+                <option value="" selected>- Select a Subject -</option>
                 <option value="Please come and see me at my machine">Please come and see me at my machine</option>
                 <option value="Quality Question">Quality Question</option>
                 <option value="Machine Problem">Machine Problem</option>
@@ -48,7 +50,7 @@
         <fieldset class="contactLabel">
         <p>{!! Form::label('message') !!}</p>
         {!! Form::textarea('msg', null, ['class' => 'contactInput']) !!}
-        </fieldset> 
+        </fieldset>
 
         <button type="submit" class="green-button" name="button">SUBMIT</button>
 
@@ -67,7 +69,7 @@
         @endif
 
 
-  
+
 </section>
 
 
