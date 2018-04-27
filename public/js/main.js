@@ -415,14 +415,12 @@
 
 
 			if (Selections['tooling'].length > 0) {
-				console.log(Selections['tooling']);
 				var tooling = new Array();
 				Selections['tooling'].forEach((item) => {
 					let id = item[0];
 					tooling.push(id);
 				});
 			}
-			console.log(tooling);
 			if (Selections['fixture'].length > 0) {
 				var fixture = new Array();
 				Selections['fixture'].forEach((item) => {
@@ -437,6 +435,9 @@
 					material.push(id);
 				});
 			}
+
+			if(name != "" && number != "" && category != ""){
+
 
 			fetch(url, {
 				headers: {
@@ -467,6 +468,11 @@
 			 .catch(function(error) {
         console.log(error);
       });
+			}
+			else {
+				// console.log('empty');
+				return;
+			}
 		}
 
 		function saveOperation(e) {

@@ -34,12 +34,14 @@
             {!! Form::open(['id' => 'addPart', 'class' => 'partForm']) !!}
             <fieldset class="part-name">
               <p>{!! Form::label('name', 'Part Name') !!}</p>
-              {!! Form::text('name', '', ['required' => 'required']) !!}
+              <!-- {!! Form::text('name', '', ['required' => 'required']) !!} -->
+							<input type="text" required name="name" value="">
             </fieldset>
 
             <fieldset class="part-number">
               <p>{!! Form::label('number', 'Part #') !!}</p>
-              {!! Form::text('number', '', ['required' => 'required']) !!}
+							<input type="number" required name="number" value="">
+              <!-- {!! Form::text('number', '', ['required' => 'required']) !!} -->
             </fieldset>
 
             <div id="searchTables">

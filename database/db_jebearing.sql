@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2018 at 12:54 AM
+-- Generation Time: Apr 27, 2018 at 12:53 AM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -80,7 +80,10 @@ INSERT INTO `fixture` (`id`, `name`, `number`, `desc`, `active`, `created_at`, `
 (6, 'Clamp', '445-213', 'A clamp is a fastening device used to hold or secure objects tightly together to prevent movement or separation through the application of inward pressure.', 1, '2018-03-14 17:27:31', '2018-03-14 17:27:31'),
 (7, 'Orbital Sander', '457758', 'This is an orbital sander.', 1, '2018-04-20 19:20:04', '2018-04-20 19:20:04'),
 (8, 'Kreg Jig', '5637', 'Cool kit.', 1, '2018-04-20 19:21:27', '2018-04-20 19:21:27'),
-(9, 'Corner Brackets', '45622', 'Corner brackets put everything together', 1, '2018-04-23 01:50:29', '2018-04-23 01:50:29');
+(9, 'Corner Brackets', '45622', 'Corner brackets put everything together', 1, '2018-04-23 01:50:29', '2018-04-23 01:50:29'),
+(10, 'KLI', '9822', 'Clamping force up to 1,200 N Feather light yet ultra strong. Sturdy fixed and sliding arms made from lightweight magnesium. Quick and vibration free clamping. On carded hang pack.', 1, '2018-04-27 04:40:40', '2018-04-27 04:40:40'),
+(11, 'Jaw', '387766', 'For turning out all soft and heat-treated chuck jaws on manual and power lathe chucks', 1, '2018-04-27 04:43:06', '2018-04-27 04:43:06'),
+(12, 'Welding Clamp', '85746', 'The economical 4-in-1 Clamp adapts to serve four different functions: 1. Standard Clamping 2. Pipe Clamping 3. Spreader Clamping 4. Step-Over Clamping\r\nThe 4-in-1 clamp features the removable / reversible clamp arm and a threaded hole in the jaw for the addition of the unique V-Pad and Extender Block Accessories', 1, '2018-04-27 04:44:09', '2018-04-27 04:44:09');
 
 -- --------------------------------------------------------
 
@@ -107,7 +110,10 @@ INSERT INTO `fixture_media` (`id`, `fixture_id`, `media_id`, `order`, `created_a
 (4, 6, 35, 1, '2018-03-14 17:27:31', '2018-03-14 17:27:31'),
 (5, 7, 52, 1, '2018-04-20 19:20:04', '2018-04-20 19:20:04'),
 (6, 8, 54, 1, '2018-04-20 19:21:27', '2018-04-20 19:21:27'),
-(7, 9, 63, 1, '2018-04-23 01:50:29', '2018-04-23 01:50:29');
+(7, 9, 63, 1, '2018-04-23 01:50:29', '2018-04-23 01:50:29'),
+(8, 10, 79, 1, '2018-04-27 04:40:40', '2018-04-27 04:40:40'),
+(9, 11, 80, 1, '2018-04-27 04:43:06', '2018-04-27 04:43:06'),
+(10, 12, 81, 1, '2018-04-27 04:44:09', '2018-04-27 04:44:09');
 
 -- --------------------------------------------------------
 
@@ -244,7 +250,16 @@ INSERT INTO `media` (`id`, `path`, `desc`, `caption`, `created_at`, `updated_at`
 (69, '1524434386.jpg', NULL, NULL, '2018-04-23 01:59:46', '2018-04-23 01:59:46'),
 (70, '1524434429.jpg', NULL, NULL, '2018-04-23 02:00:29', '2018-04-23 02:00:29'),
 (71, '1524434589.jpg', NULL, NULL, '2018-04-23 02:03:09', '2018-04-23 02:03:09'),
-(72, '1524444854.jpg', NULL, NULL, '2018-04-23 04:54:14', '2018-04-23 04:54:14');
+(72, '1524444854.jpg', NULL, NULL, '2018-04-23 04:54:14', '2018-04-23 04:54:14'),
+(73, '1524775866.jpg', NULL, NULL, '2018-04-27 00:51:06', '2018-04-27 00:51:06'),
+(74, '1524775907.png', NULL, NULL, '2018-04-27 00:51:47', '2018-04-27 00:51:47'),
+(75, '1524775940.png', NULL, NULL, '2018-04-27 00:52:20', '2018-04-27 00:52:20'),
+(76, '1524776030.png', NULL, NULL, '2018-04-27 00:53:50', '2018-04-27 00:53:50'),
+(77, '1524776065.png', NULL, NULL, '2018-04-27 00:54:26', '2018-04-27 00:54:26'),
+(78, '1524776118.png', NULL, NULL, '2018-04-27 00:55:18', '2018-04-27 00:55:18'),
+(79, '1524789640.jpg', NULL, NULL, '2018-04-27 04:40:40', '2018-04-27 04:40:40'),
+(80, '1524789786.jpg', NULL, NULL, '2018-04-27 04:43:06', '2018-04-27 04:43:06'),
+(81, '1524789849.jpg', NULL, NULL, '2018-04-27 04:44:09', '2018-04-27 04:44:09');
 
 -- --------------------------------------------------------
 
@@ -376,7 +391,11 @@ INSERT INTO `operation` (`id`, `title`, `desc`, `active`, `created_at`, `updated
 (30, 'Build', NULL, 1, '2018-04-20 19:56:23', '2018-04-20 19:56:23'),
 (31, 'Plan Phase', NULL, 1, '2018-04-23 01:54:26', '2018-04-23 01:54:26'),
 (32, 'Build Phase', NULL, 1, '2018-04-23 01:58:54', '2018-04-23 01:58:54'),
-(33, 'Finish Phase', NULL, 1, '2018-04-23 02:01:48', '2018-04-23 02:01:48');
+(33, 'Finish Phase', NULL, 1, '2018-04-23 02:01:48', '2018-04-23 02:01:48'),
+(34, 'Cut the Lamber', NULL, 1, '2018-04-26 23:14:46', '2018-04-26 23:14:46'),
+(35, 'Measures', NULL, 1, '2018-04-27 00:50:34', '2018-04-27 00:50:34'),
+(36, 'Assembly and Building', NULL, 1, '2018-04-27 00:52:46', '2018-04-27 00:52:46'),
+(37, 'Finish', NULL, 1, '2018-04-27 00:54:43', '2018-04-27 00:54:43');
 
 -- --------------------------------------------------------
 
@@ -449,7 +468,6 @@ INSERT INTO `operation_step` (`id`, `operation_id`, `step_id`, `order`, `created
 (24, 29, 21, 1, '2018-04-20 19:37:24', '2018-04-20 19:37:24'),
 (26, 30, 23, 1, '2018-04-20 19:57:15', '2018-04-20 19:57:15'),
 (27, 30, 24, 2, '2018-04-20 19:58:15', '2018-04-20 19:58:15'),
-(28, 30, 25, 3, '2018-04-20 19:59:16', '2018-04-20 19:59:16'),
 (30, 31, 27, 2, '2018-04-23 01:56:39', '2018-04-23 01:56:39'),
 (31, 31, 28, 3, '2018-04-23 01:57:25', '2018-04-23 01:57:25'),
 (37, 29, 22, 2, '2018-04-23 02:10:04', '2018-04-23 02:10:04'),
@@ -459,7 +477,17 @@ INSERT INTO `operation_step` (`id`, `operation_id`, `step_id`, `order`, `created
 (47, 33, 31, 3, '2018-04-23 03:07:52', '2018-04-23 03:07:52'),
 (49, 33, 32, 4, '2018-04-23 03:38:28', '2018-04-23 03:38:28'),
 (50, 33, 33, 1, '2018-04-23 04:53:43', '2018-04-23 04:53:43'),
-(51, 33, 34, 2, '2018-04-23 04:54:14', '2018-04-23 04:54:14');
+(51, 33, 34, 2, '2018-04-23 04:54:14', '2018-04-23 04:54:14'),
+(52, 30, 25, 3, '2018-04-23 05:35:12', '2018-04-23 05:35:12'),
+(53, 34, 35, 1, '2018-04-26 23:15:48', '2018-04-26 23:15:48'),
+(54, 34, 36, 2, '2018-04-26 23:17:19', '2018-04-26 23:17:19'),
+(55, 35, 37, 1, '2018-04-27 00:51:06', '2018-04-27 00:51:06'),
+(56, 35, 38, 2, '2018-04-27 00:51:47', '2018-04-27 00:51:47'),
+(57, 35, 39, 3, '2018-04-27 00:52:20', '2018-04-27 00:52:20'),
+(58, 36, 40, 1, '2018-04-27 00:53:17', '2018-04-27 00:53:17'),
+(59, 36, 41, 2, '2018-04-27 00:53:50', '2018-04-27 00:53:50'),
+(60, 36, 42, 3, '2018-04-27 00:54:26', '2018-04-27 00:54:26'),
+(61, 37, 43, 1, '2018-04-27 00:55:18', '2018-04-27 00:55:18');
 
 -- --------------------------------------------------------
 
@@ -496,7 +524,9 @@ INSERT INTO `part` (`id`, `number`, `name`, `desc`, `active`, `category`, `creat
 (53, '000', 'Part 0', NULL, 0, 2, '2018-04-10 00:24:20', '2018-04-10 00:50:27'),
 (54, 'aaaa', 'aaa', NULL, 0, 1, '2018-04-10 00:35:12', '2018-04-10 00:35:17'),
 (55, '21341', 'Outdoor Table', NULL, 1, 1, '2018-04-20 19:33:44', '2018-04-20 19:39:28'),
-(56, '345442', 'Cabinet', NULL, 1, 1, '2018-04-23 01:53:34', '2018-04-23 01:53:34');
+(56, '345442', 'Cabinet', NULL, 1, 1, '2018-04-23 01:53:34', '2018-04-23 01:53:34'),
+(57, '39072', 'Drawer', NULL, 1, 1, '2018-04-27 00:50:02', '2018-04-27 00:50:02'),
+(58, '7899012', 'Furniture', NULL, 1, 1, '2018-04-27 04:32:44', '2018-04-27 04:32:44');
 
 -- --------------------------------------------------------
 
@@ -553,7 +583,12 @@ INSERT INTO `part_fixture` (`id`, `part_id`, `fixture_id`, `created_at`, `update
 (22, 52, 6, '2018-04-02 22:12:06', '2018-04-02 22:12:06'),
 (23, 36, 6, '2018-04-04 19:34:41', '2018-04-04 19:34:41'),
 (25, 55, 8, '2018-04-20 19:33:44', '2018-04-20 19:33:44'),
-(26, 56, 9, '2018-04-23 01:53:34', '2018-04-23 01:53:34');
+(26, 56, 9, '2018-04-23 01:53:34', '2018-04-23 01:53:34'),
+(27, 25, 7, '2018-04-26 23:12:39', '2018-04-26 23:12:39'),
+(28, 57, 8, '2018-04-27 00:50:02', '2018-04-27 00:50:02'),
+(29, 57, 7, '2018-04-27 00:50:02', '2018-04-27 00:50:02'),
+(30, 58, 9, '2018-04-27 04:32:44', '2018-04-27 04:32:44'),
+(31, 58, 8, '2018-04-27 04:32:44', '2018-04-27 04:32:44');
 
 -- --------------------------------------------------------
 
@@ -597,7 +632,13 @@ INSERT INTO `part_material` (`id`, `part_id`, `material_id`, `quantity`, `size`,
 (37, 55, 10, NULL, NULL, '2018-04-20 19:33:44', '2018-04-20 19:33:44'),
 (38, 56, 8, NULL, NULL, '2018-04-23 01:53:34', '2018-04-23 01:53:34'),
 (39, 56, 7, NULL, NULL, '2018-04-23 01:53:34', '2018-04-23 01:53:34'),
-(40, 56, 11, NULL, NULL, '2018-04-23 01:53:34', '2018-04-23 01:53:34');
+(40, 56, 11, NULL, NULL, '2018-04-23 01:53:34', '2018-04-23 01:53:34'),
+(41, 25, 8, NULL, NULL, '2018-04-26 23:12:39', '2018-04-26 23:12:39'),
+(42, 25, 1, NULL, NULL, '2018-04-26 23:12:39', '2018-04-26 23:12:39'),
+(43, 25, 7, NULL, NULL, '2018-04-26 23:12:39', '2018-04-26 23:12:39'),
+(44, 57, 11, NULL, NULL, '2018-04-27 00:50:02', '2018-04-27 00:50:02'),
+(45, 57, 10, NULL, NULL, '2018-04-27 00:50:02', '2018-04-27 00:50:02'),
+(46, 58, 11, NULL, NULL, '2018-04-27 04:32:44', '2018-04-27 04:32:44');
 
 -- --------------------------------------------------------
 
@@ -649,7 +690,11 @@ INSERT INTO `part_operation` (`id`, `part_id`, `operation_id`, `order`, `created
 (41, 55, 30, 2, '2018-04-20 20:12:27', '2018-04-20 20:12:27'),
 (44, 56, 32, 2, '2018-04-23 01:58:54', '2018-04-23 01:58:54'),
 (47, 56, 31, 1, '2018-04-23 02:34:46', '2018-04-23 02:34:46'),
-(49, 56, 33, 3, '2018-04-23 04:53:06', '2018-04-23 04:53:06');
+(50, 56, 33, 3, '2018-04-23 05:34:42', '2018-04-23 05:34:42'),
+(51, 25, 34, 1, '2018-04-26 23:14:46', '2018-04-26 23:14:46'),
+(52, 57, 35, 1, '2018-04-27 00:50:34', '2018-04-27 00:50:34'),
+(53, 57, 36, 2, '2018-04-27 00:52:46', '2018-04-27 00:52:46'),
+(54, 57, 37, 3, '2018-04-27 00:54:43', '2018-04-27 00:54:43');
 
 -- --------------------------------------------------------
 
@@ -704,7 +749,14 @@ INSERT INTO `part_tool` (`id`, `part_id`, `tool_id`, `created_at`, `updated_at`)
 (64, 53, 6, '2018-04-10 00:24:20', '2018-04-10 00:24:20'),
 (65, 46, 1, '2018-04-11 19:01:47', '2018-04-11 19:01:47'),
 (66, 55, 14, '2018-04-20 19:33:44', '2018-04-20 19:33:44'),
-(67, 56, 1, '2018-04-23 01:53:34', '2018-04-23 01:53:34');
+(67, 56, 1, '2018-04-23 01:53:34', '2018-04-23 01:53:34'),
+(68, 25, 12, '2018-04-26 23:12:39', '2018-04-26 23:12:39'),
+(69, 25, 1, '2018-04-26 23:12:39', '2018-04-26 23:12:39'),
+(70, 25, 4, '2018-04-26 23:12:39', '2018-04-26 23:12:39'),
+(71, 57, 4, '2018-04-27 00:50:02', '2018-04-27 00:50:02'),
+(72, 57, 8, '2018-04-27 00:50:02', '2018-04-27 00:50:02'),
+(73, 57, 6, '2018-04-27 00:50:02', '2018-04-27 00:50:02'),
+(74, 58, 6, '2018-04-27 04:32:44', '2018-04-27 04:32:44');
 
 -- --------------------------------------------------------
 
@@ -833,7 +885,16 @@ INSERT INTO `step` (`id`, `title`, `desc`, `active`, `created_at`, `updated_at`)
 (29, 'Join the Base Panels', 'Join the base panels to the bottom. Align and glue the base panels so that one flat face is flush with the back edge of the panel and the other is 3\" back from the front end. Then, using butt joints, screw through the cabinet base and into the edge of the panels. Pilot holes are a good idea here.', 1, '2018-04-23 01:59:46', '2018-04-23 01:59:46'),
 (30, 'Nail on a back panel', 'Nail on a back panel. Measure and then screw a 1/2\" plywood back panel into place. A thicker back panel will be needed for wall cabinets, like 3/4\" MDF.', 1, '2018-04-23 02:00:29', '2018-04-23 02:00:29'),
 (33, 'Install the doors', 'Install the doors. Install the doors onto the face panels as recommended by their manufacturer. You can also install drawers, but this can become quite complex and is not recommended for a beginner.', 1, '2018-04-23 04:53:43', '2018-04-23 04:53:43'),
-(34, 'Place the cabinets', 'Place the cabinets. Place the cabinets in their location. Screw through the back panel and into the wall studs to secure the cabinet it place. Upper cabinets may require more support, such as L brackets (than can be covered up by a backsplash), if you plan to put heavy items such as dishes in the cabinet.', 1, '2018-04-23 04:54:14', '2018-04-23 04:54:14');
+(34, 'Place the cabinets', 'Place the cabinets. Place the cabinets in their location. Screw through the back panel and into the wall studs to secure the cabinet it place. Upper cabinets may require more support, such as L brackets (than can be covered up by a backsplash), if you plan to put heavy items such as dishes in the cabinet.', 1, '2018-04-23 04:54:14', '2018-04-23 04:54:14'),
+(35, 'Measure and Cut', 'Measure and Cut all the wood and use the orbital sander to clean your wood.', 1, '2018-04-26 23:15:48', '2018-04-26 23:15:48'),
+(36, 'Assemble', 'Put everything together with nails, wood glue and use the hammer.', 1, '2018-04-26 23:17:19', '2018-04-26 23:17:19'),
+(37, 'Construction Overview', 'Before we get into the details let\'s take a look at a typical drawer box construction. There are many different ways to build drawer boxes, some require special tools and skill while others are are very simple but not very strong or attractive. I think that using pocket hole joinery for drawers achieves a great balance between strength, appearance, cost and ease to build.', 1, '2018-04-27 00:51:06', '2018-04-27 00:51:06'),
+(38, 'Choosing Wood', 'Using a separate drawer box and drawer front makes it easier to construct the drawer and provides more flexibility when aligning the drawer front on the cabinet.\r\n\r\nThe drawer consists of 6 main components. The drawer box sides, front and back, the drawer box bottom, the exposed drawer front and the drawer pull. 2 wood screws are used to secure the drawer front to the drawer box, 2 machine screws hold the drawer pull in place.', 1, '2018-04-27 00:51:47', '2018-04-27 00:51:47'),
+(39, 'Drawer Box Width', 'I like to measure the opening width after I construct and finish the cabinet carcass. Sometimes things don\'t always go as planned and plywood thickness can vary. By doing this I get a more accurate measurement. I measure not only the front but also at a point in the back and use the smallest measurement if they differ. This is important because with many drawer slides there is very little tolerance.', 1, '2018-04-27 00:52:20', '2018-04-27 00:52:20'),
+(40, 'Constrained Height', 'When the height of the drawer opening is constrained it is important to measure the actual opening dimensions. I do this after the cabinet carcass has been assembled and finished. I also measure both sides and in the case of any slight discrepancy I use the smallest measurement. Next it is a matter of allowing for proper top and bottom clearance as detailed in the specifications for the drawer slide.', 1, '2018-04-27 00:53:17', '2018-04-27 00:53:17'),
+(41, 'Drawer Box Depth', 'If you\'re cabinets will have overlay drawers, where the drawer front sits in front of the cabinet body as pictured above, take the measured depth of the cabinet and look for a drawer slide that is 1 to 2 inches shorter than that measurement. The size of the drawer slide you selected will determine the length of your outside drawer depth.', 1, '2018-04-27 00:53:50', '2018-04-27 00:53:50'),
+(42, 'Cut and Install the Drawer Bottom', 'In our case our inside dimensions are 10\" x 14\" so we\'ll need to cut a 10-3/8\" x 14-3/8\" rectangle out of our 1/4\" plywood. I like to cut it so the direction of the grain runs from left to right when installed in the drawer but this isn\'t that important and will cut in either direction if it makes more efficient use of the plywood.', 1, '2018-04-27 00:54:26', '2018-04-27 00:54:26'),
+(43, 'Finishing', 'Before going on to finishing, if you have a router you can ease the edges of the top of the drawer box sides with a round over bit or aggressively sand it to get rid of the sharp edges. \r\n\r\nSand the drawer box with 80 grit, then 120 grit sand paper to smooth out any rough spots or tool marks.', 1, '2018-04-27 00:55:18', '2018-04-27 00:55:18');
 
 -- --------------------------------------------------------
 
@@ -872,7 +933,13 @@ INSERT INTO `step_media` (`id`, `step_id`, `media_id`, `order`, `created_at`, `u
 (16, 29, 69, 1, '2018-04-23 01:59:46', '2018-04-23 01:59:46'),
 (17, 30, 70, 1, '2018-04-23 02:00:29', '2018-04-23 02:00:29'),
 (18, 32, 71, 1, '2018-04-23 02:03:09', '2018-04-23 02:03:09'),
-(19, 34, 72, 1, '2018-04-23 04:54:14', '2018-04-23 04:54:14');
+(19, 34, 72, 1, '2018-04-23 04:54:14', '2018-04-23 04:54:14'),
+(20, 37, 73, 1, '2018-04-27 00:51:06', '2018-04-27 00:51:06'),
+(21, 38, 74, 1, '2018-04-27 00:51:47', '2018-04-27 00:51:47'),
+(22, 39, 75, 1, '2018-04-27 00:52:20', '2018-04-27 00:52:20'),
+(23, 41, 76, 1, '2018-04-27 00:53:50', '2018-04-27 00:53:50'),
+(24, 42, 77, 1, '2018-04-27 00:54:26', '2018-04-27 00:54:26'),
+(25, 43, 78, 1, '2018-04-27 00:55:18', '2018-04-27 00:55:18');
 
 -- --------------------------------------------------------
 
@@ -1026,7 +1093,7 @@ INSERT INTO `users` (`id`, `fname`, `lname`, `password`, `remember_token`, `empl
 (6, 'New', 'User2', '$2y$10$QIb2xrRvNrUVMc0vLZRH0eOc2FeMu7GDbwQ3qjdrE1ScDDfXSuUwG', 'DW5V5LmnAm74F57JwRdwzWbHuvkXapFb9pvxHeXZbkNsxlxi50e72qteee9K', '00000022', '323232323232', 'newuser2@email.com', 'images/default.jpg', 1, 1, 1, 1, 0, '2018-02-14 19:54:15', '2018-03-14 17:11:05'),
 (7, 'clara', 'marshall', '$2y$10$0WuSkUh6/v.h5fF5XQXaZ.nLZ7kX/oBNewgr8CX43Lm54QaJ9/ZWa', NULL, '123', '4164710808', 'clara@claramarshall.com', 'images/default.jpg', 3, 0, 0, 0, 0, '2018-02-14 20:29:18', '2018-03-14 17:10:52'),
 (8, 'Test photo', 'Photo', '$2y$10$.N//2JSyPFf1Q1KXt3sABujH.ReaE0EsxfuQX.YU2vG231zy82pU6', NULL, '1111111', '232323323232', 'photo@email.com', 'images/1518714867.jpg', 3, 1, 1, 1, 0, '2018-02-15 22:03:13', '2018-03-14 17:10:57'),
-(9, 'John', 'Doe', '$2y$10$EgPoIpHx1jZ5n6Y9Q1VAvOei/LqiXU01z8tnsoH76O10x9wmg6IIe', 'xSwhGQPqiVtDCSqLdhBl7tozkC3KMiiEJC9FqwL0kSgVpvTvKd2oTSWiNwyo', '123-456', '(519) 234-5678', 'john@email.com', 'images/1521033025.jpg', 1, 1, 1, 1, 1, '2018-03-14 17:10:25', '2018-03-14 17:10:25');
+(9, 'John', 'Doe', '$2y$10$EgPoIpHx1jZ5n6Y9Q1VAvOei/LqiXU01z8tnsoH76O10x9wmg6IIe', 'BLl5Wkwg2P8pjkzTX1IY182uC3S5iWqnAbQgM02Zepl31qUxluh1rSUY8OyN', '123-456', '(519) 234-5678', 'john@email.com', 'images/1521033025.jpg', 1, 1, 1, 1, 1, '2018-03-14 17:10:25', '2018-03-14 17:10:25');
 
 -- --------------------------------------------------------
 
@@ -1287,13 +1354,13 @@ ALTER TABLE `comment_media`
 -- AUTO_INCREMENT for table `fixture`
 --
 ALTER TABLE `fixture`
-  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `fixture_media`
 --
 ALTER TABLE `fixture_media`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `material`
@@ -1311,7 +1378,7 @@ ALTER TABLE `material_media`
 -- AUTO_INCREMENT for table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1335,7 +1402,7 @@ ALTER TABLE `note_media`
 -- AUTO_INCREMENT for table `operation`
 --
 ALTER TABLE `operation`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `operation_media`
@@ -1347,13 +1414,13 @@ ALTER TABLE `operation_media`
 -- AUTO_INCREMENT for table `operation_step`
 --
 ALTER TABLE `operation_step`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `part`
 --
 ALTER TABLE `part`
-  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `part_comment`
@@ -1365,19 +1432,19 @@ ALTER TABLE `part_comment`
 -- AUTO_INCREMENT for table `part_fixture`
 --
 ALTER TABLE `part_fixture`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `part_material`
 --
 ALTER TABLE `part_material`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `part_operation`
 --
 ALTER TABLE `part_operation`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `part_quality`
@@ -1389,7 +1456,7 @@ ALTER TABLE `part_quality`
 -- AUTO_INCREMENT for table `part_tool`
 --
 ALTER TABLE `part_tool`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `person`
@@ -1419,13 +1486,13 @@ ALTER TABLE `quality_note`
 -- AUTO_INCREMENT for table `step`
 --
 ALTER TABLE `step`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `step_media`
 --
 ALTER TABLE `step_media`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `step_note`
